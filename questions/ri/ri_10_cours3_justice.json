@@ -1,0 +1,614 @@
+{
+  "titre": "RI — Cours 3 : Justice internationale, Conseil de sécurité, cyberespace",
+  "description": "DIH et Srebrenica ; juridictions (CIJ/CPI/TPIY…) ; attribution (contrôle effectif vs global, arrêt 2007) ; compétences de la CIJ ; cyberespace et désinformation.",
+  "questions": [
+    {
+      "id": "c3j-distinction",
+      "type": "QCM",
+      "question": "Le principe de distinction (droit international humanitaire) impose de :",
+      "choix": [
+        "Interdire toute forme de guerre",
+        "Distinguer en tout temps les objectifs militaires des biens de caractère civil",
+        "Pouvoir viser les civils",
+        "Réguler le droit de la mer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Pierre angulaire du jus in bello (Protocole additionnel I de 1977, art. 48 et 52)."
+    },
+    {
+      "id": "c3j-bien-civil",
+      "type": "QCM",
+      "question": "Un bien civil (école, hôpital, pont, réseau électrique) :",
+      "choix": [
+        "Ne peut jamais être visé",
+        "Peut devenir un objectif militaire s'il est utilisé pour le combat",
+        "Est toujours un objectif militaire",
+        "N'est jamais protégé"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "C'est le sens de la note du cours : une infrastructure « utilisée pour le combat » perd sa protection."
+    },
+    {
+      "id": "c3j-jus-in-bello",
+      "type": "QCM",
+      "question": "Le « jus in bello » désigne :",
+      "choix": [
+        "Le droit du recours à la force",
+        "Le droit applicable pendant la guerre",
+        "Le droit de la mer",
+        "Le droit commercial"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Jus in bello = droit dans la guerre (DIH), à distinguer du jus ad bellum."
+    },
+    {
+      "id": "c3j-jus-ad-bellum",
+      "type": "QCM",
+      "question": "Le « jus ad bellum » désigne :",
+      "choix": [
+        "Le droit applicable pendant la guerre",
+        "Le droit du recours à la force",
+        "Le DIH",
+        "Le droit pénal international"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Jus ad bellum = droit du recours à la force (légalité du déclenchement)."
+    },
+    {
+      "id": "c3j-proportionnalite",
+      "type": "QCM",
+      "question": "Le principe de proportionnalité :",
+      "choix": [
+        "Autorise tout dommage militaire",
+        "Interdit des dommages civils excessifs au regard de l'avantage militaire attendu",
+        "Interdit toute attaque",
+        "Ne s'applique pas en temps de guerre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Même contre un objectif militaire, on ne peut causer des dommages civils excessifs."
+    },
+    {
+      "id": "c3j-srebrenica-bilan",
+      "type": "QCM",
+      "question": "Le massacre de Srebrenica (juillet 1995) :",
+      "choix": [
+        "A fait environ 800 morts",
+        "A fait plus de 8 000 morts et est qualifié de génocide",
+        "Fut un incident mineur",
+        "Fut un succès des Casques bleus"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Plus de 8 000 hommes et adolescents bosniaques exécutés : le plus grave massacre en Europe depuis 1945."
+    },
+    {
+      "id": "c3j-mladic",
+      "type": "QCM",
+      "question": "Le général qui lance l'offensive sur Srebrenica est :",
+      "choix": [
+        "Ratko Mladić",
+        "Slobodan Milošević",
+        "Radovan Karadžić",
+        "Dean Acheson"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ratko Mladić, commandant de l'armée des Serbes de Bosnie (VRS). (Vos notes écrivaient « Ladic ».)"
+    },
+    {
+      "id": "c3j-casquesbleus",
+      "type": "QCM",
+      "question": "À Srebrenica, les Casques bleus (bataillon néerlandais « Dutchbat ») :",
+      "choix": [
+        "Ont employé la force massivement",
+        "N'ont pas pu protéger les populations, le commandement n'ayant pas autorisé l'emploi de la force",
+        "Étaient absents de la zone",
+        "Ont remporté l'affrontement"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Mandat d'interposition non robuste, règles d'engagement restrictives."
+    },
+    {
+      "id": "c3j-srebrenica-ecole",
+      "type": "QCM",
+      "question": "Srebrenica est le cas d'école de l'échec :",
+      "choix": [
+        "Du maintien de la paix « première génération » (mandat d'interposition non robuste)",
+        "De la CPI",
+        "De l'OTAN",
+        "Du JCPOA"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Mandat relevant de l'esprit du Chapitre VI face à une partie déterminée à commettre l'irréparable."
+    },
+    {
+      "id": "c3j-r2p",
+      "type": "QCM",
+      "question": "Le traumatisme de Srebrenica a justifié plus tard :",
+      "choix": [
+        "La dissolution de l'ONU",
+        "La « responsabilité de protéger » (R2P, 2005) et des mandats robustes (Chapitre VII)",
+        "La doctrine Monroe",
+        "Le pacte de Varsovie"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "R2P (2005) et durcissement des mandats."
+    },
+    {
+      "id": "c3j-resp-etats",
+      "type": "QCM",
+      "question": "La responsabilité des ÉTATS (réparation) relève de :",
+      "choix": [
+        "La CPI",
+        "La CIJ (organe judiciaire de l'ONU)",
+        "Le TPIY",
+        "La CEDH"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "CIJ : responsabilité internationale des États (civile/réparation)."
+    },
+    {
+      "id": "c3j-resp-individus",
+      "type": "QCM",
+      "question": "La responsabilité pénale des INDIVIDUS relève de :",
+      "choix": [
+        "La CIJ",
+        "La CPI et des tribunaux pénaux ad hoc",
+        "L'Assemblée générale",
+        "Le Conseil de sécurité"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "CPI et tribunaux ad hoc : responsabilité pénale (peine, prison) des personnes physiques."
+    },
+    {
+      "id": "c3j-cij-juge",
+      "type": "QCM",
+      "question": "La CIJ juge :",
+      "choix": [
+        "Des individus",
+        "Uniquement des États",
+        "Des ONG",
+        "Des firmes multinationales"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La CIJ ne juge que des États."
+    },
+    {
+      "id": "c3j-cpi-onu",
+      "type": "QCM",
+      "question": "La Cour pénale internationale (Statut de Rome, 2002) est :",
+      "choix": [
+        "Un organe de l'ONU",
+        "Indépendante de l'ONU",
+        "Un tribunal ad hoc",
+        "Une cour régionale européenne"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Piège classique : la CPI n'est PAS un organe de l'ONU (créée par un traité ; US, Chine, Russie n'en sont pas parties)."
+    },
+    {
+      "id": "c3j-mladic-tpiy",
+      "type": "QCM",
+      "question": "Mladić a en réalité été jugé par :",
+      "choix": [
+        "La CPI",
+        "Le TPIY (tribunal ad hoc créé en 1993)",
+        "La CIJ",
+        "La CEDH"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Nuance importante : pas la CPI (qui n'existe que depuis 2002) mais le TPIY. Mladić : perpétuité (2017, confirmée 2021)."
+    },
+    {
+      "id": "c3j-sigles1",
+      "type": "QCR",
+      "question": "Quelles associations sigle → rattachement sont correctes ?",
+      "choix": [
+        "CIJ → ONU",
+        "CPI → indépendante de l'ONU (Statut de Rome)",
+        "CIJ → Union européenne",
+        "CJUE → Union européenne"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "La CIJ est l'organe judiciaire de l'ONU, pas de l'UE."
+    },
+    {
+      "id": "c3j-sigles2",
+      "type": "QCR",
+      "question": "Quelles associations sont correctes ?",
+      "choix": [
+        "CPJI → SDN (ancêtre de la CIJ)",
+        "CEDH → Conseil de l'Europe (Convention EDH)",
+        "TPIY → créé par l'Assemblée générale",
+        "TPIY et TPIR → créés par le Conseil de sécurité"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Les TPIY (1993) et TPIR (1994) ont été créés par le Conseil de sécurité, pas par l'AG."
+    },
+    {
+      "id": "c3j-complementarite",
+      "type": "QCM",
+      "question": "La CPI agit selon le principe de :",
+      "choix": [
+        "Supériorité sur les États",
+        "Complémentarité (subsidiarité : elle n'agit que si l'État ne veut ou ne peut juger)",
+        "Unanimité",
+        "Consensus"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Principe de complémentarité (art. 17 du Statut de Rome)."
+    },
+    {
+      "id": "c3j-crimes-cpi",
+      "type": "QCR",
+      "question": "Quels crimes relèvent de la CPI ?",
+      "choix": [
+        "Le génocide",
+        "Les crimes contre l'humanité",
+        "Les délits financiers ordinaires",
+        "Le crime d'agression"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Quatre crimes : génocide, crimes contre l'humanité, crimes de guerre, crime d'agression."
+    },
+    {
+      "id": "c3j-controle-effectif",
+      "type": "QCM",
+      "question": "Le critère du « contrôle effectif » a été posé par :",
+      "choix": [
+        "Le TPIY dans l'affaire Tadić (1999)",
+        "La CIJ dans l'affaire Nicaragua (1986)",
+        "La CIJ dans l'affaire Bosnie c. Serbie (2007)",
+        "L'affaire LaGrand (2001)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "CIJ, Nicaragua, 1986 : seuil élevé d'attribution."
+    },
+    {
+      "id": "c3j-effectif-def",
+      "type": "QCM",
+      "question": "Le « contrôle effectif » (seuil élevé) exige :",
+      "choix": [
+        "Seulement de financer un groupe",
+        "Un contrôle de l'opération précise au cours de laquelle la violation a été commise",
+        "Rien de particulier",
+        "Une simple sympathie idéologique"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Financer, armer et entraîner un groupe ne suffit pas : il faut le contrôle de l'opération."
+    },
+    {
+      "id": "c3j-controle-global",
+      "type": "QCM",
+      "question": "Le critère du « contrôle global » (seuil plus bas) a été retenu par :",
+      "choix": [
+        "La CIJ dans l'affaire Nicaragua (1986)",
+        "Le TPIY dans l'affaire Tadić (1999)",
+        "La Convention de Montevideo (1933)",
+        "L'affaire LaGrand (2001)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TPIY, Tadić, 1999 : suffit de financer, équiper et coordonner/participer à la planification d'ensemble."
+    },
+    {
+      "id": "c3j-global-vs-effectif",
+      "type": "QCM",
+      "question": "Quelle distinction est exacte entre contrôle global et contrôle effectif ?",
+      "choix": [
+        "Le contrôle global s'apprécie opération par opération",
+        "Le contrôle global vise un groupe organisé (seuil bas) ; le contrôle effectif s'apprécie opération par opération (seuil élevé)",
+        "Les deux critères sont identiques",
+        "Aucun des deux n'existe en droit"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Global = qualifier la nature du conflit ; effectif = attribuer un acte précis et engager la responsabilité de l'État."
+    },
+    {
+      "id": "c3j-arret2007",
+      "type": "QCM",
+      "question": "Dans l'arrêt du 26 février 2007 (Bosnie c. Serbie), la CIJ :",
+      "choix": [
+        "Attribue le génocide à la Serbie",
+        "Refuse d'attribuer le génocide à la Serbie, mais la condamne pour manquement à l'obligation de prévenir et non-coopération",
+        "Acquitte totalement la Serbie",
+        "Condamne la CPI"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Appliquant le contrôle effectif, la CIJ n'impute pas le génocide à Belgrade, mais la condamne pour non-prévention et non-transfert de Mladić."
+    },
+    {
+      "id": "c3j-fondement2007",
+      "type": "QCM",
+      "question": "L'arrêt de 2007 se fonde sur :",
+      "choix": [
+        "La CNUDM",
+        "La Convention de 1948 sur le génocide (article IX)",
+        "Le Statut de Rome",
+        "La doctrine Monroe"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'article IX de la Convention de 1948 donne compétence à la CIJ."
+    },
+    {
+      "id": "c3j-contentieux",
+      "type": "QCM",
+      "question": "La compétence contentieuse de la CIJ aboutit à :",
+      "choix": [
+        "Des avis non contraignants",
+        "Des arrêts obligatoires et contraignants pour les parties (mais le consentement est requis)",
+        "Des sanctions pénales",
+        "L'emploi de la force"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Arrêts obligatoires (art. 59-60 du Statut), mais sans précédent au sens strict et soumis au consentement."
+    },
+    {
+      "id": "c3j-consentement",
+      "type": "QCM",
+      "question": "Le « talon d'Achille » de la CIJ est :",
+      "choix": [
+        "Son budget",
+        "Le consentement : aucun État ne peut être jugé contre sa volonté",
+        "Le droit de veto à la Cour",
+        "L'Assemblée générale"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Et l'exécution dépend du Conseil de sécurité (art. 94), où un permanent condamné peut opposer son veto."
+    },
+    {
+      "id": "c3j-avis",
+      "type": "QCM",
+      "question": "Les avis consultatifs de la CIJ sont :",
+      "choix": [
+        "Contraignants",
+        "Non contraignants, mais dotés d'une forte autorité morale et politique",
+        "Des sanctions économiques",
+        "Des arrêts obligatoires"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Ex. : armes nucléaires (1996), mur en territoire palestinien (2004), Kosovo (2010), climat (2025)."
+    },
+    {
+      "id": "c3j-mesures-conservatoires",
+      "type": "QCM",
+      "question": "Les mesures conservatoires de la CIJ sont reconnues comme obligatoires depuis l'affaire :",
+      "choix": [
+        "Nicaragua (1986)",
+        "LaGrand (2001)",
+        "Tadić (1999)",
+        "Chagos (2019)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Depuis l'affaire LaGrand (2001), les mesures conservatoires (art. 41) sont obligatoires."
+    },
+    {
+      "id": "c3j-troisinstitutions",
+      "type": "QCR",
+      "question": "Quelles affirmations distinguent correctement les trois institutions ?",
+      "choix": [
+        "La CIJ tranche les différends entre États (organe de l'ONU)",
+        "La CPI juge la responsabilité pénale des individus (hors ONU)",
+        "Le Conseil de sécurité est une juridiction",
+        "Le Conseil de sécurité est un organe politique, pas une juridiction"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Trois logiques distinctes : CIJ (États), CPI (individus), Conseil de sécurité (organe politique)."
+    },
+    {
+      "id": "c3j-377-contexte",
+      "type": "QCM",
+      "question": "Le contexte de la résolution 377 « Acheson » (1950) est :",
+      "choix": [
+        "La crise de Cuba",
+        "La guerre de Corée (retour de l'URSS pouvant opposer son veto)",
+        "La guerre du Vietnam",
+        "La guerre de Bosnie"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Adoptée le 3 novembre 1950 pour contourner un possible blocage du Conseil sur la Corée."
+    },
+    {
+      "id": "c3j-377-ag",
+      "type": "QCM",
+      "question": "Via la résolution 377, l'Assemblée générale :",
+      "choix": [
+        "Décide de façon contraignante",
+        "Ne peut que recommander des mesures collectives (1 État = 1 voix)",
+        "Supprime le droit de veto",
+        "Nomme seule le Secrétaire général"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'AG recommande, le Conseil décide : la 377 est une soupape, pas la fin du veto."
+    },
+    {
+      "id": "c3j-desinfo-souverainete",
+      "type": "QCM",
+      "question": "Manipuler l'opinion d'un autre État est analysé comme :",
+      "choix": [
+        "Un simple acte commercial",
+        "Une forme d'atteinte à la souveraineté (ingérence)",
+        "Un avis consultatif",
+        "Une opération de maintien de la paix"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La désinformation prolonge la question classique de la souveraineté et de l'ingérence."
+    },
+    {
+      "id": "c3j-simods",
+      "type": "QCM",
+      "question": "Le rapport SIMODS (2025) mesure :",
+      "choix": [
+        "Le PIB des États",
+        "La désinformation en ligne sur les grandes plateformes (mesure paneuropéenne)",
+        "Le nombre de Casques bleus",
+        "La taille des ZEE"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SIMODS : première mesure scientifique et indépendante de la désinformation sur 6 plateformes, 4 pays."
+    },
+    {
+      "id": "c3j-tiktok",
+      "type": "QCM",
+      "question": "Selon le 1er rapport SIMODS, la plateforme comportant le plus de désinformation (~20 %) est :",
+      "choix": [
+        "LinkedIn",
+        "TikTok",
+        "Facebook",
+        "YouTube"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TikTok en tête (~20 %, en hausse vers 25 % au 2e rapport)."
+    },
+    {
+      "id": "c3j-linkedin",
+      "type": "QCM",
+      "question": "Selon SIMODS, la plateforme jugée la plus fiable (≈ 2 %) est :",
+      "choix": [
+        "TikTok",
+        "LinkedIn",
+        "X (ex-Twitter)",
+        "Instagram"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "LinkedIn ≈ 2 %, seule plateforme à fournir ses données."
+    },
+    {
+      "id": "c3j-fedorova",
+      "type": "QCM",
+      "question": "Xenia Fedorova est :",
+      "choix": [
+        "Une casque bleue",
+        "L'ex-directrice de RT France, devenue chroniqueuse (groupe Bolloré : CNews, Europe 1…)",
+        "Juge à la CIJ",
+        "Secrétaire générale de l'ONU"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Affaire de mai-juin 2026 : ingérence informationnelle et tension liberté d'expression / sécurité nationale."
+    },
+    {
+      "id": "c3j-rt",
+      "type": "QCM",
+      "question": "RT France a été :",
+      "choix": [
+        "Primée pour sa fiabilité",
+        "Interdite dans l'UE (mars 2022) puis fermée (2023)",
+        "Nationalisée par la France",
+        "Intégrée à l'ONU"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Chaîne financée par l'État russe, interdite dans l'UE après l'invasion de l'Ukraine."
+    },
+    {
+      "id": "c3j-musk",
+      "type": "QCM",
+      "question": "Dans le cours, Elon Musk illustre :",
+      "choix": [
+        "Un sujet de droit international",
+        "Un acteur non étatique pesant sur le débat public mondial",
+        "Une organisation internationale",
+        "Un casque bleu"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Propriétaire de X : un acteur (au sens du Pr Guilhaudis) sans être un sujet de droit."
+    },
+    {
+      "id": "c3j-dsa",
+      "type": "QCM",
+      "question": "L'instrument juridique européen de réponse à la désinformation des plateformes est :",
+      "choix": [
+        "Le JCPOA",
+        "Le DSA (Digital Services Act, art. 40 sur l'accès des chercheurs aux données)",
+        "La CNUDM",
+        "La doctrine Monroe"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le DSA est l'instrument de réponse de l'UE face à l'opacité des plateformes."
+    }
+  ]
+}

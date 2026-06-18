@@ -1,0 +1,297 @@
+{
+  "titre": "RI — Partie VI : L'ONU (organes, veto, résolution 377)",
+  "description": "Architecture de l'ONU, Assemblée générale vs Conseil de sécurité, droit de veto, pouvoirs du CSNU, résolution 377.",
+  "questions": [
+    {
+      "id": "c6-charte",
+      "type": "QCM",
+      "question": "La Charte de l'ONU a été signée à San Francisco le :",
+      "choix": [
+        "24 octobre 1945",
+        "26 juin 1945",
+        "3 novembre 1950",
+        "10 décembre 1948"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Charte de San Francisco, 26 juin 1945."
+    },
+    {
+      "id": "c6-membres",
+      "type": "QCM",
+      "question": "L'ONU compte aujourd'hui :",
+      "choix": [
+        "49 membres",
+        "193 membres",
+        "51 membres",
+        "200 membres"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "193 États membres aujourd'hui."
+    },
+    {
+      "id": "c6-siege",
+      "type": "QCM",
+      "question": "Le siège de l'ONU se trouve à :",
+      "choix": [
+        "Genève",
+        "New York",
+        "Paris",
+        "Vienne"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Siège principal : New York."
+    },
+    {
+      "id": "c6-ag-recommande",
+      "type": "QCM",
+      "question": "Quel organe « recommande » (actes non contraignants) ?",
+      "choix": [
+        "Le Conseil de sécurité",
+        "L'Assemblée générale",
+        "La CIJ",
+        "Le Secrétariat"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'AG (193 États, 1 voix chacun) recommande."
+    },
+    {
+      "id": "c6-cs-decide",
+      "type": "QCM",
+      "question": "Quel organe « décide » (résolutions contraignantes) ?",
+      "choix": [
+        "L'Assemblée générale",
+        "Le Conseil de sécurité",
+        "L'ECOSOC",
+        "La CIJ"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le CSNU décide : sanctions, emploi de la force."
+    },
+    {
+      "id": "c6-ag-vote",
+      "type": "QCM",
+      "question": "À l'Assemblée générale, la règle de vote est :",
+      "choix": [
+        "9 voix sur 15",
+        "1 État = 1 voix",
+        "Le veto des permanents",
+        "La majorité qualifiée pondérée"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Assemblée générale : 1 État = 1 voix (universalité)."
+    },
+    {
+      "id": "c6-permanents",
+      "type": "QCR",
+      "question": "Qui sont des membres permanents du Conseil de sécurité ?",
+      "choix": [
+        "La Chine",
+        "Les États-Unis",
+        "L'Allemagne",
+        "Le Royaume-Uni"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Les 5 permanents : Chine, États-Unis, France, Royaume-Uni, Russie. L'Allemagne n'en fait pas partie."
+    },
+    {
+      "id": "c6-cs-composition",
+      "type": "QCM",
+      "question": "Le Conseil de sécurité est composé de :",
+      "choix": [
+        "5 membres",
+        "15 membres (5 permanents + 10 élus)",
+        "193 membres",
+        "10 membres"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "15 membres : 5 permanents avec veto + 10 non-permanents."
+    },
+    {
+      "id": "c6-nonpermanents",
+      "type": "QCM",
+      "question": "Les membres non permanents du Conseil de sécurité sont élus pour :",
+      "choix": [
+        "1 an",
+        "2 ans",
+        "4 ans",
+        "À vie"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "10 membres élus pour 2 ans."
+    },
+    {
+      "id": "c6-sg",
+      "type": "QCM",
+      "question": "Le Secrétaire général de l'ONU (dans le cours) est :",
+      "choix": [
+        "Dean Acheson",
+        "António Guterres",
+        "Donald Trump",
+        "Ali Khamenei"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "António Guterres (en poste depuis 2017) ; le SG « exécute »."
+    },
+    {
+      "id": "c6-sg-mandat",
+      "type": "QCM",
+      "question": "Le Secrétaire général António Guterres termine son second mandat le :",
+      "choix": [
+        "31 décembre 2024",
+        "31 décembre 2026",
+        "En 2030",
+        "En 2022"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Fin de mandat le 31 décembre 2026 ; succession ouverte."
+    },
+    {
+      "id": "c6-veto-def",
+      "type": "QCM",
+      "question": "Le droit de veto permet à un membre permanent de :",
+      "choix": [
+        "Recommander une mesure",
+        "Bloquer toute résolution de fond",
+        "Élire seul le Secrétaire général",
+        "Exclure un État"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le veto bloque toute résolution de fond du Conseil."
+    },
+    {
+      "id": "c6-veto-paralysie",
+      "type": "QCM",
+      "question": "La principale cause de paralysie du Conseil de sécurité est :",
+      "choix": [
+        "Le manque de budget",
+        "Le droit de veto",
+        "L'Assemblée générale",
+        "La CIJ"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le veto condamne le Conseil à l'impuissance dès qu'un permanent est partie au conflit."
+    },
+    {
+      "id": "c6-pouvoirs-cs",
+      "type": "QCR",
+      "question": "Quels sont des pouvoirs du Conseil de sécurité (CSNU) ?",
+      "choix": [
+        "Constater une menace ou un acte d'agression",
+        "Imposer des sanctions",
+        "Autoriser l'emploi de la force armée",
+        "Juger pénalement des individus"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Juger pénalement des individus relève de la CPI / des tribunaux pénaux, pas du Conseil."
+    },
+    {
+      "id": "c6-377-date",
+      "type": "QCM",
+      "question": "La résolution 377 « Acheson » a été adoptée le :",
+      "choix": [
+        "En 1945",
+        "Le 3 novembre 1950",
+        "En 1962",
+        "En 2022"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Résolution 377 (V) « L'union pour le maintien de la paix », 3 novembre 1950."
+    },
+    {
+      "id": "c6-377-mecanisme",
+      "type": "QCM",
+      "question": "La résolution 377 permet, en cas de blocage par veto :",
+      "choix": [
+        "De supprimer le veto",
+        "À l'Assemblée générale de se réunir en urgence et de recommander des mesures collectives",
+        "Au Conseil de décider sans veto",
+        "De dissoudre le Conseil"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'AG ne peut que recommander : c'est une soupape politique, pas la fin du veto."
+    },
+    {
+      "id": "c6-377-ukraine",
+      "type": "QCM",
+      "question": "La résolution 377 a été récemment réactivée pour :",
+      "choix": [
+        "La Syrie",
+        "L'Ukraine (depuis 2022)",
+        "Le Yémen",
+        "Le Sahara occidental"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Sessions extraordinaires d'urgence de l'AG sur l'Ukraine depuis 2022."
+    },
+    {
+      "id": "c6-presidence",
+      "type": "QCM",
+      "question": "La présidence du Conseil de sécurité :",
+      "choix": [
+        "Est permanente",
+        "Tourne chaque mois (ordre alphabétique anglais des États membres)",
+        "Revient toujours aux États-Unis",
+        "Est élue pour 2 ans"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Rotation mensuelle, ordre alphabétique anglais."
+    },
+    {
+      "id": "c6-institutions",
+      "type": "QCR",
+      "question": "Lesquelles sont des institutions/agences du système de l'ONU ?",
+      "choix": [
+        "L'UNESCO",
+        "L'OMS",
+        "L'OTAN",
+        "L'UNICEF"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "L'OTAN est une alliance militaire, pas une institution de l'ONU. UNESCO, OMS, UNICEF en font partie."
+    }
+  ]
+}

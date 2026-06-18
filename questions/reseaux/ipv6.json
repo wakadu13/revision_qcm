@@ -1,0 +1,419 @@
+{
+  "titre": "Module 12 - Adressage IPv6",
+  "description": "Révision des problèmes IPv4, de la représentation et des règles de compression, des types d'adresses, de la configuration et de l'adressage dynamique IPv6.",
+  "questions": [
+    {
+      "id": "ipv6-need-1",
+      "type": "QCM",
+      "question": "Quelle est la principale raison du passage à IPv6 ?",
+      "choix": [
+        "IPv6 est plus rapide qu'IPv4",
+        "IPv4 manque d'adresses",
+        "IPv6 supprime le besoin de routeurs",
+        "IPv4 ne supporte pas le chiffrement"
+      ],
+      "reponses": [1],
+      "explication": "IPv4 manque d'adresses ; IPv6, son successeur, offre un espace d'adressage de 128 bits beaucoup plus grand."
+    },
+    {
+      "id": "ipv6-bits",
+      "type": "QCM",
+      "question": "Quelle est la longueur d'une adresse IPv6 ?",
+      "choix": ["32 bits", "48 bits", "64 bits", "128 bits"],
+      "reponses": [3],
+      "explication": "Les adresses IPv6 ont une longueur de 128 bits et s'écrivent en hexadécimal."
+    },
+    {
+      "id": "ipv6-migration",
+      "type": "QCR",
+      "question": "Quelles sont les trois techniques de migration vers IPv6 définies par l'IETF ?",
+      "choix": [
+        "Double pile (dual stack)",
+        "Tunneling",
+        "Traduction (NAT64)",
+        "Diffusion (broadcast)"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les trois catégories de techniques de migration sont la double pile, le tunneling et la traduction (NAT64). IPv6 n'utilise pas de diffusion."
+    },
+    {
+      "id": "ipv6-dualstack",
+      "type": "QCM",
+      "question": "Que fait un périphérique configuré en « double pile » (dual stack) ?",
+      "choix": [
+        "Il encapsule l'IPv6 dans l'IPv4",
+        "Il exécute simultanément les piles IPv4 et IPv6",
+        "Il traduit les adresses IPv6 en IPv4",
+        "Il n'accepte que l'IPv6"
+      ],
+      "reponses": [1],
+      "explication": "Les périphériques double pile exécutent les piles de protocoles IPv4 et IPv6 en même temps."
+    },
+    {
+      "id": "ipv6-tunneling",
+      "type": "QCM",
+      "question": "En quoi consiste le tunneling IPv6 ?",
+      "choix": [
+        "Transporter un paquet IPv6 encapsulé dans un paquet IPv4",
+        "Traduire une adresse IPv6 en IPv4",
+        "Exécuter les deux piles simultanément",
+        "Compresser les zéros d'une adresse"
+      ],
+      "reponses": [0],
+      "explication": "Le tunneling transporte un paquet IPv6 sur un réseau IPv4 en l'encapsulant dans un paquet IPv4."
+    },
+    {
+      "id": "ipv6-hextet",
+      "type": "QCM",
+      "question": "Que désigne le terme « hextet » dans une adresse IPv6 ?",
+      "choix": [
+        "Un segment de 8 bits",
+        "Un segment de 16 bits (quatre valeurs hexadécimales)",
+        "Un segment de 32 bits",
+        "L'adresse complète"
+      ],
+      "reponses": [1],
+      "explication": "Un hextet est le terme officieux pour un segment de 16 bits, soit quatre valeurs hexadécimales. Une adresse IPv6 en compte 8."
+    },
+    {
+      "id": "ipv6-casse",
+      "type": "QCM",
+      "question": "Les adresses IPv6 sont-elles sensibles à la casse ?",
+      "choix": [
+        "Oui, uniquement en majuscules",
+        "Oui, uniquement en minuscules",
+        "Non, elles peuvent être notées en minuscules ou majuscules",
+        "Seulement les hextets pairs"
+      ],
+      "reponses": [2],
+      "explication": "Les adresses IPv6 ne sont pas sensibles à la casse et peuvent être notées en minuscules ou en majuscules."
+    },
+    {
+      "id": "ipv6-regle1",
+      "type": "QCM",
+      "question": "Que permet la règle 1 de compression IPv6 ?",
+      "choix": [
+        "Remplacer plusieurs hextets nuls par ::",
+        "Omettre les zéros de début (leading zeros) d'un hextet",
+        "Supprimer les zéros de queue",
+        "Convertir l'adresse en décimal"
+      ],
+      "reponses": [1],
+      "explication": "La règle 1 consiste à omettre les zéros de début (leading zeros) d'un hextet ; elle ne s'applique pas aux zéros de queue."
+    },
+    {
+      "id": "ipv6-regle1-ex",
+      "type": "QCM",
+      "question": "Avec la règle des zéros de début, comment s'écrit l'hextet 01ab ?",
+      "choix": ["01ab", "1ab", "1AB0", "ab"],
+      "reponses": [1],
+      "explication": "01ab devient 1ab : on supprime uniquement le zéro de début. (00ab deviendrait ab.)"
+    },
+    {
+      "id": "ipv6-regle2",
+      "type": "QCM",
+      "question": "Que permet le double deux-points (::) dans une adresse IPv6 ?",
+      "choix": [
+        "Remplacer une seule chaîne continue d'hextets composés uniquement de zéros",
+        "Remplacer n'importe quel hextet",
+        "Séparer la partie réseau de la partie hôte",
+        "Indiquer une adresse de diffusion"
+      ],
+      "reponses": [0],
+      "explication": "Le :: peut remplacer une seule chaîne continue d'un ou plusieurs hextets composés uniquement de zéros."
+    },
+    {
+      "id": "ipv6-regle2-once",
+      "type": "QCM",
+      "question": "Combien de fois le double deux-points (::) peut-il apparaître dans une adresse IPv6 ?",
+      "choix": [
+        "Autant de fois que nécessaire",
+        "Une seule fois",
+        "Deux fois maximum",
+        "Jamais"
+      ],
+      "reponses": [1],
+      "explication": "Le :: ne peut être utilisé qu'une seule fois, sinon l'adresse deviendrait ambiguë (plusieurs interprétations possibles)."
+    },
+    {
+      "id": "ipv6-compress-ex",
+      "type": "QCM",
+      "question": "Quelle est la forme compressée de 2001:db8:cafe:1:0:0:0:1 ?",
+      "choix": [
+        "2001:db8:cafe:1::1",
+        "2001:db8:cafe::1::1",
+        "2001:db8:cafe:1:::1",
+        "2001::db8:cafe:1:1"
+      ],
+      "reponses": [0],
+      "explication": "La chaîne 0:0:0 est remplacée une seule fois par :: → 2001:db8:cafe:1::1."
+    },
+    {
+      "id": "ipv6-types",
+      "type": "QCR",
+      "question": "Quelles sont les trois grandes catégories d'adresses IPv6 ?",
+      "choix": ["Monodiffusion (unicast)", "Multidiffusion (multicast)", "Anycast", "Diffusion (broadcast)"],
+      "reponses": [0, 1, 2],
+      "explication": "Les trois catégories sont unicast, multicast et anycast. IPv6 n'a pas d'adresse de diffusion (broadcast)."
+    },
+    {
+      "id": "ipv6-anycast",
+      "type": "QCM",
+      "question": "Comment est acheminé un paquet envoyé à une adresse anycast ?",
+      "choix": [
+        "Vers tous les périphériques du réseau",
+        "Vers le périphérique le plus proche ayant cette adresse",
+        "Vers la passerelle par défaut uniquement",
+        "Il est rejeté"
+      ],
+      "reponses": [1],
+      "explication": "Une adresse anycast peut être attribuée à plusieurs appareils ; le paquet est acheminé vers le périphérique le plus proche ayant cette adresse."
+    },
+    {
+      "id": "ipv6-broadcast",
+      "type": "QCM",
+      "question": "Quelle affirmation est correcte concernant la diffusion en IPv6 ?",
+      "choix": [
+        "IPv6 utilise la même adresse de diffusion qu'IPv4",
+        "IPv6 n'a pas d'adresse de diffusion, mais une adresse de multidiffusion tous-nœuds",
+        "La diffusion IPv6 est limitée au /64",
+        "IPv6 diffuse via anycast"
+      ],
+      "reponses": [1],
+      "explication": "Contrairement à IPv4, IPv6 n'a pas d'adresse de diffusion ; une adresse de multidiffusion vers tous les nœuds offre globalement le même résultat."
+    },
+    {
+      "id": "ipv6-prefixe",
+      "type": "QCM",
+      "question": "Quelle longueur de préfixe IPv6 est recommandée pour les réseaux locaux ?",
+      "choix": ["/24", "/48", "/64", "/128"],
+      "reponses": [2],
+      "explication": "La longueur de préfixe /64 est recommandée pour les réseaux locaux ; SLAAC utilise 64 bits pour l'ID d'interface."
+    },
+    {
+      "id": "ipv6-prefixe-plage",
+      "type": "QCM",
+      "question": "Entre quelles valeurs la longueur de préfixe IPv6 peut-elle être comprise ?",
+      "choix": ["0 et 32", "0 et 64", "0 et 128", "1 et 255"],
+      "reponses": [2],
+      "explication": "La longueur de préfixe IPv6 peut être comprise entre 0 et 128."
+    },
+    {
+      "id": "ipv6-unicast-deux",
+      "type": "QCR",
+      "question": "Quelles deux adresses monodiffusion un périphérique IPv6 possède-t-il généralement ?",
+      "choix": [
+        "Global Unicast Address (GUA)",
+        "Link-Local Address (LLA)",
+        "Adresse de diffusion",
+        "Adresse MAC virtuelle"
+      ],
+      "reponses": [0, 1],
+      "explication": "Un appareil IPv6 a généralement deux adresses unicast : une GUA (routable sur Internet) et une LLA (locale au lien)."
+    },
+    {
+      "id": "ipv6-gua",
+      "type": "QCM",
+      "question": "Quelle affirmation décrit une adresse Global Unicast (GUA) ?",
+      "choix": [
+        "Elle n'est pas routable et limitée au lien local",
+        "Elle est unique au monde et routable sur Internet",
+        "Elle commence par fe80",
+        "Elle ne peut pas être attribuée à un hôte"
+      ],
+      "reponses": [1],
+      "explication": "La GUA est similaire à une adresse IPv4 publique : unique au monde et routable sur Internet."
+    },
+    {
+      "id": "ipv6-gua-prefixe",
+      "type": "QCM",
+      "question": "Par quel préfixe commencent actuellement les adresses GUA IPv6 ?",
+      "choix": ["fe80::/10", "2000::/3", "ff00::/8", "fc00::/7"],
+      "reponses": [1],
+      "explication": "Les GUA actuellement attribuées ont leurs premiers bits à 001, soit 2000::/3 (commençant par 2 ou 3 en décimal)."
+    },
+    {
+      "id": "ipv6-gua-struct",
+      "type": "QCR",
+      "question": "Quels champs composent la structure d'une adresse GUA IPv6 ?",
+      "choix": [
+        "Préfixe de routage global",
+        "ID de sous-réseau (Subnet ID)",
+        "ID d'interface (Interface ID)",
+        "Adresse de diffusion"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Une GUA se compose du préfixe de routage global, de l'ID de sous-réseau et de l'ID d'interface."
+    },
+    {
+      "id": "ipv6-lla",
+      "type": "QCM",
+      "question": "Quelle est la plage des adresses link-local (LLA) IPv6 ?",
+      "choix": ["2000::/3", "fe80::/10", "ff02::/16", "::1/128"],
+      "reponses": [1],
+      "explication": "Les LLA IPv6 sont dans la gamme fe80::/10."
+    },
+    {
+      "id": "ipv6-lla-carac",
+      "type": "QCR",
+      "question": "Quelles affirmations sont correctes concernant une adresse link-local (LLA) ?",
+      "choix": [
+        "Les paquets avec une LLA source ou destination ne peuvent pas être routés",
+        "Chaque interface compatible IPv6 doit avoir une LLA",
+        "Si elle n'est pas configurée, l'appareil en crée une automatiquement",
+        "Elle est unique au monde et routable sur Internet"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Une LLA n'est pas routable, est obligatoire pour chaque interface IPv6 et peut être générée automatiquement. C'est la GUA qui est routable sur Internet."
+    },
+    {
+      "id": "ipv6-config-gua",
+      "type": "QCM",
+      "question": "Quelle commande Cisco IOS configure une GUA IPv6 sur une interface ?",
+      "choix": [
+        "ip address ipv6-adresse/prefix-length",
+        "ipv6 address ipv6-adresse/prefix-length",
+        "ipv6 enable address",
+        "set ipv6 gua"
+      ],
+      "reponses": [1],
+      "explication": "La commande est : ipv6 address ipv6-adresse/prefix-length (ex. ipv6 address 2001:db8:acad:1::1/64)."
+    },
+    {
+      "id": "ipv6-config-lla",
+      "type": "QCM",
+      "question": "Quel mot-clé ajoute-t-on pour configurer manuellement une adresse link-local ?",
+      "choix": ["global", "link-local", "static", "auto"],
+      "reponses": [1],
+      "explication": "On utilise : ipv6 address ipv6-link-local-address link-local (ex. ipv6 address fe80::1:1 link-local)."
+    },
+    {
+      "id": "ipv6-rs-ra",
+      "type": "QCM",
+      "question": "Quel protocole transporte les messages RS et RA utilisés pour l'adressage dynamique IPv6 ?",
+      "choix": ["ARP", "ICMPv6", "DHCPv4", "TCP"],
+      "reponses": [1],
+      "explication": "Les périphériques obtiennent des GUA dynamiquement via les messages ICMPv6 RS (sollicitation de routeur) et RA (publicité de routeur)."
+    },
+    {
+      "id": "ipv6-rs-direction",
+      "type": "QCM",
+      "question": "Qui envoie les messages de sollicitation de routeur (RS) ?",
+      "choix": [
+        "Les routeurs vers les hôtes",
+        "Les hôtes pour découvrir les routeurs IPv6",
+        "Les serveurs DNS",
+        "Les commutateurs"
+      ],
+      "reponses": [1],
+      "explication": "Les messages RS sont envoyés par les hôtes pour découvrir les routeurs IPv6 ; les routeurs répondent par des messages RA."
+    },
+    {
+      "id": "ipv6-ra-methodes",
+      "type": "QCR",
+      "question": "Quelles méthodes un message RA peut-il indiquer pour configurer une GUA IPv6 ?",
+      "choix": [
+        "SLAAC",
+        "SLAAC avec serveur DHCPv6 sans état",
+        "DHCPv6 avec état (sans SLAAC)",
+        "ARP statique"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Le RA peut proposer trois méthodes : SLAAC, SLAAC + DHCPv6 sans état, ou DHCPv6 avec état."
+    },
+    {
+      "id": "ipv6-slaac",
+      "type": "QCM",
+      "question": "Que permet la méthode SLAAC ?",
+      "choix": [
+        "Configurer une GUA sans serveur DHCPv6",
+        "Obliger l'usage d'un serveur DHCPv6 avec état",
+        "Traduire IPv6 en IPv4",
+        "Attribuer une adresse de diffusion"
+      ],
+      "reponses": [0],
+      "explication": "SLAAC permet à un périphérique de configurer une GUA sans les services de DHCPv6, à partir des informations du message RA."
+    },
+    {
+      "id": "ipv6-stateful",
+      "type": "QCM",
+      "question": "À quoi DHCPv6 « avec état » est-il comparable ?",
+      "choix": [
+        "À ARP",
+        "À DHCP pour IPv4",
+        "À SLAAC",
+        "À NAT64"
+      ],
+      "reponses": [1],
+      "explication": "DHCPv6 avec état est similaire à DHCP pour IPv4 : le périphérique reçoit GUA, longueur de préfixe et adresses DNS depuis le serveur."
+    },
+    {
+      "id": "ipv6-eui64-process",
+      "type": "QCR",
+      "question": "Quelles opérations caractérisent le processus EUI-64 ?",
+      "choix": [
+        "Insérer la valeur fffe au milieu de l'adresse MAC 48 bits",
+        "Inverser le 7e bit de l'adresse MAC",
+        "Ajouter le préfixe 2000 au début",
+        "Doubler la longueur de l'adresse MAC à 96 bits"
+      ],
+      "reponses": [0, 1],
+      "explication": "EUI-64 insère fffe au milieu de la MAC 48 bits et inverse le 7e bit (de 0 à 1) pour créer un ID d'interface de 64 bits."
+    },
+    {
+      "id": "ipv6-eui64-source",
+      "type": "QCM",
+      "question": "Sur quoi le processus EUI-64 s'appuie-t-il pour générer l'ID d'interface ?",
+      "choix": [
+        "L'adresse IPv4 de l'hôte",
+        "L'adresse MAC Ethernet 48 bits",
+        "Le numéro de port source",
+        "Le nom de domaine"
+      ],
+      "reponses": [1],
+      "explication": "EUI-64 dérive l'ID d'interface de l'adresse MAC 48 bits du client."
+    },
+    {
+      "id": "ipv6-random-id",
+      "type": "QCM",
+      "question": "Depuis quelle version Windows utilise-t-il un ID d'interface généré aléatoirement plutôt qu'EUI-64 ?",
+      "choix": ["Windows XP", "Windows Vista", "Windows 7", "Windows 11"],
+      "reponses": [1],
+      "explication": "À partir de Windows Vista, Windows utilise un ID d'interface généré aléatoirement au lieu du processus EUI-64."
+    },
+    {
+      "id": "ipv6-dad",
+      "type": "QCM",
+      "question": "À quoi sert le processus DAD (Duplicate Address Detection) ?",
+      "choix": [
+        "À détecter une boucle de routage",
+        "À s'assurer qu'une adresse monodiffusion IPv6 est unique",
+        "À chiffrer l'adresse IPv6",
+        "À compresser les zéros"
+      ],
+      "reponses": [1],
+      "explication": "DAD vérifie l'unicité d'une adresse unicast ; le principe est similaire à une requête ARP pour sa propre adresse : sans réponse, l'adresse est unique."
+    },
+    {
+      "id": "ipv6-subnet-id",
+      "type": "QCM",
+      "question": "Où se situe le champ ID de sous-réseau dans une GUA IPv6 ?",
+      "choix": [
+        "Avant le préfixe de routage global",
+        "Entre le préfixe de routage global et l'ID d'interface",
+        "À la toute fin de l'adresse",
+        "Il n'existe pas en IPv6"
+      ],
+      "reponses": [1],
+      "explication": "L'ID de sous-réseau est la zone située entre le préfixe de routage global et l'ID d'interface."
+    },
+    {
+      "id": "ipv6-subnet-nombre",
+      "type": "QCM",
+      "question": "Avec un préfixe 2001:db8:acad::/48 et un ID de sous-réseau de 16 bits, combien de sous-réseaux /64 sont possibles ?",
+      "choix": ["256", "4 096", "65 536", "1 million"],
+      "reponses": [2],
+      "explication": "Un ID de sous-réseau de 16 bits permet 65 536 sous-réseaux /64 (2^16)."
+    }
+  ]
+}

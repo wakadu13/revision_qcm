@@ -1,0 +1,515 @@
+{
+  "titre": "Module 3 — Protocoles et modèles",
+  "description": "Règles de communication, protocoles, suites de protocoles, modèles OSI et TCP/IP, encapsulation et accès aux données.",
+  "questions": [
+    {
+      "id": "m3-elements-comm",
+      "type": "QCR",
+      "question": "Quels sont les trois éléments de toute communication ?",
+      "choix": [
+        "Une source (expéditeur)",
+        "Une destination (récepteur)",
+        "Un canal (support)",
+        "Un pare-feu"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Toute communication comporte une source, une destination et un canal (support)."
+    },
+    {
+      "id": "m3-protocole-def",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un protocole ?",
+      "choix": [
+        "Un ensemble de règles que les communications suivront",
+        "Un type de câble",
+        "Une carte réseau",
+        "Un connecteur RJ-45"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les protocoles sont les règles que suivent les communications ; elles varient selon le protocole."
+    },
+    {
+      "id": "m3-exigences",
+      "type": "QCR",
+      "question": "Quelles exigences les protocoles réseau doivent-ils définir ?",
+      "choix": [
+        "Codage des messages",
+        "Format et encapsulation des messages",
+        "Taille du message",
+        "Synchronisation des messages"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Les protocoles définissent codage, format/encapsulation, taille, synchronisation et options de remise des messages."
+    },
+    {
+      "id": "m3-codage",
+      "type": "QCM",
+      "question": "Qu'est-ce que le codage d'un message ?",
+      "choix": [
+        "La conversion des informations vers un autre format pour la transmission",
+        "La numérotation des segments",
+        "L'ajout d'en-têtes IP",
+        "La détection des collisions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le codage convertit l'information vers un format acceptable pour la transmission ; le décodage l'interprète en sens inverse."
+    },
+    {
+      "id": "m3-synchro",
+      "type": "QCR",
+      "question": "Que comprend la synchronisation des messages ?",
+      "choix": [
+        "Le contrôle du flux",
+        "Le délai de réponse",
+        "La méthode d'accès",
+        "Le chiffrement obligatoire"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "La synchronisation comprend le contrôle du flux, le délai de réponse et la méthode d'accès."
+    },
+    {
+      "id": "m3-collision",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une collision ?",
+      "choix": [
+        "Plusieurs appareils envoient du trafic en même temps et les messages sont corrompus",
+        "Un câble débranché",
+        "Une perte d'alimentation",
+        "Un mot de passe faible"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Une collision survient quand plusieurs appareils émettent simultanément, corrompant les messages."
+    },
+    {
+      "id": "m3-remise",
+      "type": "QCR",
+      "question": "Quelles sont les options de remise des messages ?",
+      "choix": [
+        "Monodiffusion (un à un)",
+        "Multidiffusion (un à plusieurs)",
+        "Diffusion (un à tous)",
+        "Rétrodiffusion (tous à un)"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les options sont la monodiffusion (unicast), la multidiffusion (multicast) et la diffusion (broadcast)."
+    },
+    {
+      "id": "m3-broadcast-ipv6",
+      "type": "QCM",
+      "question": "Quelle affirmation est correcte concernant la diffusion (broadcast) ?",
+      "choix": [
+        "Elle est utilisée en IPv4 mais n'existe pas en IPv6",
+        "Elle est obligatoire en IPv6",
+        "C'est une communication un à un",
+        "Elle remplace la multidiffusion"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La diffusion existe en IPv4 mais pas en IPv6 ; IPv6 introduit l'Anycast comme option supplémentaire."
+    },
+    {
+      "id": "m3-types-protocoles",
+      "type": "QCR",
+      "question": "Quels types de protocoles sont décrits dans le cours ?",
+      "choix": [
+        "Communications de réseau",
+        "Sécurité des réseaux",
+        "Routage",
+        "Détection des services"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Le cours cite les protocoles de communications réseau, de sécurité, de routage et de détection des services."
+    },
+    {
+      "id": "m3-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont des fonctions des protocoles réseau ?",
+      "choix": [
+        "Adressage",
+        "Fiabilité",
+        "Contrôle de flux",
+        "Détection des erreurs"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Les fonctions incluent l'adressage, la fiabilité, le contrôle de flux, le séquençage, la détection d'erreurs et l'interface d'application."
+    },
+    {
+      "id": "m3-http",
+      "type": "QCM",
+      "question": "Quel est le rôle du protocole HTTP ?",
+      "choix": [
+        "Régir l'interaction entre un serveur web et un client web",
+        "Fournir une garantie de livraison de bout en bout",
+        "Acheminer les paquets de la source au destinataire",
+        "Transmettre les trames d'une NIC à une autre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "HTTP régit la manière dont un serveur et un client web interagissent et définit le contenu et le format."
+    },
+    {
+      "id": "m3-tcp",
+      "type": "QCR",
+      "question": "Quelles sont des fonctions du protocole TCP ?",
+      "choix": [
+        "Gérer les conversations individuelles",
+        "Offrir une garantie de livraison",
+        "Gérer le contrôle du flux",
+        "Fournir des messages de NIC à NIC sur le même LAN"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "TCP gère les conversations, offre une garantie de livraison et gère le contrôle du flux ; la livraison NIC à NIC est le rôle d'Ethernet."
+    },
+    {
+      "id": "m3-ip",
+      "type": "QCM",
+      "question": "Quel est le rôle du protocole IP ?",
+      "choix": [
+        "Fournir les messages globalement, de l'expéditeur au destinataire",
+        "Définir le format des pages web",
+        "Gérer le contrôle de flux des conversations",
+        "Chiffrer les mots de passe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "IP fournit les messages globalement, de l'expéditeur au destinataire (de bout en bout)."
+    },
+    {
+      "id": "m3-ethernet",
+      "type": "QCM",
+      "question": "Quel est le rôle du protocole Ethernet ?",
+      "choix": [
+        "Fournir des messages d'une NIC à une autre sur le même LAN",
+        "Acheminer globalement les paquets",
+        "Régir l'interaction web",
+        "Garantir la livraison de bout en bout"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ethernet fournit des messages d'une carte réseau à une autre sur le même LAN Ethernet."
+    },
+    {
+      "id": "m3-suite-def",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une suite de protocoles ?",
+      "choix": [
+        "Un groupe de protocoles interdépendants assurant une fonction de communication",
+        "Un seul protocole isolé",
+        "Un type de connecteur",
+        "Une catégorie de câble"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Une suite de protocoles est un groupe de protocoles interdépendants travaillant ensemble pour une fonction de communication."
+    },
+    {
+      "id": "m3-tcpip-ietf",
+      "type": "QCM",
+      "question": "Quel organisme maintient la suite TCP/IP ?",
+      "choix": [
+        "L'IETF",
+        "L'ISO",
+        "Apple Inc.",
+        "Novell"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La suite TCP/IP (Internet Protocol Suite), la plus courante, est maintenue par l'IETF."
+    },
+    {
+      "id": "m3-suites-exemples",
+      "type": "QCR",
+      "question": "Parmi ces propositions, lesquelles sont des suites de protocoles ?",
+      "choix": [
+        "TCP/IP",
+        "OSI",
+        "AppleTalk",
+        "Manchester"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "TCP/IP, OSI, AppleTalk et Novell NetWare sont des suites de protocoles ; Manchester est un codage."
+    },
+    {
+      "id": "m3-tcpip-caract",
+      "type": "QCR",
+      "question": "Quelles caractéristiques décrivent la suite TCP/IP ?",
+      "choix": [
+        "Standard ouvert accessible gratuitement",
+        "Basée sur des normes approuvées par l'industrie",
+        "Assure l'interopérabilité",
+        "Propriétaire et payante"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "TCP/IP est une suite standard ouverte, gratuite, basée sur des normes et favorisant l'interopérabilité."
+    },
+    {
+      "id": "m3-osi-couches",
+      "type": "QCM",
+      "question": "Combien de couches comporte le modèle OSI ?",
+      "choix": [
+        "7 couches",
+        "4 couches",
+        "5 couches",
+        "3 couches"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le modèle OSI comporte 7 couches : Application, Présentation, Session, Transport, Réseau, Liaison de données, Physique."
+    },
+    {
+      "id": "m3-osi-physique",
+      "type": "QCM",
+      "question": "Que décrit la couche 1 (Physique) du modèle OSI ?",
+      "choix": [
+        "Les moyens d'activer, maintenir et désactiver les connexions physiques",
+        "La segmentation et le réassemblage des données",
+        "Le meilleur chemin à travers le réseau",
+        "Les communications de processus à processus"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La couche 1 (Physique) décrit les moyens d'activer, maintenir et désactiver les connexions physiques."
+    },
+    {
+      "id": "m3-osi-transport",
+      "type": "QCM",
+      "question": "Quel est le rôle de la couche 4 (Transport) du modèle OSI ?",
+      "choix": [
+        "Segmenter, transférer et réassembler les données pour les communications individuelles",
+        "Échanger des blocs de données sur un support commun",
+        "Représenter les données de l'utilisateur",
+        "Activer les connexions physiques"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La couche 4 (Transport) segmente, transfère et réassemble les données pour les communications individuelles."
+    },
+    {
+      "id": "m3-tcpip-couches",
+      "type": "QCR",
+      "question": "Quelles sont les couches du modèle TCP/IP ?",
+      "choix": [
+        "Application",
+        "Transport",
+        "Internet",
+        "Accès réseau"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Le modèle TCP/IP comporte 4 couches : Application, Transport, Internet et Accès réseau."
+    },
+    {
+      "id": "m3-tcpip-internet",
+      "type": "QCM",
+      "question": "Que détermine la couche Internet du modèle TCP/IP ?",
+      "choix": [
+        "Le meilleur chemin à travers le réseau",
+        "Le code couleur des câbles",
+        "La tension des signaux",
+        "Le contrôle du dialogue"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La couche Internet détermine le meilleur chemin à travers le réseau."
+    },
+    {
+      "id": "m3-avantages-couches",
+      "type": "QCR",
+      "question": "Quels sont les avantages d'un modèle en couches ?",
+      "choix": [
+        "Aide à la conception de protocoles",
+        "Encourage la compétition entre fournisseurs",
+        "Empêche qu'un changement dans une couche n'affecte les autres",
+        "Fournit un langage commun"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Le modèle en couches aide la conception, encourage la compétition, isole les changements et fournit un langage commun."
+    },
+    {
+      "id": "m3-segmentation",
+      "type": "QCM",
+      "question": "Qu'est-ce que la segmentation des messages ?",
+      "choix": [
+        "Le processus de séparation des messages en unités plus petites",
+        "L'ajout d'un en-tête IP",
+        "Le chiffrement du message",
+        "La détection des collisions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La segmentation sépare les messages en unités plus petites ; le multiplexage entrelace plusieurs flux segmentés."
+    },
+    {
+      "id": "m3-segmentation-avantages",
+      "type": "QCR",
+      "question": "Quels sont les deux avantages majeurs de la segmentation ?",
+      "choix": [
+        "Augmente la vitesse",
+        "Augmente l'efficacité (retransmission ciblée)",
+        "Supprime le besoin d'adressage",
+        "Élimine les protocoles"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "La segmentation augmente la vitesse et l'efficacité, car seuls les segments manquants sont retransmis."
+    },
+    {
+      "id": "m3-sequencage",
+      "type": "QCM",
+      "question": "Quel protocole est responsable du séquençage des segments ?",
+      "choix": [
+        "TCP",
+        "IP",
+        "HTTP",
+        "Ethernet"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le séquençage numérote les segments pour le réassemblage ; TCP en est responsable."
+    },
+    {
+      "id": "m3-pdu",
+      "type": "QCM",
+      "question": "Quel est l'ordre correct des PDU lors de l'encapsulation (descendante) ?",
+      "choix": [
+        "Données → Segment → Paquet → Trame → Bits",
+        "Bits → Trame → Paquet → Segment → Données",
+        "Paquet → Segment → Trame → Bits → Données",
+        "Trame → Paquet → Segment → Données → Bits"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "En encapsulation : Données, Segment, Paquet, Trame, puis Bits."
+    },
+    {
+      "id": "m3-encapsulation-sens",
+      "type": "QCM",
+      "question": "L'encapsulation des données est un processus...",
+      "choix": [
+        "Descendant (du haut vers le bas de la pile)",
+        "Ascendant (du bas vers le haut)",
+        "Circulaire",
+        "Aléatoire"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'encapsulation est un processus descendant ; la désencapsulation se fait en remontant la pile."
+    },
+    {
+      "id": "m3-adressage-couches",
+      "type": "QCM",
+      "question": "Quelle adresse est responsable de la livraison du paquet IP de la source à la destination finale ?",
+      "choix": [
+        "L'adresse de la couche réseau",
+        "L'adresse de la couche liaison de données",
+        "L'adresse de la couche physique",
+        "L'adresse de la couche application"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les adresses de la couche réseau livrent le paquet IP de la source d'origine à la destination finale."
+    },
+    {
+      "id": "m3-adresse-liaison",
+      "type": "QCM",
+      "question": "De quoi est responsable l'adresse de la couche liaison de données ?",
+      "choix": [
+        "Transmettre la trame d'une NIC à une autre sur le même réseau",
+        "Acheminer le paquet IP de bout en bout",
+        "Représenter les données utilisateur",
+        "Activer la connexion physique"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse de la couche liaison transmet la trame d'une carte réseau (NIC) à une autre sur le même réseau."
+    },
+    {
+      "id": "m3-ip-parties",
+      "type": "QCR",
+      "question": "Quelles sont les deux parties d'une adresse IP ?",
+      "choix": [
+        "La partie réseau (préfixe)",
+        "La partie hôte (ID d'interface)",
+        "La partie masque",
+        "La partie passerelle"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Une adresse IP contient une partie réseau (préfixe IPv6) et une partie hôte (ID d'interface IPv6)."
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "titre": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+  "description": "Révision ITN v7.0 : menaces et vulnérabilités, malwares, attaques réseau (reconnaissance, accès, DoS/DDoS), atténuation (défense en profondeur, AAA, pare-feu) et sécurité des périphériques.",
+  "questions": [
+    {
+      "id": "menaces-quatre-types",
+      "type": "QCR",
+      "question": "Quels sont les quatre types de menaces qui peuvent apparaître une fois qu'un acteur de menace a accédé au réseau ?",
+      "choix": [
+        "Vol d'informations",
+        "Perte et manipulation de données",
+        "Usurpation d'identité et interruption de service",
+        "Optimisation de la bande passante"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les quatre types de menaces sont : vol d'informations, perte/manipulation de données, usurpation d'identité et interruption de service."
+    },
+    {
+      "id": "acteur-de-menace",
+      "type": "QCM",
+      "question": "Comment appelle-t-on les intrus qui accèdent au réseau en modifiant les logiciels ou en exploitant des vulnérabilités logicielles ?",
+      "choix": [
+        "Des administrateurs",
+        "Des acteurs de menace",
+        "Des analystes",
+        "Des utilisateurs finaux"
+      ],
+      "reponses": [1],
+      "explication": "Les intrus qui exploitent les vulnérabilités logicielles sont appelés acteurs de menace (threat actors)."
+    },
+    {
+      "id": "vulnerabilites-trois-niveaux",
+      "type": "QCR",
+      "question": "À quels trois niveaux les vulnérabilités interviennent-elles principalement ?",
+      "choix": [
+        "Vulnérabilités technologiques",
+        "Vulnérabilités de configuration",
+        "Vulnérabilités de la politique de sécurité",
+        "Vulnérabilités de bande passante"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les trois niveaux sont : technologique (TCP/IP, OS, équipement), configuration (comptes/mots de passe faibles, services mal configurés) et politique de sécurité."
+    },
+    {
+      "id": "vulnerabilite-configuration",
+      "type": "QCM",
+      "question": "Lequel de ces éléments est un exemple de vulnérabilité de configuration ?",
+      "choix": [
+        "Une faiblesse du protocole TCP/IP",
+        "Des comptes système avec des mots de passe faciles à deviner",
+        "L'absence de politique de sécurité écrite",
+        "Une faiblesse du système d'exploitation"
+      ],
+      "reponses": [1],
+      "explication": "Les comptes non sécurisés et mots de passe faibles relèvent de la configuration ; les faiblesses TCP/IP et OS sont technologiques, l'absence de politique relève de la politique de sécurité."
+    },
+    {
+      "id": "menaces-physiques-quatre",
+      "type": "QCR",
+      "question": "Quelles sont les catégories de menaces physiques ?",
+      "choix": [
+        "Menaces matérielles",
+        "Menaces environnementales",
+        "Menaces électriques et de maintenance",
+        "Menaces logicielles"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les quatre catégories de menaces physiques sont : matérielles, environnementales (température/humidité), électriques (tension) et de maintenance."
+    },
+    {
+      "id": "malware-virus",
+      "type": "QCM",
+      "question": "Comment un virus informatique se propage-t-il ?",
+      "choix": [
+        "De façon autonome, sans programme hôte",
+        "En insérant une copie de lui-même dans un autre programme",
+        "En se faisant passer pour un logiciel légitime sans se répliquer",
+        "Uniquement via le réseau sans fichier"
+      ],
+      "reponses": [1],
+      "explication": "Un virus se propage en insérant une copie de lui-même dans un autre programme, dont il fait alors partie."
+    },
+    {
+      "id": "malware-ver",
+      "type": "QCM",
+      "question": "Qu'est-ce qui distingue un ver d'un virus ?",
+      "choix": [
+        "Le ver a besoin d'un fichier hôte infecté pour se diffuser",
+        "Le ver est autonome et ne nécessite ni programme d'accueil ni intervention humaine pour se propager",
+        "Le ver ne se reproduit jamais",
+        "Le ver semble toujours légitime"
+      ],
+      "reponses": [1],
+      "explication": "Contrairement au virus, le ver est un logiciel autonome qui se propage sans programme d'accueil ni intervention humaine."
+    },
+    {
+      "id": "malware-cheval-troie",
+      "type": "QCM",
+      "question": "Quelle est une caractéristique d'un cheval de Troie ?",
+      "choix": [
+        "Il se reproduit en infectant d'autres fichiers",
+        "Il semble légitime et se propage via une interaction de l'utilisateur",
+        "Il se propage sans aucune intervention humaine",
+        "Il ne cause jamais de dommages"
+      ],
+      "reponses": [1],
+      "explication": "Le cheval de Troie semble légitime, ne se reproduit pas en infectant d'autres fichiers et nécessite une interaction (ouvrir une pièce jointe, exécuter un fichier)."
+    },
+    {
+      "id": "attaques-trois-categories",
+      "type": "QCR",
+      "question": "En quelles trois grandes catégories les attaques réseau sont-elles classées ?",
+      "choix": [
+        "Attaques de reconnaissance",
+        "Attaques d'accès",
+        "Attaques par déni de service",
+        "Attaques de sauvegarde"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les trois catégories sont : reconnaissance (découverte/cartographie), accès (manipulation non autorisée) et déni de service (désactivation/corruption)."
+    },
+    {
+      "id": "reconnaissance-outils",
+      "type": "QCR",
+      "question": "Quels outils peuvent être utilisés lors d'une attaque de reconnaissance ?",
+      "choix": ["nslookup", "whois", "ping", "service password-encryption"],
+      "reponses": [0, 1, 2],
+      "explication": "Les attaques de reconnaissance utilisent nslookup et whois pour découvrir l'espace d'adresses IP, puis ping pour identifier les hôtes actifs."
+    },
+    {
+      "id": "acces-quatre-types",
+      "type": "QCR",
+      "question": "Lesquels font partie des quatre types d'attaques par accès ?",
+      "choix": [
+        "Attaques par mot de passe",
+        "Exploitation de la confiance",
+        "Homme-au-milieu",
+        "Sauvegarde hors site"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les quatre attaques par accès sont : mot de passe, exploitation de la confiance, redirection de port et homme-au-milieu."
+    },
+    {
+      "id": "homme-au-milieu",
+      "type": "QCM",
+      "question": "En quoi consiste une attaque de type homme-au-milieu ?",
+      "choix": [
+        "Épuiser les ressources d'un serveur",
+        "Se positionner entre deux entités légitimes pour lire ou modifier les données échangées",
+        "Insérer un virus dans un programme",
+        "Deviner un mot de passe par force brute"
+      ],
+      "reponses": [1],
+      "explication": "L'acteur de menace se place entre deux parties légitimes afin de lire ou de modifier les données qui transitent entre elles."
+    },
+    {
+      "id": "dos-principe",
+      "type": "QCM",
+      "question": "Quel est le principe d'une attaque par déni de service (DoS) ?",
+      "choix": [
+        "Voler des mots de passe",
+        "Empêcher l'utilisation d'un service par les personnes autorisées en épuisant les ressources",
+        "Cartographier le réseau",
+        "Chiffrer les fichiers contre rançon"
+      ],
+      "reponses": [1],
+      "explication": "Une attaque DoS empêche l'usage d'un service par les utilisateurs autorisés en épuisant les ressources du système."
+    },
+    {
+      "id": "ddos-zombies-botnet",
+      "type": "QCM",
+      "question": "Qu'est-ce qui caractérise une attaque DDoS par rapport à une attaque DoS ?",
+      "choix": [
+        "Elle provient d'une seule source",
+        "Elle provient de sources multiples et coordonnées (botnet de zombies)",
+        "Elle ne vise que les mots de passe",
+        "Elle ne cause aucune interruption"
+      ],
+      "reponses": [1],
+      "explication": "Le DDoS provient de sources multiples coordonnées : un réseau d'hôtes infectés (zombies) formant un botnet, piloté par un programme de commande et de contrôle (CNC)."
+    },
+    {
+      "id": "defense-profondeur",
+      "type": "QCM",
+      "question": "Comment est aussi appelée l'approche de défense en profondeur ?",
+      "choix": [
+        "Approche par couches",
+        "Approche par classe",
+        "Approche dynamique",
+        "Approche par défaut"
+      ],
+      "reponses": [0],
+      "explication": "La défense en profondeur est aussi appelée approche par couches : plusieurs dispositifs et services de sécurité fonctionnent en tandem."
+    },
+    {
+      "id": "defense-dispositifs",
+      "type": "QCR",
+      "question": "Quels dispositifs/services font partie de l'approche de défense en profondeur citée ?",
+      "choix": [
+        "VPN et pare-feu ASA",
+        "IPS",
+        "ESA/WSA et serveur AAA",
+        "Serveur DNS racine"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les dispositifs cités sont : VPN, pare-feu ASA, IPS, ESA/WSA et serveur AAA."
+    },
+    {
+      "id": "aaa-signification",
+      "type": "QCM",
+      "question": "Que recouvrent les trois A de l'AAA (« triple A ») ?",
+      "choix": [
+        "Adressage, Acheminement, Archivage",
+        "Authentification, Autorisation, Comptabilité",
+        "Antivirus, Antispam, Antimalware",
+        "Accès, Audit, Alerte"
+      ],
+      "reponses": [1],
+      "explication": "AAA = Authentification (qui accède), Autorisation (quelles actions) et Comptabilité/Accounting (enregistrement de ce qui a été fait)."
+    },
+    {
+      "id": "aaa-authentification",
+      "type": "QCM",
+      "question": "Dans l'AAA, à quelle question répond l'authentification ?",
+      "choix": [
+        "Quelles actions l'utilisateur peut-il effectuer ?",
+        "Qui est autorisé à accéder au réseau ?",
+        "Qu'a fait l'utilisateur pendant sa session ?",
+        "Combien de bande passante est utilisée ?"
+      ],
+      "reponses": [1],
+      "explication": "L'authentification contrôle qui est autorisé à accéder au réseau (« Who are you? »)."
+    },
+    {
+      "id": "pare-feu-role",
+      "type": "QCM",
+      "question": "Quel est le rôle d'un pare-feu ?",
+      "choix": [
+        "Attribuer des adresses IP",
+        "Se placer entre des réseaux et contrôler le trafic tout en interdisant les accès non autorisés",
+        "Résoudre les noms de domaine",
+        "Sauvegarder les données"
+      ],
+      "reponses": [1],
+      "explication": "Un pare-feu se situe entre deux réseaux ou plus et contrôle le trafic entre eux en interdisant les accès non autorisés."
+    },
+    {
+      "id": "pare-feu-dmz",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une DMZ (zone démilitarisée) ?",
+      "choix": [
+        "Un réseau privé totalement isolé",
+        "Un réseau spécial où se trouvent les serveurs accessibles aux utilisateurs extérieurs",
+        "Un protocole de chiffrement",
+        "Une plage d'adresses DHCP"
+      ],
+      "reponses": [1],
+      "explication": "La DMZ est un réseau spécial hébergeant les serveurs accessibles de l'extérieur, sur lequel l'administrateur applique des politiques spécifiques."
+    },
+    {
+      "id": "pare-feu-types",
+      "type": "QCR",
+      "question": "Quels sont des types de filtrage de pare-feu cités ?",
+      "choix": [
+        "Filtrage des paquets (IP/MAC)",
+        "Filtrage des applications (numéros de port)",
+        "Filtrage des URL",
+        "Filtrage des sauvegardes"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les pare-feu utilisent notamment le filtrage des paquets (IP/MAC), des applications (ports), des URL et l'inspection minutieuse des paquets (SPI)."
+    },
+    {
+      "id": "spi-definition",
+      "type": "QCM",
+      "question": "Que vérifie l'inspection minutieuse des paquets (SPI) ?",
+      "choix": [
+        "Que les paquets entrants sont des réponses légitimes aux demandes des hôtes internes",
+        "Que les mots de passe sont assez longs",
+        "Que les sauvegardes sont chiffrées",
+        "Que le DNS résout correctement"
+      ],
+      "reponses": [0],
+      "explication": "Le SPI exige que les paquets entrants soient des réponses légitimes aux demandes internes ; les paquets non sollicités sont bloqués sauf autorisation explicite."
+    },
+    {
+      "id": "endpoint-definition",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un point d'extrémité (endpoint) ?",
+      "choix": [
+        "Un protocole de routage",
+        "Un système informatique ou périphérique qui tient lieu de client réseau (ordinateur, smartphone, serveur…)",
+        "Une zone démilitarisée",
+        "Une adresse de diffusion"
+      ],
+      "reponses": [1],
+      "explication": "Un point d'extrémité (ou hôte) est un système/périphérique servant de client réseau : portables, ordinateurs de bureau, serveurs, smartphones, tablettes."
+    },
+    {
+      "id": "vers-attenuation",
+      "type": "QCM",
+      "question": "Quelle est la meilleure façon de limiter les risques d'attaque de ver ?",
+      "choix": [
+        "Désactiver le pare-feu",
+        "Télécharger les mises à jour de sécurité de l'éditeur de l'OS et appliquer les correctifs sur les systèmes vulnérables",
+        "Utiliser un mot de passe court",
+        "Ouvrir tous les ports"
+      ],
+      "reponses": [1],
+      "explication": "Appliquer les mises à jour de sécurité de l'éditeur du système d'exploitation et les correctifs sur tous les systèmes vulnérables limite les attaques de vers."
+    },
+    {
+      "id": "autosecure",
+      "type": "QCM",
+      "question": "À quoi sert la fonction Cisco AutoSecure ?",
+      "choix": [
+        "À attribuer des adresses IP",
+        "À aider à sécuriser le système d'un routeur Cisco",
+        "À sauvegarder les configurations",
+        "À résoudre les noms DNS"
+      ],
+      "reponses": [1],
+      "explication": "AutoSecure aide à sécuriser le système, car les paramètres de sécurité par défaut sont souvent insuffisants après installation d'un nouvel OS."
+    },
+    {
+      "id": "mot-de-passe-fort",
+      "type": "QCR",
+      "question": "Quelles recommandations s'appliquent à un mot de passe fort ?",
+      "choix": [
+        "Au moins 8 caractères, de préférence 10 ou plus",
+        "Une combinaison de majuscules, minuscules, chiffres et symboles",
+        "Le modifier régulièrement",
+        "Utiliser un mot courant du dictionnaire"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Un mot de passe fort fait au moins 8 caractères, mélange majuscules/minuscules/chiffres/symboles et est changé régulièrement. Il faut éviter les mots courants du dictionnaire."
+    },
+    {
+      "id": "phrase-secrete",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une phrase secrète (phrase de passe) sur un routeur Cisco ?",
+      "choix": [
+        "Un mot de passe à un seul caractère",
+        "Un mot de passe composé d'une expression de plusieurs mots, plus long et plus difficile à deviner",
+        "Le nom d'hôte du routeur",
+        "Un code chiffré généré automatiquement"
+      ],
+      "reponses": [1],
+      "explication": "Comme les espaces après le premier caractère sont pris en compte, on peut créer une phrase de passe de plusieurs mots, souvent plus facile à retenir et plus difficile à deviner."
+    },
+    {
+      "id": "service-password-encryption",
+      "type": "QCM",
+      "question": "Que fait la commande service password-encryption ?",
+      "choix": [
+        "Elle définit une longueur minimale de mot de passe",
+        "Elle chiffre tous les mots de passe en texte clair",
+        "Elle bloque les tentatives de connexion",
+        "Elle active SSH"
+      ],
+      "reponses": [1],
+      "explication": "service password-encryption chiffre les mots de passe affichés en texte clair dans la configuration."
+    },
+    {
+      "id": "login-block-for",
+      "type": "QCM",
+      "question": "À quoi sert la commande login block-for # attempts # within # ?",
+      "choix": [
+        "À chiffrer les mots de passe",
+        "À dissuader les attaques par force brute en bloquant après un nombre de tentatives",
+        "À générer une clé RSA",
+        "À fixer la longueur minimale du mot de passe"
+      ],
+      "reponses": [1],
+      "explication": "login block-for permet de dissuader les attaques par force brute en bloquant les connexions après un certain nombre de tentatives dans un délai donné."
+    },
+    {
+      "id": "exec-timeout",
+      "type": "QCM",
+      "question": "Que permet la commande exec-timeout ?",
+      "choix": [
+        "Désactiver un accès EXEC privilégié inactif après une durée spécifiée",
+        "Chiffrer le trafic SSH",
+        "Définir le nom de domaine IP",
+        "Sauvegarder la configuration"
+      ],
+      "reponses": [0],
+      "explication": "exec-timeout déconnecte automatiquement une session EXEC privilégié restée inactive au-delà de la durée spécifiée."
+    },
+    {
+      "id": "ssh-cle-rsa",
+      "type": "QCM",
+      "question": "Lors de la configuration de SSH, quelle taille de module (modulus) est recommandée au minimum ?",
+      "choix": ["360 bits", "512 bits", "1 024 bits", "128 bits"],
+      "reponses": [2],
+      "explication": "Le module peut aller de 360 à 2048 bits ; il est recommandé d'utiliser au moins 1 024 bits (plus la valeur est grande, plus la clé est sûre, mais plus le traitement est lent)."
+    },
+    {
+      "id": "ssh-etapes",
+      "type": "QCR",
+      "question": "Quelles étapes font partie de la configuration de SSH sur un périphérique Cisco ?",
+      "choix": [
+        "Configurer un nom d'hôte unique et un nom de domaine IP",
+        "Générer une clé RSA pour chiffrer le trafic SSH",
+        "Activer les sessions SSH entrantes avec transport input ssh",
+        "Désactiver le pare-feu ASA"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "La configuration SSH inclut : nom d'hôte unique, nom de domaine IP, génération d'une clé RSA, entrée username locale, login local et transport input ssh."
+    },
+    {
+      "id": "services-inutilises",
+      "type": "QCM",
+      "question": "Pourquoi désactiver les services inutilisés sur un routeur ou commutateur Cisco ?",
+      "choix": [
+        "Pour augmenter le nombre d'adresses IP",
+        "Pour préserver les ressources système et empêcher les acteurs de menace d'exploiter ces services",
+        "Pour accélérer le DNS",
+        "Pour activer la route par défaut"
+      ],
+      "reponses": [1],
+      "explication": "Désactiver les services inutilisés préserve les ressources (CPU, RAM) et réduit la surface d'attaque exploitable par les acteurs de menace."
+    }
+  ]
+}

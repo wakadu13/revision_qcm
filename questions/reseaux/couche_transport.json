@@ -1,0 +1,409 @@
+{
+  "titre": "Module 14 - Couche de transport (TCP/UDP)",
+  "description": "Révision du rôle de la couche transport, des protocoles TCP et UDP, des numéros de port et des processus de communication.",
+  "questions": [
+    {
+      "id": "transp-role-1",
+      "type": "QCM",
+      "question": "Quel est le rôle principal de la couche de transport ?",
+      "choix": [
+        "Acheminer les paquets entre réseaux distants",
+        "Assurer les communications logiques entre les applications exécutées sur différents hôtes",
+        "Convertir les données en signaux électriques sur le support",
+        "Attribuer les adresses IP aux hôtes"
+      ],
+      "reponses": [1],
+      "explication": "La couche transport est responsable des communications logiques entre applications et fait la liaison entre la couche application et les couches inférieures."
+    },
+    {
+      "id": "transp-resp-1",
+      "type": "QCR",
+      "question": "Parmi ces tâches, lesquelles sont des responsabilités de la couche de transport ?",
+      "choix": [
+        "Suivre les conversations individuelles",
+        "Segmenter les données et reconstituer les segments",
+        "Choisir le meilleur chemin de routage",
+        "Identifier, séparer et gérer plusieurs conversations (multiplexage)"
+      ],
+      "reponses": [0, 1, 3],
+      "explication": "Le choix du chemin relève de la couche réseau (Internet). La couche transport suit les conversations, segmente/reconstitue et multiplexe les conversations."
+    },
+    {
+      "id": "transp-proto-1",
+      "type": "QCR",
+      "question": "Quels sont les deux protocoles de la couche de transport ?",
+      "choix": ["IP", "TCP", "UDP", "ICMP"],
+      "reponses": [1, 2],
+      "explication": "La couche transport comprend les protocoles TCP et UDP. IP et ICMP appartiennent à la couche Internet."
+    },
+    {
+      "id": "transp-tcp-fiable",
+      "type": "QCM",
+      "question": "Quelle propriété caractérise le protocole TCP ?",
+      "choix": [
+        "Il est sans connexion et sans accusé de réception",
+        "Il assure la fiabilité et le contrôle du flux",
+        "Il ne numérote jamais les segments",
+        "Il a une surcharge plus faible qu'UDP"
+      ],
+      "reponses": [1],
+      "explication": "TCP assure la fiabilité (accusés de réception, retransmission, remise ordonnée) et le contrôle de flux, au prix d'une surcharge plus importante qu'UDP."
+    },
+    {
+      "id": "transp-tcp-operations",
+      "type": "QCR",
+      "question": "Quelles opérations de base sont réalisées par TCP ?",
+      "choix": [
+        "Numéroter et suivre les segments de données",
+        "Accuser réception des données reçues",
+        "Retransmettre toute donnée non reconnue après un certain temps",
+        "Livrer les datagrammes sans aucun contrôle d'erreur"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "TCP numérote, accuse réception et retransmet les données perdues. La livraison sans contrôle correspond à UDP."
+    },
+    {
+      "id": "transp-tcp-carac",
+      "type": "QCR",
+      "question": "Quelles sont des caractéristiques du protocole TCP ?",
+      "choix": [
+        "Il établit une session (orienté connexion)",
+        "Il garantit une livraison fiable",
+        "Il fournit la livraison dans le même ordre",
+        "Il ne soutient pas le contrôle de flux"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "TCP est orienté connexion, garantit la livraison fiable et ordonnée, et soutient le contrôle de flux."
+    },
+    {
+      "id": "transp-tcp-etat",
+      "type": "QCM",
+      "question": "Que signifie le fait que TCP soit un protocole « avec état » (stateful) ?",
+      "choix": [
+        "Il n'enregistre aucune information sur la session",
+        "Il garde une trace de l'état de la session de communication",
+        "Il fonctionne uniquement sur les réseaux locaux",
+        "Il chiffre automatiquement les données"
+      ],
+      "reponses": [1],
+      "explication": "TCP garde une trace de l'état de la session : il enregistre les informations envoyées et reçues."
+    },
+    {
+      "id": "transp-tcp-header-taille",
+      "type": "QCM",
+      "question": "Quelle est la taille de l'en-tête TCP (sans options) ?",
+      "choix": ["8 octets", "16 octets", "20 octets", "32 octets"],
+      "reponses": [2],
+      "explication": "L'en-tête TCP de base fait 20 octets."
+    },
+    {
+      "id": "transp-tcp-seq",
+      "type": "QCM",
+      "question": "À quoi sert le champ « Numéro de séquence » de l'en-tête TCP ?",
+      "choix": [
+        "À identifier l'application source",
+        "Au réassemblage des données dans le bon ordre",
+        "À indiquer la taille de la fenêtre",
+        "À vérifier les erreurs de l'en-tête"
+      ],
+      "reponses": [1],
+      "explication": "Le numéro de séquence (32 bits) est utilisé à des fins de réassemblage des données."
+    },
+    {
+      "id": "transp-tcp-ack",
+      "type": "QCM",
+      "question": "Que permet d'indiquer le champ « Numéro d'accusé de réception » de l'en-tête TCP ?",
+      "choix": [
+        "La longueur de l'en-tête",
+        "Que les données ont été reçues et quel est l'octet suivant attendu",
+        "Le numéro de port de destination",
+        "Le caractère urgent des données"
+      ],
+      "reponses": [1],
+      "explication": "Le numéro d'accusé de réception (32 bits) indique que les données ont été reçues et précise l'octet suivant attendu de la source."
+    },
+    {
+      "id": "transp-tcp-window",
+      "type": "QCM",
+      "question": "Que désigne le champ « Taille de fenêtre » (Window) de l'en-tête TCP ?",
+      "choix": [
+        "Le nombre d'octets qui peuvent être acceptés",
+        "Le nombre de segments perdus",
+        "La durée maximale d'une session",
+        "La taille maximale d'un paquet IP"
+      ],
+      "reponses": [0],
+      "explication": "Le champ Window (16 bits) indique le nombre d'octets qui peuvent être acceptés."
+    },
+    {
+      "id": "transp-udp-carac",
+      "type": "QCR",
+      "question": "Quelles sont des caractéristiques du protocole UDP ?",
+      "choix": [
+        "C'est un protocole sans connexion",
+        "Les segments perdus ne sont pas renvoyés",
+        "Il établit une session avant l'envoi",
+        "C'est un protocole de livraison « au mieux » (best-effort)"
+      ],
+      "reponses": [0, 1, 3],
+      "explication": "UDP est sans connexion, ne retransmet pas les données perdues et fonctionne en best-effort. Il n'établit pas de session."
+    },
+    {
+      "id": "transp-udp-header",
+      "type": "QCM",
+      "question": "Combien d'octets compte l'en-tête UDP ?",
+      "choix": ["4 octets", "8 octets", "16 octets", "20 octets"],
+      "reponses": [1],
+      "explication": "L'en-tête UDP est simple : 4 champs pour un total de 8 octets (64 bits)."
+    },
+    {
+      "id": "transp-udp-champs",
+      "type": "QCR",
+      "question": "Quels champs composent l'en-tête UDP ?",
+      "choix": [
+        "Port source",
+        "Port de destination",
+        "Numéro de séquence",
+        "Longueur et Somme de contrôle"
+      ],
+      "reponses": [0, 1, 3],
+      "explication": "L'en-tête UDP contient : port source, port de destination, longueur et somme de contrôle. Le numéro de séquence n'existe qu'en TCP."
+    },
+    {
+      "id": "transp-choix-tcp",
+      "type": "QCM",
+      "question": "Quand utilise-t-on plutôt TCP comme protocole de transport ?",
+      "choix": [
+        "Quand la vitesse prime et qu'une perte de données est tolérable",
+        "Quand toutes les données doivent arriver et être traitées dans l'ordre",
+        "Pour les communications vidéo en direct",
+        "Quand on veut une surcharge minimale"
+      ],
+      "reponses": [1],
+      "explication": "TCP est choisi lorsqu'il est important que toutes les données arrivent et soient traitées dans le bon ordre (ex. e-mail, web)."
+    },
+    {
+      "id": "transp-appli-udp",
+      "type": "QCR",
+      "question": "Quelles applications utilisent typiquement UDP ?",
+      "choix": ["VoIP (téléphonie IP)", "DNS", "HTTP/HTTPS (web)", "TFTP et SNMP"],
+      "reponses": [0, 1, 3],
+      "explication": "VoIP, DNS, TFTP et SNMP utilisent UDP. HTTP/HTTPS utilise TCP."
+    },
+    {
+      "id": "transp-appli-tcp",
+      "type": "QCR",
+      "question": "Quelles applications utilisent typiquement TCP ?",
+      "choix": ["FTP", "SMTP", "DHCP", "HTTP"],
+      "reponses": [0, 1, 3],
+      "explication": "FTP, SMTP et HTTP utilisent TCP. DHCP utilise UDP (ports 67/68)."
+    },
+    {
+      "id": "transp-port-role",
+      "type": "QCM",
+      "question": "À quoi servent les numéros de port en TCP et UDP ?",
+      "choix": [
+        "À identifier l'adresse physique de la carte réseau",
+        "À gérer plusieurs conversations simultanées",
+        "À chiffrer les communications",
+        "À choisir la route du paquet"
+      ],
+      "reponses": [1],
+      "explication": "TCP et UDP utilisent les numéros de port pour gérer plusieurs conversations simultanées (multiplexage)."
+    },
+    {
+      "id": "transp-port-source",
+      "type": "QCM",
+      "question": "Le numéro de port source est associé à :",
+      "choix": [
+        "L'application de destination sur l'hôte distant",
+        "L'application d'origine sur l'hôte local",
+        "L'adresse MAC de l'expéditeur",
+        "La passerelle par défaut"
+      ],
+      "reponses": [1],
+      "explication": "Le port source identifie l'application d'origine sur l'hôte local ; le port de destination identifie l'application sur l'hôte distant."
+    },
+    {
+      "id": "transp-socket",
+      "type": "QCM",
+      "question": "Qu'appelle-t-on une « interface de connexion » (socket) ?",
+      "choix": [
+        "La combinaison d'une adresse MAC et d'un VLAN",
+        "La combinaison d'une adresse IP et d'un numéro de port",
+        "La combinaison de deux adresses IP",
+        "Le numéro de séquence et l'accusé de réception"
+      ],
+      "reponses": [1],
+      "explication": "Un socket est la combinaison d'une adresse IP et d'un numéro de port (source ou destination)."
+    },
+    {
+      "id": "transp-ports-reserves",
+      "type": "QCM",
+      "question": "Quelle est la plage des ports réservés (well-known) ?",
+      "choix": ["0 à 1023", "1024 à 49151", "49152 à 65535", "0 à 65535"],
+      "reponses": [0],
+      "explication": "Les ports réservés (bien connus) vont de 0 à 1023, attribués aux services courants."
+    },
+    {
+      "id": "transp-ports-inscrits",
+      "type": "QCM",
+      "question": "Quelle est la plage des ports inscrits (registered) ?",
+      "choix": ["0 à 1023", "1024 à 49151", "49152 à 65535", "1812 à 65535"],
+      "reponses": [1],
+      "explication": "Les ports inscrits vont de 1024 à 49151, affectés par l'IANA à des applications spécifiques (ex. 1812 pour RADIUS chez Cisco)."
+    },
+    {
+      "id": "transp-ports-dyn",
+      "type": "QCM",
+      "question": "Comment appelle-t-on aussi les ports privés/dynamiques (49152 à 65535) ?",
+      "choix": ["Ports réservés", "Ports éphémères", "Ports racine", "Ports de diffusion"],
+      "reponses": [1],
+      "explication": "Les ports dynamiques (49152 à 65535) sont aussi appelés ports éphémères ; le système d'exploitation du client les attribue lors de l'ouverture d'une connexion."
+    },
+    {
+      "id": "transp-port-http",
+      "type": "QCM",
+      "question": "Quel numéro de port et protocole sont associés à HTTP ?",
+      "choix": ["443 / TCP", "80 / TCP", "80 / UDP", "8080 / TCP"],
+      "reponses": [1],
+      "explication": "HTTP utilise le port 80 en TCP. HTTPS utilise le port 443 en TCP."
+    },
+    {
+      "id": "transp-port-dns",
+      "type": "QCM",
+      "question": "Quel port est utilisé par le service DNS ?",
+      "choix": ["25", "53", "67", "161"],
+      "reponses": [1],
+      "explication": "DNS utilise le port 53 (UDP et TCP)."
+    },
+    {
+      "id": "transp-port-multi",
+      "type": "QCR",
+      "question": "Associez correctement : quels couples port/application sont exacts ?",
+      "choix": [
+        "22 = SSH",
+        "23 = Telnet",
+        "443 = HTTPS",
+        "110 = SMTP"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "22 = SSH, 23 = Telnet, 443 = HTTPS. En revanche 110 = POP3 (SMTP utilise le port 25)."
+    },
+    {
+      "id": "transp-port-dhcp",
+      "type": "QCR",
+      "question": "Quels ports sont utilisés par DHCP ?",
+      "choix": ["67 (serveur)", "68 (client)", "69", "53"],
+      "reponses": [0, 1],
+      "explication": "DHCP utilise le port 67 (serveur) et 68 (client), tous deux en UDP. Le port 69 est TFTP."
+    },
+    {
+      "id": "transp-netstat",
+      "type": "QCM",
+      "question": "À quoi sert la commande netstat ?",
+      "choix": [
+        "À configurer une adresse IPv6",
+        "À vérifier les connexions réseau actives",
+        "À mesurer le débit d'un lien",
+        "À attribuer des numéros de port"
+      ],
+      "reponses": [1],
+      "explication": "Netstat est un outil important pour vérifier les connexions actives ; des connexions TCP inexpliquées peuvent représenter un risque de sécurité."
+    },
+    {
+      "id": "transp-handshake-1",
+      "type": "QCM",
+      "question": "Combien d'étapes comporte l'établissement d'une connexion TCP ?",
+      "choix": ["Deux étapes", "Trois étapes", "Quatre étapes", "Une seule étape"],
+      "reponses": [1],
+      "explication": "L'établissement TCP se fait en trois étapes (three-way handshake) : SYN, SYN-ACK, ACK."
+    },
+    {
+      "id": "transp-handshake-2",
+      "type": "QCM",
+      "question": "Dans l'établissement d'une connexion TCP, que fait le serveur à l'étape 2 ?",
+      "choix": [
+        "Il ferme la session",
+        "Il accuse réception de la session client-serveur et demande l'établissement de la session serveur-client",
+        "Il envoie uniquement les données utiles",
+        "Il ignore la demande du client"
+      ],
+      "reponses": [1],
+      "explication": "Étape 2 : le serveur accuse réception (ACK) de la session client-serveur et demande (SYN) l'établissement de la session serveur-client."
+    },
+    {
+      "id": "transp-handshake-role",
+      "type": "QCR",
+      "question": "Que vérifie/permet la connexion TCP en trois étapes ?",
+      "choix": [
+        "Que le périphérique de destination est présent sur le réseau",
+        "Que le périphérique de destination a un service actif sur le port demandé",
+        "Qu'il informe la destination que le client veut établir une session sur ce port",
+        "Que le chemin de routage est le plus court"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "La connexion en trois étapes vérifie la présence de la destination, l'existence d'un service actif sur le port et informe la destination de la volonté d'établir une session."
+    },
+    {
+      "id": "transp-fin-session",
+      "type": "QCM",
+      "question": "Quel indicateur (flag) le client définit-il quand il n'a plus de données à envoyer pour fermer la session ?",
+      "choix": ["SYN", "ACK", "FIN", "RST"],
+      "reponses": [2],
+      "explication": "Pour fermer la session, le client envoie un segment dont l'indicateur FIN est défini."
+    },
+    {
+      "id": "transp-reorder",
+      "type": "QCM",
+      "question": "Comment TCP réassemble-t-il les segments arrivés dans le désordre ?",
+      "choix": [
+        "Il les ignore",
+        "Grâce aux numéros d'ordre (de séquence) affectés à chaque segment",
+        "En fonction de l'adresse MAC",
+        "Il ne peut pas les réordonner"
+      ],
+      "reponses": [1],
+      "explication": "TCP affecte des numéros d'ordre dans l'en-tête de chaque segment, ce qui permet de les réassembler dans l'ordre d'origine."
+    },
+    {
+      "id": "transp-flow-control",
+      "type": "QCM",
+      "question": "Que fait TCP en cas d'encombrement du réseau pour éviter la perte de paquets ?",
+      "choix": [
+        "Il augmente le débit d'envoi",
+        "Il utilise des mécanismes et algorithmes de gestion de l'encombrement (contrôle de flux)",
+        "Il ferme immédiatement toutes les sessions",
+        "Il passe automatiquement en UDP"
+      ],
+      "reponses": [1],
+      "explication": "TCP utilise divers mécanismes, minuteurs et algorithmes pour contrôler le flux et prévenir l'encombrement, par exemple en réduisant le nombre d'octets envoyés avant accusé."
+    },
+    {
+      "id": "transp-udp-reorder",
+      "type": "QCM",
+      "question": "Comment UDP traite-t-il les datagrammes reçus dans le désordre ?",
+      "choix": [
+        "Il les réordonne grâce aux numéros de séquence",
+        "Il les réassemble dans l'ordre de réception, sans réordonnancement",
+        "Il les retransmet jusqu'à recevoir le bon ordre",
+        "Il rejette tout le flux"
+      ],
+      "reponses": [1],
+      "explication": "UDP n'effectue pas de suivi des numéros d'ordre : il réassemble les données dans l'ordre de réception, puis les transmet à l'application."
+    },
+    {
+      "id": "transp-udp-client",
+      "type": "QCM",
+      "question": "Comment le processus client UDP choisit-il son port source ?",
+      "choix": [
+        "Il utilise toujours le port 80",
+        "Il sélectionne dynamiquement un numéro de port dans une plage",
+        "Il copie le port de destination",
+        "Il n'utilise jamais de port source"
+      ],
+      "reponses": [1],
+      "explication": "Le client UDP sélectionne dynamiquement un numéro de port source ; le port de destination est généralement le port réservé du processus serveur."
+    }
+  ]
+}

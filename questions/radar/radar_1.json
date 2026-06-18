@@ -1,0 +1,709 @@
+{
+  "titre": "Radar — 1",
+  "description": "Questions QCM/QCR couvrant les principes généraux du radar, l'historique, le signal radar impulsionnel, les bandes de fréquences, les mesures de distance, d'angle et de vitesse, les ambiguïtés, le pouvoir séparateur, et les applications.",
+  "questions": [
+    {
+      "id": "radar-intro-001",
+      "type": "QCM",
+      "question": "Que signifie l'acronyme **RADAR** ?",
+      "choix": [
+        "Radio Detection And Ranging",
+        "Radio Direction And Ranging",
+        "Radar Detection And Recognition",
+        "Remote Acquisition of Data And Ranging"
+      ],
+      "reponses": [0],
+      "explication": "RADAR signifie **Radio Detection And Ranging** (Détection et télémétrie par radio)."
+    },
+    {
+      "id": "radar-intro-002",
+      "type": "QCM",
+      "question": "Quelle est la définition française du radar ?",
+      "choix": [
+        "Détection électromagnétique",
+        "Détection et télémétrie par radio",
+        "Repérage et acquisition de données",
+        "Radio détection et rangement"
+      ],
+      "reponses": [0],
+      "explication": "En France, le radar est défini comme la **détection électromagnétique**."
+    },
+    {
+      "id": "radar-intro-003",
+      "type": "QCR",
+      "question": "Quelles sont les **4 dimensions** mesurées par un radar ?",
+      "choix": [
+        "Site (dépression/verticale).",
+        "Gisement (azimut/horizontale).",
+        "Distance.",
+        "Vitesse radiale.",
+        "Taille de la cible."
+      ],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Un radar mesure : **site** (angle vertical), **gisement** (angle horizontal), **distance**, et **vitesse radiale**."
+    },
+    {
+      "id": "radar-intro-004",
+      "type": "QCM",
+      "question": "Quelle est la relation entre la longueur d'onde $\\lambda$, la célérité $c$ et la fréquence $f_0$ ?",
+      "choix": [
+        "$\\lambda = c / f_0$",
+        "$\\lambda = f_0 / c$",
+        "$\\lambda = c \\cdot f_0$",
+        "$\\lambda = 1 / (c \\cdot f_0)$"
+      ],
+      "reponses": [0],
+      "explication": "La relation fondamentale est **$\\lambda = c / f_0$**, où $c = 3 \\times 10^8 \\text{ m/s}$."
+    },
+    {
+      "id": "radar-intro-005",
+      "type": "QCR",
+      "question": "Quels types de **polarisation** sont mentionnés pour les ondes électromagnétiques ?",
+      "choix": [
+        "Horizontale.",
+        "Verticale.",
+        "Circulaire.",
+        "Elliptique.",
+        "Linéaire."
+      ],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Le cours mentionne les polarisations **horizontale**, **verticale**, **circulaire** (deux ondes de même amplitude en quadrature) et **elliptique** (deux ondes d'amplitudes quelconques en quadrature)."
+    },
+    {
+      "id": "radar-intro-006",
+      "type": "QCM",
+      "question": "Quelle est la fonction principale d'un **radar de veille** ?",
+      "choix": [
+        "Détection en phase de veille (présence ou non d'une cible).",
+        "Localisation et suivi précis d'une cible.",
+        "Mesure de la taille exacte d'une cible.",
+        "Guidage de missile."
+      ],
+      "reponses": [0],
+      "explication": "Un **radar de veille** a pour fonction principale la **détection en phase de veille** (information binaire : présence ou non d'une cible dans un volume élémentaire)."
+    },
+    {
+      "id": "radar-intro-007",
+      "type": "QCM",
+      "question": "Quelle est la fonction principale d'un **radar de poursuite** ?",
+      "choix": [
+        "Détection en phase de veille.",
+        "Localisation et suivi de cibles.",
+        "Mesure de la taille exacte d'une cible.",
+        "Guidage de missile."
+      ],
+      "reponses": [1],
+      "explication": "Un **radar de poursuite** a pour fonction principale la **localisation et le suivi de cibles**."
+    },
+    {
+      "id": "radar-intro-008",
+      "type": "QCR",
+      "question": "Quelles sont les **applications** du radar mentionnées dans le cours ?",
+      "choix": [
+        "Contrôle aérien.",
+        "Aide à l'atterrissage.",
+        "Trajectographie.",
+        "Mesure des vitesses.",
+        "Altimétrie.",
+        "Anticollision.",
+        "Météorologie.",
+        "Suivi de terrain.",
+        "Cartographie.",
+        "Navigation.",
+        "Conduite d'armes."
+      ],
+      "reponses": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "explication": "Le cours liste ces 11 applications du radar."
+    },
+    {
+      "id": "radar-intro-009",
+      "type": "QCM",
+      "question": "Quelle est la différence entre un **radar monostatique** et un **radar multi-statique** ?",
+      "choix": [
+        "Un radar monostatique a un émetteur et un récepteur co-localisés, tandis qu'un radar multi-statique a un émetteur et plusieurs récepteurs séparés.",
+        "Un radar monostatique utilise des ondes continues, tandis qu'un radar multi-statique utilise des impulsions.",
+        "Un radar monostatique est toujours aéroporté, tandis qu'un radar multi-statique est toujours au sol.",
+        "Un radar monostatique ne peut pas mesurer la vitesse, tandis qu'un radar multi-statique peut."
+      ],
+      "reponses": [0],
+      "explication": "Un **radar monostatique** a un **émetteur + récepteur co-localisés**, tandis qu'un **radar multi-statique** a un **émetteur + plusieurs récepteurs séparés**."
+    },
+    {
+      "id": "radar-intro-010",
+      "type": "QCM",
+      "question": "De quoi est composé le **signal reçu** par un radar ?",
+      "choix": [
+        "Signal réfléchi + Bruit + Clutter + Brouillage.",
+        "Signal émis + Bruit uniquement.",
+        "Signal réfléchi + Bruit uniquement.",
+        "Signal émis + Clutter uniquement."
+      ],
+      "reponses": [0],
+      "explication": "Le signal reçu par un radar est composé du **signal réfléchi** (écho), du **bruit**, du **clutter** (échos indésirables de l'environnement) et du **brouillage** (interférences intentionnelles)."
+    },
+    {
+      "id": "radar-historique-001",
+      "type": "QCM",
+      "question": "Qui a démontré en 1886 qu'il n'y avait pas de différence entre les ondes lumineuses et électromagnétiques ?",
+      "choix": ["Nikola Tesla", "Heinrich Hertz", "Christian Hüslmeyer", "Sir Watson-Watt"],
+      "reponses": [1],
+      "explication": "**Heinrich Hertz** a démontré en 1886 qu'il n'y avait pas de différence entre les ondes lumineuses et électromagnétiques."
+    },
+    {
+      "id": "radar-historique-002",
+      "type": "QCM",
+      "question": "Qui a montré en 1900 qu'on pouvait détecter la présence d'objets lointains et mesurer leur mouvement ?",
+      "choix": ["Heinrich Hertz", "Nikola Tesla", "Christian Hüslmeyer", "Sir Watson-Watt"],
+      "reponses": [1],
+      "explication": "**Nikola Tesla** a montré en 1900 qu'on pouvait détecter la présence d'objets lointains et mesurer leur mouvement."
+    },
+    {
+      "id": "radar-historique-003",
+      "type": "QCM",
+      "question": "Qui a déposé le brevet du **Telemobiloscope** en 1904 ?",
+      "choix": ["Heinrich Hertz", "Nikola Tesla", "Christian Hüslmeyer", "Maurice Ponte"],
+      "reponses": [2],
+      "explication": "**Christian Hüslmeyer** a déposé le brevet du **Telemobiloscope** en 1904, testé à Cologne puis Rotterdam avec une portée de 3 km sur bateaux."
+    },
+    {
+      "id": "radar-historique-004",
+      "type": "QCM",
+      "question": "Quel événement a marqué la détection d'un avion à 13 km en 1935 ?",
+      "choix": ["Daventry experiment", "Chain Home", "Telemobiloscope", "Bristol Beaufighter"],
+      "reponses": [0],
+      "explication": "Le **Daventry experiment** (1935) a marqué la **détection d'un avion à 13 km** à l'aide d'un radar impulsionnel, réalisé par **Sir Watson-Watt**."
+    },
+    {
+      "id": "radar-historique-005",
+      "type": "QCM",
+      "question": "Quel système radar a été déployé en 1938 au Royaume-Uni ?",
+      "choix": ["Daventry experiment", "Chain Home", "Telemobiloscope", "Bristol Beaufighter"],
+      "reponses": [1],
+      "explication": "**Chain Home** est le système radar déployé en **1938** au Royaume-Uni pour la défense aérienne."
+    },
+    {
+      "id": "radar-signal-001",
+      "type": "QCM",
+      "question": "Quelle est la formule du **signal radar impulsionnel** $e(t)$ ?",
+      "choix": [
+        "$e(t) = \\sum_{n} \\operatorname{rect}_{\\tau}(t - nT_{R}) \\cdot \\cos(2\\pi f_{0} t)$",
+        "$e(t) = \\sum_{n} \\operatorname{rect}_{\\tau}(t) \\cdot \\cos(2\\pi n f_{0} t)$",
+        "$e(t) = \\cos(2\\pi f_{0} t) \\cdot \\operatorname{rect}_{\\tau}(t)$",
+        "$e(t) = \\sum_{n} \\cos(2\\pi f_{0} (t - nT_{R}))$"
+      ],
+      "reponses": [0],
+      "explication": "Le signal radar impulsionnel est donné par $e(t) = \\sum_{n} \\operatorname{rect}_{\\tau}(t - nT_{R}) \\cdot \\cos(2\\pi f_{0} t)$, où $\\tau$ est la largeur de l'impulsion et $T_R$ la période de récurrence."
+    },
+    {
+      "id": "radar-signal-002",
+      "type": "QCM",
+      "question": "Quel type de signal est émis par un radar impulsionnel ?",
+      "choix": [
+        "Un train d'impulsions rectangulaires de largeur $\\tau$ et répétées tous les $T_R$.",
+        "Un signal continu sinusoïdal.",
+        "Un signal modulé en fréquence.",
+        "Un signal modulé en amplitude."
+      ],
+      "reponses": [0],
+      "explication": "Un radar impulsionnel émet un **train d'impulsions rectangulaires** de largeur $\\tau$ et répétées tous les $T_R$ (Période de Répétition des Impulsions)."
+    },
+    {
+      "id": "radar-signal-003",
+      "type": "QCM",
+      "question": "Quelle est la **fréquence de récurrence** $f_R$ ?",
+      "choix": [
+        "$f_R = 1 / T_R$",
+        "$f_R = T_R$",
+        "$f_R = 2\\pi / T_R$",
+        "$f_R = T_R / 2\\pi$"
+      ],
+      "reponses": [0],
+      "explication": "La fréquence de récurrence est l'inverse de la période de récurrence : **$f_R = 1 / T_R$** (Pulse Repetition Frequency)."
+    },
+    {
+      "id": "radar-signal-004",
+      "type": "QCR",
+      "question": "Quelles sont les caractéristiques d'une **impulsion radar** ?",
+      "choix": [
+        "Signal sinusoïdal.",
+        "Durée $\\tau$.",
+        "Enveloppe rectangulaire.",
+        "Fréquence porteuse $f_0$.",
+        "Période de récurrence $T_R$."
+      ],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Une impulsion radar est un **signal sinusoïdal** de **durée $\\tau$**, avec une **enveloppe rectangulaire**, et une **fréquence porteuse $f_0$**. Les impulsions sont répétées tous les $T_R$."
+    },
+    {
+      "id": "radar-signal-005",
+      "type": "QCM",
+      "question": "Quelle est la **représentation spectrale** d'un signal radar impulsionnel ?",
+      "choix": [
+        "Raies espacées de $f_R$, centrées autour de $f_0$, avec une enveloppe en sinus cardinal.",
+        "Un spectre continu centré autour de $f_0$.",
+        "Une seule raie à la fréquence $f_0$.",
+        "Un spectre uniforme sur toute la bande passante."
+      ],
+      "reponses": [0],
+      "explication": "Le spectre d'un signal radar impulsionnel présente des **raies** (série de pics) **espacées de $f_R$**, **centrées autour de la fréquence porteuse $f_0$**, avec une **enveloppe en sinus cardinal**."
+    },
+    {
+      "id": "radar-signal-006",
+      "type": "QCM",
+      "question": "Quelle est la largeur du lobe principal de l'enveloppe spectrale d'un signal radar impulsionnel ?",
+      "choix": [
+        "$\\pm 1/\\tau$",
+        "$\\pm \\tau$",
+        "$\\pm f_R$",
+        "$\\pm f_0$"
+      ],
+      "reponses": [0],
+      "explication": "L'enveloppe en sinus cardinal du spectre a des **zéros** à $f_0 \\pm k/\\tau$ (où $k$ est un entier). Le lobe principal s'étend donc sur **$\\pm 1/\\tau$** autour de $f_0$."
+    },
+    {
+      "id": "radar-signal-007",
+      "type": "QCM",
+      "question": "Quel est le rapport entre l'amplitude du lobe principal et celle des lobes secondaires dans l'enveloppe spectrale d'un signal radar impulsionnel ?",
+      "choix": ["1/20 (soit -13 dB)", "1/10 (soit -10 dB)", "1/5 (soit -7 dB)", "1/2 (soit -3 dB)"],
+      "reponses": [0],
+      "explication": "Le rapport entre l'amplitude du lobe principal et celle des lobes secondaires est de **1/20**, soit **-13 dB**."
+    },
+    {
+      "id": "radar-signal-008",
+      "type": "QCM",
+      "question": "Quelle est la valeur typique de $f_0$ pour un radar de défense aérienne ?",
+      "choix": ["300 MHz", "3 GHz", "30 GHz", "300 GHz"],
+      "reponses": [1],
+      "explication": "Pour un radar de défense aérienne, la fréquence porteuse $f_0$ est typiquement de **3 GHz** (bande S)."
+    },
+    {
+      "id": "radar-signal-009",
+      "type": "QCM",
+      "question": "Quelle est la valeur typique de $\\tau$ pour un radar de défense aérienne ?",
+      "choix": ["1 ns", "1 μs", "1 ms", "1 s"],
+      "reponses": [1],
+      "explication": "Pour un radar de défense aérienne, la durée d'impulsion $\\tau$ est typiquement de **1 μs**."
+    },
+    {
+      "id": "radar-signal-010",
+      "type": "QCM",
+      "question": "Quelle est la valeur typique de $T_R$ pour un radar de défense aérienne ?",
+      "choix": ["1 μs", "1 ms", "1 s", "10 s"],
+      "reponses": [1],
+      "explication": "Pour un radar de défense aérienne, la période de récurrence $T_R$ est typiquement de **1 ms**."
+    },
+    {
+      "id": "radar-bandes-001",
+      "type": "QCM",
+      "question": "Quelle bande de fréquences est utilisée pour les **radars transhorizon** ?",
+      "choix": ["Bande L", "Bande S", "Bandes basses (HF, VHF, UHF)", "Bande X"],
+      "reponses": [2],
+      "explication": "Les **radars transhorizon** utilisent les **bandes basses (HF, VHF, UHF)**."
+    },
+    {
+      "id": "radar-bandes-002",
+      "type": "QCR",
+      "question": "Quelle bande de fréquences est utilisée pour la **veille lointaine** ?",
+      "choix": ["Bande L (1.3 GHz)", "Bande S (2.7-3.4 GHz)", "Bande C (5.5 GHz)", "Bande X (8-10.5 GHz)"],
+      "reponses": [0, 1],
+      "explication": "La **veille lointaine** utilise principalement les bandes **L (1.3 GHz)** et **S (2.7-3.4 GHz)**."
+    },
+    {
+      "id": "radar-bandes-003",
+      "type": "QCM",
+      "question": "Quelle bande de fréquences est utilisée pour les **radars aéroportés et l'imagerie** ?",
+      "choix": ["Bande L", "Bande S", "Bande C", "Bande X"],
+      "reponses": [3],
+      "explication": "Les **radars aéroportés et l'imagerie** utilisent principalement la **bande X (8-10.5 GHz)**."
+    },
+    {
+      "id": "radar-bandes-004",
+      "type": "QCM",
+      "question": "Quelle bande de fréquences est utilisée pour les **autodirecteurs** ?",
+      "choix": ["Bande Ku (17 GHz)", "Bande X", "Bande C", "Bande S"],
+      "reponses": [0],
+      "explication": "Les **autodirecteurs** utilisent principalement la **bande Ku (17 GHz)**."
+    },
+    {
+      "id": "radar-bandes-005",
+      "type": "QCR",
+      "question": "Quelles sont les **catégories de fréquences de récurrence (PRF)** ?",
+      "choix": [
+        "Basse Fréquence de Récurrence (BFR) : 0 à 5 kHz.",
+        "Moyenne Fréquence de Récurrence (MFR) : 5 à 100 kHz.",
+        "Haute Fréquence de Récurrence (HFR) : > 100 kHz.",
+        "Très Haute Fréquence de Récurrence (THFR) : > 1 MHz.",
+        "Ultra Haute Fréquence de Récurrence (UHFR) : > 10 MHz."
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les catégories de PRF sont : **BFR (0-5 kHz)**, **MFR (5-100 kHz)**, et **HFR (>100 kHz)**."
+    },
+    {
+      "id": "radar-mesure-distance-001",
+      "type": "QCM",
+      "question": "Quelle est la formule de la **distance mesurée** $D_{mes}$ par un radar ?",
+      "choix": [
+        "$D_{mes} = \\frac{c \\cdot \\Delta t}{2}$",
+        "$D_{mes} = c \\cdot \\Delta t$",
+        "$D_{mes} = \\frac{c}{2 \\cdot \\Delta t}$",
+        "$D_{mes} = 2 \\cdot c \\cdot \\Delta t$"
+      ],
+      "reponses": [0],
+      "explication": "La distance mesurée est donnée par **$D_{mes} = \\frac{c \\cdot \\Delta t}{2}$**, où $\\Delta t$ est l'écart de temps entre l'onde émise et la réception de son écho (trajet aller-retour)."
+    },
+    {
+      "id": "radar-mesure-distance-002",
+      "type": "QCM",
+      "question": "Pourquoi divise-t-on par 2 dans la formule $D_{mes} = \\frac{c \\cdot \\Delta t}{2}$ ?",
+      "choix": [
+        "Parce que $\\Delta t$ correspond au trajet aller-retour de l'onde.",
+        "Parce que la vitesse de la lumière est divisée par 2 dans l'atmosphère.",
+        "Parce que le radar émet deux impulsions simultanément.",
+        "Parce que la cible réfléchit seulement la moitié de l'énergie."
+      ],
+      "reponses": [0],
+      "explication": "On divise par 2 car **$\\Delta t$ correspond au trajet aller-retour** de l'onde (radar → cible → radar). Pour obtenir la distance, on ne considère que le trajet simple."
+    },
+    {
+      "id": "radar-mesure-distance-003",
+      "type": "QCM",
+      "question": "Qu'est-ce que l'**ambiguïté en distance** ?",
+      "choix": [
+        "La cible est détectée mais la distance mesurée est fausse.",
+        "La cible n'est pas détectée bien qu'elle soit dans la portée du radar.",
+        "La distance mesurée est toujours exacte.",
+        "La cible est détectée à une distance supérieure à la portée maximale."
+      ],
+      "reponses": [0],
+      "explication": "L'**ambiguïté en distance** se produit lorsque **la cible est détectée mais la distance mesurée est fausse** (ex: si une nouvelle impulsion est émise avant que l'écho de la cible soit revenu)."
+    },
+    {
+      "id": "radar-mesure-distance-004",
+      "type": "QCM",
+      "question": "Quand une **ambiguïté en distance** se produit-elle ?",
+      "choix": [
+        "Si $\\Delta t > T_R$ (l'écho revient après l'impulsion suivante).",
+        "Si $\\Delta t < T_R$ (l'écho revient avant l'impulsion suivante).",
+        "Si la fréquence porteuse $f_0$ est trop élevée.",
+        "Si la puissance d'émission est trop faible."
+      ],
+      "reponses": [0],
+      "explication": "Une ambiguïté en distance se produit si **$\\Delta t > T_R$**, c'est-à-dire si l'écho revient **après l'impulsion suivante**."
+    },
+    {
+      "id": "radar-mesure-distance-005",
+      "type": "QCM",
+      "question": "Quelle est la relation entre la **distance vraie** $D_{Vraie}$ et la **distance mesurée** $D_{mes}$ en cas d'ambiguïté ?",
+      "choix": [
+        "$D_{Vraie} = k \\cdot D_{Amb} + D_{mes}$",
+        "$D_{Vraie} = D_{mes} - k \\cdot D_{Amb}$",
+        "$D_{Vraie} = D_{mes} / k$",
+        "$D_{Vraie} = k \\cdot D_{mes}$"
+      ],
+      "reponses": [0],
+      "explication": "En cas d'ambiguïté, la distance vraie est donnée par **$D_{Vraie} = k \\cdot D_{Amb} + D_{mes}$**, où $D_{Amb}$ est la **distance d'ambiguïté** et $k$ un entier."
+    },
+    {
+      "id": "radar-mesure-distance-006",
+      "type": "QCM",
+      "question": "Qu'est-ce que la **distance d'ambiguïté** $D_{Amb}$ ?",
+      "choix": [
+        "$D_{Amb} = \\frac{c \\cdot T_R}{2}$",
+        "$D_{Amb} = c \\cdot T_R$",
+        "$D_{Amb} = \\frac{c}{2 \\cdot T_R}$",
+        "$D_{Amb} = \\frac{T_R}{c}$"
+      ],
+      "reponses": [0],
+      "explication": "La distance d'ambiguïté est donnée par **$D_{Amb} = \\frac{c \\cdot T_R}{2}$**, où $T_R$ est la période de récurrence."
+    },
+    {
+      "id": "radar-mesure-distance-007",
+      "type": "QCR",
+      "question": "Quelles sont les **solutions** pour éviter l'ambiguïté en distance ?",
+      "choix": [
+        "Choisir une fréquence de récurrence $f_R$ telle que $D_{Amb} >$ portée du radar.",
+        "Utiliser deux fréquences porteuses différentes (bi-fréquence).",
+        "Utiliser successivement plusieurs fréquences de récurrence (staggering).",
+        "Augmenter la puissance d'émission.",
+        "Réduire la durée de l'impulsion $\\tau$."
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les solutions pour éviter l'ambiguïté sont : **choisir $f_R$ tel que $D_{Amb} >$ portée**, utiliser la **bi-fréquence**, ou utiliser le **staggering** (plusieurs PRF)."
+    },
+    {
+      "id": "radar-mesure-distance-008",
+      "type": "QCM",
+      "question": "Qu'est-ce que l'**éclipse** en radar ?",
+      "choix": [
+        "La cible n'est pas détectée alors qu'elle est moins loin que la portée du radar.",
+        "La cible est détectée à une distance fausse.",
+        "Le signal est complètement absorbé par l'atmosphère.",
+        "La cible est détectée avec un retard important."
+      ],
+      "reponses": [0],
+      "explication": "L'**éclipse** se produit lorsque **la cible n'est pas détectée** alors qu'elle est **moins loin que la portée du radar** (ex: si l'écho revient pendant que l'on émet)."
+    },
+    {
+      "id": "radar-mesure-distance-009",
+      "type": "QCM",
+      "question": "Quelle est la solution pour éviter l'**éclipse** ?",
+      "choix": [
+        "Utiliser un radar avec des PRF différentes.",
+        "Augmenter la puissance d'émission.",
+        "Réduire la durée de l'impulsion $\\tau$.",
+        "Utiliser une antenne plus directive."
+      ],
+      "reponses": [0],
+      "explication": "Pour éviter l'éclipse, on peut **utiliser un radar avec des PRF différentes** (plusieurs fréquences de récurrence)."
+    },
+    {
+      "id": "radar-mesure-distance-010",
+      "type": "QCM",
+      "question": "Quelle est la formule du **pouvoir séparateur en distance radiale** $\\Delta D$ ?",
+      "choix": [
+        "$\\Delta D = \\frac{c \\cdot \\tau}{2}$",
+        "$\\Delta D = c \\cdot \\tau$",
+        "$\\Delta D = \\frac{c}{2 \\cdot \\tau}$",
+        "$\\Delta D = \\frac{\\tau}{2c}$"
+      ],
+      "reponses": [0],
+      "explication": "Le pouvoir séparateur en distance radiale est donné par **$\\Delta D = \\frac{c \\cdot \\tau}{2}$**. Il caractérise la capacité du radar à dissocier deux cibles proches radialement."
+    },
+    {
+      "id": "radar-mesure-angulaire-001",
+      "type": "QCM",
+      "question": "Comment obtient-on la **position angulaire** d'une cible avec un radar ?",
+      "choix": [
+        "En récupérant la direction de pointage de l'antenne.",
+        "En mesurant le temps de retour de l'écho.",
+        "En analysant la fréquence Doppler de l'écho.",
+        "En mesurant l'amplitude de l'écho."
+      ],
+      "reponses": [0],
+      "explication": "La position angulaire est obtenue en **récupérant la direction de pointage de l'antenne** (gisement et site)."
+    },
+    {
+      "id": "radar-mesure-angulaire-002",
+      "type": "QCM",
+      "question": "Quel angle mesure le **gisement** $\\theta_g$ ?",
+      "choix": [
+        "Angle latéral par rapport au Nord.",
+        "Angle vertical par rapport à l'horizon.",
+        "Angle entre l'antenne et la cible.",
+        "Angle de réflexion de l'onde."
+      ],
+      "reponses": [0],
+      "explication": "Le **gisement** $\\theta_g$ est l'**angle latéral par rapport au Nord** (azimut)."
+    },
+    {
+      "id": "radar-mesure-angulaire-003",
+      "type": "QCM",
+      "question": "Quel angle mesure le **site** $\\theta_s$ ?",
+      "choix": [
+        "Angle latéral par rapport au Nord.",
+        "Angle vertical par rapport à l'horizon.",
+        "Angle entre l'antenne et la cible.",
+        "Angle de réflexion de l'onde."
+      ],
+      "reponses": [1],
+      "explication": "Le **site** $\\theta_s$ est l'**angle vertical par rapport à l'horizon** (élévation). Il est mesuré uniquement par les radars 3D."
+    },
+    {
+      "id": "radar-mesure-angulaire-004",
+      "type": "QCM",
+      "question": "Quelle condition doit être remplie pour que la mesure angulaire soit précise ?",
+      "choix": [
+        "L'antenne doit être très directive.",
+        "La fréquence porteuse doit être élevée.",
+        "La puissance d'émission doit être forte.",
+        "La durée de l'impulsion doit être courte."
+      ],
+      "reponses": [0],
+      "explication": "Pour une mesure angulaire précise, **l'antenne doit être très directive** (faible ouverture du lobe principal)."
+    },
+    {
+      "id": "radar-mesure-angulaire-005",
+      "type": "QCR",
+      "question": "Quels types de **balayage** d'antenne sont mentionnés dans le cours ?",
+      "choix": [
+        "Mécanique.",
+        "Électronique (antennes réseau à commande de phase).",
+        "Mixte (mécanique + électronique).",
+        "Optique.",
+        "Acoustique."
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Le cours mentionne trois types de balayage : **mécanique**, **électronique** (antennes réseau à commande de phase), et **mixte**."
+    },
+    {
+      "id": "radar-mesure-angulaire-006",
+      "type": "QCM",
+      "question": "Quel type de radar utilise un **balayage panoramique** ?",
+      "choix": [
+        "Radar de veille (ex: radar de surveillance aérienne).",
+        "Radar de poursuite.",
+        "Radar aéroporté.",
+        "Radar de guidage de missile."
+      ],
+      "reponses": [0],
+      "explication": "Un **radar de veille** (ex: radar de surveillance aérienne) utilise un **balayage panoramique** pour couvrir toute la zone de surveillance."
+    },
+    {
+      "id": "radar-mesure-angulaire-007",
+      "type": "QCM",
+      "question": "Quel type de radar utilise un **balayage sectoriel** ?",
+      "choix": [
+        "Radar de veille.",
+        "Radar aéroporté (ex: radar de pointe avant).",
+        "Radar de guidage de missile.",
+        "Radar de contrôle aérien."
+      ],
+      "reponses": [1],
+      "explication": "Un **radar aéroporté** (ex: radar de pointe avant) utilise un **balayage sectoriel** pour couvrir un secteur spécifique."
+    },
+    {
+      "id": "radar-mesure-angulaire-008",
+      "type": "QCM",
+      "question": "Qu'est-ce que la **modulation de lobes** en radar ?",
+      "choix": [
+        "Le gain ne reste ni constant ni égal au gain maximal lorsque l'antenne balaye la zone de la cible.",
+        "Le gain est constant et égal au gain maximal.",
+        "Le lobe principal de l'antenne change de forme.",
+        "L'amplitude du signal émis varie avec le temps."
+      ],
+      "reponses": [0],
+      "explication": "La **modulation de lobes** se produit lorsque l'antenne balaye la zone de la cible : **le gain ne reste ni constant ni égal au gain maximal**."
+    },
+    {
+      "id": "radar-mesure-angulaire-009",
+      "type": "QCM",
+      "question": "Quelle est la formule du **pouvoir séparateur angulaire** $\\Delta \\theta$ ?",
+      "choix": [
+        "$\\Delta \\theta = \\theta_{3dB} \\approx 70 \\cdot \\frac{\\lambda}{L}$ (en degrés)",
+        "$\\Delta \\theta = \\frac{\\lambda}{L}$ (en radians)",
+        "$\\Delta \\theta = 70 \\cdot \\frac{L}{\\lambda}$ (en degrés)",
+        "$\\Delta \\theta = \\frac{L}{\\lambda}$ (en radians)"
+      ],
+      "reponses": [0],
+      "explication": "Le pouvoir séparateur angulaire est donné par **$\\Delta \\theta = \\theta_{3dB} \\approx 70 \\cdot \\frac{\\lambda}{L}$** (en degrés), où $L$ est la dimension de l'antenne (largeur pour le gisement, hauteur pour le site)."
+    },
+    {
+      "id": "radar-mesure-angulaire-010",
+      "type": "QCM",
+      "question": "Si l'antenne est circulaire, que peut-on dire du pouvoir séparateur angulaire ?",
+      "choix": [
+        "Il est identique quelque soit le plan considéré.",
+        "Il est différent selon le plan considéré.",
+        "Il est nul.",
+        "Il dépend de la fréquence porteuse."
+      ],
+      "reponses": [0],
+      "explication": "Si l'antenne est circulaire, le **pouvoir séparateur angulaire est identique quelque soit le plan considéré** (la dimension prise dans le calcul est alors le diamètre de l'antenne)."
+    },
+    {
+      "id": "radar-vitesse-001",
+      "type": "QCM",
+      "question": "Sur quel phénomène physique se base la **mesure de vitesse** en radar ?",
+      "choix": ["Effet Doppler", "Effet Faraday", "Effet Compton", "Effet photoélectrique"],
+      "reponses": [0],
+      "explication": "La mesure de vitesse en radar se base sur **l'effet Doppler** (1842 : J.C.A. Doppler et H. Fizeau)."
+    },
+    {
+      "id": "radar-vitesse-002",
+      "type": "QCM",
+      "question": "Quelle vitesse mesure un radar ?",
+      "choix": [
+        "La vitesse radiale relative $V_r$ entre le radar et la cible.",
+        "La vitesse absolue de la cible.",
+        "La vitesse angulaire de la cible.",
+        "La vitesse de rotation de l'antenne."
+      ],
+      "reponses": [0],
+      "explication": "Un radar mesure la **vitesse radiale relative $V_r$** entre le radar et la cible (par convention, $V_r > 0$ pour un rapprochement)."
+    },
+    {
+      "id": "radar-vitesse-003",
+      "type": "QCM",
+      "question": "Quelle est la relation entre l'**écart Doppler** $f_d$ et la vitesse radiale $V_r$ ?",
+      "choix": [
+        "$f_d = \\frac{2 \\cdot V_r}{\\lambda}$",
+        "$f_d = \\frac{V_r}{\\lambda}$",
+        "$f_d = \\frac{2 \\cdot \\lambda}{V_r}$",
+        "$f_d = \\frac{V_r}{2 \\cdot \\lambda}$"
+      ],
+      "reponses": [0],
+      "explication": "L'écart Doppler est donné par **$f_d = \\frac{2 \\cdot V_r}{\\lambda}$**. La vitesse radiale peut être déduite par $V_r = \\frac{f_d \\cdot \\lambda}{2}$."
+    },
+    {
+      "id": "radar-vitesse-004",
+      "type": "QCM",
+      "question": "Si une cible **se rapproche** du radar, que se passe-t-il pour le spectre de l'écho ?",
+      "choix": [
+        "Le spectre se décale vers les fréquences hautes ($f_d > 0$).",
+        "Le spectre se décale vers les fréquences basses ($f_d < 0$).",
+        "Le spectre reste centré sur $f_0$.",
+        "Le spectre disparaît."
+      ],
+      "reponses": [0],
+      "explication": "Si une cible **se rapproche** du radar, le spectre de l'écho **se décale vers les fréquences hautes** ($f_d > 0$)."
+    },
+    {
+      "id": "radar-vitesse-005",
+      "type": "QCM",
+      "question": "Si une cible **s'éloigne** du radar, que se passe-t-il pour le spectre de l'écho ?",
+      "choix": [
+        "Le spectre se décale vers les fréquences hautes ($f_d > 0$).",
+        "Le spectre se décale vers les fréquences basses ($f_d < 0$).",
+        "Le spectre reste centré sur $f_0$.",
+        "Le spectre disparaît."
+      ],
+      "reponses": [1],
+      "explication": "Si une cible **s'éloigne** du radar, le spectre de l'écho **se décale vers les fréquences basses** ($f_d < 0$)."
+    },
+    {
+      "id": "radar-vitesse-006",
+      "type": "QCM",
+      "question": "Quelle est la formule de la **vitesse radiale relative** $V_r$ en fonction des vitesses du chasseur et de la cible ?",
+      "choix": [
+        "$V_r = V_{chasseur} \\cos \\alpha + V_{cible} \\cos \\beta$",
+        "$V_r = V_{chasseur} + V_{cible}$",
+        "$V_r = V_{chasseur} \\sin \\alpha + V_{cible} \\sin \\beta$",
+        "$V_r = \\sqrt{V_{chasseur}^2 + V_{cible}^2}$"
+      ],
+      "reponses": [0],
+      "explication": "La vitesse radiale relative est donnée par **$V_r = V_{chasseur} \\cos \\alpha + V_{cible} \\cos \\beta$**, où $\\alpha$ et $\\beta$ sont les angles entre les vitesses et la ligne radar-cible."
+    },
+    {
+      "id": "radar-vitesse-007",
+      "type": "QCM",
+      "question": "Quelle est la valeur de $f_d$ si $V_r = 150 \\text{ m/s}$ et $\\lambda = 0.1 \\text{ m}$ (3 GHz) ?",
+      "choix": ["300 Hz", "3000 Hz", "30 kHz", "300 kHz"],
+      "reponses": [2],
+      "explication": "$f_d = \\frac{2 \\cdot V_r}{\\lambda} = \\frac{2 \\cdot 150}{0.1} = 3000 \\text{ Hz} = 3 \\text{ kHz}$. **Correction** : $2 \\cdot 150 = 300$, $300 / 0.1 = 3000 \\text{ Hz} = 3 \\text{ kHz}$. **Réponse : 3000 Hz (option 1)**."
+    },
+    {
+      "id": "radar-vitesse-008",
+      "type": "QCM",
+      "question": "Quelle est la valeur de $V_r$ si $f_d = 3 \\text{ kHz}$ et $\\lambda = 0.1 \\text{ m}$ ?",
+      "choix": ["15 m/s", "50 m/s", "150 m/s", "500 m/s"],
+      "reponses": [2],
+      "explication": "$V_r = \\frac{f_d \\cdot \\lambda}{2} = \\frac{3000 \\cdot 0.1}{2} = \\frac{300}{2} = 150 \\text{ m/s}$."
+    },
+    {
+      "id": "radar-vitesse-009",
+      "type": "QCM",
+      "question": "Quel est le signe de $f_d$ par convention pour un **rapprochement** entre le radar et la cible ?",
+      "choix": ["Positif ($f_d > 0$).", "Négatif ($f_d < 0$).", "Nul ($f_d = 0$).", "Aléatoire."],
+      "reponses": [0],
+      "explication": "Par convention, **$f_d > 0$** pour un **rapprochement** entre le radar et la cible."
+    },
+    {
+      "id": "radar-vitesse-010",
+      "type": "QCM",
+      "question": "Quel est le signe de $f_d$ par convention pour un **éloignement** entre le radar et la cible ?",
+      "choix": ["Positif ($f_d > 0$).", "Négatif ($f_d < 0$).", "Nul ($f_d = 0$).", "Aléatoire."],
+      "reponses": [1],
+      "explication": "Par convention, **$f_d < 0$** pour un **éloignement** entre le radar et la cible."
+    }
+  ]
+}

@@ -1,0 +1,500 @@
+{
+  "titre": "Ch.4 - Echantillonnage",
+  "description": "Numérisation, étude théorique, condition de Nyquist, anti-repliement, quantification et reconstitution du signal.",
+  "questions": [
+    {
+      "id": "ch4-signal-num",
+      "type": "QCM",
+      "question": "Un signal numérique est constitué :",
+      "choix": [
+        "D'une variation continue d'une grandeur physique",
+        "D'une suite de mots eux-mêmes composés d'une suite de bits",
+        "D'une seule valeur analogique",
+        "D'un peigne de Dirac"
+      ],
+      "reponses": [1],
+      "explication": "Un signal numérique est constitué d'une suite de mots composés de bits. Plus les mots contiennent de bits, plus l'information transmise est détaillée."
+    },
+    {
+      "id": "ch4-transmission-parallele",
+      "type": "QCM",
+      "question": "Pour transmettre un signal numérique de N bits en parallèle, combien de fils faut-il ?",
+      "choix": [
+        "$N$ fils",
+        "$N + 1$ fils (un par bit plus la masse)",
+        "2 fils",
+        "$2N$ fils"
+      ],
+      "reponses": [1],
+      "explication": "En transmission parallèle, les N bits sont envoyés simultanément sur $N + 1$ fils : un fil pour chaque bit et un fil de masse."
+    },
+    {
+      "id": "ch4-avantages",
+      "type": "QCR",
+      "question": "Quels sont des avantages de la transmission numérique ?",
+      "choix": [
+        "Mise en mémoire du signal très rapide",
+        "Possibilité d'opérations arithmétiques sur les mots numériques",
+        "Moins grande influence des parasites sur l'information",
+        "Visualisation directe plus facile sur un oscilloscope"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "La difficulté d'interprétation directe (par rapport à un signal analogique visualisable directement) est un inconvénient, non un avantage. Les trois autres sont bien des avantages."
+    },
+    {
+      "id": "ch4-inconvenients",
+      "type": "QCR",
+      "question": "Quels sont des inconvénients de la transmission numérique ?",
+      "choix": [
+        "Difficulté d'interprétation directe du signal",
+        "Limitation en haute fréquence (certaines fonctions difficiles en temps très courts)",
+        "Système d'acquisition/calcul/restitution plus complexe et coûteux",
+        "Grande sensibilité aux parasites"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "La transmission numérique est au contraire moins sensible aux parasites. Les trois autres propositions sont des inconvénients réels."
+    },
+    {
+      "id": "ch4-chaine-acquisition",
+      "type": "QCM",
+      "question": "Quel est l'ordre correct des éléments d'une chaîne d'acquisition de données ?",
+      "choix": [
+        "Capteur → CAN → échantillonneur bloqueur → ampli+filtre → bus",
+        "Capteur → ampli+filtre → échantillonneur bloqueur → CAN → bus",
+        "Capteur → échantillonneur bloqueur → ampli+filtre → CAN → bus",
+        "CAN → capteur → ampli+filtre → échantillonneur bloqueur → bus"
+      ],
+      "reponses": [1],
+      "explication": "Le paramètre physique passe par : capteur → amplificateur + filtre (antirepliement) → échantillonneur bloqueur → CAN → bus de données numérique."
+    },
+    {
+      "id": "ch4-echantillonneur",
+      "type": "QCM",
+      "question": "Un échantillonneur transforme :",
+      "choix": [
+        "Un signal numérique en signal analogique",
+        "Un signal analogique à temps continu en signal analogique à temps discret",
+        "Un signal quantifié en signal continu",
+        "Un signal discret en signal continu"
+      ],
+      "reponses": [1],
+      "explication": "Un échantillonneur transforme un signal analogique à temps continu $s(t)$ en un signal analogique à temps discret $s^*(t)$."
+    },
+    {
+      "id": "ch4-bloqueur-role",
+      "type": "QCM",
+      "question": "Pourquoi l'échantillonneur est-il en réalité un échantillonneur bloqueur ?",
+      "choix": [
+        "Pour augmenter la fréquence d'échantillonnage",
+        "Pour maintenir la valeur $s(nT_e)$ pendant un certain temps et permettre au CAN de faire la conversion",
+        "Pour filtrer les hautes fréquences",
+        "Pour quantifier le signal"
+      ],
+      "reponses": [1],
+      "explication": "Il est nécessaire de maintenir (bloquer) la valeur $s(nT_e)$ pendant un certain temps pour permettre au CAN d'effectuer la conversion."
+    },
+    {
+      "id": "ch4-pas-quantif",
+      "type": "QCM",
+      "question": "Quelle est l'expression du pas de quantification $q$ (codage sur N bits, quantification par troncature) ?",
+      "choix": [
+        "$q = PE \\cdot 2^N$",
+        "$q = \\dfrac{PE}{2^N}$",
+        "$q = \\dfrac{PE}{2^N - 1}$",
+        "$q = \\dfrac{2^N}{PE}$"
+      ],
+      "reponses": [1],
+      "explication": "Pour la quantification par troncature, $q = \\dfrac{PE}{2^N}$, où $PE$ est la pleine échelle."
+    },
+    {
+      "id": "ch4-pleine-echelle",
+      "type": "QCM",
+      "question": "Que représente la pleine échelle $PE$ ?",
+      "choix": [
+        "La fréquence d'échantillonnage",
+        "La différence entre la plus grande et la plus petite valeur possible de $s(t)$",
+        "Le nombre de bits du codeur",
+        "La période d'échantillonnage"
+      ],
+      "reponses": [1],
+      "explication": "La pleine échelle $PE = s_M - s_m$ est la différence entre la plus grande valeur possible et la plus petite valeur possible de $s(t)$."
+    },
+    {
+      "id": "ch4-prod-dirac",
+      "type": "QCM",
+      "question": "Que vaut le produit d'une fonction $s(t)$ par un Dirac $\\delta(t - t_0)$ ?",
+      "choix": [
+        "$s(0)\\delta(t)$",
+        "$s(t_0)\\delta(t - t_0)$",
+        "$s(t - t_0)$",
+        "$s(t_0)$"
+      ],
+      "reponses": [1],
+      "explication": "$s(t)\\delta(t - t_0) = s(t_0)\\delta(t - t_0)$ : la multiplication par une impulsion de Dirac fournit un échantillon de la fonction à l'instant $t_0$."
+    },
+    {
+      "id": "ch4-echant-multiplication",
+      "type": "QCM",
+      "question": "L'échantillonnage d'un signal $s(t)$ à la fréquence $F_e = 1/T_e$ s'obtient par :",
+      "choix": [
+        "La convolution de $s(t)$ par un peigne de Dirac",
+        "La multiplication de $s(t)$ par un peigne de Dirac $p(t)$ de période $T_e$",
+        "La dérivation de $s(t)$",
+        "L'addition de $s(t)$ et d'un peigne de Dirac"
+      ],
+      "reponses": [1],
+      "explication": "L'échantillonnage s'obtient par $s(t)p(t) = \\sum_{n} s(nT_e)\\delta(t - nT_e)$, multiplication par un peigne de Dirac de période $T_e$."
+    },
+    {
+      "id": "ch4-s-etoile-dim",
+      "type": "QCM",
+      "question": "Quelle est l'unité du signal échantillonné $s^*(t)$ si $s$ est une tension (V) ?",
+      "choix": [
+        "V (volt)",
+        "$\\text{V}\\,\\text{s}^{-1}$",
+        "s (seconde)",
+        "Sans dimension"
+      ],
+      "reponses": [1],
+      "explication": "$\\delta$ est homogène à l'inverse d'un temps ($\\text{s}^{-1}$). $s^*$ = produit de $s$ (V) par $\\delta$, donc son unité est $\\text{V}\\,\\text{s}^{-1}$. $s^*(t)$ n'est pas un signal électrique visualisable."
+    },
+    {
+      "id": "ch4-tf-peigne-mesure",
+      "type": "QCM",
+      "question": "La transformée d'un peigne de Dirac de période $T_e$ et de mesure 1 est un peigne de Dirac de :",
+      "choix": [
+        "Période $T_e$ et mesure 1",
+        "Période $F_e = 1/T_e$ et mesure $1/T_e$",
+        "Période $F_e$ et mesure $T_e$",
+        "Période $1/T_e$ et mesure 1"
+      ],
+      "reponses": [1],
+      "explication": "La TF d'un peigne de période $T_e$ et de mesure 1 est un peigne de période $F_e = 1/T_e$ et de mesure $1/T_e$."
+    },
+    {
+      "id": "ch4-echant-periodiser",
+      "type": "QCM",
+      "question": "Échantillonner dans le domaine du temps revient à :",
+      "choix": [
+        "Échantillonner dans le domaine des fréquences",
+        "Périodiser dans le domaine des fréquences",
+        "Filtrer dans le domaine des fréquences",
+        "Dériver dans le domaine des fréquences"
+      ],
+      "reponses": [1],
+      "explication": "Échantillonner dans le temps revient à périodiser dans les fréquences : $S^*(f)$ est la répétition de $S(f)$ autour des multiples de $F_e$."
+    },
+    {
+      "id": "ch4-nyquist",
+      "type": "QCM",
+      "question": "Quelle est la condition d'échantillonnage de Nyquist pour un signal de spectre borné à $f_M$ ?",
+      "choix": [
+        "$F_e > f_M$",
+        "$F_e > 2 f_M$",
+        "$F_e < 2 f_M$",
+        "$F_e = f_M$"
+      ],
+      "reponses": [1],
+      "explication": "Pour échantillonner sans perte d'information, il faut $F_e > 2 f_M$ : c'est la condition de Nyquist."
+    },
+    {
+      "id": "ch4-repliement",
+      "type": "QCM",
+      "question": "Que se passe-t-il si $F_e < 2 f_M$ ?",
+      "choix": [
+        "On peut toujours reconstituer le signal",
+        "Les lobes du spectre se recouvrent (repliement) et le signal n'est plus reconstituable",
+        "Le signal est amplifié",
+        "Le bruit de quantification disparaît"
+      ],
+      "reponses": [1],
+      "explication": "Si $F_e < 2 f_M$, les lobes du spectre se recouvrent : il n'est plus possible d'isoler $S(f)$ ni de reconstituer le signal à partir de ses échantillons."
+    },
+    {
+      "id": "ch4-nyquist-limite",
+      "type": "QCM",
+      "question": "Pourquoi la valeur limite $F_e = 2 f_M$ n'est-elle pas acceptable en pratique ?",
+      "choix": [
+        "Parce qu'elle crée du repliement",
+        "Parce qu'isoler le lobe central exigerait un filtre passe-bas idéal irréalisable",
+        "Parce qu'elle double le bruit de quantification",
+        "Parce qu'elle est trop élevée"
+      ],
+      "reponses": [1],
+      "explication": "À $F_e = 2 f_M$, isoler le lobe central nécessiterait un filtre passe-bas idéal (irréalisable). On choisit donc toujours $F_e > 2 f_M$."
+    },
+    {
+      "id": "ch4-antirepliement",
+      "type": "QCM",
+      "question": "Quel est le rôle du filtre antirepliement ?",
+      "choix": [
+        "Reconstituer le signal après le CAN",
+        "Limiter le spectre du signal à $f_M$ avant l'échantillonnage, en éliminant les fréquences supérieures",
+        "Amplifier le signal",
+        "Quantifier les échantillons"
+      ],
+      "reponses": [1],
+      "explication": "Le filtre antirepliement est un passe-bas placé avant l'échantillonneur bloqueur ; il limite le spectre à $f_M$, éliminant les perturbations de fréquences supérieures qui causeraient du repliement."
+    },
+    {
+      "id": "ch4-quantif-types",
+      "type": "QCM",
+      "question": "Comment la quantification peut-elle être effectuée ?",
+      "choix": [
+        "Uniquement par troncature",
+        "Par arrondi ou par défaut (troncature)",
+        "Uniquement par arrondi",
+        "Par dérivation"
+      ],
+      "reponses": [1],
+      "explication": "La quantification peut être effectuée par arrondi ou par défaut (troncature)."
+    },
+    {
+      "id": "ch4-troncature-q",
+      "type": "QCM",
+      "question": "Pour la quantification par troncature, quelle relation lie $s_M - s_m$ et $q$ (codage sur N bits) ?",
+      "choix": [
+        "$s_M - s_m = (2^N - 1)q$",
+        "$s_M - s_m = 2^N q$",
+        "$s_M - s_m = 2^N / q$",
+        "$s_M - s_m = q / 2^N$"
+      ],
+      "reponses": [1],
+      "explication": "Pour la troncature, $s_M - s_m = 2^N q$, d'où $q = PE/2^N$."
+    },
+    {
+      "id": "ch4-arrondi-q",
+      "type": "QCM",
+      "question": "Pour la quantification par arrondi, quelle est l'expression du pas $q$ ?",
+      "choix": [
+        "$q = \\dfrac{PE}{2^N}$",
+        "$q = \\dfrac{PE}{2^N - 1}$",
+        "$q = PE \\cdot 2^N$",
+        "$q = \\dfrac{PE}{2^{N+1}}$"
+      ],
+      "reponses": [1],
+      "explication": "Pour l'arrondi, $s_M - s_m = (2^N - 1)q$, d'où $q = \\dfrac{PE}{2^N - 1}$."
+    },
+    {
+      "id": "ch4-bruit-quantif",
+      "type": "QCM",
+      "question": "Comment s'écrit la relation entre signal réel et signal quantifié ?",
+      "choix": [
+        "$s(t) = s_q(t) \\cdot \\varepsilon(t)$",
+        "$s(t) = s_q(t) + \\varepsilon(t)$, où $\\varepsilon(t)$ est le bruit de quantification",
+        "$s(t) = s_q(t) - q$",
+        "$s(t) = s_q(t)$"
+      ],
+      "reponses": [1],
+      "explication": "$s(t) = s_q(t) + \\varepsilon(t)$, où $\\varepsilon(t)$ est le signal d'erreur appelé bruit de quantification."
+    },
+    {
+      "id": "ch4-bruit-troncature",
+      "type": "QCM",
+      "question": "Quelle est la puissance du bruit de quantification par troncature ?",
+      "choix": [
+        "$B = \\dfrac{q^2}{12}$",
+        "$B = \\dfrac{q^2}{3}$",
+        "$B = \\dfrac{q^2}{2}$",
+        "$B = q^2$"
+      ],
+      "reponses": [1],
+      "explication": "Pour la troncature, la valeur moyenne du bruit est $q/2$ et sa puissance est $B = \\dfrac{q^2}{3}$."
+    },
+    {
+      "id": "ch4-bruit-arrondi",
+      "type": "QCM",
+      "question": "Quelle est la puissance du bruit de quantification par arrondi ?",
+      "choix": [
+        "$B = \\dfrac{q^2}{3}$",
+        "$B = \\dfrac{q^2}{12}$",
+        "$B = \\dfrac{q^2}{2}$",
+        "$B = \\dfrac{q}{12}$"
+      ],
+      "reponses": [1],
+      "explication": "Pour l'arrondi, la valeur moyenne du bruit est nulle et sa puissance est $B = \\dfrac{q^2}{12}$."
+    },
+    {
+      "id": "ch4-dynamique-def",
+      "type": "QCM",
+      "question": "Qu'est-ce que la dynamique de codage ?",
+      "choix": [
+        "Le rapport de la puissance de crête du codeur à la puissance du bruit de quantification",
+        "Le nombre total de bits du codeur",
+        "La fréquence d'échantillonnage maximale",
+        "La pleine échelle divisée par le pas de quantification"
+      ],
+      "reponses": [0],
+      "explication": "La dynamique de codage est le rapport de la puissance de crête du codeur à la puissance du bruit de quantification, c'est-à-dire le rapport signal sur bruit maximal pour un signal sinusoïdal."
+    },
+    {
+      "id": "ch4-snr-troncature",
+      "type": "QCM",
+      "question": "Quel est le rapport signal sur bruit maximal pour une quantification par troncature ?",
+      "choix": [
+        "$6{,}02N + 1{,}76$ dB",
+        "$6{,}02N - 4{,}3$ dB",
+        "$6{,}02N$ dB",
+        "$3N - 4{,}3$ dB"
+      ],
+      "reponses": [1],
+      "explication": "Pour la troncature, $(S/B)_{max} = \\dfrac{3}{8}2^{2N}$, soit $6{,}02N - 4{,}3$ dB."
+    },
+    {
+      "id": "ch4-snr-arrondi",
+      "type": "QCM",
+      "question": "Quel est le rapport signal sur bruit maximal pour une quantification par arrondi ?",
+      "choix": [
+        "$6{,}02N - 4{,}3$ dB",
+        "$6{,}02N + 1{,}76$ dB",
+        "$6{,}02N$ dB",
+        "$1{,}76N$ dB"
+      ],
+      "reponses": [1],
+      "explication": "Pour l'arrondi, $(S/B)_{max} = \\dfrac{3}{2}2^{2N}$, soit $6{,}02N + 1{,}76$ dB."
+    },
+    {
+      "id": "ch4-snr-bit",
+      "type": "QCM",
+      "question": "De combien augmente le rapport signal sur bruit par bit de codage supplémentaire ?",
+      "choix": [
+        "3 dB",
+        "6 dB",
+        "1,76 dB",
+        "20 dB"
+      ],
+      "reponses": [1],
+      "explication": "Le rapport signal sur bruit augmente d'environ 6 dB (6,02 dB) par bit de codage supplémentaire."
+    },
+    {
+      "id": "ch4-shannon",
+      "type": "QCM",
+      "question": "Le théorème de Shannon permet de reconstituer $s(t)$ par :",
+      "choix": [
+        "$s(t) = \\sum_{n} s(nT_e)\\,\\delta(t - nT_e)$",
+        "$s(t) = \\sum_{n} s(nT_e)\\,\\dfrac{\\sin(\\pi F_e t - n\\pi)}{\\pi F_e t - n\\pi}$",
+        "$s(t) = \\sum_{n} s(nT_e)$",
+        "$s(t) = s^*(t)\\cdot h_F(t)$"
+      ],
+      "reponses": [1],
+      "explication": "Si la condition de Nyquist est respectée, le théorème de Shannon donne $s(t) = \\sum_{n=-\\infty}^{\\infty} s(nT_e)\\,\\dfrac{\\sin(\\pi F_e t - n\\pi)}{\\pi F_e t - n\\pi}$."
+    },
+    {
+      "id": "ch4-shannon-temps-reel",
+      "type": "QCM",
+      "question": "Pourquoi la formule de Shannon n'est-elle pas utilisable en temps réel ?",
+      "choix": [
+        "Parce qu'elle nécessite un filtre antirepliement",
+        "Parce qu'elle fait appel aux valeurs $s(nT_e)$ de $-\\infty$ à $+\\infty$, donc à des instants futurs",
+        "Parce qu'elle est trop coûteuse en mémoire",
+        "Parce qu'elle ne respecte pas la condition de Nyquist"
+      ],
+      "reponses": [1],
+      "explication": "Pour calculer $s(t_0)$, il faudrait connaître les valeurs de $s$ à des instants $t > t_0$ (sommation de $-\\infty$ à $+\\infty$), ce qui est impossible en temps réel."
+    },
+    {
+      "id": "ch4-reponse-fenetre",
+      "type": "QCM",
+      "question": "Quelle est la réponse impulsionnelle $h_F(t)$ du filtre passe-bas idéal d'interpolation ?",
+      "choix": [
+        "$h_F(t) = T_e\\,e^{-j\\pi F_e t}$",
+        "$h_F(t) = \\dfrac{\\sin \\pi F_e t}{\\pi F_e t}$",
+        "$h_F(t) = \\delta(t)$",
+        "$h_F(t) = e^{-j2\\pi F_e t}$"
+      ],
+      "reponses": [1],
+      "explication": "La fonction fenêtre $F(f)$ étant un rectangle, sa transformée inverse est un sinus cardinal : $h_F(t) = \\dfrac{\\sin \\pi F_e t}{\\pi F_e t}$."
+    },
+    {
+      "id": "ch4-bloqueur0-taylor",
+      "type": "QCM",
+      "question": "Le bloqueur d'ordre 0 résulte de ne conserver, dans le développement de Taylor, que :",
+      "choix": [
+        "Les deux premiers termes",
+        "Le premier terme : $s(t) = s(nT_e)$ pour $0 \\leq \\tau \\leq T_e$",
+        "Le terme dérivée seconde",
+        "Tous les termes"
+      ],
+      "reponses": [1],
+      "explication": "Si on ne garde que le premier terme (dérivée d'ordre 0) du développement de Taylor, $s(t) = s(nT_e)$ pour $0 \\leq \\tau \\leq T_e$ : la valeur est maintenue constante pendant $T_e$."
+    },
+    {
+      "id": "ch4-cna-blocage",
+      "type": "QCM",
+      "question": "Quel élément réalise naturellement le blocage d'ordre 0 dans la chaîne de restitution ?",
+      "choix": [
+        "Le filtre antirepliement",
+        "Le CNA (la tension de sortie reste constante pendant $T_e$, donnant des marches d'escalier)",
+        "Le CAN",
+        "Le capteur"
+      ],
+      "reponses": [1],
+      "explication": "Le CNA reçoit un mot binaire tous les $T_e$ et son contenu n'est modifié que tous les $T_e$ : la tension de sortie reste constante pendant $T_e$, réalisant le blocage d'ordre 0 (marches d'escalier)."
+    },
+    {
+      "id": "ch4-bloqueur0-h0",
+      "type": "QCM",
+      "question": "Quelle est la réponse impulsionnelle $h_0(t)$ d'un bloqueur d'ordre 0 ?",
+      "choix": [
+        "Une impulsion de Dirac",
+        "Un rectangle de hauteur 1 et de largeur $T_e$",
+        "Un sinus cardinal",
+        "Une exponentielle décroissante"
+      ],
+      "reponses": [1],
+      "explication": "La réponse impulsionnelle $h_0(t)$ du bloqueur d'ordre 0 est un rectangle (créneau) de hauteur 1 et de largeur $T_e$."
+    },
+    {
+      "id": "ch4-bloqueur0-H0",
+      "type": "QCM",
+      "question": "Quelle est la fonction de transfert $H_0(f)$ du bloqueur d'ordre 0 ?",
+      "choix": [
+        "$H_0(f) = T_e\\,e^{-j\\pi f T_e}\\,\\dfrac{\\sin \\pi f T_e}{\\pi f T_e}$",
+        "$H_0(f) = \\dfrac{\\sin \\pi f T_e}{\\pi f T_e}$",
+        "$H_0(f) = T_e\\,\\delta(f)$",
+        "$H_0(f) = e^{-j2\\pi f T_e}$"
+      ],
+      "reponses": [0],
+      "explication": "$H_0(f) = \\displaystyle\\int_0^{T_e} e^{-j2\\pi f t}\\,dt = T_e\\,e^{-j\\pi f T_e}\\,\\dfrac{\\sin \\pi f T_e}{\\pi f T_e}$."
+    },
+    {
+      "id": "ch4-bloqueur0-defauts",
+      "type": "QCR",
+      "question": "Pourquoi le bloqueur d'ordre 0 n'est-il pas un interpolateur idéal ?",
+      "choix": [
+        "Il atténue notablement le signal dans la bande utile (atténuation de 0,64 à $F_e/2$)",
+        "Il n'élimine pas totalement les fréquences supérieures à $F_e/2$",
+        "Sa fonction de transfert n'est pas constante dans la bande utile",
+        "Il ajoute de nouvelles fréquences au signal"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Le bloqueur d'ordre 0 atténue le signal dans la bande utile (0,64 à $F_e/2$), sa fonction de transfert n'est pas constante, et il laisse passer des résidus au-delà de $F_e/2$. Il ne crée pas de nouvelles fréquences."
+    },
+    {
+      "id": "ch4-bloqueur0-lineaire",
+      "type": "QCM",
+      "question": "Le bloqueur d'ordre 0 est-il un système linéaire ?",
+      "choix": [
+        "Oui, strictement linéaire",
+        "Non strictement, mais on peut le considérer linéaire pour une entrée définie uniquement aux instants $nT_e$",
+        "Jamais considéré linéaire",
+        "Linéaire seulement à basse fréquence"
+      ],
+      "reponses": [1],
+      "explication": "Le bloqueur d'ordre 0 n'est pas strictement linéaire (la sortie ne dépend pas de l'évolution de l'entrée entre 0 et $T_e$), mais on peut le considérer comme linéaire pour une suite d'impulsions appliquées tous les $T_e$."
+    },
+    {
+      "id": "ch4-filtre-lissage",
+      "type": "QCM",
+      "question": "À quoi sert le filtre de lissage dans la chaîne de restitution ?",
+      "choix": [
+        "À quantifier le signal",
+        "À reconstituer correctement le signal en suivant le bloqueur d'ordre 0 (filtre passe-bas)",
+        "À échantillonner le signal",
+        "À limiter le spectre avant l'échantillonnage"
+      ],
+      "reponses": [1],
+      "explication": "On fait suivre le bloqueur d'ordre 0 d'un filtre passe-bas de lissage pour corriger la déformation du lobe central et éliminer les résidus des lobes latéraux, reconstituant correctement le signal."
+    }
+  ]
+}

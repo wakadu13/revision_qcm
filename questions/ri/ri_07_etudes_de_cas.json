@@ -1,0 +1,282 @@
+{
+  "titre": "RI — Partie VII : Études de cas (Iran, détroits, Monroe/Trump, Arctique)",
+  "description": "USA–Iran, détroits stratégiques (Ormuz), doctrine Monroe et « corollaire Trump » (Venezuela), Arctique et Groenland.",
+  "questions": [
+    {
+      "id": "c7-iran-1951",
+      "type": "QCM",
+      "question": "Que se passe-t-il en 1951 dans la relation USA-Iran ?",
+      "choix": [
+        "Coup d'État contre Mossadegh",
+        "Nationalisation du pétrole iranien par Mossadegh (contre l'Anglo-Iranian Oil Company)",
+        "Révolution islamique",
+        "Accord nucléaire JCPOA"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "1951 : nationalisation du pétrole par le Premier ministre Mossadegh."
+    },
+    {
+      "id": "c7-iran-1953",
+      "type": "QCM",
+      "question": "Que se passe-t-il en 1953 ?",
+      "choix": [
+        "Nationalisation du pétrole",
+        "Coup d'État (opération Ajax, CIA/MI6) renversant Mossadegh et rétablissant le Shah",
+        "Prise d'otages de l'ambassade",
+        "« Axe du mal »"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "1953 : coup d'État, « péché originel » de la défiance iranienne envers les États-Unis."
+    },
+    {
+      "id": "c7-iran-1979",
+      "type": "QCM",
+      "question": "Que se passe-t-il en 1978-1979 ?",
+      "choix": [
+        "Fastes de Persépolis",
+        "Révolution islamique, chute du Shah, retour de Khomeini, prise d'otages de l'ambassade américaine",
+        "Signature du JCPOA",
+        "Accord d'Alger"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Révolution islamique de 1979."
+    },
+    {
+      "id": "c7-iran-2002",
+      "type": "QCM",
+      "question": "Que se passe-t-il en 2002 ?",
+      "choix": [
+        "Signature du JCPOA",
+        "G. W. Bush range l'Iran dans l'« axe du mal »",
+        "Révolution islamique",
+        "Nationalisation du pétrole"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "2002 : discours de l'« axe du mal »."
+    },
+    {
+      "id": "c7-iran-2015",
+      "type": "QCM",
+      "question": "Que se passe-t-il en 2015 ?",
+      "choix": [
+        "Accord sur le nucléaire (JCPOA)",
+        "Coup d'État",
+        "Discours de l'« axe du mal »",
+        "Prise d'otages"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "JCPOA en 2015, dénoncé par les États-Unis en 2018."
+    },
+    {
+      "id": "c7-guide-supreme",
+      "type": "QCM",
+      "question": "Au sommet du régime politique iranien se trouve :",
+      "choix": [
+        "Le président élu",
+        "Le Guide suprême (chef de l'État, à vie)",
+        "Le Majlis",
+        "Le Conseil des gardiens"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le Guide suprême contrôle l'armée, la justice et la radio-télévision."
+    },
+    {
+      "id": "c7-conseil-gardiens",
+      "type": "QCM",
+      "question": "En Iran, le Conseil des gardiens sert notamment à :",
+      "choix": [
+        "Élire le Guide suprême",
+        "Filtrer les candidatures",
+        "Commander l'armée",
+        "Juger les crimes de guerre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le Conseil des gardiens filtre les candidatures ; l'Assemblée des experts désigne le Guide."
+    },
+    {
+      "id": "c7-chokepoint",
+      "type": "QCM",
+      "question": "Un « chokepoint » (point de passage stratégique) est :",
+      "choix": [
+        "Un État",
+        "Un point de passage maritime par lequel transite le commerce mondial",
+        "Une organisation internationale",
+        "Une projection cartographique"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Contrôler un chokepoint, c'est tenir l'économie mondiale."
+    },
+    {
+      "id": "c7-detroits",
+      "type": "QCR",
+      "question": "Lesquels sont des détroits / points de passage stratégiques cités ?",
+      "choix": [
+        "Ormuz",
+        "Malacca",
+        "Le détroit des Andes",
+        "Bab-el-Mandeb"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Ormuz, Malacca, Bab-el-Mandeb, Suez, Panama, Bosphore/Dardanelles. Le « détroit des Andes » n'existe pas."
+    },
+    {
+      "id": "c7-ormuz",
+      "type": "QCM",
+      "question": "Le détroit d'Ormuz concentre environ :",
+      "choix": [
+        "5 % du pétrole maritime mondial",
+        "20-30 % du pétrole maritime mondial",
+        "50 %",
+        "80 %"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "≈ 20-30 % du pétrole maritime mondial transite par Ormuz."
+    },
+    {
+      "id": "c7-monroe",
+      "type": "QCM",
+      "question": "La doctrine Monroe (1823) posait que :",
+      "choix": [
+        "L'Europe doit dominer l'Amérique",
+        "« L'Amérique aux Américains » : pas d'ingérence européenne dans l'hémisphère",
+        "La liberté absolue des mers",
+        "Le désarmement général"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Doctrine Monroe (1823) : l'Amérique est la chasse gardée des États-Unis."
+    },
+    {
+      "id": "c7-roosevelt",
+      "type": "QCM",
+      "question": "Le corollaire Roosevelt (1904) ajoute à la doctrine Monroe :",
+      "choix": [
+        "Le désarmement",
+        "Un droit d'intervention (« big stick »)",
+        "La non-intervention",
+        "La décolonisation"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Corollaire Roosevelt (1904) : politique du « big stick »."
+    },
+    {
+      "id": "c7-trump-corollary",
+      "type": "QCM",
+      "question": "Le « Trump Corollary » à la doctrine Monroe figure dans :",
+      "choix": [
+        "La Charte de l'ONU",
+        "La Stratégie de sécurité nationale de décembre 2025",
+        "La CNUDM",
+        "Le JCPOA"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "National Security Strategy de décembre 2025 : réaffirmation de la prééminence américaine dans l'hémisphère."
+    },
+    {
+      "id": "c7-maduro",
+      "type": "QCM",
+      "question": "L'opération « Absolute Resolve » (3 janvier 2026) a :",
+      "choix": [
+        "Capturé le président vénézuélien Nicolás Maduro à Caracas",
+        "Fermé le détroit d'Ormuz",
+        "Renversé le Shah d'Iran",
+        "Créé l'OTAN"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Capture de Maduro, transféré aux États-Unis (via Guantánamo)."
+    },
+    {
+      "id": "c7-maduro-critique",
+      "type": "QCR",
+      "question": "Pour ses détracteurs, la capture de Maduro pose problème car elle constitue :",
+      "choix": [
+        "Un recours à la force contre un État souverain",
+        "Une atteinte au principe de non-intervention (art. 2 §4 de la Charte)",
+        "Une action parfaitement conforme à la Charte",
+        "Une illustration du retour de l'unilatéralisme"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Washington la présente comme « application de la loi » (narcotrafic) ; ses détracteurs y voient une violation de la Charte."
+    },
+    {
+      "id": "c7-groenland",
+      "type": "QCM",
+      "question": "Le Groenland est :",
+      "choix": [
+        "Un État indépendant",
+        "Un territoire autonome du Danemark",
+        "Une colonie américaine",
+        "Un membre de l'ONU"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Territoire autonome du Danemark, convoité par les États-Unis."
+    },
+    {
+      "id": "c7-groenland-enjeux",
+      "type": "QCR",
+      "question": "Pourquoi le Groenland est-il convoité ?",
+      "choix": [
+        "Sa position stratégique (Amérique du Nord / Europe / Russie)",
+        "Ses ressources (terres rares, uranium, zinc, hydrocarbures)",
+        "L'ouverture de nouvelles routes maritimes arctiques",
+        "Son climat tropical"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Le réchauffement climatique « ouvre » l'Arctique : la périphérie gelée devient un centre."
+    },
+    {
+      "id": "c7-chine-arctique",
+      "type": "QCM",
+      "question": "Dans l'Arctique, la Chine se présente comme :",
+      "choix": [
+        "Un État riverain de l'océan Arctique",
+        "Un « État quasi-arctique »",
+        "Le propriétaire du pôle Nord",
+        "Totalement absente"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La Chine, nouvel entrant, se revendique « État quasi-arctique »."
+    }
+  ]
+}

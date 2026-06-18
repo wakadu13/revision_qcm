@@ -1,0 +1,604 @@
+{
+  "titre": "Adressage IPv4 (Module 11 - ITN)",
+  "description": "Révision complète : structure de l'adresse, monodiffusion/diffusion/multidiffusion, types d'adresses, segmentation et sous-réseaux, VLSM.",
+  "questions": [
+    {
+      "id": "ipv4-nb-bits",
+      "type": "QCM",
+      "question": "Sur combien de bits une adresse IPv4 est-elle codée ?",
+      "choix": ["16 bits", "32 bits", "48 bits", "128 bits"],
+      "reponses": [1],
+      "explication": "Une adresse IPv4 est une adresse hiérarchique de 32 bits."
+    },
+    {
+      "id": "ipv4-deux-parties",
+      "type": "QCM",
+      "question": "De quelles deux parties se compose une adresse IPv4 ?",
+      "choix": [
+        "Une partie publique et une partie privée",
+        "Une partie réseau et une partie hôte",
+        "Une partie classe et une partie masque",
+        "Une partie source et une partie destination"
+      ],
+      "reponses": [1],
+      "explication": "Une adresse IPv4 se compose d'une partie réseau et d'une partie hôte."
+    },
+    {
+      "id": "ipv4-role-masque",
+      "type": "QCM",
+      "question": "À quoi sert le masque de sous-réseau ?",
+      "choix": [
+        "À déterminer la partie réseau d'une adresse IP",
+        "À chiffrer le trafic",
+        "À compter le nombre de routeurs",
+        "À attribuer une classe à l'adresse"
+      ],
+      "reponses": [0],
+      "explication": "Le masque de sous-réseau sert à déterminer la partie réseau d'une adresse IP."
+    },
+    {
+      "id": "ipv4-operation-and",
+      "type": "QCM",
+      "question": "Quelle opération logique permet de déterminer l'adresse réseau à partir d'une adresse d'hôte et de son masque ?",
+      "choix": ["OR (OU)", "XOR (OU exclusif)", "AND (ET)", "NOT (NON)"],
+      "reponses": [2],
+      "explication": "On effectue un AND (ET) logique, bit à bit, entre l'adresse de l'hôte et le masque."
+    },
+    {
+      "id": "and-1-1",
+      "type": "QCM",
+      "question": "Quel est le résultat de l'opération 1 AND 1 ?",
+      "choix": ["0", "1", "2", "Indéfini"],
+      "reponses": [1],
+      "explication": "1 AND 1 = 1. Toutes les autres combinaisons donnent 0."
+    },
+    {
+      "id": "and-resultats",
+      "type": "QCR",
+      "question": "Parmi ces opérations AND, lesquelles donnent un résultat égal à 0 ?",
+      "choix": ["1 AND 1", "0 AND 1", "1 AND 0", "0 AND 0"],
+      "reponses": [1, 2, 3],
+      "explication": "Seul 1 AND 1 = 1 ; 0 AND 1, 1 AND 0 et 0 AND 0 donnent tous 0."
+    },
+    {
+      "id": "prefixe-definition",
+      "type": "QCM",
+      "question": "À quoi correspond la longueur de préfixe (notation /n) ?",
+      "choix": [
+        "Au nombre de bits définis sur 0 dans le masque",
+        "Au nombre de bits définis sur 1 dans le masque de sous-réseau",
+        "Au nombre d'octets de l'adresse",
+        "Au nombre d'hôtes du réseau"
+      ],
+      "reponses": [1],
+      "explication": "La longueur de préfixe correspond au nombre de bits à 1 dans le masque de sous-réseau."
+    },
+    {
+      "id": "masque-24",
+      "type": "QCM",
+      "question": "À quel masque de sous-réseau correspond le préfixe /24 ?",
+      "choix": ["255.255.0.0", "255.255.255.0", "255.255.255.128", "255.0.0.0"],
+      "reponses": [1],
+      "explication": "/24 = 24 bits à 1 = 255.255.255.0."
+    },
+    {
+      "id": "masque-26",
+      "type": "QCM",
+      "question": "Quel masque correspond au préfixe /26 ?",
+      "choix": ["255.255.255.192", "255.255.255.224", "255.255.255.128", "255.255.255.240"],
+      "reponses": [0],
+      "explication": "/26 = 11111111.11111111.11111111.11000000 = 255.255.255.192."
+    },
+    {
+      "id": "masque-30",
+      "type": "QCM",
+      "question": "Quel masque correspond au préfixe /30 ?",
+      "choix": ["255.255.255.224", "255.255.255.248", "255.255.255.252", "255.255.255.255"],
+      "reponses": [2],
+      "explication": "/30 = 255.255.255.252, soit 2 bits d'hôte (idéal pour les liaisons WAN)."
+    },
+    {
+      "id": "masque-8-prefixe",
+      "type": "QCM",
+      "question": "Le masque 255.0.0.0 correspond à quelle longueur de préfixe ?",
+      "choix": ["/8", "/16", "/24", "/4"],
+      "reponses": [0],
+      "explication": "255.0.0.0 = 8 bits à 1 = /8."
+    },
+    {
+      "id": "adresse-reseau-bits",
+      "type": "QCM",
+      "question": "Comment reconnaît-on l'adresse réseau d'un sous-réseau ?",
+      "choix": [
+        "Tous les bits de la partie hôte sont à 1",
+        "Tous les bits de la partie hôte sont à 0",
+        "Le dernier octet vaut toujours 255",
+        "Le premier octet vaut toujours 0"
+      ],
+      "reponses": [1],
+      "explication": "L'adresse réseau a tous les bits de la partie hôte à 0."
+    },
+    {
+      "id": "adresse-diffusion-bits",
+      "type": "QCM",
+      "question": "Comment reconnaît-on l'adresse de diffusion (broadcast) d'un réseau ?",
+      "choix": [
+        "Tous les bits de la partie hôte sont à 0",
+        "Tous les bits de la partie hôte sont à 1",
+        "C'est toujours la première adresse",
+        "C'est l'adresse de la passerelle"
+      ],
+      "reponses": [1],
+      "explication": "L'adresse de diffusion a tous les bits de la partie hôte à 1."
+    },
+    {
+      "id": "and-calcul-192-168-1-5",
+      "type": "QCM",
+      "question": "Quelle est l'adresse réseau de 192.168.1.5 avec le masque 255.255.255.0 ?",
+      "choix": ["192.168.1.0", "192.168.1.5", "192.168.0.0", "192.168.1.255"],
+      "reponses": [0],
+      "explication": "Le AND entre 192.168.1.5 et 255.255.255.0 donne 192.168.1.0."
+    },
+    {
+      "id": "premiere-derniere-24",
+      "type": "QCM",
+      "question": "Pour le réseau 192.168.10.0/24, quelle est la première adresse d'hôte utilisable ?",
+      "choix": ["192.168.10.0", "192.168.10.1", "192.168.10.254", "192.168.10.255"],
+      "reponses": [1],
+      "explication": "La première adresse d'hôte est l'adresse réseau + 1, soit 192.168.10.1."
+    },
+    {
+      "id": "broadcast-24",
+      "type": "QCM",
+      "question": "Pour le réseau 192.168.10.0/24, quelle est l'adresse de diffusion ?",
+      "choix": ["192.168.10.0", "192.168.10.1", "192.168.10.254", "192.168.10.255"],
+      "reponses": [3],
+      "explication": "Tous les bits d'hôte à 1 donnent 192.168.10.255."
+    },
+    {
+      "id": "trois-types-adresses",
+      "type": "QCR",
+      "question": "Au sein de chaque réseau, quels sont les trois types d'adresses IP ?",
+      "choix": ["Adresse réseau", "Adresses d'hôtes", "Adresse de diffusion", "Adresse de classe"],
+      "reponses": [0, 1, 2],
+      "explication": "On trouve l'adresse réseau, les adresses d'hôtes et l'adresse de diffusion."
+    },
+    {
+      "id": "monodiffusion-def",
+      "type": "QCM",
+      "question": "Que fait une transmission de monodiffusion (unicast) ?",
+      "choix": [
+        "Envoie un paquet à une seule adresse IP de destination",
+        "Envoie un paquet à toutes les destinations",
+        "Envoie un paquet à un groupe d'adresses",
+        "Envoie un paquet uniquement aux routeurs"
+      ],
+      "reponses": [0],
+      "explication": "La monodiffusion envoie un paquet à une seule adresse IP de destination."
+    },
+    {
+      "id": "diffusion-def",
+      "type": "QCM",
+      "question": "Que fait une transmission de diffusion (broadcast) ?",
+      "choix": [
+        "Envoie à une seule destination",
+        "Envoie à toutes les autres adresses IP de destination",
+        "Envoie à un groupe d'abonnés",
+        "Envoie uniquement à la passerelle"
+      ],
+      "reponses": [1],
+      "explication": "La diffusion envoie un paquet à toutes les autres adresses IP de destination."
+    },
+    {
+      "id": "broadcast-limite",
+      "type": "QCM",
+      "question": "Quelle est l'adresse de destination d'une diffusion limitée (limited broadcast) ?",
+      "choix": ["0.0.0.0", "255.255.255.255", "224.0.0.1", "192.168.0.255"],
+      "reponses": [1],
+      "explication": "La diffusion limitée utilise l'adresse de destination 255.255.255.255."
+    },
+    {
+      "id": "multidiffusion-def",
+      "type": "QCM",
+      "question": "Que fait une transmission de multidiffusion (multicast) ?",
+      "choix": [
+        "Envoie un paquet à toutes les destinations du réseau",
+        "Envoie un paquet à un groupe d'adresses de multidiffusion",
+        "Envoie un paquet à une seule destination",
+        "Envoie un paquet uniquement en local"
+      ],
+      "reponses": [1],
+      "explication": "La multidiffusion envoie un paquet à un groupe d'adresses de multidiffusion (ex. 224.10.10.5)."
+    },
+    {
+      "id": "rfc-1918",
+      "type": "QCM",
+      "question": "Quelle RFC définit les blocs d'adresses IPv4 privées ?",
+      "choix": ["RFC 790", "RFC 1918", "RFC 2460", "RFC 791"],
+      "reponses": [1],
+      "explication": "Les adresses privées sont définies par la RFC 1918."
+    },
+    {
+      "id": "plages-privees",
+      "type": "QCR",
+      "question": "Parmi ces blocs, lesquels sont des plages d'adresses IPv4 privées (RFC 1918) ?",
+      "choix": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "8.8.8.0/24"],
+      "reponses": [0, 1, 2],
+      "explication": "Les plages privées sont 10.0.0.0/8, 172.16.0.0/12 et 192.168.0.0/16."
+    },
+    {
+      "id": "plage-172-privee",
+      "type": "QCM",
+      "question": "Quelle est l'étendue exacte du bloc privé 172.16.0.0/12 ?",
+      "choix": [
+        "172.16.0.0 - 172.16.255.255",
+        "172.16.0.0 - 172.31.255.255",
+        "172.0.0.0 - 172.255.255.255",
+        "172.16.0.0 - 172.255.255.255"
+      ],
+      "reponses": [1],
+      "explication": "Le bloc 172.16.0.0/12 va de 172.16.0.0 à 172.31.255.255."
+    },
+    {
+      "id": "nat-role",
+      "type": "QCM",
+      "question": "Quel est le rôle du NAT (traduction d'adresses réseau) ?",
+      "choix": [
+        "Convertir les adresses IPv4 privées en adresses IPv4 publiques",
+        "Attribuer une adresse MAC à chaque hôte",
+        "Chiffrer le trafic vers Internet",
+        "Augmenter la taille du masque"
+      ],
+      "reponses": [0],
+      "explication": "Le NAT convertit les adresses IPv4 privées en adresses IPv4 publiques, généralement sur le routeur périphérique."
+    },
+    {
+      "id": "bouclage",
+      "type": "QCM",
+      "question": "Quelle adresse de bouclage (loopback) est généralement utilisée pour vérifier la configuration TCP/IP locale ?",
+      "choix": ["169.254.0.1", "127.0.0.1", "192.168.0.1", "255.255.255.255"],
+      "reponses": [1],
+      "explication": "127.0.0.1 (bloc 127.0.0.0/8) sert à tester la pile TCP/IP de l'hôte."
+    },
+    {
+      "id": "link-local-apipa",
+      "type": "QCM",
+      "question": "Quel bloc correspond aux adresses link-local (APIPA) ?",
+      "choix": ["127.0.0.0/8", "169.254.0.0/16", "10.0.0.0/8", "172.16.0.0/12"],
+      "reponses": [1],
+      "explication": "Les adresses link-local APIPA sont dans 169.254.0.0/16, attribuées quand aucun serveur DHCP n'est disponible."
+    },
+    {
+      "id": "apipa-quand",
+      "type": "QCM",
+      "question": "Dans quel cas un client Windows s'auto-attribue-t-il une adresse APIPA ?",
+      "choix": [
+        "Quand l'adresse est statique",
+        "Quand aucun serveur DHCP n'est disponible",
+        "Quand le NAT est désactivé",
+        "Quand le masque est /8"
+      ],
+      "reponses": [1],
+      "explication": "APIPA permet à un client DHCP Windows de se configurer automatiquement si aucun serveur DHCP n'est joignable."
+    },
+    {
+      "id": "rfc-790-classes",
+      "type": "QCM",
+      "question": "Quelle RFC (1981) définissait l'adressage par classe ?",
+      "choix": ["RFC 1918", "RFC 790", "RFC 2131", "RFC 1149"],
+      "reponses": [1],
+      "explication": "L'adressage par classe était défini dans la RFC 790 (1981)."
+    },
+    {
+      "id": "classe-a-plage",
+      "type": "QCM",
+      "question": "Quelle est la plage du premier octet pour la classe A ?",
+      "choix": ["0 à 127", "128 à 191", "192 à 223", "224 à 239"],
+      "reponses": [0],
+      "explication": "La classe A va de 0.0.0.0/8 à 127.0.0.0/8."
+    },
+    {
+      "id": "classe-c-plage",
+      "type": "QCM",
+      "question": "Quelle est la plage du premier octet pour la classe C ?",
+      "choix": ["0 à 127", "128 à 191", "192 à 223", "240 à 255"],
+      "reponses": [2],
+      "explication": "La classe C va de 192.0.0.0 à 223.255.255.0."
+    },
+    {
+      "id": "classe-d-multicast",
+      "type": "QCM",
+      "question": "À quoi correspond la classe D (224.0.0.0 à 239.0.0.0) ?",
+      "choix": ["Adresses de multidiffusion", "Adresses privées", "Adresses expérimentales", "Adresses de bouclage"],
+      "reponses": [0],
+      "explication": "La classe D (224 à 239) est réservée à la multidiffusion."
+    },
+    {
+      "id": "classe-e",
+      "type": "QCM",
+      "question": "Quelle plage correspond à la classe E ?",
+      "choix": ["192.0.0.0 à 223.255.255.0", "240.0.0.0 à 255.0.0.0", "128.0.0.0 à 191.255.0.0", "0.0.0.0 à 127.0.0.0"],
+      "reponses": [1],
+      "explication": "La classe E (expérimentale) couvre 240.0.0.0 à 255.0.0.0."
+    },
+    {
+      "id": "classful-gaspillage",
+      "type": "QCM",
+      "question": "Quel défaut majeur l'adressage par classe présentait-il ?",
+      "choix": [
+        "Il était trop sécurisé",
+        "Il gaspillait de nombreuses adresses IPv4",
+        "Il ne fonctionnait qu'en IPv6",
+        "Il empêchait l'utilisation du NAT"
+      ],
+      "reponses": [1],
+      "explication": "L'adressage par classe gaspillait beaucoup d'adresses ; il a été remplacé par l'adressage sans classe."
+    },
+    {
+      "id": "iana-role",
+      "type": "QCM",
+      "question": "Quel organisme gère les blocs d'adresses IPv4/IPv6 et les attribue aux RIR ?",
+      "choix": ["L'IANA", "Le FAI", "L'ICANN local", "Le serveur DHCP"],
+      "reponses": [0],
+      "explication": "L'IANA gère les blocs et les attribue aux organismes d'enregistrement Internet régionaux (RIR)."
+    },
+    {
+      "id": "rir-europe",
+      "type": "QCM",
+      "question": "Quel RIR couvre l'Europe ?",
+      "choix": ["ARIN", "APNIC", "RIPE NCC", "LACNIC"],
+      "reponses": [2],
+      "explication": "RIPE NCC est le RIR pour l'Europe (ARIN : Amérique du Nord, APNIC : Asie-Pacifique, LACNIC : Amérique latine, AfriNIC : Afrique)."
+    },
+    {
+      "id": "stoppe-diffusion",
+      "type": "QCM",
+      "question": "Quel est le seul périphérique qui arrête les messages de diffusion ?",
+      "choix": ["Le commutateur (switch)", "Le concentrateur (hub)", "Le routeur", "Le point d'accès Wi-Fi"],
+      "reponses": [2],
+      "explication": "Le routeur arrête les diffusions ; chaque interface de routeur délimite un domaine de diffusion."
+    },
+    {
+      "id": "switch-diffusion",
+      "type": "QCM",
+      "question": "Comment un commutateur traite-t-il un message de diffusion ?",
+      "choix": [
+        "Il le bloque",
+        "Il le transmet sur toutes les interfaces sauf celle d'origine",
+        "Il le transmet uniquement à l'expéditeur",
+        "Il le route vers Internet"
+      ],
+      "reponses": [1],
+      "explication": "Le commutateur diffuse le message sur toutes ses interfaces, sauf celle d'où il provient."
+    },
+    {
+      "id": "sous-reseau-but",
+      "type": "QCM",
+      "question": "Quel est le but principal de la création de sous-réseaux face à un grand domaine de diffusion ?",
+      "choix": [
+        "Augmenter le nombre d'adresses publiques",
+        "Réduire la taille des domaines de diffusion",
+        "Supprimer le besoin de routeurs",
+        "Désactiver le protocole ARP"
+      ],
+      "reponses": [1],
+      "explication": "Le découpage en sous-réseaux crée de plus petits domaines de diffusion, limitant la propagation des diffusions."
+    },
+    {
+      "id": "avantages-sous-reseau",
+      "type": "QCR",
+      "question": "Quels avantages apporte la segmentation en sous-réseaux ?",
+      "choix": [
+        "Réduit le trafic global et améliore les performances",
+        "Permet d'appliquer des politiques de sécurité entre sous-réseaux",
+        "Réduit le nombre de périphériques affectés par un trafic de diffusion anormal",
+        "Supprime totalement les adresses de diffusion"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Le sous-réseautage améliore les performances, la sécurité et limite l'impact des diffusions ; il ne supprime pas les adresses de diffusion."
+    },
+    {
+      "id": "hotes-25",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un sous-réseau /25 fournit-il ?",
+      "choix": ["62", "126", "254", "30"],
+      "reponses": [1],
+      "explication": "/25 laisse 7 bits d'hôte : 2^7 - 2 = 126 hôtes."
+    },
+    {
+      "id": "hotes-27",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un sous-réseau /27 fournit-il ?",
+      "choix": ["14", "30", "62", "6"],
+      "reponses": [1],
+      "explication": "/27 laisse 5 bits d'hôte : 2^5 - 2 = 30 hôtes."
+    },
+    {
+      "id": "hotes-30",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un sous-réseau /30 fournit-il ?",
+      "choix": ["2", "4", "6", "0"],
+      "reponses": [0],
+      "explication": "/30 laisse 2 bits d'hôte : 2^2 - 2 = 2 hôtes, idéal pour une liaison WAN point à point."
+    },
+    {
+      "id": "sous-reseaux-26-depuis-24",
+      "type": "QCM",
+      "question": "En découpant un réseau /24 avec un masque /26, combien de sous-réseaux obtient-on ?",
+      "choix": ["2", "4", "8", "16"],
+      "reponses": [1],
+      "explication": "On emprunte 2 bits : 2^2 = 4 sous-réseaux."
+    },
+    {
+      "id": "formule-hotes",
+      "type": "QCM",
+      "question": "Quelle formule donne le nombre d'hôtes utilisables, n étant le nombre de bits d'hôte ?",
+      "choix": ["2^n", "2^n - 2", "2^n + 2", "n^2 - 2"],
+      "reponses": [1],
+      "explication": "On retire l'adresse réseau et l'adresse de diffusion : 2^n - 2."
+    },
+    {
+      "id": "pourquoi-moins-2",
+      "type": "QCR",
+      "question": "Pourquoi soustrait-on 2 au nombre total d'adresses pour obtenir le nombre d'hôtes utilisables ?",
+      "choix": [
+        "À cause de l'adresse réseau (tous les bits hôte à 0)",
+        "À cause de l'adresse de diffusion (tous les bits hôte à 1)",
+        "À cause de l'adresse de la passerelle",
+        "À cause de l'adresse de bouclage"
+      ],
+      "reponses": [0, 1],
+      "explication": "On retire l'adresse réseau et l'adresse de diffusion, qui ne peuvent pas être attribuées à un hôte."
+    },
+    {
+      "id": "formule-sous-reseaux",
+      "type": "QCM",
+      "question": "Combien de sous-réseaux obtient-on en empruntant p bits à la partie hôte ?",
+      "choix": ["p^2", "2^p", "2^p - 2", "p - 2"],
+      "reponses": [1],
+      "explication": "Emprunter p bits crée 2^p sous-réseaux."
+    },
+    {
+      "id": "hotes-16",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un réseau /16 fournit-il ?",
+      "choix": ["254", "1022", "65534", "16777214"],
+      "reponses": [2],
+      "explication": "/16 laisse 16 bits d'hôte : 2^16 - 2 = 65534 hôtes."
+    },
+    {
+      "id": "hotes-8",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un réseau /8 fournit-il ?",
+      "choix": ["65534", "254", "16777214", "1048574"],
+      "reponses": [2],
+      "explication": "/8 laisse 24 bits d'hôte : 2^24 - 2 = 16777214 hôtes."
+    },
+    {
+      "id": "100-sous-reseaux-16",
+      "type": "QCM",
+      "question": "À partir d'un /16, combien de bits faut-il emprunter pour obtenir au moins 100 sous-réseaux ?",
+      "choix": ["6 bits (64)", "7 bits (128)", "8 bits (256)", "10 bits (1024)"],
+      "reponses": [1],
+      "explication": "2^6 = 64 (insuffisant), 2^7 = 128 ≥ 100 : il faut emprunter 7 bits."
+    },
+    {
+      "id": "1000-sous-reseaux-8",
+      "type": "QCM",
+      "question": "À partir d'un /8, combien de bits faut-il emprunter pour obtenir au moins 1000 sous-réseaux ?",
+      "choix": ["8 bits (256)", "9 bits (512)", "10 bits (1024)", "12 bits (4096)"],
+      "reponses": [2],
+      "explication": "2^9 = 512 (insuffisant), 2^10 = 1024 ≥ 1000 : il faut emprunter 10 bits."
+    },
+    {
+      "id": "limite-octet",
+      "type": "QCM",
+      "question": "Quelles longueurs de préfixe correspondent à des limites d'octet (sous-réseautage le plus simple) ?",
+      "choix": ["/7, /15 et /23", "/8, /16 et /24", "/10, /20 et /30", "/9, /17 et /25"],
+      "reponses": [1],
+      "explication": "Segmenter à la limite d'octet correspond à /8, /16 et /24."
+    },
+    {
+      "id": "vlsm-signification",
+      "type": "QCM",
+      "question": "Que permet le VLSM (Variable Length Subnet Masking) ?",
+      "choix": [
+        "D'utiliser le même masque partout",
+        "D'utiliser des masques de longueur variable pour éviter le gaspillage d'adresses",
+        "De supprimer les adresses de diffusion",
+        "De convertir IPv4 en IPv6"
+      ],
+      "reponses": [1],
+      "explication": "Le VLSM utilise des masques de longueur variable adaptés à chaque sous-réseau, évitant le gaspillage."
+    },
+    {
+      "id": "vlsm-ordre",
+      "type": "QCM",
+      "question": "Par quoi faut-il commencer lorsqu'on planifie un adressage VLSM ?",
+      "choix": [
+        "Par le plus petit sous-réseau",
+        "Par le plus grand sous-réseau (le plus d'hôtes)",
+        "Par les liaisons WAN",
+        "Par l'adresse de diffusion"
+      ],
+      "reponses": [1],
+      "explication": "On commence toujours par le plus grand sous-réseau, puis on descend vers le plus petit, pour éviter les chevauchements."
+    },
+    {
+      "id": "vlsm-wan",
+      "type": "QCM",
+      "question": "Quel masque est le plus adapté à une liaison WAN point à point (2 hôtes) ?",
+      "choix": ["/24", "/27", "/29", "/30"],
+      "reponses": [3],
+      "explication": "Un /30 fournit exactement 2 adresses d'hôte, idéal pour une liaison point à point."
+    },
+    {
+      "id": "vlsm-but",
+      "type": "QCM",
+      "question": "Pourquoi le VLSM a-t-il été développé ?",
+      "choix": [
+        "Pour augmenter le nombre de classes",
+        "Pour éviter le gaspillage d'adresses du sous-réseautage classique",
+        "Pour remplacer le NAT",
+        "Pour supprimer les masques de sous-réseau"
+      ],
+      "reponses": [1],
+      "explication": "Le sous-réseautage classique gaspillait des adresses (ex. /27 sur une liaison WAN) ; le VLSM corrige cela."
+    },
+    {
+      "id": "intranet-dmz",
+      "type": "QCR",
+      "question": "Concernant l'adressage d'un réseau d'entreprise, quelles affirmations sont correctes ?",
+      "choix": [
+        "L'intranet utilise généralement des adresses IPv4 privées",
+        "Les périphériques de la DMZ utilisent des adresses IPv4 publiques",
+        "L'intranet doit utiliser uniquement des adresses publiques",
+        "La DMZ regroupe les serveurs accessibles depuis Internet"
+      ],
+      "reponses": [0, 1, 3],
+      "explication": "L'intranet utilise des adresses privées ; la DMZ (serveurs exposés à Internet) utilise des adresses publiques."
+    },
+    {
+      "id": "vlsm-considerations",
+      "type": "QCR",
+      "question": "Quelles considérations faut-il prendre en compte lors de la planification des sous-réseaux ?",
+      "choix": [
+        "Le nombre d'adresses d'hôte nécessaires par réseau",
+        "Le nombre de sous-réseaux nécessaires",
+        "La couleur des câbles",
+        "La marque du routeur"
+      ],
+      "reponses": [0, 1],
+      "explication": "Deux paramètres : le nombre d'hôtes par sous-réseau et le nombre de sous-réseaux."
+    },
+    {
+      "id": "premier-sous-reseau-192-26",
+      "type": "QCM",
+      "question": "En découpant 192.168.1.0 avec un masque /26 (255.255.255.192), quelle est l'adresse de diffusion du premier sous-réseau ?",
+      "choix": ["192.168.1.63", "192.168.1.64", "192.168.1.127", "192.168.1.255"],
+      "reponses": [0],
+      "explication": "Le premier sous-réseau va de 192.168.1.0 à 192.168.1.63 (diffusion = .63)."
+    },
+    {
+      "id": "second-sous-reseau-192-26",
+      "type": "QCM",
+      "question": "Toujours avec le masque /26 sur 192.168.1.0, quelle est l'adresse du second sous-réseau ?",
+      "choix": ["192.168.1.32", "192.168.1.63", "192.168.1.64", "192.168.1.128"],
+      "reponses": [2],
+      "explication": "Le second sous-réseau commence à 192.168.1.64 et va jusqu'à 192.168.1.127."
+    },
+    {
+      "id": "plage-hotes-premier-26",
+      "type": "QCM",
+      "question": "Pour le premier sous-réseau 192.168.1.0/26, quelle est la plage d'adresses d'hôtes valides ?",
+      "choix": [
+        "192.168.1.0 à 192.168.1.63",
+        "192.168.1.1 à 192.168.1.62",
+        "192.168.1.1 à 192.168.1.63",
+        "192.168.1.0 à 192.168.1.62"
+      ],
+      "reponses": [1],
+      "explication": "On exclut l'adresse réseau (.0) et la diffusion (.63) : les hôtes vont de .1 à .62."
+    }
+  ]
+}

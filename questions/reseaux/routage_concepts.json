@@ -1,0 +1,326 @@
+{
+  "titre": "Réseaux — Module 14 : Concepts de routage",
+  "description": "Révision SRWE v7.0 : détermination du chemin, transmission de paquets, table de routage IP, routes statiques/dynamiques/par défaut, distance administrative et métrique.",
+  "questions": [
+    {
+      "id": "routeur-deux-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont les deux fonctions principales d'un routeur ?",
+      "choix": [
+        "Déterminer le meilleur chemin pour acheminer les paquets",
+        "Transférer les paquets vers leur destination",
+        "Attribuer dynamiquement des adresses IP",
+        "Chiffrer les communications"
+      ],
+      "reponses": [0, 1],
+      "explication": "Un routeur détermine le meilleur chemin à partir de sa table de routage, puis transfère les paquets vers leur destination."
+    },
+    {
+      "id": "table-routage-carte",
+      "type": "QCM",
+      "question": "Sur quoi le routeur se base-t-il pour déterminer le meilleur chemin d'un paquet ?",
+      "choix": [
+        "Sa table ARP",
+        "Sa table de routage",
+        "Le cache DNS",
+        "L'adresse MAC source"
+      ],
+      "reponses": [1],
+      "explication": "Le routeur utilise sa table de routage comme une carte pour déterminer le meilleur chemin vers un réseau donné."
+    },
+    {
+      "id": "reseau-directement-connecte",
+      "type": "QCM",
+      "question": "Quand un réseau directement connecté est-il ajouté à la table de routage ?",
+      "choix": [
+        "Lorsqu'une route statique est configurée manuellement",
+        "Lorsqu'une interface locale est configurée avec une IP et un masque, et qu'elle est active (up/up)",
+        "Lorsqu'un protocole dynamique l'apprend",
+        "Lorsque le routeur redémarre"
+      ],
+      "reponses": [1],
+      "explication": "Un réseau directement connecté est ajouté lorsqu'une interface est configurée avec une adresse IP/longueur de préfixe et qu'elle est activée (up et up)."
+    },
+    {
+      "id": "reseaux-distants-apprentissage",
+      "type": "QCR",
+      "question": "De quelles manières un routeur peut-il apprendre des réseaux distants ?",
+      "choix": [
+        "Par des routes statiques configurées manuellement",
+        "Par des protocoles de routage dynamique",
+        "Par les réseaux directement connectés",
+        "Par la table ARP"
+      ],
+      "reponses": [0, 1],
+      "explication": "Un routeur apprend les réseaux distants soit par des routes statiques (manuelles), soit par des protocoles de routage dynamique."
+    },
+    {
+      "id": "route-defaut-prefixe",
+      "type": "QCM",
+      "question": "Quelle est la longueur de préfixe d'une route par défaut ?",
+      "choix": ["/32", "/24", "/0", "/128"],
+      "reponses": [2],
+      "explication": "Une route par défaut a une longueur de préfixe /0 : aucun bit ne doit correspondre, elle est utilisée à défaut de correspondance plus spécifique."
+    },
+    {
+      "id": "route-defaut-nom",
+      "type": "QCM",
+      "question": "Comment appelle-t-on parfois la route par défaut ?",
+      "choix": [
+        "Route locale",
+        "Passerelle de dernier recours",
+        "Route enfant",
+        "Route de résumé"
+      ],
+      "reponses": [1],
+      "explication": "La route par défaut est parfois appelée passerelle de dernier recours (gateway of last resort)."
+    },
+    {
+      "id": "route-defaut-entrees",
+      "type": "QCR",
+      "question": "Quelles entrées correspondent à une route par défaut ?",
+      "choix": [
+        "0.0.0.0/0 en IPv4",
+        "::/0 en IPv6",
+        "/32 en IPv4",
+        "/128 en IPv6"
+      ],
+      "reponses": [0, 1],
+      "explication": "La route par défaut s'écrit 0.0.0.0/0 en IPv4 et ::/0 en IPv6. /32 et /128 sont les routes locales."
+    },
+    {
+      "id": "transmission-longest-match",
+      "type": "QCM",
+      "question": "Lorsqu'il consulte sa table de routage, quel critère le routeur applique-t-il pour choisir l'entrée ?",
+      "choix": [
+        "La première entrée trouvée",
+        "Le préfixe correspondant le plus long",
+        "L'entrée avec la métrique la plus élevée",
+        "L'entrée la plus récente"
+      ],
+      "reponses": [1],
+      "explication": "Le routeur trouve le préfixe correspondant le plus long (longest match) entre l'adresse IP de destination et les entrées de la table."
+    },
+    {
+      "id": "transmission-aucune-correspondance",
+      "type": "QCM",
+      "question": "Que fait le routeur s'il n'y a aucune entrée de route correspondante et aucune route par défaut ?",
+      "choix": [
+        "Il diffuse le paquet sur toutes les interfaces",
+        "Il met le paquet en attente",
+        "Il supprime (dépose) le paquet",
+        "Il renvoie le paquet à la source"
+      ],
+      "reponses": [2],
+      "explication": "Sans correspondance ni route par défaut, le paquet est supprimé (drop)."
+    },
+    {
+      "id": "transmission-mac-arp",
+      "type": "QCM",
+      "question": "Pour transférer un paquet IPv4 vers un périphérique sur un réseau Ethernet directement connecté, comment le routeur obtient-il l'adresse MAC de destination ?",
+      "choix": [
+        "Via le DNS",
+        "Via le protocole ARP",
+        "Via DHCP",
+        "Via la route par défaut"
+      ],
+      "reponses": [1],
+      "explication": "Le routeur utilise ARP (et ICMPv6 Neighbor Discovery pour IPv6) pour associer l'adresse IP de destination à une adresse MAC sur un réseau Ethernet."
+    },
+    {
+      "id": "transmission-saut-suivant",
+      "type": "QCM",
+      "question": "Quand le paquet doit-il être transféré à un routeur de saut suivant ?",
+      "choix": [
+        "Quand la destination est directement connectée",
+        "Quand l'adresse IP de destination se trouve sur un réseau distant",
+        "Quand le paquet est un broadcast",
+        "Quand la table de routage est vide"
+      ],
+      "reponses": [1],
+      "explication": "Si l'entrée indique que la destination est sur un réseau distant, le paquet est transféré au routeur de saut suivant indiqué dans la route."
+    },
+    {
+      "id": "table-codes",
+      "type": "QCM",
+      "question": "Dans la table de routage, que signifie le code d'état C ?",
+      "choix": [
+        "Une route statique",
+        "Un réseau découvert par OSPF",
+        "Un réseau directement connecté",
+        "L'adresse locale d'une interface"
+      ],
+      "reponses": [2],
+      "explication": "Le code C identifie un réseau directement connecté ; L identifie l'adresse locale d'une interface."
+    },
+    {
+      "id": "table-code-O",
+      "type": "QCM",
+      "question": "Que signifie le code d'état O dans la table de routage ?",
+      "choix": [
+        "Réseau directement connecté",
+        "Route statique",
+        "Réseau découvert dynamiquement via OSPF",
+        "Route locale"
+      ],
+      "reponses": [2],
+      "explication": "Le code O indique un réseau appris dynamiquement via le protocole de routage OSPF."
+    },
+    {
+      "id": "table-route-locale-prefixe",
+      "type": "QCR",
+      "question": "Quelles sont les longueurs de préfixe des routes locales (code L) ?",
+      "choix": [
+        "/32 pour IPv4",
+        "/128 pour IPv6",
+        "/24 pour IPv4",
+        "/64 pour IPv6"
+      ],
+      "reponses": [0, 1],
+      "explication": "Les routes locales utilisent /32 en IPv4 et /128 en IPv6 : tous les bits doivent correspondre, car la route locale identifie un paquet destiné à l'interface elle-même."
+    },
+    {
+      "id": "table-entrees-elements",
+      "type": "QCR",
+      "question": "Parmi ces éléments, lesquels figurent dans une entrée de la table de routage ?",
+      "choix": [
+        "La distance administrative",
+        "La métrique",
+        "L'adresse de saut suivant",
+        "Le mot de passe enable"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Une entrée contient notamment la source, le réseau de destination, la distance administrative, la métrique, le saut suivant, l'horodatage et l'interface de sortie."
+    },
+    {
+      "id": "routes-statiques-caracteristiques",
+      "type": "QCM",
+      "question": "Quelle est une caractéristique des routes statiques ?",
+      "choix": [
+        "Elles sont mises à jour automatiquement si la topologie change",
+        "Elles sont configurées manuellement et doivent être reconfigurées si la topologie change",
+        "Elles s'apprennent via OSPF",
+        "Elles ont toujours une distance administrative de 110"
+      ],
+      "reponses": [1],
+      "explication": "Les routes statiques sont configurées manuellement, ne se mettent pas à jour automatiquement et doivent être reconfigurées en cas de changement de topologie."
+    },
+    {
+      "id": "routes-dynamiques-taches",
+      "type": "QCR",
+      "question": "Quelles tâches les protocoles de routage dynamique effectuent-ils ?",
+      "choix": [
+        "La détection des réseaux",
+        "La gestion des tables de routage",
+        "Le chiffrement des paquets",
+        "L'attribution des adresses IP"
+      ],
+      "reponses": [0, 1],
+      "explication": "Les protocoles dynamiques partagent automatiquement les informations d'accessibilité, détectent les réseaux et gèrent les tables de routage."
+    },
+    {
+      "id": "principe-table-decision-seul",
+      "type": "QCM",
+      "question": "Selon les principes de la table de routage, sur quoi chaque routeur prend-il ses décisions ?",
+      "choix": [
+        "Sur les tables de routage de tous les routeurs du réseau",
+        "Uniquement sur les informations de sa propre table de routage",
+        "Sur les décisions du routeur précédent",
+        "Sur la table ARP du voisin"
+      ],
+      "reponses": [1],
+      "explication": "Chaque routeur décide seul, en fonction des seules informations de sa propre table de routage ; il ne connaît pas les tables des autres."
+    },
+    {
+      "id": "principe-table-retour",
+      "type": "QCM",
+      "question": "Que dit le principe sur les informations de routage de retour ?",
+      "choix": [
+        "Une route vers une destination garantit automatiquement la route de retour",
+        "Les informations de routage relatives à un chemin ne fournissent pas d'informations de routage de retour",
+        "Le routage de retour est toujours géré par DHCP",
+        "Le retour utilise toujours la route par défaut"
+      ],
+      "reponses": [1],
+      "explication": "Savoir transférer un paquet dans un sens ne signifie pas que le routeur sait acheminer le trafic de retour : le chemin retour n'est pas déduit."
+    },
+    {
+      "id": "structure-ipv4-enfant",
+      "type": "QCM",
+      "question": "Dans une table de routage IPv4, qu'est-ce qu'une route enfant ?",
+      "choix": [
+        "Une entrée non indentée sans code source",
+        "Une entrée indentée, sous-réseau d'une adresse par classe, avec source et informations de transfert",
+        "Une route par défaut",
+        "Une route apprise par BGP uniquement"
+      ],
+      "reponses": [1],
+      "explication": "La route enfant est l'entrée indentée (sous-réseau d'une adresse classée) ; la route parent, moins indentée et sans code source, s'affiche au-dessus."
+    },
+    {
+      "id": "structure-ipv6-simple",
+      "type": "QCM",
+      "question": "Pourquoi la structure d'une table de routage IPv6 est-elle plus simple que celle d'IPv4 ?",
+      "choix": [
+        "Parce qu'IPv6 utilise des classes",
+        "Parce que l'adressage par classe n'a jamais existé en IPv6 ; chaque entrée est formatée et alignée de la même façon",
+        "Parce qu'IPv6 n'a pas de routes locales",
+        "Parce qu'IPv6 n'utilise pas de longueur de préfixe"
+      ],
+      "reponses": [1],
+      "explication": "Le concept d'adressage par classe n'a jamais fait partie d'IPv6, donc les entrées sont toutes formatées et alignées de la même manière."
+    },
+    {
+      "id": "ad-definition",
+      "type": "QCM",
+      "question": "Que représente la distance administrative (AD) ?",
+      "choix": [
+        "La distance physique entre deux routeurs",
+        "La fiabilité d'une source de route (plus faible = plus fiable)",
+        "Le nombre de sauts vers la destination",
+        "La bande passante du lien"
+      ],
+      "reponses": [1],
+      "explication": "L'AD indique la fiabilité de la source de la route ; plus la valeur est faible, plus la route est fiable."
+    },
+    {
+      "id": "ad-connecte-statique",
+      "type": "QCR",
+      "question": "Quelles sont les distances administratives correctes ?",
+      "choix": [
+        "Directement connecté = 0",
+        "Route statique = 1",
+        "OSPF = 110",
+        "RIP = 90"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Connecté = 0, statique = 1, OSPF = 110. RIP a une AD de 120 (90 correspond à EIGRP interne)."
+    },
+    {
+      "id": "ad-ospf-rip",
+      "type": "QCM",
+      "question": "Si OSPF (AD 110) et RIP (AD 120) apprennent tous deux le même réseau, quelle route est installée dans la table ?",
+      "choix": [
+        "La route RIP",
+        "La route OSPF",
+        "Les deux routes",
+        "Aucune des deux"
+      ],
+      "reponses": [1],
+      "explication": "La route avec la distance administrative la plus faible est préférée : OSPF (110) est installée plutôt que RIP (120)."
+    },
+    {
+      "id": "metrique-definition",
+      "type": "QCM",
+      "question": "Que signifie une métrique faible pour une route ?",
+      "choix": [
+        "Que la route est moins fiable",
+        "Que la route est préférée pour atteindre le réseau distant",
+        "Que la route est désactivée",
+        "Que la route est statique"
+      ],
+      "reponses": [1],
+      "explication": "La métrique indique le coût pour atteindre le réseau distant ; les valeurs les plus faibles indiquent les routes préférées."
+    }
+  ]
+}

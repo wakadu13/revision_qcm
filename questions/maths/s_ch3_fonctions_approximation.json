@@ -1,0 +1,370 @@
+{
+  "titre": "Ch.3 - Fonctions d'approximation",
+  "description": "Filtres analytiques et polynomiaux, approximations de Butterworth et de Tchebycheff, démarche de synthèse.",
+  "questions": [
+    {
+      "id": "ch3-tp-fraction",
+      "type": "QCM",
+      "question": "La fonction de transfert $T(p) = N(p)/D(p)$ d'un filtre est généralement :",
+      "choix": [
+        "Un polynôme",
+        "Une fraction rationnelle où deg N ≤ deg D",
+        "Une exponentielle",
+        "Une fonction transcendante"
+      ],
+      "reponses": [1],
+      "explication": "$T(p) = N(p)/D(p)$ est une fraction rationnelle, $N(p)$ étant un polynôme de degré inférieur ou égal au degré de $D(p)$."
+    },
+    {
+      "id": "ch3-poles-stabilite",
+      "type": "QCM",
+      "question": "Pour assurer la stabilité du filtre, les pôles de $T(p)$ doivent être :",
+      "choix": [
+        "Tous à partie réelle strictement positive",
+        "Tous à partie réelle strictement négative",
+        "Tous sur l'axe imaginaire",
+        "Tous réels positifs"
+      ],
+      "reponses": [1],
+      "explication": "Les pôles de $T(p)$ (racines de $D(p)$) sont tous à partie réelle strictement négative afin d'assurer la stabilité du filtre."
+    },
+    {
+      "id": "ch3-attenuation-formule",
+      "type": "QCM",
+      "question": "Comment s'exprime l'atténuation $A_{dB}$ en fonction de l'affaiblissement linéaire $A_\\ell$ ?",
+      "choix": [
+        "$A_{dB} = 20 \\log A_\\ell^2$",
+        "$A_{dB} = 10 \\log A_\\ell^2$",
+        "$A_{dB} = A_\\ell^2$",
+        "$A_{dB} = \\log A_\\ell$"
+      ],
+      "reponses": [1],
+      "explication": "$A_{dB} = 10\\log\\left|\\dfrac{1}{T(j\\omega)}\\right|^2 = 10\\log A_\\ell^2$."
+    },
+    {
+      "id": "ch3-fonction-caracteristique",
+      "type": "QCM",
+      "question": "Pour un filtre d'atténuation positive, on pose $A_\\ell^2 = 1 + |K(j\\omega)|^2$. Que désigne $K(j\\omega)$ ?",
+      "choix": [
+        "La fonction de transfert",
+        "La fonction caractéristique",
+        "Le gain en dB",
+        "La pulsation normalisée"
+      ],
+      "reponses": [1],
+      "explication": "$K(j\\omega)$ est la fonction caractéristique. Si on sait la calculer analytiquement, on a un filtre analytique."
+    },
+    {
+      "id": "ch3-polynomial",
+      "type": "QCM",
+      "question": "Un filtre polynomial correspond au cas où :",
+      "choix": [
+        "La fonction caractéristique $K(p)$ est un polynôme ($m = 0$)",
+        "$N(p)$ est de degré supérieur à $D(p)$",
+        "Tous les pôles sont nuls",
+        "L'atténuation est constante"
+      ],
+      "reponses": [0],
+      "explication": "Si la fonction caractéristique $K(p)$ est un polynôme (c'est-à-dire $m = 0$), on a un filtre polynomial : il n'a pas de zéros de transmission."
+    },
+    {
+      "id": "ch3-omega0i",
+      "type": "QCM",
+      "question": "Les pulsations normalisées $\\Omega_{0i}$ correspondent aux fréquences où :",
+      "choix": [
+        "L'atténuation est infinie",
+        "L'atténuation $A_{dB}$ est nulle (dans la bande passante, $\\Omega_{0i} < 1$)",
+        "Le gain est maximal hors bande",
+        "Le filtre est instable"
+      ],
+      "reponses": [1],
+      "explication": "Les $\\Omega_{0i}$ sont les pulsations pour lesquelles l'atténuation est nulle ; elles sont toutes dans la bande passante ($\\Omega_{0i} < 1$)."
+    },
+    {
+      "id": "ch3-omega-inf",
+      "type": "QCM",
+      "question": "Les pulsations $\\Omega_{\\infty j}$ sont :",
+      "choix": [
+        "Les pôles de $T(p)$, dans la bande passante",
+        "Les zéros de transmission de $T(p)$, hors bande passante ($\\Omega_{\\infty j} > 1$)",
+        "Toujours nulles",
+        "Les fréquences de coupure"
+      ],
+      "reponses": [1],
+      "explication": "Les $\\Omega_{\\infty j}$ sont les pulsations d'atténuation infinie : ce sont les zéros de transmission de $T(p)$, situés hors bande passante ($\\Omega_{\\infty j} > 1$)."
+    },
+    {
+      "id": "ch3-butter-def",
+      "type": "QCM",
+      "question": "Dans l'approximation de Butterworth, les $\\Omega_{0i}$ sont :",
+      "choix": [
+        "Toutes réparties dans la bande passante",
+        "Toutes nulles, d'où $A_\\ell^2 = 1 + \\varepsilon^2 \\Omega^{2n}$",
+        "Égales à 1",
+        "Réparties sur une ellipse"
+      ],
+      "reponses": [1],
+      "explication": "Pour Butterworth, toutes les $\\Omega_{0i}$ sont nulles : $A_\\ell^2 = 1 + \\varepsilon^2 \\Omega^{2n}$. Seule la fréquence nulle annule l'atténuation."
+    },
+    {
+      "id": "ch3-butter-allure",
+      "type": "QCM",
+      "question": "La courbe d'atténuation de Butterworth est :",
+      "choix": [
+        "Très plate dans la bande passante, mais de pente faible autour de la coupure",
+        "Ondulée dans la bande passante",
+        "À pente très forte dès la coupure pour un faible ordre",
+        "Constante à toutes les fréquences"
+      ],
+      "reponses": [0],
+      "explication": "La réponse de Butterworth est très plate dans la bande passante, mais la pente autour de la coupure est faible ; il faut un ordre $n$ important pour une bonne sélectivité."
+    },
+    {
+      "id": "ch3-epsilon",
+      "type": "QCM",
+      "question": "Comment calcule-t-on $\\varepsilon$ à partir de $A_{max}$ ?",
+      "choix": [
+        "$\\varepsilon = 10^{A_{max}/10} - 1$",
+        "$\\varepsilon = \\sqrt{10^{A_{max}/10} - 1}$",
+        "$\\varepsilon = 10^{A_{max}/20}$",
+        "$\\varepsilon = \\log(A_{max})$"
+      ],
+      "reponses": [1],
+      "explication": "Pour $\\Omega = 1$, $A_{max} = 10\\log(1 + \\varepsilon^2)$, d'où $\\varepsilon = \\sqrt{10^{A_{max}/10} - 1}$."
+    },
+    {
+      "id": "ch3-discrimination",
+      "type": "QCM",
+      "question": "Quelle est l'expression du facteur de discrimination $D$ ?",
+      "choix": [
+        "$D = \\dfrac{10^{A_{min}/10} - 1}{10^{A_{max}/10} - 1}$",
+        "$D = \\sqrt{\\dfrac{10^{A_{min}/10} - 1}{10^{A_{max}/10} - 1}}$",
+        "$D = 10^{(A_{min}-A_{max})/10}$",
+        "$D = \\sqrt{A_{min} / A_{max}}$"
+      ],
+      "reponses": [1],
+      "explication": "Le facteur de discrimination est $D = \\sqrt{\\dfrac{10^{A_{min}/10} - 1}{10^{A_{max}/10} - 1}}$."
+    },
+    {
+      "id": "ch3-butter-ordre",
+      "type": "QCM",
+      "question": "Comment détermine-t-on l'ordre $n$ d'un filtre de Butterworth (par le calcul) ?",
+      "choix": [
+        "$n \\geq \\dfrac{\\log D}{\\log k^{-1}}$",
+        "$n \\geq \\dfrac{\\log k^{-1}}{\\log D}$",
+        "$n \\geq D \\cdot k$",
+        "$n \\geq \\dfrac{\\text{argcosh}\\,D}{\\text{argcosh}\\,k^{-1}}$"
+      ],
+      "reponses": [0],
+      "explication": "Pour Butterworth, $n \\geq \\dfrac{\\log D}{\\log k^{-1}}$ ($n$ étant entier). L'expression avec argcosh concerne Tchebycheff."
+    },
+    {
+      "id": "ch3-butter-abaque",
+      "type": "QCM",
+      "question": "Outre le calcul, comment peut-on déterminer l'ordre $n$ ?",
+      "choix": [
+        "Uniquement par essai-erreur",
+        "Directement à partir de $A_{max}$, $A_{min}$ et $k$ à l'aide d'un abaque",
+        "En mesurant la réponse impulsionnelle",
+        "Il n'existe pas d'autre méthode"
+      ],
+      "reponses": [1],
+      "explication": "On peut déterminer directement l'ordre $n$ sans calcul à partir de $A_{max}$, $A_{min}$ et $k$ en utilisant un abaque (de Butterworth ou de Tchebycheff)."
+    },
+    {
+      "id": "ch3-butter-poles-cercle",
+      "type": "QCM",
+      "question": "Dans le plan complexe, les pôles de Butterworth sont répartis sur :",
+      "choix": [
+        "Une ellipse",
+        "Un cercle de rayon $\\varepsilon^{-1/n}$",
+        "Une droite verticale",
+        "Une parabole"
+      ],
+      "reponses": [1],
+      "explication": "Les pôles de Butterworth sont répartis sur le cercle de rayon $\\varepsilon^{-1/n}$. Seuls les $n$ pôles à partie réelle négative sont retenus pour la stabilité."
+    },
+    {
+      "id": "ch3-butter-pole-reel",
+      "type": "QCM",
+      "question": "Pour un filtre de Butterworth, le pôle réel $-1$ existe lorsque :",
+      "choix": [
+        "$n$ est pair",
+        "$n$ est impair",
+        "$n = 2$",
+        "toujours"
+      ],
+      "reponses": [1],
+      "explication": "Le pôle $-1$ existe si $n$ est impair. Les pôles complexes sont toujours conjugués deux à deux."
+    },
+    {
+      "id": "ch3-butter-tp",
+      "type": "QCM",
+      "question": "Quelle est l'expression de la fonction de transfert de Butterworth ?",
+      "choix": [
+        "$T(p) = \\dfrac{1}{\\prod_{k=1}^{n}(p - p_k)}$",
+        "$T(p) = \\dfrac{1}{\\varepsilon\\,\\prod_{k=1}^{n}(p - p_k)}$",
+        "$T(p) = \\dfrac{1}{2^{n-1}\\varepsilon\\,\\prod_{k=1}^{n}(p - p_k)}$",
+        "$T(p) = \\varepsilon\\,\\prod_{k=1}^{n}(p - p_k)$"
+      ],
+      "reponses": [1],
+      "explication": "Pour Butterworth, $\\alpha = \\varepsilon$, donc $T(p) = \\dfrac{1}{\\varepsilon\\,\\prod_{k=1}^{n}(p - p_k)}$."
+    },
+    {
+      "id": "ch3-butter-table-num",
+      "type": "QCM",
+      "question": "Dans les tables de coefficients du passe-bas normalisé, que vaut le numérateur de $T(p)$ ?",
+      "choix": [
+        "$\\varepsilon$",
+        "1",
+        "$2^{n-1}$",
+        "Le coefficient multiplicatif indiqué"
+      ],
+      "reponses": [1],
+      "explication": "Le numérateur vaut 1. Le dénominateur se compose du produit des polynômes indiqués et du coefficient multiplicatif."
+    },
+    {
+      "id": "ch3-tcheby-omega0i",
+      "type": "QCM",
+      "question": "Dans l'approximation de Tchebycheff, comment sont réparties les $\\Omega_{0i}$ ?",
+      "choix": [
+        "Toutes nulles",
+        "Réparties dans la bande passante pour que l'atténuation ondule de 0 à $A_{max}$, avec $\\Omega_{0i} = \\cos\\dfrac{2i+1}{2n}\\pi$",
+        "Toutes égales à $k^{-1}$",
+        "Réparties hors de la bande passante"
+      ],
+      "reponses": [1],
+      "explication": "Les $\\Omega_{0i} = \\cos\\dfrac{2i+1}{2n}\\pi$ sont réparties dans la bande passante de façon que l'atténuation ondule de 0 à $A_{max}$. On a $n$ annulations de $A_{dB}$."
+    },
+    {
+      "id": "ch3-tcheby-affaiblissement",
+      "type": "QCM",
+      "question": "Quelle est la forme de l'affaiblissement pour Tchebycheff ?",
+      "choix": [
+        "$A_\\ell^2 = 1 + \\varepsilon^2 \\Omega^{2n}$",
+        "$A_\\ell^2 = 1 + \\varepsilon^2 T_n^2(\\Omega)$",
+        "$A_\\ell^2 = \\varepsilon^2 T_n(\\Omega)$",
+        "$A_\\ell^2 = 1 - \\varepsilon^2 T_n^2(\\Omega)$"
+      ],
+      "reponses": [1],
+      "explication": "Pour Tchebycheff, $A_\\ell^2 = 1 + \\varepsilon^2 T_n^2(\\Omega)$, où $T_n$ sont les polynômes de Tchebycheff."
+    },
+    {
+      "id": "ch3-tcheby-polynomes",
+      "type": "QCM",
+      "question": "Quelle est la relation de récurrence des polynômes de Tchebycheff ?",
+      "choix": [
+        "$T_n(\\Omega) = \\Omega\\,T_{n-1}(\\Omega) - T_{n-2}(\\Omega)$",
+        "$T_n(\\Omega) = 2\\Omega\\,T_{n-1}(\\Omega) - T_{n-2}(\\Omega)$",
+        "$T_n(\\Omega) = T_{n-1}(\\Omega) + T_{n-2}(\\Omega)$",
+        "$T_n(\\Omega) = 2\\Omega\\,T_{n-1}(\\Omega) + T_{n-2}(\\Omega)$"
+      ],
+      "reponses": [1],
+      "explication": "La récurrence est $T_n(\\Omega) = 2\\Omega\\,T_{n-1}(\\Omega) - T_{n-2}(\\Omega)$, avec $T_0 = 1$, $T_1 = \\Omega$, $T_2 = 2\\Omega^2 - 1$."
+    },
+    {
+      "id": "ch3-tcheby-def-cos",
+      "type": "QCR",
+      "question": "Quelles définitions des polynômes de Tchebycheff sont correctes ?",
+      "choix": [
+        "$T_n(\\Omega) = \\cos(n\\arccos\\Omega)$ pour $\\Omega \\leq 1$",
+        "$T_n(\\Omega) = \\cosh(n\\,\\text{argcosh}\\,\\Omega)$ pour $\\Omega > 1$",
+        "$T_2(\\Omega) = 2\\Omega^2 - 1$",
+        "$T_1(\\Omega) = 1$"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les trois premières sont exactes. $T_1(\\Omega) = \\Omega$ (et non 1) ; $T_0(\\Omega) = 1$."
+    },
+    {
+      "id": "ch3-tcheby-vs-butter",
+      "type": "QCR",
+      "question": "Comparé à Butterworth, le filtre de Tchebycheff (même ordre n) :",
+      "choix": [
+        "A une pente plus forte au voisinage de la fréquence de coupure",
+        "Permet un ordre inférieur pour un gabarit donné",
+        "Présente des ondulations dans la bande passante",
+        "Est toujours plus plat dans la bande passante"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Tchebycheff a une pente plus forte (donc ordre plus faible pour un gabarit donné) mais sa bande passante présente des ondulations, ce qui peut être gênant."
+    },
+    {
+      "id": "ch3-tcheby-ordre",
+      "type": "QCM",
+      "question": "Comment calcule-t-on l'ordre $n$ d'un filtre de Tchebycheff ?",
+      "choix": [
+        "$n \\geq \\dfrac{\\log D}{\\log k^{-1}}$",
+        "$n \\geq \\dfrac{\\text{argcosh}\\,D}{\\text{argcosh}\\,k^{-1}}$",
+        "$n \\geq \\dfrac{\\cosh D}{\\cosh k^{-1}}$",
+        "$n \\geq D \\cdot k^{-1}$"
+      ],
+      "reponses": [1],
+      "explication": "Pour Tchebycheff, $n \\geq \\dfrac{\\text{argcosh}\\,D}{\\text{argcosh}\\,k^{-1}}$, avec $\\text{argcosh}\\,x = \\ln(x + \\sqrt{x^2 - 1})$."
+    },
+    {
+      "id": "ch3-tcheby-poles-ellipse",
+      "type": "QCM",
+      "question": "Les pôles de la fonction de transfert de Tchebycheff sont répartis sur :",
+      "choix": [
+        "Un cercle",
+        "Une ellipse",
+        "Une droite",
+        "Une hyperbole"
+      ],
+      "reponses": [1],
+      "explication": "Les pôles de Tchebycheff vérifient $\\dfrac{\\sigma_k^2}{\\sinh^2\\eta} + \\dfrac{\\nu_k^2}{\\cosh^2\\eta} = 1$ : ils se répartissent sur une ellipse."
+    },
+    {
+      "id": "ch3-tcheby-tp",
+      "type": "QCM",
+      "question": "Quelle est l'expression de la fonction de transfert de Tchebycheff ?",
+      "choix": [
+        "$T(p) = \\dfrac{1}{\\varepsilon\\,\\prod_{k=1}^{n}(p - p_k)}$",
+        "$T(p) = \\dfrac{1}{2^{n-1}\\varepsilon\\,\\prod_{k=1}^{n}(p - p_k)}$",
+        "$T(p) = \\dfrac{2^{n-1}}{\\varepsilon\\,\\prod_{k=1}^{n}(p - p_k)}$",
+        "$T(p) = \\dfrac{1}{\\prod_{k=1}^{n}(p - p_k)}$"
+      ],
+      "reponses": [1],
+      "explication": "Pour Tchebycheff, $\\alpha = 2^{n-1}\\varepsilon$, donc $T(p) = \\dfrac{1}{2^{n-1}\\varepsilon\\,\\prod_{k=1}^{n}(p - p_k)}$."
+    },
+    {
+      "id": "ch3-demarche-1",
+      "type": "QCM",
+      "question": "Quelle est la première étape de la synthèse d'un filtre ?",
+      "choix": [
+        "Choisir la structure matérielle",
+        "Définir le gabarit du filtre à partir du cahier des charges",
+        "Calculer les pôles",
+        "Choisir entre Butterworth et Tchebycheff"
+      ],
+      "reponses": [1],
+      "explication": "La première étape est de définir le gabarit du filtre à réaliser à partir des spécifications imposées par le cahier des charges."
+    },
+    {
+      "id": "ch3-demarche-ordre",
+      "type": "QCM",
+      "question": "Dans la démarche de synthèse, à quel moment dénormalise-t-on la fonction de transfert ?",
+      "choix": [
+        "Avant de définir le gabarit",
+        "Après avoir obtenu la fonction de transfert du prototype normalisé, par la transposition adéquate",
+        "Au tout début, avant la normalisation",
+        "On ne dénormalise jamais"
+      ],
+      "reponses": [1],
+      "explication": "Après avoir choisi la fonction d'approximation et obtenu la fonction de transfert du prototype passe-bas normalisé, on en déduit la fonction de transfert du filtre réel dénormalisé par la transposition adéquate."
+    },
+    {
+      "id": "ch3-demarche-derniere",
+      "type": "QCM",
+      "question": "Quelle est la dernière étape de la démarche de synthèse d'un filtre ?",
+      "choix": [
+        "Normaliser le gabarit",
+        "Choisir la structure matérielle du filtre ayant la fonction de transfert désirée",
+        "Calculer le facteur de discrimination",
+        "Définir le gabarit"
+      ],
+      "reponses": [1],
+      "explication": "La dernière étape consiste à choisir la structure matérielle du filtre réalisant la fonction de transfert désirée."
+    }
+  ]
+}

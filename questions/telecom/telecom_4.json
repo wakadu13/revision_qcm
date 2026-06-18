@@ -1,0 +1,641 @@
+{
+  "titre": "Télécommunications — Antennes et Rayonnement Électromagnétique",
+  "description": "Questions QCM/QCR couvrant les généralités sur les antennes, leurs caractéristiques (directivité, gain, rendement, surface équivalente), les types d'antennes (filaires, Yagi, quart d'onde, cornet, parabole, patch) et les réseaux d'antennes.",
+  "questions": [
+    {
+      "id": "ant-gen-001",
+      "type": "QCM",
+      "question": "Quel est le rôle principal d'une antenne dans un système de télécommunication ?",
+      "choix": [
+        "Amplifier le signal électrique.",
+        "Convertir le signal électrique en onde électromagnétique et vice versa.",
+        "Filtrer les fréquences indésirables.",
+        "Stocker l'énergie du signal."
+      ],
+      "reponses": [1],
+      "explication": "L'antenne est un **transducteur** qui convertit le signal électrique en onde électromagnétique (émission) et vice versa (réception)."
+    },
+    {
+      "id": "ant-gen-002",
+      "type": "QCR",
+      "question": "Quels types d'antennes sont mentionnés dans le cours ?",
+      "choix": [
+        "Antennes filaires.",
+        "Antennes à fentes.",
+        "Antennes imprimées (patch).",
+        "Antennes cornet.",
+        "Antennes à réflecteur (parabole).",
+        "Antennes à guide d'onde."
+      ],
+      "reponses": [0, 1, 2, 3, 4],
+      "explication": "Le cours mentionne ces 5 types d'antennes, ainsi que les réseaux d'antennes."
+    },
+    {
+      "id": "ant-gen-003",
+      "type": "QCR",
+      "question": "Quels types de réseaux d'antennes sont cités dans le cours ?",
+      "choix": [
+        "Réseaux linéaires.",
+        "Réseaux planaires.",
+        "Réseaux à balayage.",
+        "Antennes actives.",
+        "Antennes adaptatives."
+      ],
+      "reponses": [0, 1, 2, 3, 4],
+      "explication": "Le cours cite ces 5 types de réseaux d'antennes."
+    },
+    {
+      "id": "ant-gen-004",
+      "type": "QCM",
+      "question": "Quel phénomène physique est à l'origine du rayonnement électromagnétique dans une antenne ?",
+      "choix": [
+        "Un courant appliqué à un conducteur.",
+        "Une tension appliquée à un diélectrique.",
+        "Une variation de température.",
+        "Une pression acoustique."
+      ],
+      "reponses": [0],
+      "explication": "Tout **courant appliqué à un conducteur** entraîne un **rayonnement électromagnétique** proportionnel à la fréquence (équations de Maxwell)."
+    },
+    {
+      "id": "ant-gen-005",
+      "type": "QCR",
+      "question": "Quels vecteurs caractérisent une onde rayonnée en un point M de l'espace ?",
+      "choix": [
+        "Vecteurs E et D (champ et induction électriques).",
+        "Vecteurs H et B (champ et induction magnétiques).",
+        "Vecteurs P et S (puissance et énergie).",
+        "Vecteurs E et H uniquement."
+      ],
+      "reponses": [0, 1],
+      "explication": "Une onde rayonnée est caractérisée par les **vecteurs E et D** (champ et induction électriques) et les **vecteurs H et B** (champ et induction magnétiques)."
+    },
+    {
+      "id": "ant-gen-006",
+      "type": "QCM",
+      "question": "Quel est l'objectif principal lors de la conception d'une antenne ?",
+      "choix": [
+        "Minimiser le rayonnement.",
+        "Maximiser le phénomène de rayonnement.",
+        "Rendre l'antenne invisible.",
+        "Réduire la consommation d'énergie."
+      ],
+      "reponses": [1],
+      "explication": "Lors de la conception d'une antenne, on cherche à **maximiser le phénomène de rayonnement**."
+    },
+    {
+      "id": "ant-gen-007",
+      "type": "QCM",
+      "question": "Quelle est la célérité des ondes électromagnétiques dans le vide ?",
+      "choix": ["200 000 km/s", "300 000 km/s", "400 000 km/s", "500 000 km/s"],
+      "reponses": [1],
+      "explication": "La célérité des ondes électromagnétiques dans le vide est **c = 300 000 km/s** (ou $3 \\times 10^8 \\text{ m/s}$)."
+    },
+    {
+      "id": "ant-gen-008",
+      "type": "QCM",
+      "question": "Quelle est la relation entre la longueur d'onde $\\lambda$, la célérité $c$ et la fréquence $f$ ?",
+      "choix": [
+        "$\\lambda = c / f$",
+        "$\\lambda = f / c$",
+        "$\\lambda = c \\cdot f$",
+        "$\\lambda = 1 / (c \\cdot f)$"
+      ],
+      "reponses": [0],
+      "explication": "La relation fondamentale est **$\\lambda = c / f$**, où $c$ est la célérité, $f$ la fréquence et $\\lambda$ la longueur d'onde."
+    },
+    {
+      "id": "ant-gen-009",
+      "type": "QCM",
+      "question": "Quelle est la période $T$ d'une onde électromagnétique en fonction de sa longueur d'onde $\\lambda$ et de la célérité $c$ ?",
+      "choix": [
+        "$T = \\lambda / c$",
+        "$T = c / \\lambda$",
+        "$T = \\lambda \\cdot c$",
+        "$T = 1 / (\\lambda \\cdot c)$"
+      ],
+      "reponses": [0],
+      "explication": "La période est donnée par **$T = \\lambda / c$**."
+    },
+    {
+      "id": "ant-gen-010",
+      "type": "QCM",
+      "question": "Quelle est la fréquence $f$ d'une onde électromagnétique en fonction de sa période $T$ ?",
+      "choix": [
+        "$f = 1 / T$",
+        "$f = T$",
+        "$f = 2\\pi / T$",
+        "$f = T / 2\\pi$"
+      ],
+      "reponses": [0],
+      "explication": "La fréquence est l'inverse de la période : **$f = 1 / T$**."
+    },
+    {
+      "id": "ant-carac-001",
+      "type": "QCM",
+      "question": "Quelle caractéristique d'une antenne définit sa plage de fréquences utilisables ?",
+      "choix": [
+        "Largeur de bande et fréquence centrale.",
+        "Gain maximal.",
+        "Directivité.",
+        "Rendement."
+      ],
+      "reponses": [0],
+      "explication": "La **zone spectrale de fonctionnement** est définie par la **largeur de bande** et la **fréquence centrale** de l'antenne."
+    },
+    {
+      "id": "ant-carac-002",
+      "type": "QCM",
+      "question": "Quelle est la formule du rendement $\\eta$ d'une antenne ?",
+      "choix": [
+        "$\\eta = P_{ray} / P_e$",
+        "$\\eta = P_e / P_{ray}$",
+        "$\\eta = G / D$",
+        "$\\eta = D / G$"
+      ],
+      "reponses": [0],
+      "explication": "Le rendement est défini comme le rapport entre la **puissance totale rayonnée** ($P_{ray}$) et la **puissance fournie à l'antenne** ($P_e$) : $\\eta = P_{ray} / P_e$."
+    },
+    {
+      "id": "ant-carac-003",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une source isotrope ?",
+      "choix": [
+        "Une source ponctuelle rayonnant uniformément dans toutes les directions.",
+        "Une source directionnelle avec un gain élevé.",
+        "Une source qui ne rayonne que dans une direction.",
+        "Une source qui absorbe toute l'énergie incidente."
+      ],
+      "reponses": [0],
+      "explication": "Une **source isotrope** est une source ponctuelle qui **rayonne uniformément toute la puissance reçue dans toutes les directions**. C'est un modèle théorique utilisé comme référence."
+    },
+    {
+      "id": "ant-carac-004",
+      "type": "QCM",
+      "question": "Quelle est la formule de la puissance rayonnée par unité de surface $R_{iso}$ pour une source isotrope ?",
+      "choix": [
+        "$R_{iso} = \\frac{P_{ray}}{4\\pi r^2}$",
+        "$R_{iso} = \\frac{P_{ray}}{2\\pi r^2}$",
+        "$R_{iso} = \\frac{P_{ray}}{r^2}$",
+        "$R_{iso} = 4\\pi r^2 P_{ray}$"
+      ],
+      "reponses": [0],
+      "explication": "Pour une source isotrope, la puissance rayonnée par unité de surface est **$R_{iso} = \\frac{P_{ray}}{4\\pi r^2}$**, où $P_{ray}$ est la puissance totale rayonnée."
+    },
+    {
+      "id": "ant-carac-005",
+      "type": "QCM",
+      "question": "Quelle est la formule de la directivité $D(\\theta, \\phi)$ d'une antenne ?",
+      "choix": [
+        "$D(\\theta, \\phi) = \\frac{R(r, \\theta, \\phi)}{R_{iso}(r)}$",
+        "$D(\\theta, \\phi) = \\frac{R_{iso}(r)}{R(r, \\theta, \\phi)}$",
+        "$D(\\theta, \\phi) = R(r, \\theta, \\phi) \\cdot R_{iso}(r)$",
+        "$D(\\theta, \\phi) = \\frac{P_{ray}}{R(r, \\theta, \\phi)}$"
+      ],
+      "reponses": [0],
+      "explication": "La directivité est définie comme le rapport entre la puissance rayonnée par l'antenne dans une direction donnée et celle d'une **source isotrope** rayonnant la même puissance totale : $D(\\theta, \\phi) = \\frac{R(r, \\theta, \\phi)}{R_{iso}(r)}$."
+    },
+    {
+      "id": "ant-carac-006",
+      "type": "QCM",
+      "question": "Dans quelles unités s'exprime la directivité $D$ ?",
+      "choix": [
+        "En dB ou en dBi.",
+        "En watts.",
+        "En ohms.",
+        "En mètres."
+      ],
+      "reponses": [0],
+      "explication": "La directivité $D$ s'exprime en **dB** ou en **dBi** (relatif à la source isotrope)."
+    },
+    {
+      "id": "ant-carac-007",
+      "type": "QCM",
+      "question": "Quelle est la relation entre le gain $G$ et la directivité $D$ d'une antenne ?",
+      "choix": [
+        "$G(\\theta, \\phi) = \\eta \\cdot D(\\theta, \\phi)$",
+        "$G(\\theta, \\phi) = D(\\theta, \\phi) / \\eta$",
+        "$G(\\theta, \\phi) = D(\\theta, \\phi) + \\eta$",
+        "$G(\\theta, \\phi) = D(\\theta, \\phi) - \\eta$"
+      ],
+      "reponses": [0],
+      "explication": "Le **gain** $G$ est lié à la **directivité** $D$ par la formule $G(\\theta, \\phi) = \\eta \\cdot D(\\theta, \\phi)$, où $\\eta$ est le rendement de l'antenne."
+    },
+    {
+      "id": "ant-carac-008",
+      "type": "QCM",
+      "question": "Quelle est la formule du gain maximal $G_{max}$ ?",
+      "choix": [
+        "$G_{max} = \\eta \\cdot D_{max}$",
+        "$G_{max} = D_{max} / \\eta$",
+        "$G_{max} = D_{max} + \\eta$",
+        "$G_{max} = D_{max} - \\eta$"
+      ],
+      "reponses": [0],
+      "explication": "Le gain maximal est donné par **$G_{max} = \\eta \\cdot D_{max}$**. En pratique, $G_{max}$ est souvent noté simplement $G$."
+    },
+    {
+      "id": "ant-carac-009",
+      "type": "QCM",
+      "question": "Qu'est-ce que le diagramme de rayonnement d'une antenne ?",
+      "choix": [
+        "La surface $D(\\theta, \\phi)$ qui caractérise le rayonnement de l'antenne.",
+        "Un schéma électrique de l'antenne.",
+        "La courbe de réponse en fréquence de l'antenne.",
+        "La distribution de courant dans l'antenne."
+      ],
+      "reponses": [0],
+      "explication": "Le **diagramme de rayonnement** est la surface $D(\\theta, \\phi)$ qui caractérise comment l'antenne rayonne dans différentes directions."
+    },
+    {
+      "id": "ant-carac-010",
+      "type": "QCM",
+      "question": "Qu'est-ce que l'ouverture à -3 dB $\\theta_{-3dB}$ d'une antenne ?",
+      "choix": [
+        "L'angle à l'intérieur duquel la directivité est supérieure à la moitié de sa valeur maximale.",
+        "L'angle pour lequel le gain est maximal.",
+        "L'angle entre le lobe principal et les lobes secondaires.",
+        "L'angle de polarisation de l'antenne."
+      ],
+      "reponses": [0],
+      "explication": "L'ouverture à -3 dB est **l'angle à l'intérieur duquel la valeur de la directivité est supérieure à la moitié de sa valeur maximale** (soit une atténuation de 3 dB)."
+    },
+    {
+      "id": "ant-carac-011",
+      "type": "QCM",
+      "question": "Quelle partie du diagramme de rayonnement concentre la majeure partie de la puissance rayonnée ?",
+      "choix": ["Lobe principal", "Lobe secondaire", "Lobe arrière", "Lobe latéral"],
+      "reponses": [0],
+      "explication": "Le **lobe principal** est la zone où se concentre la **majeure partie de la puissance rayonnée**."
+    },
+    {
+      "id": "ant-carac-012",
+      "type": "QCM",
+      "question": "Quels sont les autres lobes du diagramme de rayonnement, en dehors du lobe principal ?",
+      "choix": ["Lobes secondaires", "Lobes principaux", "Lobes centraux", "Lobes verticaux"],
+      "reponses": [0],
+      "explication": "Les **lobes secondaires** sont les autres zones de concentration de la puissance rayonnée, en dehors du lobe principal."
+    },
+    {
+      "id": "ant-carac-013",
+      "type": "QCM",
+      "question": "Quelle est la formule de la surface équivalente $A_e$ d'une antenne en fonction de son gain $G$ ?",
+      "choix": [
+        "$A_e = G \\cdot \\frac{\\lambda^2}{4\\pi}$",
+        "$A_e = \\frac{G \\cdot \\lambda^2}{4\\pi}$",
+        "$A_e = \\frac{4\\pi}{G \\cdot \\lambda^2}$",
+        "$A_e = \\frac{\\lambda^2}{4\\pi G}$"
+      ],
+      "reponses": [0],
+      "explication": "La surface équivalente d'une antenne est donnée par **$A_e = G \\cdot \\frac{\\lambda^2}{4\\pi}$**, où $G$ est le gain et $\\lambda$ la longueur d'onde."
+    },
+    {
+      "id": "ant-carac-014",
+      "type": "QCM",
+      "question": "Quelle est la formule de la PIRE (Puissance Isotrope Rayonnée Équivalente) ?",
+      "choix": [
+        "$PIRE = P_e \\cdot G_e$",
+        "$PIRE = P_e / G_e$",
+        "$PIRE = P_e + G_e$",
+        "$PIRE = G_e / P_e$"
+      ],
+      "reponses": [0],
+      "explication": "La **PIRE** est définie par $PIRE = P_e \\cdot G_e$, où $P_e$ est la puissance d'émission et $G_e$ le gain de l'antenne."
+    },
+    {
+      "id": "ant-carac-015",
+      "type": "QCM",
+      "question": "Comment s'exprime la PIRE en décibels ?",
+      "choix": [
+        "$PIRE_{dBW} = P_e_{dBW} + G_e_{dB}$",
+        "$PIRE_{dBW} = P_e_{dBW} \\cdot G_e_{dB}$",
+        "$PIRE_{dBW} = P_e_{dBW} - G_e_{dB}$",
+        "$PIRE_{dBW} = G_e_{dB} / P_e_{dBW}$"
+      ],
+      "reponses": [0],
+      "explication": "En décibels, la PIRE s'exprime par **$PIRE_{dBW} = P_e_{dBW} + G_e_{dB}$**. En dBm, on ajoute 30 : $PIRE_{dBm} = P_e_{dBm} + G_e_{dB}$."
+    },
+    {
+      "id": "ant-filaire-001",
+      "type": "QCM",
+      "question": "Quelle antenne est souvent utilisée comme référence pour les calculs d'autres antennes filaires ?",
+      "choix": ["Antenne Yagi", "Antenne dipolaire demi-onde", "Antenne cornet", "Antenne patch"],
+      "reponses": [1],
+      "explication": "L'**antenne dipolaire demi-onde** est l'antenne filaire de référence pour la réalisation d'antennes plus complexes."
+    },
+    {
+      "id": "ant-filaire-002",
+      "type": "QCM",
+      "question": "Quelle est la longueur totale d'une antenne dipolaire demi-onde ?",
+      "choix": [
+        "$\\lambda / 4$",
+        "$\\lambda / 2$",
+        "$\\lambda$",
+        "$2\\lambda$"
+      ],
+      "reponses": [1],
+      "explication": "Une antenne dipolaire demi-onde a une **longueur totale de $\\lambda / 2$** (où $\\lambda$ est la longueur d'onde)."
+    },
+    {
+      "id": "ant-filaire-003",
+      "type": "QCM",
+      "question": "Quelle est la directivité maximale $D_{max}$ d'une antenne dipolaire demi-onde (en dBi) ?",
+      "choix": ["0 dBi", "1.76 dBi", "2.15 dBi", "3 dBi"],
+      "reponses": [2],
+      "explication": "La directivité maximale d'une antenne dipolaire demi-onde est **$D_{max} = 2.15 \\text{ dBi}$**."
+    },
+    {
+      "id": "ant-filaire-004",
+      "type": "QCM",
+      "question": "Quelle est l'ouverture à -3 dB $\\theta_{-3dB}$ d'une antenne dipolaire demi-onde ?",
+      "choix": ["30°", "45°", "78°", "90°"],
+      "reponses": [2],
+      "explication": "L'ouverture à -3 dB d'une antenne dipolaire demi-onde est de **78°**."
+    },
+    {
+      "id": "ant-filaire-005",
+      "type": "QCM",
+      "question": "Quel est le diagramme de rayonnement 3D d'une antenne dipolaire demi-onde ?",
+      "choix": ["Un tore de révolution", "Une sphère", "Un cône", "Un cylindre"],
+      "reponses": [0],
+      "explication": "Le diagramme de rayonnement 3D d'une antenne dipolaire demi-onde est un **tore de révolution**."
+    },
+    {
+      "id": "ant-filaire-006",
+      "type": "QCM",
+      "question": "Quelle est la directivité maximale $D_{max}$ d'une antenne « élément de courant » ?",
+      "choix": ["1.58 dBi", "1.76 dBi", "2.15 dBi", "2.5 dBi"],
+      "reponses": [1],
+      "explication": "L'antenne « élément de courant » a une directivité maximale de **$D_{max} = 1.76 \\text{ dBi}$**. Sa formule de directivité est $D(\\theta) = \\frac{3}{2} \\sin^2\\theta$."
+    },
+    {
+      "id": "ant-filaire-007",
+      "type": "QCM",
+      "question": "Quelle est l'ouverture à -3 dB $\\theta_{-3dB}$ d'une antenne « élément de courant » ?",
+      "choix": ["90°", "100°", "110°", "120°"],
+      "reponses": [3],
+      "explication": "L'ouverture à -3 dB d'une antenne « élément de courant » est de **120°**."
+    },
+    {
+      "id": "ant-filaire-008",
+      "type": "QCM",
+      "question": "Quelle antenne est une association d'une antenne demi-onde avec des brins passifs pour augmenter la directivité ?",
+      "choix": ["Antenne Yagi", "Antenne cornet", "Antenne patch", "Antenne parabole"],
+      "reponses": [0],
+      "explication": "L'**antenne Yagi** est une association d'une antenne demi-onde (élément actif) avec des **brins passifs** (réflecteur et directeurs) pour augmenter la directivité."
+    },
+    {
+      "id": "ant-filaire-009",
+      "type": "QCM",
+      "question": "Quelle est l'application principale de l'antenne Yagi ?",
+      "choix": ["Télévision et radio", "Téléphone mobile", "Satellite", "Radar"],
+      "reponses": [0],
+      "explication": "L'antenne Yagi est principalement utilisée pour la **télévision et la radio** (réception terrestre)."
+    },
+    {
+      "id": "ant-filaire-010",
+      "type": "QCM",
+      "question": "Pour une antenne Yagi avec 9 éléments, quelle est la directivité maximale $D_{max}$ ?",
+      "choix": ["8 dBi", "10 dBi", "13 dBi", "15 dBi"],
+      "reponses": [2],
+      "explication": "D'après le tableau du cours, une antenne Yagi avec **9 éléments** a une directivité maximale de **13 dBi**."
+    },
+    {
+      "id": "ant-filaire-011",
+      "type": "QCM",
+      "question": "Quelle antenne utilise un brin quart d'onde associé à un plan de masse ?",
+      "choix": ["Antenne dipôle", "Antenne Yagi", "Antenne quart d'onde", "Antenne cornet"],
+      "reponses": [2],
+      "explication": "L'**antenne quart d'onde** est composée d'un **brin quart d'onde** associé à un **plan de masse** (qui se comporte comme un miroir)."
+    },
+    {
+      "id": "ant-filaire-012",
+      "type": "QCM",
+      "question": "Quelle antenne a des performances théoriques identiques à celles d'une antenne dipolaire demi-onde ?",
+      "choix": ["Antenne Yagi", "Antenne quart d'onde avec plan de masse", "Antenne cornet", "Antenne parabole"],
+      "reponses": [1],
+      "explication": "Une **antenne quart d'onde avec un plan de masse infini** a les **mêmes performances théoriques** qu'une antenne dipolaire demi-onde (le plan de masse crée une image miroir)."
+    },
+    {
+      "id": "ant-filaire-013",
+      "type": "QCM",
+      "question": "Quel exemple concret utilise une antenne quart d'onde ?",
+      "choix": ["Antenne de voiture", "Antenne parabolique", "Antenne de satellite", "Antenne radar"],
+      "reponses": [0],
+      "explication": "L'**antenne de voiture** est un exemple typique d'antenne quart d'onde, où la **carrosserie joue le rôle de plan de masse**."
+    },
+    {
+      "id": "ant-filaire-014",
+      "type": "QCM",
+      "question": "Quelle est la relation entre le gain en dBi et le gain en dBd ?",
+      "choix": [
+        "$G_{dBi} = G_{dBd} + 2.15$",
+        "$G_{dBi} = G_{dBd} - 2.15$",
+        "$G_{dBi} = 2.15 \\cdot G_{dBd}$",
+        "$G_{dBi} = G_{dBd} / 2.15$"
+      ],
+      "reponses": [0],
+      "explication": "Le gain en **dBi** (relatif à une source isotrope) est lié au gain en **dBd** (relatif à un dipôle demi-onde) par $G_{dBi} = G_{dBd} + 2.15$, car un dipôle a un gain de **2.15 dBi**."
+    },
+    {
+      "id": "ant-ouverture-001",
+      "type": "QCM",
+      "question": "Quelles antennes comportent généralement une ou plusieurs sources primaires et éventuellement un ou plusieurs réflecteurs ?",
+      "choix": ["Antennes filaires", "Antennes à ouvertures rayonnantes", "Antennes imprimées", "Antennes Yagi"],
+      "reponses": [1],
+      "explication": "Les **antennes à ouvertures rayonnantes** comportent généralement une ou plusieurs sources primaires (cornets, fentes) et éventuellement un ou plusieurs réflecteurs."
+    },
+    {
+      "id": "ant-ouverture-002",
+      "type": "QCM",
+      "question": "Quelle est la formule du gain maximal $G_{max}$ d'une antenne à ouverture rayonnante ?",
+      "choix": [
+        "$G_{max} = \\eta \\cdot \\frac{4\\pi A_e}{\\lambda^2}$",
+        "$G_{max} = \\eta \\cdot \\frac{A_e}{\\lambda^2}$",
+        "$G_{max} = \\eta \\cdot \\frac{4 A_e}{\\lambda^2}$",
+        "$G_{max} = \\eta \\cdot \\frac{4\\pi}{\\lambda^2 A_e}$"
+      ],
+      "reponses": [0],
+      "explication": "Le gain maximal d'une antenne à ouverture rayonnante est donné par **$G_{max} = \\eta \\cdot \\frac{4\\pi A_e}{\\lambda^2}$**, où $A_e$ est la surface équivalente et $\\eta$ le rendement."
+    },
+    {
+      "id": "ant-ouverture-003",
+      "type": "QCM",
+      "question": "Quelle est la formule de l'ouverture à -3 dB $\\theta_{-3dB}$ pour une antenne à ouverture rayonnante de largeur $l$ ?",
+      "choix": [
+        "$\\theta_{-3dB} = \\frac{70 \\cdot \\lambda}{l}$",
+        "$\\theta_{-3dB} = \\frac{50 \\cdot \\lambda}{l}$",
+        "$\\theta_{-3dB} = \\frac{90 \\cdot \\lambda}{l}$",
+        "$\\theta_{-3dB} = \\frac{35 \\cdot \\lambda}{l}$"
+      ],
+      "reponses": [0],
+      "explication": "L'ouverture à -3 dB pour une antenne à ouverture rayonnante est donnée par **$\\theta_{-3dB} = \\frac{70 \\cdot \\lambda}{l}$**, où $l$ est la largeur de l'ouverture."
+    },
+    {
+      "id": "ant-ouverture-004",
+      "type": "QCM",
+      "question": "Quelle antenne est réalisée avec une antenne quart d'onde qui rayonne dans un guide d'onde ?",
+      "choix": ["Antenne Yagi", "Antenne cornet", "Antenne patch", "Antenne parabole"],
+      "reponses": [1],
+      "explication": "L'**antenne cornet** est réalisée avec une antenne quart d'onde qui rayonne dans un **guide d'onde**. Le cornet peut être de forme rectangulaire ou circulaire."
+    },
+    {
+      "id": "ant-ouverture-005",
+      "type": "QCM",
+      "question": "Quelle est la formule de l'ouverture à -3 dB pour un cornet d'ouverture rectangulaire (site et gisement) ?",
+      "choix": [
+        "$\\theta_{-3dB\\text{ site}} = \\frac{70 \\cdot \\lambda}{a}$ et $\\theta_{-3dB\\text{ gisement}} = \\frac{70 \\cdot \\lambda}{b}$",
+        "$\\theta_{-3dB} = \\frac{50 \\cdot \\lambda}{a + b}$",
+        "$\\theta_{-3dB} = \\frac{90 \\cdot \\lambda}{\\sqrt{ab}}$",
+        "$\\theta_{-3dB} = \\frac{35 \\cdot \\lambda}{\\min(a, b)}$"
+      ],
+      "reponses": [0],
+      "explication": "Pour un cornet d'ouverture rectangulaire, l'ouverture à -3 dB est donnée par $\\theta_{-3dB\\text{ site}} = \\frac{70 \\cdot \\lambda}{a}$ et $\\theta_{-3dB\\text{ gisement}} = \\frac{70 \\cdot \\lambda}{b}$, où $a$ et $b$ sont les dimensions de l'ouverture."
+    },
+    {
+      "id": "ant-ouverture-006",
+      "type": "QCM",
+      "question": "Quelle est la formule du gain maximal $G_{max}$ d'un cornet d'ouverture rectangulaire ?",
+      "choix": [
+        "$G_{max} = \\eta \\cdot \\frac{4\\pi ab}{\\lambda^2}$",
+        "$G_{max} = \\eta \\cdot \\frac{\\pi ab}{\\lambda^2}$",
+        "$G_{max} = \\eta \\cdot \\frac{ab}{\\lambda^2}$",
+        "$G_{max} = \\eta \\cdot \\frac{4ab}{\\lambda^2}$"
+      ],
+      "reponses": [0],
+      "explication": "Le gain maximal d'un cornet d'ouverture rectangulaire est donné par **$G_{max} = \\eta \\cdot \\frac{4\\pi ab}{\\lambda^2}$**, où $a$ et $b$ sont les dimensions de l'ouverture."
+    },
+    {
+      "id": "ant-ouverture-007",
+      "type": "QCM",
+      "question": "Quelle antenne est composée d'une source rayonnante placée au foyer d'un paraboloïde de révolution ?",
+      "choix": ["Antenne cornet", "Antenne Yagi", "Antenne à réflecteur parabolique", "Antenne patch"],
+      "reponses": [2],
+      "explication": "L'**antenne à réflecteur parabolique** est composée d'une source rayonnante (ex: cornet) placée au **foyer d'un paraboloïde de révolution**, qui concentre les ondes."
+    },
+    {
+      "id": "ant-ouverture-008",
+      "type": "QCM",
+      "question": "Quelle est la formule de l'ouverture à -3 dB pour une antenne parabolique avec une ouverture circulaire de diamètre $D$ ?",
+      "choix": [
+        "$\\theta_{-3dB} = \\frac{70 \\cdot \\lambda}{D}$",
+        "$\\theta_{-3dB} = \\frac{50 \\cdot \\lambda}{D}$",
+        "$\\theta_{-3dB} = \\frac{90 \\cdot \\lambda}{D}$",
+        "$\\theta_{-3dB} = \\frac{35 \\cdot \\lambda}{D}$"
+      ],
+      "reponses": [0],
+      "explication": "Pour une antenne parabolique avec une ouverture circulaire de diamètre $D$, l'ouverture à -3 dB est donnée par **$\\theta_{-3dB} = \\frac{70 \\cdot \\lambda}{D}$**."
+    },
+    {
+      "id": "ant-ouverture-009",
+      "type": "QCM",
+      "question": "Quelle est la formule du gain maximal $G_{max}$ d'une antenne parabolique avec une ouverture circulaire de diamètre $D$ ?",
+      "choix": [
+        "$G_{max} = \\eta \\cdot \\left(\\frac{\\pi D}{\\lambda}\\right)^2$",
+        "$G_{max} = \\eta \\cdot \\frac{\\pi D^2}{\\lambda^2}$",
+        "$G_{max} = \\eta \\cdot \\frac{4\\pi D^2}{\\lambda^2}$",
+        "$G_{max} = \\eta \\cdot \\frac{D^2}{\\lambda^2}$"
+      ],
+      "reponses": [0],
+      "explication": "Le gain maximal d'une antenne parabolique avec une ouverture circulaire est donné par **$G_{max} = \\eta \\cdot \\left(\\frac{\\pi D}{\\lambda}\\right)^2$**. La surface équivalente est égale à la surface de l'ouverture : $A_e = \\pi (D/2)^2 = \\pi D^2 / 4$."
+    },
+    {
+      "id": "ant-ouverture-010",
+      "type": "QCM",
+      "question": "Quelle antenne utilise une fente pratiquée dans un plan de masse de grande dimension ?",
+      "choix": ["Antenne cornet", "Antenne à fentes", "Antenne patch", "Antenne Yagi"],
+      "reponses": [1],
+      "explication": "L'**antenne à fentes** utilise une (ou plusieurs) fente(s) pratiquée(s) dans un **plan de masse** de grande dimension."
+    },
+    {
+      "id": "ant-patch-001",
+      "type": "QCM",
+      "question": "Quelle antenne est constituée d'un plan de masse et d'un carré de cuivre (patch) séparés par un substrat ?",
+      "choix": ["Antenne cornet", "Antenne à fentes", "Antenne imprimée (patch)", "Antenne Yagi"],
+      "reponses": [2],
+      "explication": "L'**antenne imprimée (patch)** est constituée d'un **plan de masse** et d'un **patch** (carré de cuivre) séparés par un **substrat** de permittivité relative $\\epsilon_r$."
+    },
+    {
+      "id": "ant-patch-002",
+      "type": "QCM",
+      "question": "Quelle est la condition de résonance pour une antenne patch de longueur $l$ et largeur $w$ ?",
+      "choix": [
+        "$l = \\lambda_0 / 2$ et $w = 0.5 l$ à $2 l$",
+        "$l = \\lambda_0$ et $w = l$",
+        "$l = \\lambda_0 / 4$ et $w = \\lambda_0 / 2$",
+        "$l = 2\\lambda_0$ et $w = \\lambda_0$"
+      ],
+      "reponses": [0],
+      "explication": "Une antenne patch résonne pour $l = \\lambda_0 / 2$ et $w = 0.5 l$ à $2 l$, où $\\lambda_0 = \\frac{c}{f_0 \\sqrt{\\epsilon_r}}$."
+    },
+    {
+      "id": "ant-patch-003",
+      "type": "QCM",
+      "question": "Quelle est la formule de la longueur d'onde $\\lambda_0$ dans un substrat de permittivité relative $\\epsilon_r$ ?",
+      "choix": [
+        "$\\lambda_0 = \\frac{c}{f_0 \\sqrt{\\epsilon_r}}$",
+        "$\\lambda_0 = \\frac{c \\sqrt{\\epsilon_r}}{f_0}$",
+        "$\\lambda_0 = \\frac{c}{f_0} \\sqrt{\\epsilon_r}$",
+        "$\\lambda_0 = \\frac{f_0 \\sqrt{\\epsilon_r}}{c}$"
+      ],
+      "reponses": [0],
+      "explication": "La longueur d'onde dans un substrat de permittivité $\\epsilon_r$ est donnée par **$\\lambda_0 = \\frac{c}{f_0 \\sqrt{\\epsilon_r}}$**."
+    },
+    {
+      "id": "ant-reseau-001",
+      "type": "QCR",
+      "question": "Quel est l'avantage principal du regroupement de plusieurs antennes en réseau ?",
+      "choix": [
+        "Obtenir une meilleure directivité.",
+        "Obtenir un diagramme de rayonnement adapté au besoin.",
+        "Réduire la consommation d'énergie.",
+        "Augmenter la puissance d'émission."
+      ],
+      "reponses": [0, 1],
+      "explication": "Le regroupement de plusieurs antennes en réseau permet d'obtenir une **meilleure directivité** et un **diagramme de rayonnement adapté au besoin**."
+    },
+    {
+      "id": "ant-reseau-002",
+      "type": "QCR",
+      "question": "Quelles formes peut avoir une antenne réseau ?",
+      "choix": [
+        "Linéaire.",
+        "Circulaire.",
+        "Conformée à une structure.",
+        "Parabolique.",
+        "Cylindrique."
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Une antenne réseau peut avoir différentes formes : **linéaire**, **circulaire**, ou **conformée à une structure**."
+    },
+    {
+      "id": "ant-reseau-003",
+      "type": "QCM",
+      "question": "Quelle antenne permet de s'affranchir du mouvement mécanique de l'antenne ?",
+      "choix": ["Antenne réseau à commande de phase", "Antenne Yagi", "Antenne cornet", "Antenne parabole"],
+      "reponses": [0],
+      "explication": "Une **antenne réseau à commande de phase** (ou antenne électronique) permet de **s'affranchir du mouvement mécanique** de l'antenne (ex: antenne radar électronique)."
+    },
+    {
+      "id": "ant-reseau-004",
+      "type": "QCM",
+      "question": "Quelle est l'application typique d'une antenne réseau à commande de phase ?",
+      "choix": ["Antenne radar électronique", "Antenne de télévision", "Antenne de téléphone mobile", "Antenne WiFi"],
+      "reponses": [0],
+      "explication": "Les **antennes réseau à commande de phase** sont typiquement utilisées pour les **antennes radar électroniques**."
+    },
+    {
+      "id": "ant-reseau-005",
+      "type": "QCM",
+      "question": "Que permet la mise en réseau d'antennes patch ?",
+      "choix": [
+        "Réaliser des antennes planes très directives (comparables aux paraboles).",
+        "Réduire la taille de l'antenne.",
+        "Augmenter la puissance d'émission.",
+        "Diminuer la consommation d'énergie."
+      ],
+      "reponses": [0],
+      "explication": "La mise en réseau d'**antennes patch** permet de réaliser des **antennes planes très directives**, comparables aux paraboles."
+    }
+  ]
+}

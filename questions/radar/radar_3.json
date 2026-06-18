@@ -1,0 +1,486 @@
+{
+  "titre": "Radar Partie 3 - Architecture Matérielle, Traitements et Radars Aéroportés",
+  "description": "Questions sur l'architecture matérielle des radars, les caractéristiques des antennes, les antennes à balayage électronique, les traitements en réception, les radars aéroportés et les radars en service.",
+  "questions": [
+    {
+      "id": "radar3-001",
+      "type": "QCM",
+      "question": "Quel composant d'un radar monostatique permet de partager l'antenne entre l'émetteur et le récepteur ?",
+      "choix": ["Duplexeur", "Pilote", "Amplificateur", "Traitement d'information"],
+      "reponses": [0],
+      "explication": "Le duplexeur est un commutateur qui permet à l'antenne de fonctionner alternativement en émission et en réception."
+    },
+    {
+      "id": "radar3-002",
+      "type": "QCM",
+      "question": "Quelle est la fonction principale de l'antenne dans un radar monostatique ?",
+      "choix": ["Assurer l'adaptation entre le milieu guidé et l'espace libre", "Amplifier le signal émis", "Filtrer les bruits de réception", "Générer la porteuse"],
+      "reponses": [0],
+      "explication": "L'antenne assure l'adaptation entre le milieu guidé et l'espace libre, ainsi que la répartition de l'énergie rayonnée dans l'espace."
+    },
+    {
+      "id": "radar3-003",
+      "type": "QCM",
+      "question": "Quel composant assure la synchronisation entre les différents éléments d'un radar ?",
+      "choix": ["Pilote", "Duplexeur", "Émetteur", "Récepteur"],
+      "reponses": [0],
+      "explication": "Le pilote (ou synchroniseur) assure la synchronisation temporelle entre l'émission, la réception et le traitement."
+    },
+    {
+      "id": "radar3-004",
+      "type": "QCR",
+      "question": "Quels sont les critères principaux pour le choix d'une antenne radar ?",
+      "choix": ["La gamme de fréquences à transmettre", "Le diagramme de rayonnement", "Le gain", "La puissance à transmettre"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Le choix d'une antenne dépend de la gamme de fréquences, du diagramme de rayonnement souhaité, du gain nécessaire et de la puissance à transmettre."
+    },
+    {
+      "id": "radar3-005",
+      "type": "QCM",
+      "question": "Quel type d'antenne permet de balayer un secteur angulaire sans mouvement mécanique ?",
+      "choix": ["Antenne à balayage électronique", "Antenne tournante mécanique", "Antenne parabolique fixe", "Antenne Yagi"],
+      "reponses": [0],
+      "explication": "Les antennes à balayage électronique utilisent des déphaseurs électroniques pour orienter le faisceau sans mouvement physique."
+    },
+    {
+      "id": "radar3-006",
+      "type": "QCM",
+      "question": "Quelle caractéristique d'une antenne traduit son aptitude à concentrer l'énergie rayonnée dans une direction donnée ?",
+      "choix": ["Directivité", "Gain", "Ouverture à 3 dB", "Rendement"],
+      "reponses": [0],
+      "explication": "La directivité caractérise l'aptitude de l'antenne à concentrer l'énergie rayonnée dans une direction donnée. Sa représentation en 3D est appelée surface caractéristique de rayonnement."
+    },
+    {
+      "id": "radar3-007",
+      "type": "QCM",
+      "question": "Que représente l'ouverture à 3 dB d'une antenne ?",
+      "choix": ["L'angle obtenu à mi-puissance (3 dB en dessous du maximum)", "L'angle maximal de rayonnement", "L'angle où le gain est maximal", "La largeur du lobe principal en degrés"],
+      "reponses": [0],
+      "explication": "L'ouverture à 3 dB correspond à l'angle du cône dans lequel l'antenne rayonne le plus, obtenu à mi-puissance."
+    },
+    {
+      "id": "radar3-008",
+      "type": "QCM",
+      "question": "Par rapport à quelle référence le gain d'une antenne est-il généralement défini ?",
+      "choix": ["Une antenne isotrope", "Une antenne dipôle", "Une antenne parabolique standard", "Une antenne Yagi"],
+      "reponses": [0],
+      "explication": "Le gain est déterminé par rapport à une antenne isotrope idéale, qui rayonne de la même façon dans toutes les directions de l'espace."
+    },
+    {
+      "id": "radar3-009",
+      "type": "QCM",
+      "question": "Quelle est la formule du rendement d'une antenne ?",
+      "choix": ["eta = Puissance rayonnée / Puissance fournie", "eta = Puissance fournie / Puissance rayonnée", "eta = Gain / Directivité", "eta = Ouverture / lambda"],
+      "reponses": [0],
+      "explication": "Le rendement eta donne une indication des pertes à l'émission et est défini comme le rapport entre la puissance rayonnée et la puissance fournie à l'antenne."
+    },
+    {
+      "id": "radar3-010",
+      "type": "QCM",
+      "question": "Dans un diagramme de rayonnement, quel lobe contient la majeure partie de l'énergie rayonnée ?",
+      "choix": ["Lobe principal", "Lobe secondaire", "Lobe diffus", "Lobe arrière"],
+      "reponses": [0],
+      "explication": "Le lobe principal (noté G) contient la majeure partie de l'énergie rayonnée par l'antenne."
+    },
+    {
+      "id": "radar3-011",
+      "type": "QCM",
+      "question": "Quel est l'ordre de grandeur typique des lobes secondaires par rapport au lobe principal ?",
+      "choix": ["10^-2 à 10^-4 G", "10^-4 à 10^-5 G", "10^-5 à 10^-6 G", "1 à 10% de G"],
+      "reponses": [0],
+      "explication": "Les lobes secondaires ont typiquement une amplitude de 10^-2 à 10^-4 fois celle du lobe principal."
+    },
+    {
+      "id": "radar3-012",
+      "type": "QCM",
+      "question": "Quel est l'ordre de grandeur typique des lobes diffus par rapport au lobe principal ?",
+      "choix": ["10^-2 à 10^-4 G", "10^-4 à 10^-5 G", "10^-5 à 10^-6 G", "1 à 10% de G"],
+      "reponses": [1],
+      "explication": "Les lobes diffus ont typiquement une amplitude de 10^-4 à 10^-5 fois celle du lobe principal."
+    },
+    {
+      "id": "radar3-013",
+      "type": "QCM",
+      "question": "Comment évolue la directivité lorsque l'ouverture à 3 dB diminue ?",
+      "choix": ["La directivité augmente", "La directivité diminue", "La directivité reste constante", "Cela dépend de la fréquence"],
+      "reponses": [0],
+      "explication": "La directivité augmente lorsque l'ouverture à 3 dB décroît, car le faisceau devient plus étroit."
+    },
+    {
+      "id": "radar3-014",
+      "type": "QCM",
+      "question": "Quelle représentation 3D caractérise la directivité d'une antenne ?",
+      "choix": ["Surface caractéristique de rayonnement", "Diagramme polaire", "Lobe principal", "Gain isotrope"],
+      "reponses": [0],
+      "explication": "La surface caractéristique de rayonnement est la représentation 3D de la directivité d'une antenne."
+    },
+    {
+      "id": "radar3-015",
+      "type": "QCM",
+      "question": "Quelle propriété est spécifique aux antennes à fentes ?",
+      "choix": ["Les champs E et H sont inversés par rapport à l'antenne métallique complémentaire", "Elles ont un gain plus élevé que toutes les autres antennes", "Elles ne peuvent fonctionner qu'en émission", "Elles nécessitent un mouvement mécanique"],
+      "reponses": [0],
+      "explication": "Toute fente pratiquée dans un plan de masse a le même comportement en rayonnement que l'antenne métallique complémentaire, mais avec les champs E et H inversés."
+    },
+    {
+      "id": "radar3-016",
+      "type": "QCR",
+      "question": "Quels sont les avantages des antennes à fentes ?",
+      "choix": ["Meilleure maîtrise de la loi d'éclairement", "Faibles lobes secondaires", "Faibles lobes diffus", "Coût très faible"],
+      "reponses": [0, 1, 2],
+      "explication": "Les antennes à fentes offrent une meilleure maîtrise de la loi d'éclairement, ainsi que de faibles lobes secondaires et diffus."
+    },
+    {
+      "id": "radar3-017",
+      "type": "QCM",
+      "question": "Quel type d'antenne utilise des déphaseurs électroniques pour orienter le faisceau ?",
+      "choix": ["Antenne réseau à balayage électronique", "Antenne parabolique", "Antenne Yagi", "Antenne dipôle"],
+      "reponses": [0],
+      "explication": "Les antennes réseau à balayage électronique utilisent des déphaseurs pour orienter électroniquement le faisceau."
+    },
+    {
+      "id": "radar3-018",
+      "type": "QCR",
+      "question": "Quelles formes peut prendre une antenne réseau ?",
+      "choix": ["Linéaire", "Circulaire", "En croix", "Conforme à une structure"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Une antenne réseau peut avoir différentes formes : linéaire, circulaire, en croix, ou conforme à une structure porteuse."
+    },
+    {
+      "id": "radar3-019",
+      "type": "QCM",
+      "question": "Quel est l'avantage principal d'augmenter la taille globale d'une antenne réseau ?",
+      "choix": ["Meilleure directivité", "Diagramme de rayonnement approprié au besoin", "Les deux réponses précédentes", "Réduction du coût"],
+      "reponses": [2],
+      "explication": "Augmenter la taille globale permet d'obtenir une meilleure directivité et un diagramme de rayonnement approprié."
+    },
+    {
+      "id": "radar3-020",
+      "type": "QCM",
+      "question": "Quelle technologie d'antenne à balayage électronique utilise des amplificateurs externes ?",
+      "choix": ["PESA", "AESA", "Les deux", "Aucune"],
+      "reponses": [0],
+      "explication": "Dans une antenne PESA, les opérations d'amplification sont assurées à l'extérieur de l'antenne, en amont des déphaseurs."
+    },
+    {
+      "id": "radar3-021",
+      "type": "QCM",
+      "question": "Quelle technologie d'antenne à balayage électronique intègre l'amplification dans l'antenne ?",
+      "choix": ["PESA", "AESA", "Les deux", "Aucune"],
+      "reponses": [1],
+      "explication": "Dans une antenne AESA, les opérations d'amplification sont incluses dans chaque module de l'antenne."
+    },
+    {
+      "id": "radar3-022",
+      "type": "QCR",
+      "question": "Quels sont les avantages de la technologie AESA par rapport au PESA ?",
+      "choix": ["Portée de détection accrue", "Augmentation du nombre de cibles poursuivies", "Agilité des formes d'onde", "Facilité de maintenance"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "L'AESA offre une portée de détection accrue, permet de poursuivre plus de cibles, offre une agilité des formes d'onde et une facilité de maintenance."
+    },
+    {
+      "id": "radar3-023",
+      "type": "QCM",
+      "question": "Quel radar utilise la technologie AESA parmi ceux cités ?",
+      "choix": ["RBE2-AESA", "RBE2-PESA", "Les deux", "Aucun"],
+      "reponses": [0],
+      "explication": "Le RBE2-AESA est un radar utilisant la technologie Active Electronically Scanned Array."
+    },
+    {
+      "id": "radar3-024",
+      "type": "QCM",
+      "question": "Quelle est la principale différence entre PESA et AESA ?",
+      "choix": ["Localisation de l'amplification (externe pour PESA, intégrée pour AESA)", "Type de déphaseurs utilisés", "Fréquence de fonctionnement", "Taille de l'antenne"],
+      "reponses": [0],
+      "explication": "Dans le PESA, l'amplification est externe (un seul amplificateur pour tous les modules), tandis que dans l'AESA, chaque module a son propre amplificateur intégré."
+    },
+    {
+      "id": "radar3-025",
+      "type": "QCR",
+      "question": "Quels sont les avantages des antennes à balayage électronique par rapport aux antennes mécaniques ?",
+      "choix": ["La direction de visée peut être choisie instantanément", "La direction de visée peut être maintenue dans le temps", "Un radar peut assurer simultanément des fonctions air-air et air-sol", "Meilleure résistance au brouillage"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Les antennes à balayage électronique permettent une visée instantanée, le maintien de la direction, des capacités multifonctions et une meilleure résistance au brouillage."
+    },
+    {
+      "id": "radar3-026",
+      "type": "QCM",
+      "question": "Quelle technologie permet une visée quasi instantanée dans toutes les directions ?",
+      "choix": ["AESA", "PESA", "Antenne mécanique", "Aucune"],
+      "reponses": [0],
+      "explication": "La technologie AESA permet une visée quasi instantanée dans toutes les directions possibles du radar."
+    },
+    {
+      "id": "radar3-027",
+      "type": "QCM",
+      "question": "Quel type de radar peut assurer simultanément des fonctions air-air et air-sol ?",
+      "choix": ["Radar à balayage électronique", "Radar mécanique", "Radar passif", "Radar secondaire"],
+      "reponses": [0],
+      "explication": "Un radar à balayage électronique peut assurer simultanément des fonctions air-air (veille, poursuite, conduite de tir) et air-sol (détection, localisation, conduite de tir)."
+    },
+    {
+      "id": "radar3-028",
+      "type": "QCR",
+      "question": "Quels sont les avantages du RBE2-AESA par rapport au RBE2-PESA ?",
+      "choix": ["Limites de détection et de tracking augmentées", "Meilleure résistance au brouillage", "Fiabilité accrue", "Coût réduit"],
+      "reponses": [0, 1, 2],
+      "explication": "Le RBE2-AESA offre des limites de détection et de tracking augmentées, une meilleure résistance au brouillage et une fiabilité accrue."
+    },
+    {
+      "id": "radar3-029",
+      "type": "QCM",
+      "question": "Quelle technologie est supérieure pour la prise en compte simultanée de la situation tactique en air-air et air-surface ?",
+      "choix": ["Antenne AESA", "Antenne PESA", "Antenne mécanique multimode", "Aucune"],
+      "reponses": [0],
+      "explication": "L'antenne AESA permet une prise en compte simultanée et fiable de la situation tactique en air-air et air-surface."
+    },
+    {
+      "id": "radar3-030",
+      "type": "QCM",
+      "question": "Quelle est la formule du diagramme de rayonnement normalisé d'une antenne réseau linéaire uniforme ?",
+      "choix": ["F(theta) = sin(N*pi*d/lambda * (sin theta - sin theta0)) / (N*sin(pi*d/lambda * (sin theta - sin theta0)))", "F(theta) = cos(N*pi*d/lambda * (sin theta - sin theta0))", "F(theta) = exp(j*2*pi/lambda*d*sin theta)", "F(theta) = N*f(theta)*sin(pi*d/lambda*sin theta)"],
+      "reponses": [0],
+      "explication": "Le diagramme de rayonnement normalisé d'une antenne réseau linéaire uniforme est donné par cette formule de type sinus cardinal."
+    },
+    {
+      "id": "radar3-031",
+      "type": "QCM",
+      "question": "Quel retard tau_n doit-on appliquer sur chaque voie pour viser dans la direction theta0 ?",
+      "choix": ["tau_n = -n*d/c * sin(theta0)", "tau_n = n*d/c * sin(theta0)", "tau_n = -n*lambda/(2*pi*c) * sin(theta0)", "tau_n = n*lambda/c * sin(theta0)"],
+      "reponses": [0],
+      "explication": "Le retard à appliquer sur chaque voie pour viser en theta0 est tau_n = -n*d/c * sin(theta0)."
+    },
+    {
+      "id": "radar3-032",
+      "type": "QCM",
+      "question": "Quelle probabilité doit être de l'ordre de 10^-5 pour éviter les fausses détections ?",
+      "choix": ["Probabilité de fausse alarme (P_fa)", "Probabilité de détection (P_d)", "Probabilité de non-détection", "Probabilité de détection correcte"],
+      "reponses": [0],
+      "explication": "La probabilité de fausse alarme P_fa doit être très basse, de l'ordre de 10^-5, pour limiter les fausses détections (1 faux écho sur 100 000 maxi)."
+    },
+    {
+      "id": "radar3-033",
+      "type": "QCM",
+      "question": "Quelle probabilité souhaite-t-on maximiser pour une bonne détection radar ?",
+      "choix": ["Probabilité de détection (P_d)", "Probabilité de fausse alarme (P_fa)", "Probabilité de non-détection", "Probabilité d'ambiguïté"],
+      "reponses": [0],
+      "explication": "On souhaite maximiser la probabilité de détection P_d, qui doit être la plus grande possible (50% minimum, idéalement proche de 100%)."
+    },
+    {
+      "id": "radar3-034",
+      "type": "QCM",
+      "question": "Pour une cible de type Swerling 1, quelle formule donne le rapport signal à bruit minimal en dB ?",
+      "choix": ["R_min_dB = 10*log10(ln(P_fa)/ln(P_d) - 1)", "R_min_dB = 20*log10(P_d/P_fa)", "R_min_dB = 10*log10(P_d * P_fa)", "R_min_dB = ln(P_fa/P_d)"],
+      "reponses": [0],
+      "explication": "Pour une cible de type Swerling 1, le rapport signal à bruit minimal est R_min_dB = 10*log10(ln(P_fa)/ln(P_d) - 1)."
+    },
+    {
+      "id": "radar3-035",
+      "type": "QCR",
+      "question": "Quel(s) traitement(s) permet(tent) d'améliorer la détection lorsque le RSB sur un seul écho est insuffisant ?",
+      "choix": ["Intégration cohérente", "Post-intégration", "Filtrage passe-bas", "Compression d'impulsion"],
+      "reponses": [0, 1],
+      "explication": "L'intégration cohérente et la post-intégration permettent d'améliorer le rapport signal à bruit en combinant plusieurs échos d'une même cible."
+    },
+    {
+      "id": "radar3-036",
+      "type": "QCM",
+      "question": "Quelle est la formule du gain de traitement pour l'intégration cohérente ?",
+      "choix": ["g(n)_dB = 10*log10(n)", "g(n)_dB = 20*log10(n)", "g(n)_dB = 5*log10(n)", "g(n)_dB = n"],
+      "reponses": [0],
+      "explication": "Pour l'intégration cohérente, le gain de traitement est g(n)_dB = 10*log10(n)."
+    },
+    {
+      "id": "radar3-037",
+      "type": "QCM",
+      "question": "Quelle est la formule du gain de traitement pour la post-intégration ?",
+      "choix": ["g(n)_dB = 10*log10(n^gamma) avec 0 < gamma < 1", "g(n)_dB = 10*log10(n)", "g(n)_dB = 20*log10(n)", "g(n)_dB = n^gamma"],
+      "reponses": [0],
+      "explication": "Pour la post-intégration, le gain de traitement est g(n)_dB = 10*log10(n^gamma) où 0 < gamma < 1."
+    },
+    {
+      "id": "radar3-038",
+      "type": "QCM",
+      "question": "Que représente un plot radar ?",
+      "choix": ["Un ensemble de n échos d'une même cible", "Un seul écho radar", "Le signal brut reçu par l'antenne", "Un traitement de compression d'impulsion"],
+      "reponses": [0],
+      "explication": "Un plot radar est le signal constitué des n échos reçus d'une même cible pendant le temps d'illumination."
+    },
+    {
+      "id": "radar3-039",
+      "type": "QCR",
+      "question": "Comment calcule-t-on le nombre d'impulsions n reçues pour former un plot ?",
+      "choix": ["n = theta_3dB / (Omega * T_R)", "n = T_R / theta_3dB", "n = Omega / (theta_3dB * T_R)", "n = T_obs / T_R"],
+      "reponses": [0, 3],
+      "explication": "Le nombre d'impulsions est n = theta_3dB / (Omega * T_R) = T_obs / T_R, où T_obs = theta_3dB / Omega est le temps d'illumination."
+    },
+    {
+      "id": "radar3-040",
+      "type": "QCM",
+      "question": "Quelle relation existe entre le RSB au niveau du plot et le RSB au niveau de l'écho ?",
+      "choix": ["R_plot > R_echo", "R_plot < R_echo", "R_plot = R_echo", "Aucune relation"],
+      "reponses": [0],
+      "explication": "Le RSB au niveau du plot est supérieur à celui au niveau de l'écho grâce au gain de traitement: R_plot_dB = R_echo_dB + g(n)_dB."
+    },
+    {
+      "id": "radar3-041",
+      "type": "QCM",
+      "question": "Quels sont les trois modes principaux des radars aéroportés ?",
+      "choix": ["BFR, MFR, HFR", "Basse, Moyenne, Haute fréquence", "Poursuite, Veille, Cartographie", "Actif, Passif, Semi-actif"],
+      "reponses": [0],
+      "explication": "Les trois modes principaux sont BFR (Basse Fréquence de Récurrence), MFR (Moyenne Fréquence de Récurrence) et HFR (Haute Fréquence de Récurrence)."
+    },
+    {
+      "id": "radar3-042",
+      "type": "QCM",
+      "question": "Quelle plage de PRF caractérise le mode BFR ?",
+      "choix": ["f_R < 5 kHz", "5 kHz < f_R < 100 kHz", "f_R > 100 kHz", "f_R > 500 kHz"],
+      "reponses": [0],
+      "explication": "Le mode BFR a une fréquence de récurrence inférieure à 5 kHz."
+    },
+    {
+      "id": "radar3-043",
+      "type": "QCM",
+      "question": "Quelle plage de PRF caractérise le mode MFR ?",
+      "choix": ["f_R < 5 kHz", "5 kHz < f_R < 100 kHz", "f_R > 100 kHz", "10 kHz < f_R < 50 kHz"],
+      "reponses": [1],
+      "explication": "Le mode MFR a une fréquence de récurrence entre 5 kHz et 100 kHz."
+    },
+    {
+      "id": "radar3-044",
+      "type": "QCM",
+      "question": "Quelle plage de PRF caractérise le mode HFR ?",
+      "choix": ["f_R < 5 kHz", "5 kHz < f_R < 100 kHz", "f_R > 100 kHz", "f_R > 200 kHz"],
+      "reponses": [2],
+      "explication": "Le mode HFR a une fréquence de récurrence supérieure à 100 kHz."
+    },
+    {
+      "id": "radar3-045",
+      "type": "QCM",
+      "question": "Quel mode est non ambigu en distance ?",
+      "choix": ["BFR", "MFR", "HFR", "Tous les modes"],
+      "reponses": [0],
+      "explication": "Le mode BFR est non ambigu en distance, permettant une séparation naturelle entre la cible et les échos de sol par mesure de la distance."
+    },
+    {
+      "id": "radar3-046",
+      "type": "QCM",
+      "question": "Quel est le principal problème du mode HFR ?",
+      "choix": ["Ambiguïté en distance", "Ambiguïté en vitesse", "Faible portée", "Détection impossible"],
+      "reponses": [0],
+      "explication": "Le mode HFR présente une ambiguïté en distance, bien qu'il soit non ambigu en vitesse. Cette ambiguïté peut être levée par des techniques maîtrisées."
+    },
+    {
+      "id": "radar3-047",
+      "type": "QCM",
+      "question": "Quel mode offre un bon compromis pour la détection dans le clutter ?",
+      "choix": ["BFR", "MFR", "HFR", "Aucun mode"],
+      "reponses": [1],
+      "explication": "Le mode MFR offre un bon compromis entre détection hors clutter et dans clutter, avec une meilleure détection dans clutter qu'en HFR."
+    },
+    {
+      "id": "radar3-048",
+      "type": "QCM",
+      "question": "Quel mode est très utilisé en aéroporté pour la veille lointaine ?",
+      "choix": ["BFR", "MFR", "HFR", "Aucun mode"],
+      "reponses": [2],
+      "explication": "Le mode HFR est très utilisé en aéroporté car il permet l'existence de zones de détection sans clutter, contrairement au BFR."
+    },
+    {
+      "id": "radar3-049",
+      "type": "QCR",
+      "question": "Quelles missions sont typiquement réalisées avec le mode BFR en radar aéroporté ?",
+      "choix": ["Suivi de terrain", "Cartographie", "Détection aérienne en haute altitude", "Poursuite de cibles rapides"],
+      "reponses": [0, 1, 2],
+      "explication": "Le mode BFR est utilisé pour le suivi de terrain, la cartographie et la détection aérienne en haute altitude."
+    },
+    {
+      "id": "radar3-050",
+      "type": "QCR",
+      "question": "Quels sont les types de radars aéroportés ?",
+      "choix": ["Radars de surveillance aérienne/maritime/terrestre", "Radars de conduite de tir", "Radars de navigation", "Radars de reconnaissance"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Les radars aéroportés peuvent être de surveillance, de conduite de tir, de navigation (météo, cartographie, suivi de terrain) ou de reconnaissance."
+    },
+    {
+      "id": "radar3-051",
+      "type": "QCM",
+      "question": "Quel type de radar mesure les coordonnées d'une cible avec une précision suffisante pour la trajectographie ?",
+      "choix": ["Radar de poursuite", "Radar de veille", "Radar secondaire", "Radar passif"],
+      "reponses": [0],
+      "explication": "Les radars de poursuite mesurent les coordonnées d'une cible (distance, vitesse radiale, gisement, site) avec une précision suffisante pour la trajectographie et le guidage d'armement."
+    },
+    {
+      "id": "radar3-052",
+      "type": "QCM",
+      "question": "Que signifie l'acronyme PSIC ?",
+      "choix": ["Poursuite Sur Information Continue", "Poursuite Sur Information Discontinue", "Poursuite Simultanée Intégrée Continue", "Poursuite Sélective Intégrée Continue"],
+      "reponses": [0],
+      "explication": "PSIC signifie Poursuite Sur Information Continue. Ces radars mesurent sans interruption les coordonnées d'une cible."
+    },
+    {
+      "id": "radar3-053",
+      "type": "QCM",
+      "question": "Que signifie l'acronyme PSID ?",
+      "choix": ["Poursuite Sur Information Discontinue", "Poursuite Sur Information Continue", "Poursuite Simultanée Intégrée Discontinue", "Poursuite Sélective Intégrée Discontinue"],
+      "reponses": [0],
+      "explication": "PSID signifie Poursuite Sur Information Discontinue, aussi appelée TWS (Track While Scan)."
+    },
+    {
+      "id": "radar3-054",
+      "type": "QCR",
+      "question": "Quelles sont les différences entre PSIC et PSID ?",
+      "choix": ["PSIC mesure en continu, PSID mesure de manière discontinue", "PSIC est pour une seule cible ou un faible nombre, PSID pour plusieurs cibles", "PSIC a une haute résolution, PSID une basse résolution", "PSIC utilise une antenne fixe, PSID une antenne mobile"],
+      "reponses": [0, 1, 2],
+      "explication": "PSIC mesure sans interruption avec haute résolution sur une ou quelques cibles. PSID mesure de manière discontinue avec basse résolution, permettant la poursuite de plusieurs cibles."
+    },
+    {
+      "id": "radar3-055",
+      "type": "QCM",
+      "question": "Quel type de radar permet la poursuite simultanée de plusieurs cibles dans un domaine étendu ?",
+      "choix": ["PSID / TWS", "PSIC", "Radar secondaire", "Radar passif"],
+      "reponses": [0],
+      "explication": "Le PSID (ou TWS - Track While Scan) permet la poursuite simultanée de plusieurs cibles grâce à l'agilité du radar."
+    },
+    {
+      "id": "radar3-056",
+      "type": "QCR",
+      "question": "Quelles sont les mesures les moins précises dans un radar de poursuite ?",
+      "choix": ["Distance", "Vitesse radiale", "Gisement (azimut)", "Site (élévation)"],
+      "reponses": [2, 3],
+      "explication": "Le gisement (ou azimut) et le site (ou élévation) sont les mesures les moins précises dans un radar de poursuite."
+    },
+    {
+      "id": "radar3-057",
+      "type": "QCM",
+      "question": "Quel type d'antenne est généralement utilisé pour les radars de poursuite ?",
+      "choix": ["Antenne circulaire", "Antenne linéaire", "Antenne parabolique", "Antenne Yagi"],
+      "reponses": [0],
+      "explication": "Une antenne circulaire est généralement utilisée pour obtenir un lobe d'antenne étroit et symétrique, nécessaire pour une poursuite précise."
+    },
+    {
+      "id": "radar3-058",
+      "type": "QCM",
+      "question": "Quel est l'élément essentiel dans un radar monostatique que l'on ne rencontre pas dans un radar bistatique ?",
+      "choix": ["Une antenne unique pour l'émission et la réception", "Un duplexeur", "Un émetteur", "Un récepteur"],
+      "reponses": [0],
+      "explication": "Dans un radar monostatique, une seule et même antenne est utilisée pour l'émission et la réception, alors qu'un radar bistatique a des antennes séparées."
+    },
+    {
+      "id": "radar3-059",
+      "type": "QCM",
+      "question": "Peut-on utiliser une seule et même antenne pour réaliser des missions air-air, sol-air, de trajectographie et de veille lointaine ?",
+      "choix": ["Oui, avec une antenne à balayage électronique multifonctions", "Non, chaque mission nécessite une antenne dédiée", "Oui, mais seulement pour les missions air-air", "Non, car les fréquences sont différentes"],
+      "reponses": [0],
+      "explication": "Oui, une antenne à balayage électronique multifonctions (comme l'AESA) peut réaliser simultanément des missions air-air, sol-air, de trajectographie et de veille lointaine."
+    },
+    {
+      "id": "radar3-060",
+      "type": "QCR",
+      "question": "Quels sont les avantages d'une antenne à balayage électronique par rapport à une antenne à balayage mécanique ?",
+      "choix": ["Visée instantanée dans toutes les directions", "Maintien de la direction de visée dans le temps", "Capacité multifonctions (air-air et air-sol simultanément)", "Meilleure résistance au brouillage"],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Les antennes à balayage électronique offrent une visée instantanée, le maintien de la direction, des capacités multifonctions et une meilleure résistance au brouillage."
+    }
+  ]
+}

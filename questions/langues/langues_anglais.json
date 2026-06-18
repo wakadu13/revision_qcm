@@ -1,0 +1,144 @@
+{
+  "titre": "Langues — Anglais (vocabulaire & grammaire)",
+  "description": "Set de démonstration pour la révision de langues : mélange de flashcards (vocabulaire), de phrases à trous (grammaire), de QCM et de QCR (règles de grammaire), pour varier les types de mémorisation.",
+  "questions": [
+    {
+      "id": "voc-001",
+      "type": "FLASHCARD",
+      "question": "to achieve",
+      "verso": "réussir, accomplir",
+      "explication": "Ex. : « She achieved her goal. » = Elle a atteint son objectif."
+    },
+    {
+      "id": "voc-002",
+      "type": "FLASHCARD",
+      "question": "nevertheless",
+      "verso": "néanmoins, malgré tout",
+      "explication": "Connecteur logique utilisé pour introduire une opposition, comme « however »."
+    },
+    {
+      "id": "voc-003",
+      "type": "FLASHCARD",
+      "question": "a deadline",
+      "verso": "une échéance, une date limite",
+      "explication": "Ex. : « The deadline is Friday. » = L'échéance est vendredi."
+    },
+    {
+      "id": "voc-004",
+      "type": "FLASHCARD",
+      "question": "to rely on (somebody)",
+      "verso": "compter sur (quelqu'un)",
+      "explication": "Ex. : « You can rely on me. » = Tu peux compter sur moi."
+    },
+    {
+      "id": "voc-005",
+      "type": "FLASHCARD",
+      "question": "an outcome",
+      "verso": "un résultat, une issue",
+      "explication": "Souvent utilisé pour le résultat d'un processus ou d'une décision."
+    },
+    {
+      "id": "voc-006",
+      "type": "FLASHCARD",
+      "question": "thorough",
+      "verso": "minutieux, approfondi",
+      "explication": "Attention à la prononciation : /ˈθʌrə/, ne pas confondre avec « through »."
+    },
+    {
+      "id": "gram-trou-001",
+      "type": "TROU",
+      "question": "She ___ (go) to school every day.",
+      "reponses_texte": ["goes"],
+      "explication": "Présent simple, 3e personne du singulier → on ajoute -es à « go »."
+    },
+    {
+      "id": "gram-trou-002",
+      "type": "TROU",
+      "question": "If I ___ (be) you, I would apologize.",
+      "reponses_texte": ["were"],
+      "explication": "Conditionnel (2e forme) : on utilise toujours « were » après « if », même avec « I »."
+    },
+    {
+      "id": "gram-trou-003",
+      "type": "TROU",
+      "question": "I have lived here ___ 2010.",
+      "reponses_texte": ["since"],
+      "explication": "« Since » introduit un point de départ précis dans le temps ; « for » introduit une durée."
+    },
+    {
+      "id": "gram-trou-004",
+      "type": "TROU",
+      "question": "He is interested ___ learning French.",
+      "reponses_texte": ["in"],
+      "explication": "« To be interested in » : préposition fixe après cet adjectif."
+    },
+    {
+      "id": "gram-trou-005",
+      "type": "TROU",
+      "question": "They ___ (not / finish) their homework yet.",
+      "reponses_texte": ["haven't finished", "have not finished"],
+      "explication": "Present perfect négatif : « haven't/have not » + participe passé, avec « yet » en fin de phrase."
+    },
+    {
+      "id": "gram-qcm-001",
+      "type": "QCM",
+      "question": "Quel auxiliaire permet de former le present perfect ?",
+      "choix": ["have / has", "do / does", "will", "was / were"],
+      "reponses": [0],
+      "explication": "Present perfect = have/has + participe passé (ex. « She has finished »)."
+    },
+    {
+      "id": "gram-qcm-002",
+      "type": "QCM",
+      "question": "Quelle est la forme comparative correcte de « good » ?",
+      "choix": ["gooder", "better", "more good", "best"],
+      "reponses": [1],
+      "explication": "« Good » est irrégulier : good → better (comparatif) → best (superlatif)."
+    },
+    {
+      "id": "gram-qcm-003",
+      "type": "QCM",
+      "question": "Quel mot est un synonyme de « happy » ?",
+      "choix": ["sad", "joyful", "angry", "tired"],
+      "reponses": [1],
+      "explication": "« Joyful » signifie joyeux, comme « happy »."
+    },
+    {
+      "id": "gram-qcm-004",
+      "type": "QCM",
+      "question": "Quelle phrase est correctement écrite au passif ?",
+      "choix": [
+        "The book was wrote by him.",
+        "The book was written by him.",
+        "The book is wrote by him.",
+        "The book writed by him."
+      ],
+      "reponses": [1],
+      "explication": "Passif = be + participe passé. Le participe passé irrégulier de « write » est « written »."
+    },
+    {
+      "id": "gram-qcr-001",
+      "type": "QCR",
+      "question": "Lesquels de ces verbes sont irréguliers en anglais ?",
+      "choix": ["go", "walk", "eat", "play", "see"],
+      "reponses": [0, 2, 4],
+      "explication": "Irréguliers : go → went → gone ; eat → ate → eaten ; see → saw → seen. « walk » et « play » sont réguliers (+ed)."
+    },
+    {
+      "id": "gram-qcr-002",
+      "type": "QCR",
+      "question": "Quelles prépositions peuvent suivre le verbe « depend » ?",
+      "choix": ["on", "in", "of", "upon"],
+      "reponses": [0, 3],
+      "explication": "« To depend on/upon something » : les deux sont correctes, « upon » est plus formel."
+    },
+    {
+      "id": "gram-qcr-003",
+      "type": "QCR",
+      "question": "Lesquels de ces mots sont des verbes modaux ?",
+      "choix": ["can", "must", "walk", "might", "eat"],
+      "reponses": [0, 1, 3],
+      "explication": "Modaux : can, must, might (entre autres : will, would, should, may, could). Ils n'ont pas de -s à la 3e personne et sont suivis de l'infinitif sans « to »."
+    }
+  ]
+}

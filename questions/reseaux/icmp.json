@@ -1,0 +1,238 @@
+{
+  "titre": "Module 13 - ICMP, ping et traceroute",
+  "description": "Révision des messages ICMPv4/ICMPv6 et des tests de connectivité avec les commandes ping et traceroute.",
+  "questions": [
+    {
+      "id": "icmp-role",
+      "type": "QCM",
+      "question": "Quel est le rôle du protocole ICMP ?",
+      "choix": [
+        "Attribuer les adresses IP dynamiquement",
+        "Fournir des commentaires sur les problèmes liés au traitement des paquets IP",
+        "Établir des sessions fiables entre applications",
+        "Chiffrer les communications réseau"
+      ],
+      "reponses": [1],
+      "explication": "ICMP (Internet Control Message Protocol) fournit des commentaires sur les problèmes liés au traitement des paquets IP."
+    },
+    {
+      "id": "icmp-versions",
+      "type": "QCM",
+      "question": "Quelle affirmation est correcte sur ICMPv4 et ICMPv6 ?",
+      "choix": [
+        "ICMPv4 est pour IPv6 et ICMPv6 pour IPv4",
+        "ICMPv4 est le protocole de message pour IPv4 et ICMPv6 pour IPv6, avec des fonctionnalités supplémentaires",
+        "Les deux sont identiques",
+        "ICMPv6 n'existe pas"
+      ],
+      "reponses": [1],
+      "explication": "ICMPv4 est le protocole de message des réseaux IPv4 ; ICMPv6 est celui d'IPv6 et inclut des fonctionnalités supplémentaires."
+    },
+    {
+      "id": "icmp-communs",
+      "type": "QCR",
+      "question": "Quels messages sont communs à ICMPv4 et ICMPv6 ?",
+      "choix": [
+        "Accessibilité de l'hôte",
+        "Destination ou service inaccessible",
+        "Délai dépassé (Time exceeded)",
+        "Sollicitation de routeur uniquement en IPv4"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les messages communs incluent l'accessibilité de l'hôte, destination/service inaccessible et délai dépassé."
+    },
+    {
+      "id": "icmp-securite",
+      "type": "QCM",
+      "question": "Pourquoi les messages ICMPv4 ne sont-ils pas toujours autorisés sur un réseau ?",
+      "choix": [
+        "Ils consomment trop de bande passante",
+        "Ils sont souvent bloqués pour des raisons de sécurité",
+        "Ils ne fonctionnent qu'en IPv6",
+        "Ils remplacent le routage"
+      ],
+      "reponses": [1],
+      "explication": "Les messages ICMPv4 ne sont pas obligatoires et sont souvent interdits dans un réseau pour des raisons de sécurité."
+    },
+    {
+      "id": "icmp-echo",
+      "type": "QCM",
+      "question": "Quel message ICMP permet de tester l'accessibilité d'un hôte ?",
+      "choix": [
+        "ICMP Redirect",
+        "ICMP Echo (Request / Reply)",
+        "ICMP Source Quench",
+        "ICMP Router Advertisement"
+      ],
+      "reponses": [1],
+      "explication": "Le message ICMP Echo (Request/Reply) teste l'accessibilité d'un hôte : si l'hôte est disponible, il répond par une réponse d'écho."
+    },
+    {
+      "id": "ping-role",
+      "type": "QCM",
+      "question": "Sur quoi repose la commande ping ?",
+      "choix": [
+        "Les messages ICMP de requête d'écho et de réponse d'écho",
+        "Le protocole TCP three-way handshake",
+        "Le protocole DHCP",
+        "Les messages RA/RS"
+      ],
+      "reponses": [0],
+      "explication": "Ping est un utilitaire IPv4/IPv6 qui utilise les messages de requête d'écho et de réponse d'écho ICMP pour tester la connectivité."
+    },
+    {
+      "id": "ping-resume",
+      "type": "QCR",
+      "question": "Quelles informations la commande ping fournit-elle dans son résumé ?",
+      "choix": [
+        "Le taux de réussite",
+        "Le temps moyen aller-retour vers la destination",
+        "La liste complète des routeurs traversés",
+        "L'indication d'une réponse non reçue le cas échéant"
+      ],
+      "reponses": [0, 1, 3],
+      "explication": "Ping fournit le taux de réussite, le temps moyen aller-retour et signale les réponses non reçues. La liste des routeurs traversés est le rôle de traceroute."
+    },
+    {
+      "id": "ping-loopback",
+      "type": "QCM",
+      "question": "Quelle adresse de loopback utilise-t-on pour tester la pile IPv4 locale ?",
+      "choix": ["192.168.0.1", "127.0.0.1", "10.0.0.1", "::1"],
+      "reponses": [1],
+      "explication": "On ping 127.0.0.1 pour IPv4 (et ::1 pour IPv6) afin de tester la configuration interne du protocole IP sur l'hôte local."
+    },
+    {
+      "id": "ping-loopback-ipv6",
+      "type": "QCM",
+      "question": "Quelle est l'adresse de loopback IPv6 ?",
+      "choix": ["::1", "fe80::1", "2000::1", "127.0.0.1"],
+      "reponses": [0],
+      "explication": "L'adresse de loopback IPv6 est ::1 (équivalent de 127.0.0.1 en IPv4)."
+    },
+    {
+      "id": "ping-loopback-resultat",
+      "type": "QCM",
+      "question": "Qu'indique une réponse réussie au ping de l'adresse de loopback ?",
+      "choix": [
+        "Que la passerelle par défaut est joignable",
+        "Que le protocole IP est correctement installé sur l'hôte",
+        "Que le réseau distant est accessible",
+        "Que le DNS fonctionne"
+      ],
+      "reponses": [1],
+      "explication": "Une réponse de 127.0.0.1 (ou ::1) indique que IP est correctement installé sur l'hôte ; un message d'erreur signifie que TCP/IP n'est pas opérationnel."
+    },
+    {
+      "id": "ping-gateway",
+      "type": "QCM",
+      "question": "Qu'indique un ping réussi vers la passerelle par défaut ?",
+      "choix": [
+        "Que l'hôte et l'interface du routeur (passerelle) sont opérationnels sur le réseau local",
+        "Que le serveur DNS répond",
+        "Que le réseau distant est joignable",
+        "Que la pile IP locale est défaillante"
+      ],
+      "reponses": [0],
+      "explication": "Un ping réussi vers la passerelle par défaut indique que l'hôte et l'interface du routeur servant de passerelle sont tous deux opérationnels sur le réseau local."
+    },
+    {
+      "id": "ping-distant",
+      "type": "QCM",
+      "question": "Que permet de tester un ping vers un hôte distant ?",
+      "choix": [
+        "Uniquement la pile IP locale",
+        "La capacité de l'hôte local à communiquer sur un interréseau",
+        "La table ARP du serveur DNS",
+        "La vitesse du processeur"
+      ],
+      "reponses": [1],
+      "explication": "Le ping vers un hôte distant teste la capacité de l'hôte local à communiquer sur un interréseau."
+    },
+    {
+      "id": "ping-absence-reponse",
+      "type": "QCM",
+      "question": "Pourquoi un ping peut-il rester sans réponse même si l'hôte distant fonctionne ?",
+      "choix": [
+        "Parce que le ping ne fonctionne qu'en local",
+        "Parce que des administrateurs limitent ou interdisent souvent les messages ICMP (sécurité)",
+        "Parce que le ping nécessite TCP",
+        "Parce que le DNS est désactivé"
+      ],
+      "reponses": [1],
+      "explication": "De nombreux administrateurs limitent ou interdisent l'entrée des messages ICMP ; l'absence de réponse peut donc être due à des restrictions de sécurité."
+    },
+    {
+      "id": "ping-premier",
+      "type": "QCM",
+      "question": "Pourquoi le premier ping expire-t-il fréquemment ?",
+      "choix": [
+        "Parce que la résolution d'adresse (ARP ou ND) doit d'abord être effectuée",
+        "Parce que le routeur est toujours hors service au démarrage",
+        "Parce que ICMP est désactivé par défaut",
+        "Parce que la pile IP n'est pas encore chargée"
+      ],
+      "reponses": [0],
+      "explication": "Il est courant que le premier ping expire si la résolution d'adresse (ARP en IPv4 ou ND en IPv6) doit être réalisée avant d'envoyer la demande d'écho."
+    },
+    {
+      "id": "traceroute-role",
+      "type": "QCM",
+      "question": "À quoi sert la commande traceroute (tracert) ?",
+      "choix": [
+        "À tester uniquement la pile IP locale",
+        "À tester le chemin entre deux hôtes et lister les réseaux atteints",
+        "À attribuer les TTL aux paquets",
+        "À chiffrer le trafic"
+      ],
+      "reponses": [1],
+      "explication": "Traceroute teste le chemin entre deux hôtes et fournit la liste des réseaux atteints avec succès le long de ce chemin."
+    },
+    {
+      "id": "traceroute-asterisque",
+      "type": "QCM",
+      "question": "Que signifie un astérisque (*) dans un résultat de traceroute ?",
+      "choix": [
+        "Le saut le plus rapide",
+        "Un paquet perdu ou sans réponse",
+        "La destination atteinte",
+        "Une erreur de syntaxe"
+      ],
+      "reponses": [1],
+      "explication": "Un astérisque (*) indique un paquet perdu ou sans réponse pour ce saut."
+    },
+    {
+      "id": "traceroute-champs",
+      "type": "QCM",
+      "question": "Quels champs et message traceroute utilise-t-il pour fonctionner ?",
+      "choix": [
+        "Le champ TTL (IPv4) / Hop Limit (IPv6) et le message ICMP Délai dépassé",
+        "Le numéro de séquence TCP et l'ACK",
+        "Le champ Window et la somme de contrôle",
+        "Les messages RS et RA"
+      ],
+      "reponses": [0],
+      "explication": "Traceroute utilise le champ TTL en IPv4 (Hop Limit en IPv6) ainsi que le message ICMP « Délai dépassé »."
+    },
+    {
+      "id": "traceroute-ttl1",
+      "type": "QCM",
+      "question": "Quelle valeur de TTL le premier message de traceroute possède-t-il ?",
+      "choix": ["0", "1", "64", "255"],
+      "reponses": [1],
+      "explication": "Le premier message a un TTL de 1 : il s'arrête au premier routeur, qui renvoie un message ICMP de Délai dépassé."
+    },
+    {
+      "id": "traceroute-incr",
+      "type": "QCM",
+      "question": "Comment traceroute découvre-t-il chaque saut successif ?",
+      "choix": [
+        "En diminuant le TTL à chaque message",
+        "En incrémentant progressivement le champ TTL (1, 2, 3, ...)",
+        "En envoyant un seul paquet avec TTL = 255",
+        "En utilisant uniquement le DNS"
+      ],
+      "reponses": [1],
+      "explication": "Traceroute incrémente progressivement le TTL (2, 3, 4...) pour chaque séquence, ce qui révèle l'adresse de chaque saut jusqu'à atteindre la destination ou une valeur maximale."
+    }
+  ]
+}

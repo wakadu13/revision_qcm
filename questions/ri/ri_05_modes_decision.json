@@ -1,0 +1,111 @@
+{
+  "titre": "RI — Partie V : Modes de relation et de décision",
+  "description": "Multilatéralisme / bilatéralisme / unilatéralisme ; unanimité / majorité / consensus.",
+  "questions": [
+    {
+      "id": "c5-multi",
+      "type": "QCM",
+      "question": "Le multilatéralisme désigne :",
+      "choix": [
+        "Une relation entre deux États",
+        "Une coopération à plusieurs (≥ 3) via des règles et institutions communes",
+        "L'action d'un seul État",
+        "Une absence de règles"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Ex. : ONU, OMC. Avantage : légitimité ; risque : lenteur, blocages."
+    },
+    {
+      "id": "c5-bi",
+      "type": "QCM",
+      "question": "Le bilatéralisme désigne :",
+      "choix": [
+        "Une relation entre deux États (traité, alliance)",
+        "L'action d'un seul État",
+        "Une coopération à plusieurs",
+        "Une absence de relation"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Avantage : souplesse ; risque : domination du plus fort."
+    },
+    {
+      "id": "c5-uni",
+      "type": "QCM",
+      "question": "L'unilatéralisme désigne :",
+      "choix": [
+        "Une coopération à plusieurs",
+        "L'action d'un seul État, sans accord des autres",
+        "Une relation à deux",
+        "Une décision de l'ONU"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Avantage : rapidité ; risque : isolement, illégalité."
+    },
+    {
+      "id": "c5-trump-unilateralisme",
+      "type": "QCM",
+      "question": "Le « corollaire Trump » et les opérations de 2026 marquent un retour de :",
+      "choix": [
+        "Multilatéralisme",
+        "Unilatéralisme et bilatéralisme (« deals »)",
+        "La SDN",
+        "La décolonisation"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "C'est la « crise du multilatéralisme » onusien."
+    },
+    {
+      "id": "c5-unanimite",
+      "type": "QCM",
+      "question": "L'unanimité suppose :",
+      "choix": [
+        "L'absence d'objection formelle",
+        "Que tous votent « oui » (chaque membre a un veto de fait)",
+        "La majorité simple",
+        "9/15 voix"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Unanimité = des « oui » de tous."
+    },
+    {
+      "id": "c5-consensus",
+      "type": "QCM",
+      "question": "Le consensus se définit par :",
+      "choix": [
+        "Des « oui » de tous les membres",
+        "L'absence d'objection formelle (il suffit de ne pas s'opposer)",
+        "La majorité qualifiée",
+        "Le veto"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Ex. : OMC, nombreuses COP."
+    },
+    {
+      "id": "c5-unanimite-consensus",
+      "type": "QCM",
+      "question": "Quelle est la différence essentielle entre unanimité et consensus ?",
+      "choix": [
+        "Aucune, ce sont des synonymes",
+        "L'unanimité exige des « oui » ; le consensus se contente de l'absence de « non »",
+        "Le consensus exige la majorité",
+        "La majorité égale l'unanimité"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le veto du Conseil de sécurité est, lui, une exception d'unanimité réservée à 5 États."
+    }
+  ]
+}

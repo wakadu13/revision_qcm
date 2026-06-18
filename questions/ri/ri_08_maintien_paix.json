@@ -1,0 +1,160 @@
+{
+  "titre": "RI — Partie VIII : Le maintien de la paix (OMP)",
+  "description": "Origines et fondement juridique des OMP, Chapitre VI vs VII, trois principes, évolution et limites.",
+  "questions": [
+    {
+      "id": "c8-untso",
+      "type": "QCM",
+      "question": "La première opération de maintien de la paix de l'ONU est :",
+      "choix": [
+        "La FINUL",
+        "L'UNTSO (1948)",
+        "La MINUSMA",
+        "La FORPRONU"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "UNTSO, créée en 1948 : première OMP."
+    },
+    {
+      "id": "c8-omp-origine",
+      "type": "QCM",
+      "question": "Les opérations de maintien de la paix (OMP) sont nées :",
+      "choix": [
+        "Explicitement prévues par la Charte",
+        "D'une invention pragmatique face au blocage du Conseil par le veto",
+        "De la SDN",
+        "De l'OTAN"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Invention pragmatique pendant la guerre froide : « on s'interpose » faute de pouvoir agir."
+    },
+    {
+      "id": "c8-chap6",
+      "type": "QCM",
+      "question": "Le Chapitre VI de la Charte concerne :",
+      "choix": [
+        "L'action coercitive",
+        "Le règlement pacifique des différends",
+        "Le droit de veto",
+        "Le Conseil de tutelle"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Chapitre VI : règlement pacifique des différends (esprit des premières OMP)."
+    },
+    {
+      "id": "c8-chap7",
+      "type": "QCM",
+      "question": "Le Chapitre VII de la Charte concerne :",
+      "choix": [
+        "Le règlement pacifique",
+        "L'action coercitive (menace/rupture de la paix, acte d'agression)",
+        "Les avis consultatifs",
+        "Le budget"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Chapitre VII : sanctions, voire emploi de la force (mandats « robustes »)."
+    },
+    {
+      "id": "c8-chap6et7",
+      "type": "QCM",
+      "question": "Les OMP sont souvent situées dans un entre-deux appelé :",
+      "choix": [
+        "Chapitre V",
+        "Chapitre VI et demi",
+        "Chapitre VIII",
+        "Chapitre X"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« Chapitre VI et demi » : entre règlement pacifique et coercition."
+    },
+    {
+      "id": "c8-principes",
+      "type": "QCR",
+      "question": "Quels sont les trois principes fondateurs des OMP ?",
+      "choix": [
+        "Le consentement des parties",
+        "L'impartialité",
+        "Le recours systématique à la force",
+        "Le non-recours à la force, sauf légitime défense"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Consentement, impartialité, non-recours à la force sauf légitime défense (et défense du mandat)."
+    },
+    {
+      "id": "c8-avant89",
+      "type": "QCM",
+      "question": "Entre 1948 et 1989, les OMP étaient surtout :",
+      "choix": [
+        "Des conflits intra-étatiques",
+        "Des missions d'observation interétatiques",
+        "Des mandats robustes",
+        "Inexistantes"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Missions d'observation dans des conflits entre États."
+    },
+    {
+      "id": "c8-apres90",
+      "type": "QCM",
+      "question": "Depuis 1990, les OMP concernent surtout :",
+      "choix": [
+        "Des conflits interétatiques",
+        "Des conflits intra-étatiques (guerres civiles), avec des mandats élargis",
+        "De la simple observation",
+        "Le désarmement nucléaire"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Mandats élargis : protection des civils, État de droit, élections."
+    },
+    {
+      "id": "c8-effectifs",
+      "type": "QCM",
+      "question": "Au 31 mars 2025, le nombre de Casques bleus était d'environ :",
+      "choix": [
+        "10 000",
+        "61 000",
+        "200 000",
+        "105 000"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "≈ 61 000 personnels en uniforme (après un pic vers 105 000 en 2015-2016)."
+    },
+    {
+      "id": "c8-decouplage",
+      "type": "QCR",
+      "question": "Concernant le maintien de la paix aujourd'hui, quelles affirmations sont exactes ?",
+      "choix": [
+        "Les pays du Sud (Inde, Pakistan, Bangladesh, Népal, Rwanda) fournissent l'essentiel des troupes",
+        "Les États-Unis et la Chine sont les principaux contributeurs financiers",
+        "Les effectifs augmentent fortement depuis 2016",
+        "Les effectifs décroissent après un pic vers 2015-2016"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Découplage : le Sud fournit les hommes, les grandes puissances paient et décident. Les effectifs déclinent."
+    }
+  ]
+}

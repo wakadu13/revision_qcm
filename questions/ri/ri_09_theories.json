@@ -1,0 +1,365 @@
+{
+  "titre": "RI — Théories (libéralisme & réalisme)",
+  "description": "Libéralisme (axes, courants, échecs de l'idéalisme) ; réalisme classique, néo-réalisme, réalisme hégémonique, dilemme de sécurité.",
+  "questions": [
+    {
+      "id": "t-lib-axes",
+      "type": "QCR",
+      "question": "Quels sont des axes principaux de la vision libérale des RI ?",
+      "choix": [
+        "La primauté / l'importance majeure du droit international",
+        "La forme constitutionnelle des États",
+        "La guerre comme moteur des relations internationales",
+        "Le jeu des échanges et du marché"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Les 4 axes : primauté du droit international, forme constitutionnelle des États, analyse rationnelle, échanges/marché."
+    },
+    {
+      "id": "t-lib-paix",
+      "type": "QCM",
+      "question": "Pour les libéraux, la paix et la coopération internationale passent surtout par :",
+      "choix": [
+        "La dissuasion nucléaire",
+        "La création de partenariats économiques",
+        "L'équilibre de la terreur",
+        "L'hégémonie d'une grande puissance"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Créer des partenariats économiques pour atteindre la paix et la coopération."
+    },
+    {
+      "id": "t-lib-courants1",
+      "type": "QCR",
+      "question": "Lesquels sont des courants du libéralisme ?",
+      "choix": [
+        "L'institutionnalisme",
+        "Le fonctionnalisme",
+        "Le néo-réalisme",
+        "Le pacifisme commercial"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Le néo-réalisme est un courant réaliste, pas libéral."
+    },
+    {
+      "id": "t-lib-courants2",
+      "type": "QCR",
+      "question": "Lesquels sont également des courants du libéralisme ?",
+      "choix": [
+        "Le républicanisme",
+        "Le transnationalisme et l'interdépendance complexe",
+        "Le réalisme offensif",
+        "L'internationalisme libéral"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Le réalisme offensif appartient au courant réaliste."
+    },
+    {
+      "id": "t-lib-echecs",
+      "type": "QCR",
+      "question": "Quelles sont des illusions / des échecs de l'idéalisme de l'entre-deux-guerres ?",
+      "choix": [
+        "La faillite de la sécurité collective",
+        "L'échec de la mise hors-la-loi de la guerre",
+        "Le succès du désarmement",
+        "La montée en puissance des dictatures agressives"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Au contraire, le désarmement a été abandonné. Les autres points sont des échecs avérés."
+    },
+    {
+      "id": "t-lib-idealistes",
+      "type": "QCM",
+      "question": "Les idéalistes valorisent avant tout :",
+      "choix": [
+        "La puissance et l'intérêt",
+        "Le progrès, la coopération, l'unité et l'optimisme",
+        "L'anarchie du système",
+        "La guerre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Vision normative et optimiste (progrès, coopération, unité)."
+    },
+    {
+      "id": "t-lib-sdn",
+      "type": "QCM",
+      "question": "L'idéalisme constitue le fondement de :",
+      "choix": [
+        "L'OTAN",
+        "La SDN (qui échoue)",
+        "Le pacte de Varsovie",
+        "L'Union européenne"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'idéalisme est la base de la Société des Nations, qui échoue."
+    },
+    {
+      "id": "t-lib-usa-sdn",
+      "type": "QCM",
+      "question": "Quel paradoxe entoure la SDN ?",
+      "choix": [
+        "La France refuse d'y entrer",
+        "Les États-Unis, qui l'avaient promue, n'y entrent pas",
+        "Elle réussit à empêcher la guerre",
+        "L'URSS la dirige"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les États-Unis ne réussissent pas à entrer dans la SDN qu'ils avaient pourtant promue."
+    },
+    {
+      "id": "t-lib-allemagne1914",
+      "type": "QCM",
+      "question": "L'exemple « l'Allemagne, premier partenaire économique de la France en 1914 » sert à montrer que :",
+      "choix": [
+        "L'interdépendance économique garantit la paix",
+        "L'interdépendance économique n'empêche pas forcément la guerre",
+        "Le commerce est inutile",
+        "La SDN a réussi"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Contre-exemple à la thèse du pacifisme commercial : 1914 montre les limites de l'interdépendance."
+    },
+    {
+      "id": "t-real-thucydide",
+      "type": "QCM",
+      "question": "Le réalisme trouve une de ses origines chez :",
+      "choix": [
+        "Emmanuel Kant",
+        "Thucydide et la guerre du Péloponnèse",
+        "Jean-Jacques Rousseau",
+        "Woodrow Wilson"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Thucydide (dialogue Méliens/Athéniens) est une référence fondatrice du réalisme."
+    },
+    {
+      "id": "t-real-classiques",
+      "type": "QCR",
+      "question": "Quels fondements/auteurs classiques sont rattachés au réalisme ?",
+      "choix": [
+        "L'état de nature (Thomas Hobbes)",
+        "L'intérêt (Machiavel, Le Prince, 1513)",
+        "La paix perpétuelle (Kant)",
+        "L'équilibre (David Hume)"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "La « paix perpétuelle » de Kant relève de la tradition idéaliste/libérale."
+    },
+    {
+      "id": "t-real-machiavel",
+      "type": "QCM",
+      "question": "« Le Prince » (1513) est l'œuvre de :",
+      "choix": [
+        "Thomas Hobbes",
+        "Nicolas Machiavel",
+        "Jean Bodin",
+        "David Hume"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Machiavel, Le Prince (1513) : la notion d'intérêt."
+    },
+    {
+      "id": "t-real-bodin",
+      "type": "QCM",
+      "question": "Chez les classiques, la notion d'État (souveraineté) est associée à :",
+      "choix": [
+        "Jean Bodin",
+        "David Hume",
+        "Machiavel",
+        "Max Weber"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Jean Bodin pour la souveraineté de l'État ; Hobbes/Weber pour l'état de nature et la violence légitime."
+    },
+    {
+      "id": "t-real-morgenthau",
+      "type": "QCR",
+      "question": "Quelles idées sont attribuées à Hans Morgenthau (réalisme classique) ?",
+      "choix": [
+        "La règle de base est la nature humaine",
+        "L'intérêt se définit en termes de pouvoir",
+        "Des principes moraux universels gouvernent les États",
+        "La sphère politique prime parmi les intérêts de l'individu"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Pour Morgenthau, les principes moraux universels ne peuvent expliquer les relations entre États."
+    },
+    {
+      "id": "t-real-aron",
+      "type": "QCM",
+      "question": "Raymond Aron distingue les systèmes internationaux :",
+      "choix": [
+        "Ouverts et fermés",
+        "Homogènes et hétérogènes",
+        "Chauds et froids",
+        "Unipolaires et bipolaires"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Aron : systèmes homogènes vs hétérogènes ; seul le risque de guerre définit le comportement des États."
+    },
+    {
+      "id": "t-real-waltz-auteur",
+      "type": "QCM",
+      "question": "Le néo-réalisme (réalisme structurel) est associé à :",
+      "choix": [
+        "Hans Morgenthau",
+        "Kenneth Waltz",
+        "Robert Gilpin",
+        "John Herz"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Kenneth Waltz : la structure anarchique du système explique l'état de guerre."
+    },
+    {
+      "id": "t-real-waltz-idees",
+      "type": "QCR",
+      "question": "Quelles idées sont attribuées à Kenneth Waltz ?",
+      "choix": [
+        "Trois niveaux d'analyse : individu, État, système",
+        "L'état de guerre est dû à la structure anarchique du système",
+        "La nature humaine est la seule cause des guerres",
+        "La bipolarité favorise l'ordre dans un système anarchique"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "« La nature humaine comme seule cause » relève du réalisme classique, pas de Waltz."
+    },
+    {
+      "id": "t-real-likeunits",
+      "type": "QCM",
+      "question": "Selon Waltz, les États sont :",
+      "choix": [
+        "Des entités foncièrement hétérogènes",
+        "Des « like units » cherchant à maximiser leur sécurité",
+        "Des sujets de droit international",
+        "Des ONG"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Des unités semblables (« like units ») dont les interactions forment la structure du système."
+    },
+    {
+      "id": "t-real-gilpin",
+      "type": "QCM",
+      "question": "Le réalisme hégémonique est associé à :",
+      "choix": [
+        "Kenneth Waltz",
+        "Robert Gilpin",
+        "Raymond Aron",
+        "Jean Bodin"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Robert Gilpin : théorie de la stabilité hégémonique."
+    },
+    {
+      "id": "t-real-gilpin-idee",
+      "type": "QCM",
+      "question": "Selon Gilpin, l'hégémon :",
+      "choix": [
+        "Déstabilise le système",
+        "Favorise la stabilité (et son déclin fragilise le système, menant à une guerre hégémonique)",
+        "N'a aucun rôle",
+        "Est nécessairement la Chine"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Cycle : hégémon stable → déclin → challenger → guerre hégémonique → nouvel hégémon."
+    },
+    {
+      "id": "t-real-herz",
+      "type": "QCM",
+      "question": "Le « dilemme de sécurité » est théorisé par :",
+      "choix": [
+        "John H. Herz",
+        "Hans Morgenthau",
+        "Kenneth Waltz",
+        "Robert Gilpin"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "John Herz : en cherchant sa propre sécurité, un État inquiète les autres et alimente la course aux armements."
+    },
+    {
+      "id": "t-real-offensif",
+      "type": "QCM",
+      "question": "Le réalisme offensif consiste à :",
+      "choix": [
+        "Maximiser sa sécurité",
+        "Maximiser sa puissance (« mieux vaut être Godzilla que Bambi »)",
+        "Coopérer systématiquement",
+        "Désarmer"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Réalisme offensif : maximiser la puissance."
+    },
+    {
+      "id": "t-real-defensif",
+      "type": "QCM",
+      "question": "Le réalisme défensif consiste à :",
+      "choix": [
+        "Maximiser sa puissance",
+        "Rechercher la maximisation de sa sécurité",
+        "S'étendre en permanence",
+        "Adopter l'idéalisme"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Réalisme défensif : les États recherchent la maximisation de leur sécurité."
+    }
+  ]
+}

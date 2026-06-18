@@ -1,0 +1,285 @@
+{
+  "titre": "Module 9 — Résolution d'adresse",
+  "description": "Adresses MAC et IP, protocole ARP et découverte de voisins IPv6 (ND).",
+  "questions": [
+    {
+      "id": "m9-deux-adresses",
+      "type": "QCR",
+      "question": "Quelles sont les deux adresses primaires attribuées à un appareil sur un LAN Ethernet ?",
+      "choix": [
+        "L'adresse physique de couche 2 (adresse MAC)",
+        "L'adresse logique de couche 3 (adresse IP)",
+        "L'adresse de la passerelle par défaut",
+        "L'adresse de bouclage"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Deux adresses primaires : l'adresse MAC (couche 2, physique) et l'adresse IP (couche 3, logique)."
+    },
+    {
+      "id": "m9-mac-role",
+      "type": "QCM",
+      "question": "À quoi sert l'adresse MAC de couche 2 ?",
+      "choix": [
+        "Aux communications de NIC à NIC sur le même réseau Ethernet",
+        "À envoyer le paquet de la source à la destination finale",
+        "À déterminer le meilleur chemin",
+        "À chiffrer les données"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse MAC sert aux communications de NIC à NIC sur le même réseau Ethernet."
+    },
+    {
+      "id": "m9-ip-role",
+      "type": "QCM",
+      "question": "À quoi sert l'adresse IP de couche 3 ?",
+      "choix": [
+        "À envoyer le paquet de l'appareil source à l'appareil de destination",
+        "À livrer la trame d'une NIC à une autre",
+        "À détecter les collisions",
+        "À chiffrer la trame Ethernet"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse IP logique sert à envoyer le paquet de l'appareil source à l'appareil de destination."
+    },
+    {
+      "id": "m9-meme-reseau",
+      "type": "QCM",
+      "question": "Si l'adresse IP de destination appartient au même réseau, quelle est l'adresse MAC de destination ?",
+      "choix": [
+        "Celle du périphérique de destination",
+        "Celle de la passerelle par défaut",
+        "Une adresse de diffusion",
+        "Celle du serveur DHCP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Sur le même réseau, l'adresse MAC de destination est celle du périphérique de destination lui-même."
+    },
+    {
+      "id": "m9-reseau-distant",
+      "type": "QCM",
+      "question": "Si l'adresse IP de destination se trouve sur un réseau distant, quelle est l'adresse MAC de destination ?",
+      "choix": [
+        "Celle de la passerelle par défaut",
+        "Celle du périphérique de destination final",
+        "Une adresse MAC nulle",
+        "Celle du commutateur local"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Pour une destination sur un réseau distant, l'adresse MAC de destination est celle de la passerelle par défaut."
+    },
+    {
+      "id": "m9-arp-but",
+      "type": "QCM",
+      "question": "Dans quel but un périphérique utilise-t-il ARP ?",
+      "choix": [
+        "Déterminer l'adresse MAC de destination d'un périphérique local dont il connaît l'IPv4",
+        "Trouver l'adresse IPv4 à partir d'un nom de domaine",
+        "Chiffrer le trafic local",
+        "Attribuer dynamiquement des adresses IP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "ARP permet de déterminer l'adresse MAC de destination d'un périphérique local lorsqu'on connaît son adresse IPv4."
+    },
+    {
+      "id": "m9-arp-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont les deux fonctions principales d'ARP ?",
+      "choix": [
+        "La résolution des adresses IPv4 en adresses MAC",
+        "Le maintien d'une table ARP des mappages IPv4 vers MAC",
+        "Le routage des paquets entre réseaux",
+        "La fragmentation des paquets"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "ARP résout les adresses IPv4 en adresses MAC et maintient une table ARP des correspondances IPv4 → MAC."
+    },
+    {
+      "id": "m9-arp-table-distant",
+      "type": "QCM",
+      "question": "Si l'IPv4 de destination est sur un réseau différent, que cherche l'appareil dans sa table ARP ?",
+      "choix": [
+        "L'adresse IPv4 de la passerelle par défaut",
+        "L'adresse IPv4 de destination finale",
+        "Une adresse de diffusion",
+        "L'adresse MAC du serveur DNS"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Pour une destination distante, l'appareil cherche dans la table ARP l'adresse IPv4 de la passerelle par défaut."
+    },
+    {
+      "id": "m9-arp-pas-entree",
+      "type": "QCM",
+      "question": "Que fait l'appareil si aucune entrée correspondante n'est trouvée dans la table ARP ?",
+      "choix": [
+        "Il envoie une demande ARP",
+        "Il abandonne la communication définitivement",
+        "Il fragmente le paquet",
+        "Il modifie son adresse IP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Si aucune entrée n'est trouvée dans la table ARP, l'appareil envoie une demande (requête) ARP."
+    },
+    {
+      "id": "m9-arp-suppression",
+      "type": "QCR",
+      "question": "Que peut-on dire des entrées de la table ARP ?",
+      "choix": [
+        "Elles ne sont pas permanentes et expirent quand la minuterie du cache ARP arrive à échéance",
+        "La période d'expiration varie selon le système d'exploitation",
+        "Elles peuvent être supprimées manuellement par l'administrateur",
+        "Elles restent valides indéfiniment"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les entrées ARP ne sont pas permanentes, expirent selon une minuterie qui dépend de l'OS, et peuvent être supprimées manuellement."
+    },
+    {
+      "id": "m9-arp-commandes",
+      "type": "QCR",
+      "question": "Quelles commandes affichent la table ARP ?",
+      "choix": [
+        "show ip arp (sur un routeur Cisco)",
+        "arp -a (sur un PC Windows 10)",
+        "show running-config",
+        "netstat -r"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "show ip arp affiche la table ARP d'un routeur Cisco ; arp -a l'affiche sur un PC Windows 10."
+    },
+    {
+      "id": "m9-arp-diffusion",
+      "type": "QCR",
+      "question": "Quels problèmes sont liés à l'ARP ?",
+      "choix": [
+        "Les requêtes ARP sont reçues et traitées par chaque appareil du réseau local",
+        "Les diffusions ARP excessives peuvent réduire les performances",
+        "Les réponses ARP peuvent être usurpées (empoisonnement ARP)",
+        "ARP chiffre automatiquement le trafic"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les requêtes ARP sont traitées par tous les appareils du LAN, les diffusions excessives réduisent les performances et les réponses peuvent être usurpées (empoisonnement ARP)."
+    },
+    {
+      "id": "m9-arp-attaque-mitigation",
+      "type": "QCM",
+      "question": "Comment se protéger contre les attaques par empoisonnement ARP ?",
+      "choix": [
+        "Utiliser des commutateurs de niveau entreprise dotés de techniques d'atténuation",
+        "Désactiver toutes les adresses IP",
+        "Supprimer la couche physique",
+        "Augmenter la taille des trames"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les commutateurs de niveau entreprise incluent des techniques d'atténuation contre les attaques ARP."
+    },
+    {
+      "id": "m9-nd-fonctions",
+      "type": "QCR",
+      "question": "Quels services le protocole IPv6 Neighbor Discovery (ND) fournit-il ?",
+      "choix": [
+        "La résolution d'adresse",
+        "La détection de routeur",
+        "Les services de redirection",
+        "La traduction d'adresses NAT"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Le protocole ND fournit la résolution d'adresse, la détection de routeur et les services de redirection."
+    },
+    {
+      "id": "m9-ns-na",
+      "type": "QCM",
+      "question": "Quels messages ICMPv6 sont utilisés pour la résolution d'adresse entre appareils ?",
+      "choix": [
+        "Sollicitation de voisin (NS) et publicité de voisin (NA)",
+        "Sollicitation de routeur (RS) et publicité de routeur (RA)",
+        "Les messages de redirection",
+        "Les requêtes et réponses ARP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les messages de sollicitation de voisin (NS) et de publicité de voisin (NA) servent à la résolution d'adresse de dispositif à dispositif."
+    },
+    {
+      "id": "m9-rs-ra",
+      "type": "QCM",
+      "question": "À quoi servent les messages ICMPv6 de sollicitation (RS) et de publicité (RA) de routeur ?",
+      "choix": [
+        "À la messagerie entre appareils et routeurs pour la découverte de routeurs",
+        "À la résolution d'adresse entre deux PC",
+        "À fragmenter les paquets",
+        "À chiffrer les communications"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les messages RS et RA servent à la messagerie entre appareils et routeurs pour la découverte de routeurs."
+    },
+    {
+      "id": "m9-nd-resolution",
+      "type": "QCM",
+      "question": "À quoi sert ND lors de la résolution d'adresse IPv6 ?",
+      "choix": [
+        "Résoudre l'adresse MAC à partir d'une adresse IPv6 connue",
+        "Résoudre une adresse IPv6 à partir d'un nom de domaine",
+        "Attribuer une passerelle par défaut",
+        "Fragmenter le paquet IPv6"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les périphériques IPv6 utilisent ND pour résoudre l'adresse MAC d'une adresse IPv6 connue."
+    },
+    {
+      "id": "m9-ns-multidiffusion",
+      "type": "QCM",
+      "question": "Comment les messages de sollicitation de voisin ICMPv6 sont-ils envoyés ?",
+      "choix": [
+        "À l'aide d'adresses de multidiffusion Ethernet et IPv6 spéciales",
+        "En diffusion (broadcast) IPv4",
+        "En monodiffusion uniquement",
+        "Via une connexion TCP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les messages de sollicitation de voisin ICMPv6 sont envoyés à l'aide d'adresses de multidiffusion Ethernet et IPv6 spéciales."
+    }
+  ]
+}

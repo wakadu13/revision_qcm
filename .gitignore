@@ -1,0 +1,15 @@
+/.python-version
+/.venv
+/uv.lock
+
+# Bytecode Python
+__pycache__/
+*.pyc
+
+# Artefacts de build (régénérés par src/build_exe.py)
+/build/
+/dist/
+*.spec
+
+# Données utilisateur (progression de révision), pas du code source
+progression.json

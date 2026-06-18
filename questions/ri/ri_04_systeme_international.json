@@ -1,0 +1,190 @@
+{
+  "titre": "RI — Partie IV : Évolution du système (bipolarité→multipolarité, guerre froide)",
+  "description": "Bipolarité, unipolarité, multipolarité ; repères de la guerre froide ; cycles de puissance (Doran).",
+  "questions": [
+    {
+      "id": "c4-bipolarite",
+      "type": "QCM",
+      "question": "La période de bipolarité correspond approximativement à :",
+      "choix": [
+        "1991-2008",
+        "1947-1991",
+        "2010-aujourd'hui",
+        "1919-1939"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Bipolarité ≈ 1947-1991 : États-Unis vs URSS (guerre froide)."
+    },
+    {
+      "id": "c4-unipolarite",
+      "type": "QCM",
+      "question": "Le « moment unipolaire » (formule de Charles Krauthammer) correspond à :",
+      "choix": [
+        "1947-1991",
+        "1991-2008/2010",
+        "2010-aujourd'hui",
+        "1945-1960"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Unipolarité ≈ 1991-2008/2010 : « moment unipolaire » américain."
+    },
+    {
+      "id": "c4-multipolarite",
+      "type": "QCM",
+      "question": "La multipolarité actuelle (depuis ~2010) oppose surtout :",
+      "choix": [
+        "US vs URSS",
+        "US vs Chine vs Russie",
+        "UE vs US",
+        "Chine vs Inde"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Retour de la compétition : États-Unis vs Chine vs Russie, avec des puissances régionales (Inde, UE…)."
+    },
+    {
+      "id": "c4-bloc-ouest",
+      "type": "QCR",
+      "question": "Quels éléments caractérisent le bloc occidental pendant la guerre froide ?",
+      "choix": [
+        "Le plan Marshall (1947)",
+        "L'OTAN (1949)",
+        "Le pacte de Varsovie (1955)",
+        "Démocratie libérale et capitalisme"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Le pacte de Varsovie (1955) appartient au bloc soviétique."
+    },
+    {
+      "id": "c4-varsovie",
+      "type": "QCM",
+      "question": "Le pacte de Varsovie (1955) relève :",
+      "choix": [
+        "Du bloc occidental",
+        "Du bloc soviétique",
+        "Du mouvement des non-alignés",
+        "De l'ONU"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Alliance militaire du bloc de l'Est, en réponse à l'OTAN."
+    },
+    {
+      "id": "c4-terreur",
+      "type": "QCM",
+      "question": "L'« équilibre de la terreur » désigne :",
+      "choix": [
+        "La dissuasion nucléaire mutuelle (MAD)",
+        "Le terrorisme",
+        "La guerre conventionnelle",
+        "L'espionnage"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "MAD : c'est ce qui explique l'absence d'affrontement direct entre les deux blocs."
+    },
+    {
+      "id": "c4-affrontements",
+      "type": "QCR",
+      "question": "Quels sont des affrontements indirects de la guerre froide ?",
+      "choix": [
+        "La guerre de Corée (1950-1953)",
+        "La crise de Cuba (1962)",
+        "La guerre du Vietnam (1964-1973)",
+        "La chute du mur de Berlin"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "La chute du mur (1989) marque la fin de la guerre froide, ce n'est pas un affrontement indirect."
+    },
+    {
+      "id": "c4-cuba",
+      "type": "QCM",
+      "question": "La crise de Cuba date de :",
+      "choix": [
+        "1948",
+        "1962",
+        "1973",
+        "1989"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Crise des missiles de Cuba, 1962."
+    },
+    {
+      "id": "c4-fin-urss",
+      "type": "QCM",
+      "question": "La disparition de l'URSS date de :",
+      "choix": [
+        "1989",
+        "1990",
+        "1991",
+        "1993"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Chute du mur (1989), réunification allemande (1990), disparition de l'URSS (1991)."
+    },
+    {
+      "id": "c4-mur",
+      "type": "QCM",
+      "question": "La chute du mur de Berlin date de :",
+      "choix": [
+        "1989",
+        "1991",
+        "1961",
+        "1990"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Mur construit en 1961, tombé en 1989."
+    },
+    {
+      "id": "c4-doran",
+      "type": "QCM",
+      "question": "La théorie des cycles de puissance est associée à :",
+      "choix": [
+        "Charles Doran",
+        "Hedley Bull",
+        "Kenneth Waltz",
+        "Hans Morgenthau"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Doran : ascension, apogée, déclin relatif des grandes puissances."
+    },
+    {
+      "id": "c4-points-critiques",
+      "type": "QCM",
+      "question": "Selon la théorie des cycles de puissance, les moments les plus dangereux sont :",
+      "choix": [
+        "Les apogées",
+        "Les points critiques (inflexions inattendues) des courbes",
+        "Les déclins lents",
+        "Il n'y en a pas"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les points critiques correspondent souvent aux grandes guerres."
+    }
+  ]
+}

@@ -1,0 +1,374 @@
+{
+  "titre": "Module 10 — Configuration de base du routeur",
+  "description": "Paramètres initiaux du routeur, configuration et vérification des interfaces, configuration de la passerelle par défaut.",
+  "questions": [
+    {
+      "id": "m10-etapes",
+      "type": "QCR",
+      "question": "Quelles étapes font partie de la configuration de base d'un routeur ?",
+      "choix": [
+        "Configurer le nom de l'appareil",
+        "Sécuriser le mode d'exécution privilégié",
+        "Sécuriser l'accès Telnet/SSH à distance",
+        "Crypter tous les mots de passe en clair"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "La configuration de base comprend le nom de l'appareil, la sécurisation des modes privilégié et utilisateur, l'accès distant SSH/Telnet, le chiffrement des mots de passe, la bannière légale et l'enregistrement."
+    },
+    {
+      "id": "m10-hostname",
+      "type": "QCM",
+      "question": "Quelle commande définit le nom d'un routeur ?",
+      "choix": [
+        "hostname nom",
+        "enable secret nom",
+        "banner motd nom",
+        "ip default-gateway nom"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La commande de configuration globale hostname nom définit le nom du périphérique."
+    },
+    {
+      "id": "m10-enable-secret",
+      "type": "QCM",
+      "question": "Quelle commande sécurise le mode d'exécution privilégié ?",
+      "choix": [
+        "enable secret mot_de_passe",
+        "line console 0",
+        "transport input ssh",
+        "no shutdown"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "enable secret mot_de_passe sécurise l'accès au mode d'exécution privilégié."
+    },
+    {
+      "id": "m10-console",
+      "type": "QCR",
+      "question": "Quelles commandes sécurisent l'accès par la console (mode utilisateur) ?",
+      "choix": [
+        "line console 0",
+        "password mot_de_passe",
+        "login",
+        "ip address"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "On entre dans line console 0, on définit le password, puis on active l'accès avec login."
+    },
+    {
+      "id": "m10-vty",
+      "type": "QCM",
+      "question": "Quelle commande permet de configurer les lignes d'accès distant virtuel sur un routeur ?",
+      "choix": [
+        "line vty 0 4",
+        "line console 0",
+        "interface vlan 1",
+        "banner motd"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "line vty 0 4 entre en mode de configuration des lignes VTY pour l'accès distant (Telnet/SSH)."
+    },
+    {
+      "id": "m10-transport-input",
+      "type": "QCM",
+      "question": "À quoi sert la commande transport input {ssh | telnet} sur les lignes VTY ?",
+      "choix": [
+        "Définir les protocoles d'accès distant autorisés",
+        "Chiffrer les mots de passe",
+        "Activer une interface",
+        "Configurer une adresse IP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "transport input {ssh | telnet} précise quels protocoles d'accès distant sont autorisés sur les lignes VTY."
+    },
+    {
+      "id": "m10-service-pwd",
+      "type": "QCM",
+      "question": "Quelle commande chiffre les mots de passe en clair ?",
+      "choix": [
+        "service password-encryption",
+        "enable secret",
+        "copy running-config startup-config",
+        "login"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "service password-encryption chiffre les mots de passe affichés en clair dans la configuration."
+    },
+    {
+      "id": "m10-banner",
+      "type": "QCM",
+      "question": "Quelle commande crée un message de bannière d'avertissement légal ?",
+      "choix": [
+        "banner motd # message #",
+        "hostname message",
+        "description message",
+        "transport input message"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "banner motd # message # crée une bannière (Message Of The Day) ; le # est le caractère de délimitation."
+    },
+    {
+      "id": "m10-copy",
+      "type": "QCM",
+      "question": "Quelle commande enregistre la configuration en cours dans la NVRAM ?",
+      "choix": [
+        "copy running-config startup-config",
+        "service password-encryption",
+        "reload",
+        "no shutdown"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "copy running-config startup-config enregistre la configuration en cours dans la NVRAM (startup-config)."
+    },
+    {
+      "id": "m10-nvram",
+      "type": "QCM",
+      "question": "Où la configuration enregistrée du routeur est-elle stockée ?",
+      "choix": [
+        "Dans la NVRAM",
+        "Dans la RAM",
+        "Dans le cache CPU",
+        "Sur un serveur web"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La configuration enregistrée (startup-config) est stockée dans la NVRAM."
+    },
+    {
+      "id": "m10-interface-cmds",
+      "type": "QCR",
+      "question": "Quelles commandes interviennent dans la configuration d'une interface de routeur ?",
+      "choix": [
+        "interface type-et-numéro",
+        "ip address adresse masque",
+        "ipv6 address adresse/préfixe",
+        "no shutdown"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "On entre dans l'interface, on configure l'adresse IPv4 (ip address) et/ou IPv6 (ipv6 address), puis on l'active avec no shutdown."
+    },
+    {
+      "id": "m10-description",
+      "type": "QCM",
+      "question": "À quoi sert la commande description sur une interface ?",
+      "choix": [
+        "Ajouter des informations sur le réseau connecté à l'interface",
+        "Attribuer une adresse IP",
+        "Activer l'interface",
+        "Chiffrer les mots de passe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Il est recommandé d'utiliser description pour documenter le réseau connecté à l'interface ; cela n'affecte pas son fonctionnement."
+    },
+    {
+      "id": "m10-no-shutdown",
+      "type": "QCM",
+      "question": "Que fait la commande no shutdown sur une interface ?",
+      "choix": [
+        "Elle active l'interface",
+        "Elle désactive l'interface",
+        "Elle supprime l'adresse IP",
+        "Elle redémarre le routeur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La commande no shutdown active l'interface."
+    },
+    {
+      "id": "m10-ipv4-config-ex",
+      "type": "QCM",
+      "question": "Quelle commande attribue une adresse IPv4 à une interface ?",
+      "choix": [
+        "ip address 192.168.10.1 255.255.255.0",
+        "ipv6 address 2001:db8:acad:10::1/64",
+        "ip default-gateway 192.168.10.1",
+        "hostname 192.168.10.1"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "ip address suivi de l'adresse et du masque attribue l'adresse IPv4 à l'interface."
+    },
+    {
+      "id": "m10-show-ip-int-brief",
+      "type": "QCM",
+      "question": "Que permet de vérifier la commande show ip interface brief ?",
+      "choix": [
+        "Toutes les interfaces, leurs adresses IP et leur état actuel",
+        "Le contenu détaillé de la NVRAM",
+        "Les mots de passe chiffrés",
+        "La table ARP complète"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "show ip interface brief (et son équivalent IPv6) affiche toutes les interfaces, leurs adresses IP et leur état."
+    },
+    {
+      "id": "m10-show-route",
+      "type": "QCM",
+      "question": "Que montrent les commandes show ip route et show ipv6 route ?",
+      "choix": [
+        "Le contenu des tables de routage IP stockées en RAM",
+        "Les statistiques détaillées d'une interface",
+        "Les mots de passe configurés",
+        "Les voisins ARP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "show ip route et show ipv6 route affichent le contenu des tables de routage IP stockées en RAM."
+    },
+    {
+      "id": "m10-show-interfaces",
+      "type": "QCM",
+      "question": "Que fournit la commande show interfaces ?",
+      "choix": [
+        "Des statistiques pour toutes les interfaces de l'appareil",
+        "Seulement la liste des adresses IPv6",
+        "La table de routage",
+        "Le fichier de configuration de démarrage"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "show interfaces affiche des statistiques détaillées pour toutes les interfaces de l'appareil."
+    },
+    {
+      "id": "m10-show-ipv6-int",
+      "type": "QCM",
+      "question": "Quelle commande affiche les statistiques IPv6 d'une interface de routeur ?",
+      "choix": [
+        "show ipv6 interfaces",
+        "show ip interfaces",
+        "show interfaces",
+        "show ip route"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "show ipv6 interfaces affiche les statistiques IPv6 ; show ip interfaces donne l'équivalent pour IPv4."
+    },
+    {
+      "id": "m10-vlan1-down",
+      "type": "QCM",
+      "question": "Dans show ip interface brief, que signifie l'état « administratively down » de Vlan1 ?",
+      "choix": [
+        "L'interface est désactivée administrativement (par configuration)",
+        "L'interface fonctionne normalement",
+        "Le câble est débranché",
+        "L'adresse IP est en conflit"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« administratively down » indique que l'interface a été désactivée par configuration (elle n'a pas été activée avec no shutdown)."
+    },
+    {
+      "id": "m10-dgw-hote-usage",
+      "type": "QCM",
+      "question": "Quand un hôte utilise-t-il sa passerelle par défaut ?",
+      "choix": [
+        "Lorsqu'il veut transmettre un paquet à un périphérique sur un autre réseau",
+        "Lorsqu'il communique avec un hôte du même réseau",
+        "Pour s'envoyer un paquet à lui-même",
+        "Uniquement pour les requêtes ARP locales"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La passerelle par défaut est utilisée lorsque l'hôte veut transmettre un paquet à un périphérique situé sur un autre réseau."
+    },
+    {
+      "id": "m10-dgw-adresse",
+      "type": "QCM",
+      "question": "À quoi correspond généralement l'adresse de la passerelle par défaut d'un hôte ?",
+      "choix": [
+        "À l'interface du routeur reliée au réseau local de l'hôte",
+        "À l'adresse de bouclage de l'hôte",
+        "À l'adresse du serveur DNS",
+        "À l'adresse de diffusion du réseau"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse de la passerelle par défaut est généralement celle de l'interface du routeur connectée au réseau local de l'hôte."
+    },
+    {
+      "id": "m10-dgw-meme-reseau",
+      "type": "QCM",
+      "question": "Quelle condition l'adresse IP de l'hôte et l'interface du routeur doivent-elles respecter ?",
+      "choix": [
+        "Se trouver dans le même réseau",
+        "Avoir la même adresse MAC",
+        "Utiliser des masques différents",
+        "Être sur deux réseaux distants"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse IP de l'hôte et l'interface du routeur (passerelle) doivent se trouver dans le même réseau."
+    },
+    {
+      "id": "m10-dgw-switch-but",
+      "type": "QCM",
+      "question": "Pourquoi configurer une passerelle par défaut sur un commutateur ?",
+      "choix": [
+        "Pour pouvoir gérer le commutateur à distance depuis un autre réseau",
+        "Pour activer ses interfaces de données",
+        "Pour chiffrer les mots de passe",
+        "Pour router le trafic des PC entre VLAN"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Un commutateur a besoin d'une passerelle par défaut pour être géré à distance depuis un autre réseau."
+    },
+    {
+      "id": "m10-dgw-switch-cmd",
+      "type": "QCM",
+      "question": "Quelle commande configure la passerelle par défaut sur un commutateur ?",
+      "choix": [
+        "ip default-gateway adresse-ip",
+        "ip address adresse masque",
+        "ip route adresse",
+        "default-gateway interface"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La commande de configuration globale ip default-gateway adresse-ip définit la passerelle par défaut d'un commutateur."
+    }
+  ]
+}

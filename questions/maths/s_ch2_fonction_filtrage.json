@@ -1,0 +1,487 @@
+{
+  "titre": "Ch.2 - Fonction filtrage",
+  "description": "Définitions, gabarits d'atténuation, diagrammes de Bode, filtre prototype et transpositions.",
+  "questions": [
+    {
+      "id": "ch2-def-filtre",
+      "type": "QCM",
+      "question": "Que font les filtres linéaires sur le spectre d'un signal ?",
+      "choix": [
+        "Ils ajoutent de nouvelles fréquences",
+        "Ils sélectionnent certaines fréquences sans en ajouter de nouvelles",
+        "Ils suppriment toutes les fréquences",
+        "Ils décalent le spectre en fréquence"
+      ],
+      "reponses": [1],
+      "explication": "Les filtres linéaires sélectionnent certaines fréquences du spectre ; ils modifient la forme des signaux mais n'ajoutent aucune fréquence nouvelle (en régime linéaire)."
+    },
+    {
+      "id": "ch2-passif-actif",
+      "type": "QCR",
+      "question": "Quelles affirmations sur les types de filtres analogiques sont correctes ?",
+      "choix": [
+        "Les filtres passifs ne contiennent que résistances, bobines et condensateurs",
+        "Les filtres actifs utilisent en plus des composants amplificateurs (transistors, CI)",
+        "Les filtres passifs contiennent obligatoirement des amplificateurs",
+        "Les filtres actifs ne contiennent aucun composant passif"
+      ],
+      "reponses": [0, 1],
+      "explication": "Les filtres passifs sont constitués uniquement de composants passifs linéaires (R, L, C). Les filtres actifs y ajoutent un ou plusieurs composants actifs amplificateurs."
+    },
+    {
+      "id": "ch2-num-types",
+      "type": "QCM",
+      "question": "Quelle est la différence entre filtre numérique récursif et non récursif ?",
+      "choix": [
+        "Le récursif utilise les échantillons de sortie précédents, le non récursif uniquement les entrées",
+        "Le récursif utilise uniquement les entrées, le non récursif les sorties précédentes",
+        "Le récursif est analogique, le non récursif est numérique",
+        "Il n'y a aucune différence"
+      ],
+      "reponses": [0],
+      "explication": "Un filtre récursif fonde son calcul sur une relation de récurrence faisant intervenir les échantillons de sortie précédents ; le non récursif n'utilise que les échantillons d'entrée actuel et précédents."
+    },
+    {
+      "id": "ch2-module-H",
+      "type": "QCM",
+      "question": "Le module de la fonction de transfert $|H(j\\omega)|$ représente :",
+      "choix": [
+        "Le déphasage entre entrée et sortie",
+        "Le rapport des amplitudes $V_s(\\omega)/V_e(\\omega)$",
+        "La somme des amplitudes",
+        "La fréquence de coupure"
+      ],
+      "reponses": [1],
+      "explication": "$|H(j\\omega)| = H(\\omega) = V_s(\\omega)/V_e(\\omega)$ est le rapport des amplitudes des tensions de sortie et d'entrée."
+    },
+    {
+      "id": "ch2-argument-H",
+      "type": "QCM",
+      "question": "L'argument de la fonction de transfert représente :",
+      "choix": [
+        "Le rapport des amplitudes",
+        "Le déphasage de $v_s(t)$ par rapport à $v_e(t)$",
+        "Le gain en dB",
+        "L'atténuation"
+      ],
+      "reponses": [1],
+      "explication": "$\\varphi = \\arg(H) = \\arg(V_s) - \\arg(V_e)$ représente le déphasage de la sortie par rapport à l'entrée."
+    },
+    {
+      "id": "ch2-gain-db",
+      "type": "QCM",
+      "question": "Comment s'exprime le gain en décibels ?",
+      "choix": [
+        "$G_{dB} = 10 \\log |H|$",
+        "$G_{dB} = 20 \\log |H|$",
+        "$G_{dB} = 20 \\log |H|^{-1}$",
+        "$G_{dB} = |H|$"
+      ],
+      "reponses": [1],
+      "explication": "Le gain vaut $G_{dB} = 20 \\log |H| = 20 \\log \\dfrac{V_s(\\omega)}{V_e(\\omega)}$."
+    },
+    {
+      "id": "ch2-attenuation",
+      "type": "QCM",
+      "question": "Quelle relation lie l'atténuation $A_{dB}$ et le gain $G_{dB}$ ?",
+      "choix": [
+        "$A_{dB} = G_{dB}$",
+        "$A_{dB} = -G_{dB} = 20 \\log |H|^{-1}$",
+        "$A_{dB} = 2 G_{dB}$",
+        "$A_{dB} = G_{dB}^{-1}$"
+      ],
+      "reponses": [1],
+      "explication": "L'atténuation est l'opposée du gain : $A_{dB} = -G_{dB} = 20 \\log |H|^{-1} = 20 \\log \\dfrac{V_e(\\omega)}{V_s(\\omega)}$."
+    },
+    {
+      "id": "ch2-affaiblissement",
+      "type": "QCM",
+      "question": "L'affaiblissement $A_\\ell$ est défini par :",
+      "choix": [
+        "$A_\\ell = |H|$",
+        "$A_\\ell = \\dfrac{1}{|H|} = \\dfrac{V_e(\\omega)}{V_s(\\omega)}$",
+        "$A_\\ell = 20 \\log |H|$",
+        "$A_\\ell = |H|^2$"
+      ],
+      "reponses": [1],
+      "explication": "L'affaiblissement est l'inverse du module : $A_\\ell = \\dfrac{1}{|H|} = \\dfrac{V_e(\\omega)}{V_s(\\omega)}$."
+    },
+    {
+      "id": "ch2-laplace",
+      "type": "QCM",
+      "question": "Comment passe-t-on de $H(j\\omega)$ à la fonction de transfert de Laplace $H(p)$ ?",
+      "choix": [
+        "En posant $p = \\omega$",
+        "En posant $p = j\\omega$",
+        "En posant $p = 1/\\omega$",
+        "En posant $p = \\omega^2$"
+      ],
+      "reponses": [1],
+      "explication": "On obtient $H(p)$ dans le domaine de Laplace en posant $p = j\\omega$."
+    },
+    {
+      "id": "ch2-ftransfert-reponse",
+      "type": "QCM",
+      "question": "À quoi correspond la fonction de transfert d'un filtre ?",
+      "choix": [
+        "À la dérivée de la réponse impulsionnelle",
+        "À la transformée de la réponse impulsionnelle $h(t)$",
+        "Au produit de l'entrée et de la sortie",
+        "À la valeur moyenne du signal"
+      ],
+      "reponses": [1],
+      "explication": "La fonction de transfert du filtre est la transformée de la réponse impulsionnelle $h(t)$ (réponse à une entrée $\\delta(t)$)."
+    },
+    {
+      "id": "ch2-4types",
+      "type": "QCR",
+      "question": "Quels sont les quatre types principaux de filtres étudiés ?",
+      "choix": [
+        "Passe-bas",
+        "Passe-haut",
+        "Passe-bande",
+        "Coupe-bande (réjecteur de bande)"
+      ],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Les quatre types principaux sont : passe-bas, passe-haut, passe-bande et coupe-bande (réjecteur de bande)."
+    },
+    {
+      "id": "ch2-passe-bas-ideal",
+      "type": "QCM",
+      "question": "Le filtre passe-bas idéal a :",
+      "choix": [
+        "Une atténuation infinie pour $f < f_c$ et nulle au-delà",
+        "Une atténuation nulle pour $f < f_c$ et infinie au-delà",
+        "Une atténuation constante à toutes les fréquences",
+        "Une atténuation nulle uniquement à $f_c$"
+      ],
+      "reponses": [1],
+      "explication": "Le filtre passe-bas idéal a une atténuation nulle pour toutes les fréquences inférieures à $f_c$ et une atténuation infinie au-delà."
+    },
+    {
+      "id": "ch2-echelle-log",
+      "type": "QCM",
+      "question": "Sur un diagramme de gabarit, l'échelle horizontale des fréquences est :",
+      "choix": [
+        "Linéaire",
+        "Logarithmique",
+        "Quadratique",
+        "Inverse"
+      ],
+      "reponses": [1],
+      "explication": "L'échelle horizontale des fréquences est logarithmique ; la fréquence nulle est donc repoussée à l'infini vers la gauche."
+    },
+    {
+      "id": "ch2-gabarit-params",
+      "type": "QCR",
+      "question": "Dans un gabarit réel de filtre passe-bas, que représentent $f_p$ et $f_a$ ?",
+      "choix": [
+        "$f_p$ : limite supérieure de la bande passante",
+        "$f_a$ : limite inférieure de la bande atténuée",
+        "$f_p$ : limite inférieure de la bande atténuée",
+        "$f_a$ : limite supérieure de la bande passante"
+      ],
+      "reponses": [0, 1],
+      "explication": "$f_p$ est la limite supérieure de la bande passante (atténuation $\\leq A_{max}$) et $f_a$ la limite inférieure de la bande atténuée (atténuation $\\geq A_{min}$)."
+    },
+    {
+      "id": "ch2-passe-bande-relation",
+      "type": "QCM",
+      "question": "Pour un gabarit simplifié de filtre passe-bande, quelle relation lie les fréquences à la fréquence centrale $f_0$ ?",
+      "choix": [
+        "$f_0 = f_p^- + f_p^+ = f_a^- + f_a^+$",
+        "$f_0^2 = f_p^-\\,f_p^+ = f_a^-\\,f_a^+$",
+        "$f_0 = \\sqrt{f_p^- + f_a^+}$",
+        "$f_0 = f_p^- \\cdot f_a^+$"
+      ],
+      "reponses": [1],
+      "explication": "Du fait de l'échelle logarithmique, la symétrie impose $f_0^2 = f_p^-\\,f_p^+ = f_a^-\\,f_a^+$."
+    },
+    {
+      "id": "ch2-bode-constante",
+      "type": "QCM",
+      "question": "Pour la fonction constante $H = K$, le gain $G = 20\\log|K|$ est négatif si :",
+      "choix": [
+        "$|K| > 1$",
+        "$|K| = 1$",
+        "$|K| < 1$",
+        "$K > 0$"
+      ],
+      "reponses": [2],
+      "explication": "Le gain est positif si $|K| > 1$, nul si $|K| = 1$ et négatif si $|K| < 1$."
+    },
+    {
+      "id": "ch2-bode-constante-phase",
+      "type": "QCM",
+      "question": "Pour la fonction constante $H = K$, quelle est la phase si $K < 0$ ?",
+      "choix": [
+        "$0$",
+        "$\\pm\\pi$ (on choisit $-\\pi$)",
+        "$\\pi/2$",
+        "$-\\pi/4$"
+      ],
+      "reponses": [1],
+      "explication": "La phase $\\varphi = \\arg K$ est nulle si $K > 0$ et vaut $\\pm\\pi$ si $K < 0$ (on choisit $-\\pi$)."
+    },
+    {
+      "id": "ch2-bode-derivateur",
+      "type": "QCM",
+      "question": "La fonction élémentaire du premier ordre $H = jf/f_0$ correspond à :",
+      "choix": [
+        "Un intégrateur",
+        "Un dérivateur",
+        "Un filtre passe-bas",
+        "Un amplificateur"
+      ],
+      "reponses": [1],
+      "explication": "$H = jf/f_0$ est la fonction de transfert d'un dérivateur. Son gain est une droite de pente +20 dB/décade passant par $(f_0, 0\\text{ dB})$, et sa phase vaut $\\pi/2$."
+    },
+    {
+      "id": "ch2-bode-ordre-n",
+      "type": "QCM",
+      "question": "Pour la fonction élémentaire d'ordre n, $H = (jf/f_0)^n$, la pente du gain est :",
+      "choix": [
+        "$20$ dB/décade",
+        "$20n$ dB/décade",
+        "$-20$ dB/décade",
+        "$n/20$ dB/décade"
+      ],
+      "reponses": [1],
+      "explication": "Le gain $G = 20n\\log(f/f_0)$ est une droite de pente $20n$ dB/décade passant par $(f_0, 0\\text{ dB})$, et la phase vaut $n\\pi/2$."
+    },
+    {
+      "id": "ch2-bode-integrateur",
+      "type": "QCM",
+      "question": "Pour quelle valeur de n la fonction $(jf/f_0)^n$ correspond-elle à un intégrateur ?",
+      "choix": [
+        "$n = 0$",
+        "$n = 1$",
+        "$n = -1$",
+        "$n = 2$"
+      ],
+      "reponses": [2],
+      "explication": "Si $n = -1$, on a la fonction de transfert d'un intégrateur."
+    },
+    {
+      "id": "ch2-bode-principale-1",
+      "type": "QCM",
+      "question": "La fonction principale du premier ordre $H = \\dfrac{1}{1 + jf/f_0}$ est la fonction de transfert d'un :",
+      "choix": [
+        "Filtre passe-haut du premier ordre",
+        "Filtre passe-bas du premier ordre",
+        "Dérivateur",
+        "Filtre coupe-bande"
+      ],
+      "reponses": [1],
+      "explication": "C'est la fonction de transfert d'un filtre passe-bas du premier ordre."
+    },
+    {
+      "id": "ch2-bode-principale-1-3db",
+      "type": "QCM",
+      "question": "Pour la fonction principale du premier ordre, que vaut le gain à $f = f_0$ ?",
+      "choix": [
+        "$0$ dB",
+        "$-3$ dB",
+        "$-20$ dB",
+        "$+3$ dB"
+      ],
+      "reponses": [1],
+      "explication": "À $f = f_0$, $G = -20\\log\\sqrt{2} = -3$ dB. La phase y vaut $-\\pi/4$."
+    },
+    {
+      "id": "ch2-bode-principale-1-phase",
+      "type": "QCR",
+      "question": "Pour la fonction principale du premier ordre, quelles asymptotes de phase sont correctes ?",
+      "choix": [
+        "$\\varphi = 0$ pour $f \\ll f_0$",
+        "$\\varphi = -\\pi/2$ pour $f \\gg f_0$",
+        "$\\varphi = -\\pi/4$ pour $f = f_0$",
+        "$\\varphi = +\\pi/2$ pour $f \\gg f_0$"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "La phase passe de 0 (basses fréquences) à $-\\pi/2$ (hautes fréquences), avec $-\\pi/4$ à $f_0$."
+    },
+    {
+      "id": "ch2-bode-second-ordre",
+      "type": "QCM",
+      "question": "Dans la fonction principale du second ordre, que représente le paramètre $a$ ?",
+      "choix": [
+        "La pulsation propre",
+        "Le coefficient d'amortissement",
+        "Le gain statique",
+        "La fréquence de coupure"
+      ],
+      "reponses": [1],
+      "explication": "$f_0$ est la pulsation propre du système et $a$ est son coefficient d'amortissement."
+    },
+    {
+      "id": "ch2-second-ordre-a-sup1",
+      "type": "QCM",
+      "question": "Pour la fonction principale du second ordre avec $a > 1$, la fonction de transfert :",
+      "choix": [
+        "Présente une bosse de résonance",
+        "Se décompose en un produit de deux fonctions principales du premier ordre",
+        "Ne peut pas être décomposée",
+        "S'annule à $f_0$"
+      ],
+      "reponses": [1],
+      "explication": "Pour $a > 1$, la fonction se décompose en deux premier ordre de fréquences $f_1 = f_0(a - \\sqrt{a^2-1})$ et $f_2 = f_0(a + \\sqrt{a^2-1})$."
+    },
+    {
+      "id": "ch2-second-ordre-a-egal1",
+      "type": "QCM",
+      "question": "Pour $a = 1$ (second ordre), les fréquences $f_1$ et $f_2$ sont :",
+      "choix": [
+        "Très éloignées",
+        "Confondues et égales à $f_0$",
+        "Égales à $0$ et $\\infty$",
+        "Imaginaires pures"
+      ],
+      "reponses": [1],
+      "explication": "Pour $a = 1$, les deux fréquences $f_1$ et $f_2$ sont confondues et égales à $f_0$."
+    },
+    {
+      "id": "ch2-second-ordre-max",
+      "type": "QCM",
+      "question": "Pour la fonction principale du second ordre, à partir de quelle valeur de $a$ apparaît un maximum (bosse de résonance) ?",
+      "choix": [
+        "$a > 1$",
+        "$a < \\dfrac{\\sqrt{2}}{2}$",
+        "$a = 1$",
+        "$a > 2$"
+      ],
+      "reponses": [1],
+      "explication": "La courbe de gain présente un maximum si $a < \\dfrac{\\sqrt{2}}{2} \\approx 0{,}707$ ; ce maximum est d'autant plus élevé que $a$ est petit."
+    },
+    {
+      "id": "ch2-second-ordre-fm",
+      "type": "QCM",
+      "question": "Lorsqu'il existe, la fréquence du maximum de la fonction principale du second ordre est :",
+      "choix": [
+        "$f_M = f_0$",
+        "$f_M = f_0\\sqrt{1 - 2a^2}$",
+        "$f_M = f_0\\sqrt{1 - a^2}$",
+        "$f_M = 2a f_0$"
+      ],
+      "reponses": [1],
+      "explication": "Les coordonnées du maximum sont $f_M = f_0\\sqrt{1 - 2a^2}$ et $G_M = -20\\log(2a\\sqrt{1 - a^2})$."
+    },
+    {
+      "id": "ch2-generalisation",
+      "type": "QCM",
+      "question": "Comment obtient-on le diagramme de Bode d'un produit de fonctions de base ?",
+      "choix": [
+        "En multipliant les diagrammes des fonctions de base",
+        "En ajoutant les diagrammes des fonctions de base",
+        "En soustrayant les phases",
+        "En dérivant chaque diagramme"
+      ],
+      "reponses": [1],
+      "explication": "Le diagramme du produit s'obtient en ajoutant les diagrammes (gain et phase) des fonctions de base représentant chaque facteur."
+    },
+    {
+      "id": "ch2-passe-bande-2-gm",
+      "type": "QCM",
+      "question": "Pour le filtre passe-bande du second ordre, le maximum de gain (à $f_0$) vaut :",
+      "choix": [
+        "$G_M = G_0 + 20\\log 2a$",
+        "$G_M = G_0 - 20\\log 2a$",
+        "$G_M = 20\\log 2a$",
+        "$G_M = G_0$"
+      ],
+      "reponses": [1],
+      "explication": "Pour toutes les valeurs de $a$, le maximum est à $f_0$ et vaut $G_M = 20\\log\\dfrac{K}{2a} = G_0 - 20\\log 2a$."
+    },
+    {
+      "id": "ch2-passe-bande-2-bp",
+      "type": "QCM",
+      "question": "Quelle est la bande passante du filtre passe-bande du second ordre ?",
+      "choix": [
+        "$\\Delta f = a f_0$",
+        "$\\Delta f = 2a f_0$",
+        "$\\Delta f = f_0 / 2a$",
+        "$\\Delta f = 2 f_0$"
+      ],
+      "reponses": [1],
+      "explication": "La bande passante du filtre passe-bande du second ordre vaut $\\Delta f = 2a f_0$."
+    },
+    {
+      "id": "ch2-rejecteur",
+      "type": "QCM",
+      "question": "Le filtre réjecteur (coupe-bande) du second ordre se caractérise par :",
+      "choix": [
+        "Un gain maximal à $f_0$",
+        "Une fonction de transfert qui s'annule à $f = f_0$ (asymptote verticale du gain)",
+        "Une pente de +40 dB/décade partout",
+        "Une phase constante"
+      ],
+      "reponses": [1],
+      "explication": "La fonction de transfert du réjecteur s'annule pour $f = f_0$ ; la courbe de gain présente donc une asymptote verticale (creux profond) à cette fréquence."
+    },
+    {
+      "id": "ch2-proto-selectivite",
+      "type": "QCM",
+      "question": "Pour un filtre passe-bas, comment définit-on la sélectivité $k$ ?",
+      "choix": [
+        "$k = f_a / f_p$",
+        "$k = f_p / f_a$",
+        "$k = f_p \\cdot f_a$",
+        "$k = f_0 / f_p$"
+      ],
+      "reponses": [1],
+      "explication": "Pour un passe-bas, la sélectivité est $k = f_p / f_a$ (et $k = f_a / f_p$ pour un passe-haut)."
+    },
+    {
+      "id": "ch2-proto-normalisation",
+      "type": "QCM",
+      "question": "En quoi consiste la normalisation de l'unité de fréquence ?",
+      "choix": [
+        "Choisir le Hz comme unité",
+        "Choisir la fréquence de référence ($f_p$ ou $f_0$) comme unité, donnant la pulsation normalisée $\\Omega$",
+        "Diviser toutes les fréquences par 2",
+        "Multiplier toutes les fréquences par $f_0$"
+      ],
+      "reponses": [1],
+      "explication": "On prend la fréquence de référence ($f_p$ pour passe-bas/passe-haut, $f_0$ pour passe-bande/réjecteur) comme unité ; $\\Omega$ est la pulsation normalisée, un nombre sans dimension."
+    },
+    {
+      "id": "ch2-proto-params",
+      "type": "QCM",
+      "question": "Combien de paramètres définissent un filtre prototype passe-bas ?",
+      "choix": [
+        "2 paramètres : $A_{max}$ et $A_{min}$",
+        "3 paramètres : $A_{max}$, $A_{min}$ et $k$",
+        "4 paramètres pour tous les filtres",
+        "1 seul paramètre : $k$"
+      ],
+      "reponses": [1],
+      "explication": "Le filtre prototype passe-bas est défini par 3 paramètres : $A_{max}$, $A_{min}$ et $k$ (plus $b$, la largeur de bande relative, pour les passe-bande et coupe-bande)."
+    },
+    {
+      "id": "ch2-proto-but",
+      "type": "QCM",
+      "question": "Quel est l'intérêt du filtre prototype ?",
+      "choix": [
+        "Ramener l'étude des quatre types de filtres à celle d'un seul passe-bas normalisé",
+        "Éviter tout calcul de fonction de transfert",
+        "Supprimer les composants actifs",
+        "Travailler uniquement en temps continu"
+      ],
+      "reponses": [0],
+      "explication": "L'étude des quatre types de filtres se ramène à l'étude d'un filtre passe-bas normalisé appelé filtre prototype, défini par $A_{max}$, $A_{min}$ et $k$."
+    },
+    {
+      "id": "ch2-proto-transposition",
+      "type": "QCM",
+      "question": "Pour passer d'un passe-bas normalisé à un passe-haut normalisé, quelle transposition applique-t-on ?",
+      "choix": [
+        "$p \\to p$",
+        "$p \\to \\dfrac{1}{p}$",
+        "$p \\to \\dfrac{1}{b}\\left(p + \\dfrac{1}{p}\\right)$",
+        "$p \\to p^2$"
+      ],
+      "reponses": [1],
+      "explication": "La transposition passe-bas vers passe-haut normalisé est $p \\to \\dfrac{1}{p}$."
+    }
+  ]
+}

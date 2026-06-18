@@ -1,0 +1,263 @@
+{
+  "titre": "RI — Partie III : Territoire, espaces maritimes (CNUDM) et cartes",
+  "description": "Frontières héritées (uti possidetis), zones maritimes (mer territoriale 12, ZEE 200, la Zone), ZEE française, pouvoir des projections cartographiques.",
+  "questions": [
+    {
+      "id": "c3-berlin-1884",
+      "type": "QCM",
+      "question": "Le découpage de l'Afrique « à la règle » a été organisé par la conférence de :",
+      "choix": [
+        "Berlin (1884-1885)",
+        "Yalta (1945)",
+        "Vienne (1815)",
+        "Versailles (1919)"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Conférence de Berlin (1884-1885) : héritage colonial de beaucoup de frontières actuelles."
+    },
+    {
+      "id": "c3-uti-possidetis",
+      "type": "QCM",
+      "question": "Le principe d'intangibilité des frontières héritées de la colonisation est :",
+      "choix": [
+        "L'uti possidetis juris",
+        "Le jus sanguinis",
+        "Le pacta sunt servanda",
+        "Le rebus sic stantibus"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Uti possidetis juris : intangibilité des frontières héritées (source de conflits ultérieurs)."
+    },
+    {
+      "id": "c3-annee-afrique",
+      "type": "QCM",
+      "question": "Le pic de la décolonisation, vers 1960, est appelé « l'année de » :",
+      "choix": [
+        "L'Asie",
+        "L'Afrique",
+        "L'Amérique latine",
+        "L'Europe"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "1960, « l'année de l'Afrique »."
+    },
+    {
+      "id": "c3-cnudm",
+      "type": "QCM",
+      "question": "La convention qui organise les espaces maritimes (CNUDM) est dite de :",
+      "choix": [
+        "Montevideo (1933)",
+        "Montego Bay (1982)",
+        "Genève (1949)",
+        "Rome (1998)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "CNUDM = Convention de Montego Bay, 10 décembre 1982."
+    },
+    {
+      "id": "c3-cnudm-vigueur",
+      "type": "QCM",
+      "question": "La CNUDM de 1982 est entrée en vigueur en :",
+      "choix": [
+        "1982",
+        "1994",
+        "1945",
+        "2002"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Signée en 1982, entrée en vigueur le 16 novembre 1994."
+    },
+    {
+      "id": "c3-lignes-base",
+      "type": "QCM",
+      "question": "Les zones maritimes se mesurent à partir des :",
+      "choix": [
+        "Lignes de base (le trait de côte)",
+        "Capitales",
+        "Ports principaux",
+        "Zones contiguës"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Toutes les limites (12, 24, 200 milles) sont comptées depuis les lignes de base."
+    },
+    {
+      "id": "c3-mer-territoriale",
+      "type": "QCM",
+      "question": "La mer territoriale s'étend jusqu'à :",
+      "choix": [
+        "12 milles",
+        "24 milles",
+        "200 milles",
+        "350 milles"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Mer territoriale = 12 milles (souveraineté, passage inoffensif admis)."
+    },
+    {
+      "id": "c3-zone-contigue",
+      "type": "QCM",
+      "question": "La zone contiguë s'étend jusqu'à :",
+      "choix": [
+        "12 milles",
+        "24 milles",
+        "200 milles",
+        "100 milles"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Zone contiguë = 24 milles (contrôle douanier, immigration, sanitaire)."
+    },
+    {
+      "id": "c3-zee-limite",
+      "type": "QCM",
+      "question": "La zone économique exclusive (ZEE) s'étend jusqu'à :",
+      "choix": [
+        "12 milles",
+        "24 milles",
+        "200 milles",
+        "500 milles"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "ZEE = 200 milles (droits souverains d'exploitation des ressources)."
+    },
+    {
+      "id": "c3-droits-mer-terr",
+      "type": "QCM",
+      "question": "Dans la mer territoriale, l'État côtier a :",
+      "choix": [
+        "Seulement des droits d'exploitation",
+        "La souveraineté (passage inoffensif admis)",
+        "Aucun droit",
+        "Seulement un contrôle douanier"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Souveraineté pleine, tempérée par le droit de passage inoffensif."
+    },
+    {
+      "id": "c3-droits-zee",
+      "type": "QCM",
+      "question": "Dans la ZEE, l'État côtier dispose :",
+      "choix": [
+        "De la pleine souveraineté",
+        "De droits souverains d'exploitation des ressources, les autres États gardant la liberté de navigation",
+        "D'aucun droit",
+        "D'un droit de veto"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Glissement clé : pas la souveraineté, mais des droits souverains d'exploitation. D'où la conflictualité (mer de Chine, « ligne en neuf traits »)."
+    },
+    {
+      "id": "c3-la-zone",
+      "type": "QCM",
+      "question": "Les fonds marins au-delà des juridictions nationales (« la Zone ») sont :",
+      "choix": [
+        "Un territoire américain",
+        "Le « patrimoine commun de l'humanité »",
+        "La propriété de la France",
+        "Sans aucun statut"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Haute mer = liberté ; les fonds = patrimoine commun de l'humanité."
+    },
+    {
+      "id": "c3-france-zee",
+      "type": "QCM",
+      "question": "La France possède l'une des plus vastes ZEE du monde grâce à :",
+      "choix": [
+        "Sa population",
+        "Son outre-mer (Clipperton, Polynésie, Guyane, Saint-Pierre-et-Miquelon, TAAF…)",
+        "Son armée",
+        "Son PIB"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "≈ 10,2 à 11 millions de km², au coude-à-coude avec les États-Unis."
+    },
+    {
+      "id": "c3-clipperton",
+      "type": "QCM",
+      "question": "Au sens de la CNUDM, ouvre droit à 200 milles de ZEE :",
+      "choix": [
+        "Un simple rocher inhabitable",
+        "Une île",
+        "Une plateforme pétrolière",
+        "Un navire"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une « île » ouvre 200 milles de ZEE ; un simple « rocher » inhabitable, non (cas Clipperton)."
+    },
+    {
+      "id": "c3-projections",
+      "type": "QCR",
+      "question": "Concernant les projections cartographiques, quelles affirmations sont exactes ?",
+      "choix": [
+        "Mercator conserve les formes mais déforme les surfaces",
+        "Gall-Peters conserve les aires",
+        "Mercator conserve les surfaces réelles",
+        "Equal Earth (2018) est un compromis lisible"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Mercator : conforme (formes) mais déforme les aires ; Gall-Peters : équivalente (aires) ; Equal Earth : compromis."
+    },
+    {
+      "id": "c3-mercator-critique",
+      "type": "QCM",
+      "question": "Quelle projection est critiquée pour grossir l'hémisphère Nord (vision « eurocentrée ») ?",
+      "choix": [
+        "Gall-Peters",
+        "Mercator",
+        "Equal Earth",
+        "McArthur"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Mercator déforme les surfaces en défaveur de l'Afrique et de l'Amérique du Sud."
+    },
+    {
+      "id": "c3-mcarthur",
+      "type": "QCM",
+      "question": "La carte « south-up » de McArthur montre surtout que :",
+      "choix": [
+        "Le Sud est réellement « en haut »",
+        "Le « centre » et le « haut » d'une carte sont des choix idéologiques",
+        "Mercator est neutre",
+        "Les cartes sont objectives"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« Choisir une projection, c'est déjà faire de la géopolitique »."
+    }
+  ]
+}

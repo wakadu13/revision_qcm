@@ -1,0 +1,5444 @@
+{
+  "titre": "Révision Réseaux — Recueil complet (10 modules)",
+  "description": "Fusion de tous les QCM/QCR de révision réseaux (CCNA ITN & SRWE) : protocoles et modèles, résolution d'adresse, configuration de routeur, adressage IPv4/IPv6, ICMP, couche transport, concepts de routage, couche application et sécurité.",
+  "nb_modules": 10,
+  "nb_questions": 327,
+  "modules": [
+    {
+      "fichier": "RC1.json",
+      "titre": "Module 3 — Protocoles et modèles",
+      "description": "Règles de communication, protocoles, suites de protocoles, modèles OSI et TCP/IP, encapsulation et accès aux données.",
+      "nb_questions": 32
+    },
+    {
+      "fichier": "RC2.json",
+      "titre": "Module 9 — Résolution d'adresse",
+      "description": "Adresses MAC et IP, protocole ARP et découverte de voisins IPv6 (ND).",
+      "nb_questions": 18
+    },
+    {
+      "fichier": "RC3.json",
+      "titre": "Module 10 — Configuration de base du routeur",
+      "description": "Paramètres initiaux du routeur, configuration et vérification des interfaces, configuration de la passerelle par défaut.",
+      "nb_questions": 24
+    },
+    {
+      "fichier": "adressage_ipv4.json",
+      "titre": "Adressage IPv4 (Module 11 - ITN)",
+      "description": "Révision complète : structure de l'adresse, monodiffusion/diffusion/multidiffusion, types d'adresses, segmentation et sous-réseaux, VLSM.",
+      "nb_questions": 61
+    },
+    {
+      "fichier": "ipv6.json",
+      "titre": "Module 12 - Adressage IPv6",
+      "description": "Révision des problèmes IPv4, de la représentation et des règles de compression, des types d'adresses, de la configuration et de l'adressage dynamique IPv6.",
+      "nb_questions": 36
+    },
+    {
+      "fichier": "icmp.json",
+      "titre": "Module 13 - ICMP, ping et traceroute",
+      "description": "Révision des messages ICMPv4/ICMPv6 et des tests de connectivité avec les commandes ping et traceroute.",
+      "nb_questions": 19
+    },
+    {
+      "fichier": "couche_transport.json",
+      "titre": "Module 14 - Couche de transport (TCP/UDP)",
+      "description": "Révision du rôle de la couche transport, des protocoles TCP et UDP, des numéros de port et des processus de communication.",
+      "nb_questions": 36
+    },
+    {
+      "fichier": "routage_concepts.json",
+      "titre": "Réseaux — Module 14 : Concepts de routage",
+      "description": "Révision SRWE v7.0 : détermination du chemin, transmission de paquets, table de routage IP, routes statiques/dynamiques/par défaut, distance administrative et métrique.",
+      "nb_questions": 25
+    },
+    {
+      "fichier": "reseaux_couche_application.json",
+      "titre": "Réseaux — Module 15 : Couche d'application",
+      "description": "Révision ITN v7.0 : couches application/présentation/session, client-serveur, P2P, HTTP/HTTPS, messagerie, DNS, DHCP, FTP et SMB.",
+      "nb_questions": 43
+    },
+    {
+      "fichier": "securite_reseaux.json",
+      "titre": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "description": "Révision ITN v7.0 : menaces et vulnérabilités, malwares, attaques réseau (reconnaissance, accès, DoS/DDoS), atténuation (défense en profondeur, AAA, pare-feu) et sécurité des périphériques.",
+      "nb_questions": 33
+    }
+  ],
+  "questions": [
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-elements-comm",
+      "type": "QCR",
+      "question": "Quels sont les trois éléments de toute communication ?",
+      "choix": [
+        "Une source (expéditeur)",
+        "Une destination (récepteur)",
+        "Un canal (support)",
+        "Un pare-feu"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Toute communication comporte une source, une destination et un canal (support)."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-protocole-def",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un protocole ?",
+      "choix": [
+        "Un ensemble de règles que les communications suivront",
+        "Un type de câble",
+        "Une carte réseau",
+        "Un connecteur RJ-45"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les protocoles sont les règles que suivent les communications ; elles varient selon le protocole."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-exigences",
+      "type": "QCR",
+      "question": "Quelles exigences les protocoles réseau doivent-ils définir ?",
+      "choix": [
+        "Codage des messages",
+        "Format et encapsulation des messages",
+        "Taille du message",
+        "Synchronisation des messages"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Les protocoles définissent codage, format/encapsulation, taille, synchronisation et options de remise des messages."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-codage",
+      "type": "QCM",
+      "question": "Qu'est-ce que le codage d'un message ?",
+      "choix": [
+        "La conversion des informations vers un autre format pour la transmission",
+        "La numérotation des segments",
+        "L'ajout d'en-têtes IP",
+        "La détection des collisions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le codage convertit l'information vers un format acceptable pour la transmission ; le décodage l'interprète en sens inverse."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-synchro",
+      "type": "QCR",
+      "question": "Que comprend la synchronisation des messages ?",
+      "choix": [
+        "Le contrôle du flux",
+        "Le délai de réponse",
+        "La méthode d'accès",
+        "Le chiffrement obligatoire"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "La synchronisation comprend le contrôle du flux, le délai de réponse et la méthode d'accès."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-collision",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une collision ?",
+      "choix": [
+        "Plusieurs appareils envoient du trafic en même temps et les messages sont corrompus",
+        "Un câble débranché",
+        "Une perte d'alimentation",
+        "Un mot de passe faible"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Une collision survient quand plusieurs appareils émettent simultanément, corrompant les messages."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-remise",
+      "type": "QCR",
+      "question": "Quelles sont les options de remise des messages ?",
+      "choix": [
+        "Monodiffusion (un à un)",
+        "Multidiffusion (un à plusieurs)",
+        "Diffusion (un à tous)",
+        "Rétrodiffusion (tous à un)"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les options sont la monodiffusion (unicast), la multidiffusion (multicast) et la diffusion (broadcast)."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-broadcast-ipv6",
+      "type": "QCM",
+      "question": "Quelle affirmation est correcte concernant la diffusion (broadcast) ?",
+      "choix": [
+        "Elle est utilisée en IPv4 mais n'existe pas en IPv6",
+        "Elle est obligatoire en IPv6",
+        "C'est une communication un à un",
+        "Elle remplace la multidiffusion"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La diffusion existe en IPv4 mais pas en IPv6 ; IPv6 introduit l'Anycast comme option supplémentaire."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-types-protocoles",
+      "type": "QCR",
+      "question": "Quels types de protocoles sont décrits dans le cours ?",
+      "choix": [
+        "Communications de réseau",
+        "Sécurité des réseaux",
+        "Routage",
+        "Détection des services"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Le cours cite les protocoles de communications réseau, de sécurité, de routage et de détection des services."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont des fonctions des protocoles réseau ?",
+      "choix": [
+        "Adressage",
+        "Fiabilité",
+        "Contrôle de flux",
+        "Détection des erreurs"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Les fonctions incluent l'adressage, la fiabilité, le contrôle de flux, le séquençage, la détection d'erreurs et l'interface d'application."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-http",
+      "type": "QCM",
+      "question": "Quel est le rôle du protocole HTTP ?",
+      "choix": [
+        "Régir l'interaction entre un serveur web et un client web",
+        "Fournir une garantie de livraison de bout en bout",
+        "Acheminer les paquets de la source au destinataire",
+        "Transmettre les trames d'une NIC à une autre"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "HTTP régit la manière dont un serveur et un client web interagissent et définit le contenu et le format."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-tcp",
+      "type": "QCR",
+      "question": "Quelles sont des fonctions du protocole TCP ?",
+      "choix": [
+        "Gérer les conversations individuelles",
+        "Offrir une garantie de livraison",
+        "Gérer le contrôle du flux",
+        "Fournir des messages de NIC à NIC sur le même LAN"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "TCP gère les conversations, offre une garantie de livraison et gère le contrôle du flux ; la livraison NIC à NIC est le rôle d'Ethernet."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-ip",
+      "type": "QCM",
+      "question": "Quel est le rôle du protocole IP ?",
+      "choix": [
+        "Fournir les messages globalement, de l'expéditeur au destinataire",
+        "Définir le format des pages web",
+        "Gérer le contrôle de flux des conversations",
+        "Chiffrer les mots de passe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "IP fournit les messages globalement, de l'expéditeur au destinataire (de bout en bout)."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-ethernet",
+      "type": "QCM",
+      "question": "Quel est le rôle du protocole Ethernet ?",
+      "choix": [
+        "Fournir des messages d'une NIC à une autre sur le même LAN",
+        "Acheminer globalement les paquets",
+        "Régir l'interaction web",
+        "Garantir la livraison de bout en bout"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ethernet fournit des messages d'une carte réseau à une autre sur le même LAN Ethernet."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-suite-def",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une suite de protocoles ?",
+      "choix": [
+        "Un groupe de protocoles interdépendants assurant une fonction de communication",
+        "Un seul protocole isolé",
+        "Un type de connecteur",
+        "Une catégorie de câble"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Une suite de protocoles est un groupe de protocoles interdépendants travaillant ensemble pour une fonction de communication."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-tcpip-ietf",
+      "type": "QCM",
+      "question": "Quel organisme maintient la suite TCP/IP ?",
+      "choix": [
+        "L'IETF",
+        "L'ISO",
+        "Apple Inc.",
+        "Novell"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La suite TCP/IP (Internet Protocol Suite), la plus courante, est maintenue par l'IETF."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-suites-exemples",
+      "type": "QCR",
+      "question": "Parmi ces propositions, lesquelles sont des suites de protocoles ?",
+      "choix": [
+        "TCP/IP",
+        "OSI",
+        "AppleTalk",
+        "Manchester"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "TCP/IP, OSI, AppleTalk et Novell NetWare sont des suites de protocoles ; Manchester est un codage."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-tcpip-caract",
+      "type": "QCR",
+      "question": "Quelles caractéristiques décrivent la suite TCP/IP ?",
+      "choix": [
+        "Standard ouvert accessible gratuitement",
+        "Basée sur des normes approuvées par l'industrie",
+        "Assure l'interopérabilité",
+        "Propriétaire et payante"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "TCP/IP est une suite standard ouverte, gratuite, basée sur des normes et favorisant l'interopérabilité."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-osi-couches",
+      "type": "QCM",
+      "question": "Combien de couches comporte le modèle OSI ?",
+      "choix": [
+        "7 couches",
+        "4 couches",
+        "5 couches",
+        "3 couches"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le modèle OSI comporte 7 couches : Application, Présentation, Session, Transport, Réseau, Liaison de données, Physique."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-osi-physique",
+      "type": "QCM",
+      "question": "Que décrit la couche 1 (Physique) du modèle OSI ?",
+      "choix": [
+        "Les moyens d'activer, maintenir et désactiver les connexions physiques",
+        "La segmentation et le réassemblage des données",
+        "Le meilleur chemin à travers le réseau",
+        "Les communications de processus à processus"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La couche 1 (Physique) décrit les moyens d'activer, maintenir et désactiver les connexions physiques."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-osi-transport",
+      "type": "QCM",
+      "question": "Quel est le rôle de la couche 4 (Transport) du modèle OSI ?",
+      "choix": [
+        "Segmenter, transférer et réassembler les données pour les communications individuelles",
+        "Échanger des blocs de données sur un support commun",
+        "Représenter les données de l'utilisateur",
+        "Activer les connexions physiques"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La couche 4 (Transport) segmente, transfère et réassemble les données pour les communications individuelles."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-tcpip-couches",
+      "type": "QCR",
+      "question": "Quelles sont les couches du modèle TCP/IP ?",
+      "choix": [
+        "Application",
+        "Transport",
+        "Internet",
+        "Accès réseau"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Le modèle TCP/IP comporte 4 couches : Application, Transport, Internet et Accès réseau."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-tcpip-internet",
+      "type": "QCM",
+      "question": "Que détermine la couche Internet du modèle TCP/IP ?",
+      "choix": [
+        "Le meilleur chemin à travers le réseau",
+        "Le code couleur des câbles",
+        "La tension des signaux",
+        "Le contrôle du dialogue"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La couche Internet détermine le meilleur chemin à travers le réseau."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-avantages-couches",
+      "type": "QCR",
+      "question": "Quels sont les avantages d'un modèle en couches ?",
+      "choix": [
+        "Aide à la conception de protocoles",
+        "Encourage la compétition entre fournisseurs",
+        "Empêche qu'un changement dans une couche n'affecte les autres",
+        "Fournit un langage commun"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "Le modèle en couches aide la conception, encourage la compétition, isole les changements et fournit un langage commun."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-segmentation",
+      "type": "QCM",
+      "question": "Qu'est-ce que la segmentation des messages ?",
+      "choix": [
+        "Le processus de séparation des messages en unités plus petites",
+        "L'ajout d'un en-tête IP",
+        "Le chiffrement du message",
+        "La détection des collisions"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La segmentation sépare les messages en unités plus petites ; le multiplexage entrelace plusieurs flux segmentés."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-segmentation-avantages",
+      "type": "QCR",
+      "question": "Quels sont les deux avantages majeurs de la segmentation ?",
+      "choix": [
+        "Augmente la vitesse",
+        "Augmente l'efficacité (retransmission ciblée)",
+        "Supprime le besoin d'adressage",
+        "Élimine les protocoles"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "La segmentation augmente la vitesse et l'efficacité, car seuls les segments manquants sont retransmis."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-sequencage",
+      "type": "QCM",
+      "question": "Quel protocole est responsable du séquençage des segments ?",
+      "choix": [
+        "TCP",
+        "IP",
+        "HTTP",
+        "Ethernet"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le séquençage numérote les segments pour le réassemblage ; TCP en est responsable."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-pdu",
+      "type": "QCM",
+      "question": "Quel est l'ordre correct des PDU lors de l'encapsulation (descendante) ?",
+      "choix": [
+        "Données → Segment → Paquet → Trame → Bits",
+        "Bits → Trame → Paquet → Segment → Données",
+        "Paquet → Segment → Trame → Bits → Données",
+        "Trame → Paquet → Segment → Données → Bits"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "En encapsulation : Données, Segment, Paquet, Trame, puis Bits."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-encapsulation-sens",
+      "type": "QCM",
+      "question": "L'encapsulation des données est un processus...",
+      "choix": [
+        "Descendant (du haut vers le bas de la pile)",
+        "Ascendant (du bas vers le haut)",
+        "Circulaire",
+        "Aléatoire"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'encapsulation est un processus descendant ; la désencapsulation se fait en remontant la pile."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-adressage-couches",
+      "type": "QCM",
+      "question": "Quelle adresse est responsable de la livraison du paquet IP de la source à la destination finale ?",
+      "choix": [
+        "L'adresse de la couche réseau",
+        "L'adresse de la couche liaison de données",
+        "L'adresse de la couche physique",
+        "L'adresse de la couche application"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les adresses de la couche réseau livrent le paquet IP de la source d'origine à la destination finale."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-adresse-liaison",
+      "type": "QCM",
+      "question": "De quoi est responsable l'adresse de la couche liaison de données ?",
+      "choix": [
+        "Transmettre la trame d'une NIC à une autre sur le même réseau",
+        "Acheminer le paquet IP de bout en bout",
+        "Représenter les données utilisateur",
+        "Activer la connexion physique"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse de la couche liaison transmet la trame d'une carte réseau (NIC) à une autre sur le même réseau."
+    },
+    {
+      "module": "Module 3 — Protocoles et modèles",
+      "id": "m3-ip-parties",
+      "type": "QCR",
+      "question": "Quelles sont les deux parties d'une adresse IP ?",
+      "choix": [
+        "La partie réseau (préfixe)",
+        "La partie hôte (ID d'interface)",
+        "La partie masque",
+        "La partie passerelle"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Une adresse IP contient une partie réseau (préfixe IPv6) et une partie hôte (ID d'interface IPv6)."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-deux-adresses",
+      "type": "QCR",
+      "question": "Quelles sont les deux adresses primaires attribuées à un appareil sur un LAN Ethernet ?",
+      "choix": [
+        "L'adresse physique de couche 2 (adresse MAC)",
+        "L'adresse logique de couche 3 (adresse IP)",
+        "L'adresse de la passerelle par défaut",
+        "L'adresse de bouclage"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Deux adresses primaires : l'adresse MAC (couche 2, physique) et l'adresse IP (couche 3, logique)."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-mac-role",
+      "type": "QCM",
+      "question": "À quoi sert l'adresse MAC de couche 2 ?",
+      "choix": [
+        "Aux communications de NIC à NIC sur le même réseau Ethernet",
+        "À envoyer le paquet de la source à la destination finale",
+        "À déterminer le meilleur chemin",
+        "À chiffrer les données"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse MAC sert aux communications de NIC à NIC sur le même réseau Ethernet."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-ip-role",
+      "type": "QCM",
+      "question": "À quoi sert l'adresse IP de couche 3 ?",
+      "choix": [
+        "À envoyer le paquet de l'appareil source à l'appareil de destination",
+        "À livrer la trame d'une NIC à une autre",
+        "À détecter les collisions",
+        "À chiffrer la trame Ethernet"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse IP logique sert à envoyer le paquet de l'appareil source à l'appareil de destination."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-meme-reseau",
+      "type": "QCM",
+      "question": "Si l'adresse IP de destination appartient au même réseau, quelle est l'adresse MAC de destination ?",
+      "choix": [
+        "Celle du périphérique de destination",
+        "Celle de la passerelle par défaut",
+        "Une adresse de diffusion",
+        "Celle du serveur DHCP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Sur le même réseau, l'adresse MAC de destination est celle du périphérique de destination lui-même."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-reseau-distant",
+      "type": "QCM",
+      "question": "Si l'adresse IP de destination se trouve sur un réseau distant, quelle est l'adresse MAC de destination ?",
+      "choix": [
+        "Celle de la passerelle par défaut",
+        "Celle du périphérique de destination final",
+        "Une adresse MAC nulle",
+        "Celle du commutateur local"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Pour une destination sur un réseau distant, l'adresse MAC de destination est celle de la passerelle par défaut."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-arp-but",
+      "type": "QCM",
+      "question": "Dans quel but un périphérique utilise-t-il ARP ?",
+      "choix": [
+        "Déterminer l'adresse MAC de destination d'un périphérique local dont il connaît l'IPv4",
+        "Trouver l'adresse IPv4 à partir d'un nom de domaine",
+        "Chiffrer le trafic local",
+        "Attribuer dynamiquement des adresses IP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "ARP permet de déterminer l'adresse MAC de destination d'un périphérique local lorsqu'on connaît son adresse IPv4."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-arp-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont les deux fonctions principales d'ARP ?",
+      "choix": [
+        "La résolution des adresses IPv4 en adresses MAC",
+        "Le maintien d'une table ARP des mappages IPv4 vers MAC",
+        "Le routage des paquets entre réseaux",
+        "La fragmentation des paquets"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "ARP résout les adresses IPv4 en adresses MAC et maintient une table ARP des correspondances IPv4 → MAC."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-arp-table-distant",
+      "type": "QCM",
+      "question": "Si l'IPv4 de destination est sur un réseau différent, que cherche l'appareil dans sa table ARP ?",
+      "choix": [
+        "L'adresse IPv4 de la passerelle par défaut",
+        "L'adresse IPv4 de destination finale",
+        "Une adresse de diffusion",
+        "L'adresse MAC du serveur DNS"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Pour une destination distante, l'appareil cherche dans la table ARP l'adresse IPv4 de la passerelle par défaut."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-arp-pas-entree",
+      "type": "QCM",
+      "question": "Que fait l'appareil si aucune entrée correspondante n'est trouvée dans la table ARP ?",
+      "choix": [
+        "Il envoie une demande ARP",
+        "Il abandonne la communication définitivement",
+        "Il fragmente le paquet",
+        "Il modifie son adresse IP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Si aucune entrée n'est trouvée dans la table ARP, l'appareil envoie une demande (requête) ARP."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-arp-suppression",
+      "type": "QCR",
+      "question": "Que peut-on dire des entrées de la table ARP ?",
+      "choix": [
+        "Elles ne sont pas permanentes et expirent quand la minuterie du cache ARP arrive à échéance",
+        "La période d'expiration varie selon le système d'exploitation",
+        "Elles peuvent être supprimées manuellement par l'administrateur",
+        "Elles restent valides indéfiniment"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les entrées ARP ne sont pas permanentes, expirent selon une minuterie qui dépend de l'OS, et peuvent être supprimées manuellement."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-arp-commandes",
+      "type": "QCR",
+      "question": "Quelles commandes affichent la table ARP ?",
+      "choix": [
+        "show ip arp (sur un routeur Cisco)",
+        "arp -a (sur un PC Windows 10)",
+        "show running-config",
+        "netstat -r"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "show ip arp affiche la table ARP d'un routeur Cisco ; arp -a l'affiche sur un PC Windows 10."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-arp-diffusion",
+      "type": "QCR",
+      "question": "Quels problèmes sont liés à l'ARP ?",
+      "choix": [
+        "Les requêtes ARP sont reçues et traitées par chaque appareil du réseau local",
+        "Les diffusions ARP excessives peuvent réduire les performances",
+        "Les réponses ARP peuvent être usurpées (empoisonnement ARP)",
+        "ARP chiffre automatiquement le trafic"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les requêtes ARP sont traitées par tous les appareils du LAN, les diffusions excessives réduisent les performances et les réponses peuvent être usurpées (empoisonnement ARP)."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-arp-attaque-mitigation",
+      "type": "QCM",
+      "question": "Comment se protéger contre les attaques par empoisonnement ARP ?",
+      "choix": [
+        "Utiliser des commutateurs de niveau entreprise dotés de techniques d'atténuation",
+        "Désactiver toutes les adresses IP",
+        "Supprimer la couche physique",
+        "Augmenter la taille des trames"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les commutateurs de niveau entreprise incluent des techniques d'atténuation contre les attaques ARP."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-nd-fonctions",
+      "type": "QCR",
+      "question": "Quels services le protocole IPv6 Neighbor Discovery (ND) fournit-il ?",
+      "choix": [
+        "La résolution d'adresse",
+        "La détection de routeur",
+        "Les services de redirection",
+        "La traduction d'adresses NAT"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Le protocole ND fournit la résolution d'adresse, la détection de routeur et les services de redirection."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-ns-na",
+      "type": "QCM",
+      "question": "Quels messages ICMPv6 sont utilisés pour la résolution d'adresse entre appareils ?",
+      "choix": [
+        "Sollicitation de voisin (NS) et publicité de voisin (NA)",
+        "Sollicitation de routeur (RS) et publicité de routeur (RA)",
+        "Les messages de redirection",
+        "Les requêtes et réponses ARP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les messages de sollicitation de voisin (NS) et de publicité de voisin (NA) servent à la résolution d'adresse de dispositif à dispositif."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-rs-ra",
+      "type": "QCM",
+      "question": "À quoi servent les messages ICMPv6 de sollicitation (RS) et de publicité (RA) de routeur ?",
+      "choix": [
+        "À la messagerie entre appareils et routeurs pour la découverte de routeurs",
+        "À la résolution d'adresse entre deux PC",
+        "À fragmenter les paquets",
+        "À chiffrer les communications"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les messages RS et RA servent à la messagerie entre appareils et routeurs pour la découverte de routeurs."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-nd-resolution",
+      "type": "QCM",
+      "question": "À quoi sert ND lors de la résolution d'adresse IPv6 ?",
+      "choix": [
+        "Résoudre l'adresse MAC à partir d'une adresse IPv6 connue",
+        "Résoudre une adresse IPv6 à partir d'un nom de domaine",
+        "Attribuer une passerelle par défaut",
+        "Fragmenter le paquet IPv6"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les périphériques IPv6 utilisent ND pour résoudre l'adresse MAC d'une adresse IPv6 connue."
+    },
+    {
+      "module": "Module 9 — Résolution d'adresse",
+      "id": "m9-ns-multidiffusion",
+      "type": "QCM",
+      "question": "Comment les messages de sollicitation de voisin ICMPv6 sont-ils envoyés ?",
+      "choix": [
+        "À l'aide d'adresses de multidiffusion Ethernet et IPv6 spéciales",
+        "En diffusion (broadcast) IPv4",
+        "En monodiffusion uniquement",
+        "Via une connexion TCP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les messages de sollicitation de voisin ICMPv6 sont envoyés à l'aide d'adresses de multidiffusion Ethernet et IPv6 spéciales."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-etapes",
+      "type": "QCR",
+      "question": "Quelles étapes font partie de la configuration de base d'un routeur ?",
+      "choix": [
+        "Configurer le nom de l'appareil",
+        "Sécuriser le mode d'exécution privilégié",
+        "Sécuriser l'accès Telnet/SSH à distance",
+        "Crypter tous les mots de passe en clair"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "La configuration de base comprend le nom de l'appareil, la sécurisation des modes privilégié et utilisateur, l'accès distant SSH/Telnet, le chiffrement des mots de passe, la bannière légale et l'enregistrement."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-hostname",
+      "type": "QCM",
+      "question": "Quelle commande définit le nom d'un routeur ?",
+      "choix": [
+        "hostname nom",
+        "enable secret nom",
+        "banner motd nom",
+        "ip default-gateway nom"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La commande de configuration globale hostname nom définit le nom du périphérique."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-enable-secret",
+      "type": "QCM",
+      "question": "Quelle commande sécurise le mode d'exécution privilégié ?",
+      "choix": [
+        "enable secret mot_de_passe",
+        "line console 0",
+        "transport input ssh",
+        "no shutdown"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "enable secret mot_de_passe sécurise l'accès au mode d'exécution privilégié."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-console",
+      "type": "QCR",
+      "question": "Quelles commandes sécurisent l'accès par la console (mode utilisateur) ?",
+      "choix": [
+        "line console 0",
+        "password mot_de_passe",
+        "login",
+        "ip address"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "On entre dans line console 0, on définit le password, puis on active l'accès avec login."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-vty",
+      "type": "QCM",
+      "question": "Quelle commande permet de configurer les lignes d'accès distant virtuel sur un routeur ?",
+      "choix": [
+        "line vty 0 4",
+        "line console 0",
+        "interface vlan 1",
+        "banner motd"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "line vty 0 4 entre en mode de configuration des lignes VTY pour l'accès distant (Telnet/SSH)."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-transport-input",
+      "type": "QCM",
+      "question": "À quoi sert la commande transport input {ssh | telnet} sur les lignes VTY ?",
+      "choix": [
+        "Définir les protocoles d'accès distant autorisés",
+        "Chiffrer les mots de passe",
+        "Activer une interface",
+        "Configurer une adresse IP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "transport input {ssh | telnet} précise quels protocoles d'accès distant sont autorisés sur les lignes VTY."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-service-pwd",
+      "type": "QCM",
+      "question": "Quelle commande chiffre les mots de passe en clair ?",
+      "choix": [
+        "service password-encryption",
+        "enable secret",
+        "copy running-config startup-config",
+        "login"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "service password-encryption chiffre les mots de passe affichés en clair dans la configuration."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-banner",
+      "type": "QCM",
+      "question": "Quelle commande crée un message de bannière d'avertissement légal ?",
+      "choix": [
+        "banner motd # message #",
+        "hostname message",
+        "description message",
+        "transport input message"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "banner motd # message # crée une bannière (Message Of The Day) ; le # est le caractère de délimitation."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-copy",
+      "type": "QCM",
+      "question": "Quelle commande enregistre la configuration en cours dans la NVRAM ?",
+      "choix": [
+        "copy running-config startup-config",
+        "service password-encryption",
+        "reload",
+        "no shutdown"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "copy running-config startup-config enregistre la configuration en cours dans la NVRAM (startup-config)."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-nvram",
+      "type": "QCM",
+      "question": "Où la configuration enregistrée du routeur est-elle stockée ?",
+      "choix": [
+        "Dans la NVRAM",
+        "Dans la RAM",
+        "Dans le cache CPU",
+        "Sur un serveur web"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La configuration enregistrée (startup-config) est stockée dans la NVRAM."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-interface-cmds",
+      "type": "QCR",
+      "question": "Quelles commandes interviennent dans la configuration d'une interface de routeur ?",
+      "choix": [
+        "interface type-et-numéro",
+        "ip address adresse masque",
+        "ipv6 address adresse/préfixe",
+        "no shutdown"
+      ],
+      "reponses": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "explication": "On entre dans l'interface, on configure l'adresse IPv4 (ip address) et/ou IPv6 (ipv6 address), puis on l'active avec no shutdown."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-description",
+      "type": "QCM",
+      "question": "À quoi sert la commande description sur une interface ?",
+      "choix": [
+        "Ajouter des informations sur le réseau connecté à l'interface",
+        "Attribuer une adresse IP",
+        "Activer l'interface",
+        "Chiffrer les mots de passe"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Il est recommandé d'utiliser description pour documenter le réseau connecté à l'interface ; cela n'affecte pas son fonctionnement."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-no-shutdown",
+      "type": "QCM",
+      "question": "Que fait la commande no shutdown sur une interface ?",
+      "choix": [
+        "Elle active l'interface",
+        "Elle désactive l'interface",
+        "Elle supprime l'adresse IP",
+        "Elle redémarre le routeur"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La commande no shutdown active l'interface."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-ipv4-config-ex",
+      "type": "QCM",
+      "question": "Quelle commande attribue une adresse IPv4 à une interface ?",
+      "choix": [
+        "ip address 192.168.10.1 255.255.255.0",
+        "ipv6 address 2001:db8:acad:10::1/64",
+        "ip default-gateway 192.168.10.1",
+        "hostname 192.168.10.1"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "ip address suivi de l'adresse et du masque attribue l'adresse IPv4 à l'interface."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-show-ip-int-brief",
+      "type": "QCM",
+      "question": "Que permet de vérifier la commande show ip interface brief ?",
+      "choix": [
+        "Toutes les interfaces, leurs adresses IP et leur état actuel",
+        "Le contenu détaillé de la NVRAM",
+        "Les mots de passe chiffrés",
+        "La table ARP complète"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "show ip interface brief (et son équivalent IPv6) affiche toutes les interfaces, leurs adresses IP et leur état."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-show-route",
+      "type": "QCM",
+      "question": "Que montrent les commandes show ip route et show ipv6 route ?",
+      "choix": [
+        "Le contenu des tables de routage IP stockées en RAM",
+        "Les statistiques détaillées d'une interface",
+        "Les mots de passe configurés",
+        "Les voisins ARP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "show ip route et show ipv6 route affichent le contenu des tables de routage IP stockées en RAM."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-show-interfaces",
+      "type": "QCM",
+      "question": "Que fournit la commande show interfaces ?",
+      "choix": [
+        "Des statistiques pour toutes les interfaces de l'appareil",
+        "Seulement la liste des adresses IPv6",
+        "La table de routage",
+        "Le fichier de configuration de démarrage"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "show interfaces affiche des statistiques détaillées pour toutes les interfaces de l'appareil."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-show-ipv6-int",
+      "type": "QCM",
+      "question": "Quelle commande affiche les statistiques IPv6 d'une interface de routeur ?",
+      "choix": [
+        "show ipv6 interfaces",
+        "show ip interfaces",
+        "show interfaces",
+        "show ip route"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "show ipv6 interfaces affiche les statistiques IPv6 ; show ip interfaces donne l'équivalent pour IPv4."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-vlan1-down",
+      "type": "QCM",
+      "question": "Dans show ip interface brief, que signifie l'état « administratively down » de Vlan1 ?",
+      "choix": [
+        "L'interface est désactivée administrativement (par configuration)",
+        "L'interface fonctionne normalement",
+        "Le câble est débranché",
+        "L'adresse IP est en conflit"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "« administratively down » indique que l'interface a été désactivée par configuration (elle n'a pas été activée avec no shutdown)."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-dgw-hote-usage",
+      "type": "QCM",
+      "question": "Quand un hôte utilise-t-il sa passerelle par défaut ?",
+      "choix": [
+        "Lorsqu'il veut transmettre un paquet à un périphérique sur un autre réseau",
+        "Lorsqu'il communique avec un hôte du même réseau",
+        "Pour s'envoyer un paquet à lui-même",
+        "Uniquement pour les requêtes ARP locales"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La passerelle par défaut est utilisée lorsque l'hôte veut transmettre un paquet à un périphérique situé sur un autre réseau."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-dgw-adresse",
+      "type": "QCM",
+      "question": "À quoi correspond généralement l'adresse de la passerelle par défaut d'un hôte ?",
+      "choix": [
+        "À l'interface du routeur reliée au réseau local de l'hôte",
+        "À l'adresse de bouclage de l'hôte",
+        "À l'adresse du serveur DNS",
+        "À l'adresse de diffusion du réseau"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse de la passerelle par défaut est généralement celle de l'interface du routeur connectée au réseau local de l'hôte."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-dgw-meme-reseau",
+      "type": "QCM",
+      "question": "Quelle condition l'adresse IP de l'hôte et l'interface du routeur doivent-elles respecter ?",
+      "choix": [
+        "Se trouver dans le même réseau",
+        "Avoir la même adresse MAC",
+        "Utiliser des masques différents",
+        "Être sur deux réseaux distants"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse IP de l'hôte et l'interface du routeur (passerelle) doivent se trouver dans le même réseau."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-dgw-switch-but",
+      "type": "QCM",
+      "question": "Pourquoi configurer une passerelle par défaut sur un commutateur ?",
+      "choix": [
+        "Pour pouvoir gérer le commutateur à distance depuis un autre réseau",
+        "Pour activer ses interfaces de données",
+        "Pour chiffrer les mots de passe",
+        "Pour router le trafic des PC entre VLAN"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Un commutateur a besoin d'une passerelle par défaut pour être géré à distance depuis un autre réseau."
+    },
+    {
+      "module": "Module 10 — Configuration de base du routeur",
+      "id": "m10-dgw-switch-cmd",
+      "type": "QCM",
+      "question": "Quelle commande configure la passerelle par défaut sur un commutateur ?",
+      "choix": [
+        "ip default-gateway adresse-ip",
+        "ip address adresse masque",
+        "ip route adresse",
+        "default-gateway interface"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La commande de configuration globale ip default-gateway adresse-ip définit la passerelle par défaut d'un commutateur."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "ipv4-nb-bits",
+      "type": "QCM",
+      "question": "Sur combien de bits une adresse IPv4 est-elle codée ?",
+      "choix": [
+        "16 bits",
+        "32 bits",
+        "48 bits",
+        "128 bits"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une adresse IPv4 est une adresse hiérarchique de 32 bits."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "ipv4-deux-parties",
+      "type": "QCM",
+      "question": "De quelles deux parties se compose une adresse IPv4 ?",
+      "choix": [
+        "Une partie publique et une partie privée",
+        "Une partie réseau et une partie hôte",
+        "Une partie classe et une partie masque",
+        "Une partie source et une partie destination"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une adresse IPv4 se compose d'une partie réseau et d'une partie hôte."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "ipv4-role-masque",
+      "type": "QCM",
+      "question": "À quoi sert le masque de sous-réseau ?",
+      "choix": [
+        "À déterminer la partie réseau d'une adresse IP",
+        "À chiffrer le trafic",
+        "À compter le nombre de routeurs",
+        "À attribuer une classe à l'adresse"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le masque de sous-réseau sert à déterminer la partie réseau d'une adresse IP."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "ipv4-operation-and",
+      "type": "QCM",
+      "question": "Quelle opération logique permet de déterminer l'adresse réseau à partir d'une adresse d'hôte et de son masque ?",
+      "choix": [
+        "OR (OU)",
+        "XOR (OU exclusif)",
+        "AND (ET)",
+        "NOT (NON)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "On effectue un AND (ET) logique, bit à bit, entre l'adresse de l'hôte et le masque."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "and-1-1",
+      "type": "QCM",
+      "question": "Quel est le résultat de l'opération 1 AND 1 ?",
+      "choix": [
+        "0",
+        "1",
+        "2",
+        "Indéfini"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "1 AND 1 = 1. Toutes les autres combinaisons donnent 0."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "and-resultats",
+      "type": "QCR",
+      "question": "Parmi ces opérations AND, lesquelles donnent un résultat égal à 0 ?",
+      "choix": [
+        "1 AND 1",
+        "0 AND 1",
+        "1 AND 0",
+        "0 AND 0"
+      ],
+      "reponses": [
+        1,
+        2,
+        3
+      ],
+      "explication": "Seul 1 AND 1 = 1 ; 0 AND 1, 1 AND 0 et 0 AND 0 donnent tous 0."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "prefixe-definition",
+      "type": "QCM",
+      "question": "À quoi correspond la longueur de préfixe (notation /n) ?",
+      "choix": [
+        "Au nombre de bits définis sur 0 dans le masque",
+        "Au nombre de bits définis sur 1 dans le masque de sous-réseau",
+        "Au nombre d'octets de l'adresse",
+        "Au nombre d'hôtes du réseau"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La longueur de préfixe correspond au nombre de bits à 1 dans le masque de sous-réseau."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "masque-24",
+      "type": "QCM",
+      "question": "À quel masque de sous-réseau correspond le préfixe /24 ?",
+      "choix": [
+        "255.255.0.0",
+        "255.255.255.0",
+        "255.255.255.128",
+        "255.0.0.0"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "/24 = 24 bits à 1 = 255.255.255.0."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "masque-26",
+      "type": "QCM",
+      "question": "Quel masque correspond au préfixe /26 ?",
+      "choix": [
+        "255.255.255.192",
+        "255.255.255.224",
+        "255.255.255.128",
+        "255.255.255.240"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "/26 = 11111111.11111111.11111111.11000000 = 255.255.255.192."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "masque-30",
+      "type": "QCM",
+      "question": "Quel masque correspond au préfixe /30 ?",
+      "choix": [
+        "255.255.255.224",
+        "255.255.255.248",
+        "255.255.255.252",
+        "255.255.255.255"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "/30 = 255.255.255.252, soit 2 bits d'hôte (idéal pour les liaisons WAN)."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "masque-8-prefixe",
+      "type": "QCM",
+      "question": "Le masque 255.0.0.0 correspond à quelle longueur de préfixe ?",
+      "choix": [
+        "/8",
+        "/16",
+        "/24",
+        "/4"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "255.0.0.0 = 8 bits à 1 = /8."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "adresse-reseau-bits",
+      "type": "QCM",
+      "question": "Comment reconnaît-on l'adresse réseau d'un sous-réseau ?",
+      "choix": [
+        "Tous les bits de la partie hôte sont à 1",
+        "Tous les bits de la partie hôte sont à 0",
+        "Le dernier octet vaut toujours 255",
+        "Le premier octet vaut toujours 0"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'adresse réseau a tous les bits de la partie hôte à 0."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "adresse-diffusion-bits",
+      "type": "QCM",
+      "question": "Comment reconnaît-on l'adresse de diffusion (broadcast) d'un réseau ?",
+      "choix": [
+        "Tous les bits de la partie hôte sont à 0",
+        "Tous les bits de la partie hôte sont à 1",
+        "C'est toujours la première adresse",
+        "C'est l'adresse de la passerelle"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'adresse de diffusion a tous les bits de la partie hôte à 1."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "and-calcul-192-168-1-5",
+      "type": "QCM",
+      "question": "Quelle est l'adresse réseau de 192.168.1.5 avec le masque 255.255.255.0 ?",
+      "choix": [
+        "192.168.1.0",
+        "192.168.1.5",
+        "192.168.0.0",
+        "192.168.1.255"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le AND entre 192.168.1.5 et 255.255.255.0 donne 192.168.1.0."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "premiere-derniere-24",
+      "type": "QCM",
+      "question": "Pour le réseau 192.168.10.0/24, quelle est la première adresse d'hôte utilisable ?",
+      "choix": [
+        "192.168.10.0",
+        "192.168.10.1",
+        "192.168.10.254",
+        "192.168.10.255"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La première adresse d'hôte est l'adresse réseau + 1, soit 192.168.10.1."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "broadcast-24",
+      "type": "QCM",
+      "question": "Pour le réseau 192.168.10.0/24, quelle est l'adresse de diffusion ?",
+      "choix": [
+        "192.168.10.0",
+        "192.168.10.1",
+        "192.168.10.254",
+        "192.168.10.255"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Tous les bits d'hôte à 1 donnent 192.168.10.255."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "trois-types-adresses",
+      "type": "QCR",
+      "question": "Au sein de chaque réseau, quels sont les trois types d'adresses IP ?",
+      "choix": [
+        "Adresse réseau",
+        "Adresses d'hôtes",
+        "Adresse de diffusion",
+        "Adresse de classe"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "On trouve l'adresse réseau, les adresses d'hôtes et l'adresse de diffusion."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "monodiffusion-def",
+      "type": "QCM",
+      "question": "Que fait une transmission de monodiffusion (unicast) ?",
+      "choix": [
+        "Envoie un paquet à une seule adresse IP de destination",
+        "Envoie un paquet à toutes les destinations",
+        "Envoie un paquet à un groupe d'adresses",
+        "Envoie un paquet uniquement aux routeurs"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La monodiffusion envoie un paquet à une seule adresse IP de destination."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "diffusion-def",
+      "type": "QCM",
+      "question": "Que fait une transmission de diffusion (broadcast) ?",
+      "choix": [
+        "Envoie à une seule destination",
+        "Envoie à toutes les autres adresses IP de destination",
+        "Envoie à un groupe d'abonnés",
+        "Envoie uniquement à la passerelle"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La diffusion envoie un paquet à toutes les autres adresses IP de destination."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "broadcast-limite",
+      "type": "QCM",
+      "question": "Quelle est l'adresse de destination d'une diffusion limitée (limited broadcast) ?",
+      "choix": [
+        "0.0.0.0",
+        "255.255.255.255",
+        "224.0.0.1",
+        "192.168.0.255"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La diffusion limitée utilise l'adresse de destination 255.255.255.255."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "multidiffusion-def",
+      "type": "QCM",
+      "question": "Que fait une transmission de multidiffusion (multicast) ?",
+      "choix": [
+        "Envoie un paquet à toutes les destinations du réseau",
+        "Envoie un paquet à un groupe d'adresses de multidiffusion",
+        "Envoie un paquet à une seule destination",
+        "Envoie un paquet uniquement en local"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La multidiffusion envoie un paquet à un groupe d'adresses de multidiffusion (ex. 224.10.10.5)."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "rfc-1918",
+      "type": "QCM",
+      "question": "Quelle RFC définit les blocs d'adresses IPv4 privées ?",
+      "choix": [
+        "RFC 790",
+        "RFC 1918",
+        "RFC 2460",
+        "RFC 791"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les adresses privées sont définies par la RFC 1918."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "plages-privees",
+      "type": "QCR",
+      "question": "Parmi ces blocs, lesquels sont des plages d'adresses IPv4 privées (RFC 1918) ?",
+      "choix": [
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "192.168.0.0/16",
+        "8.8.8.0/24"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les plages privées sont 10.0.0.0/8, 172.16.0.0/12 et 192.168.0.0/16."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "plage-172-privee",
+      "type": "QCM",
+      "question": "Quelle est l'étendue exacte du bloc privé 172.16.0.0/12 ?",
+      "choix": [
+        "172.16.0.0 - 172.16.255.255",
+        "172.16.0.0 - 172.31.255.255",
+        "172.0.0.0 - 172.255.255.255",
+        "172.16.0.0 - 172.255.255.255"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le bloc 172.16.0.0/12 va de 172.16.0.0 à 172.31.255.255."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "nat-role",
+      "type": "QCM",
+      "question": "Quel est le rôle du NAT (traduction d'adresses réseau) ?",
+      "choix": [
+        "Convertir les adresses IPv4 privées en adresses IPv4 publiques",
+        "Attribuer une adresse MAC à chaque hôte",
+        "Chiffrer le trafic vers Internet",
+        "Augmenter la taille du masque"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le NAT convertit les adresses IPv4 privées en adresses IPv4 publiques, généralement sur le routeur périphérique."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "bouclage",
+      "type": "QCM",
+      "question": "Quelle adresse de bouclage (loopback) est généralement utilisée pour vérifier la configuration TCP/IP locale ?",
+      "choix": [
+        "169.254.0.1",
+        "127.0.0.1",
+        "192.168.0.1",
+        "255.255.255.255"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "127.0.0.1 (bloc 127.0.0.0/8) sert à tester la pile TCP/IP de l'hôte."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "link-local-apipa",
+      "type": "QCM",
+      "question": "Quel bloc correspond aux adresses link-local (APIPA) ?",
+      "choix": [
+        "127.0.0.0/8",
+        "169.254.0.0/16",
+        "10.0.0.0/8",
+        "172.16.0.0/12"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les adresses link-local APIPA sont dans 169.254.0.0/16, attribuées quand aucun serveur DHCP n'est disponible."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "apipa-quand",
+      "type": "QCM",
+      "question": "Dans quel cas un client Windows s'auto-attribue-t-il une adresse APIPA ?",
+      "choix": [
+        "Quand l'adresse est statique",
+        "Quand aucun serveur DHCP n'est disponible",
+        "Quand le NAT est désactivé",
+        "Quand le masque est /8"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "APIPA permet à un client DHCP Windows de se configurer automatiquement si aucun serveur DHCP n'est joignable."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "rfc-790-classes",
+      "type": "QCM",
+      "question": "Quelle RFC (1981) définissait l'adressage par classe ?",
+      "choix": [
+        "RFC 1918",
+        "RFC 790",
+        "RFC 2131",
+        "RFC 1149"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'adressage par classe était défini dans la RFC 790 (1981)."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "classe-a-plage",
+      "type": "QCM",
+      "question": "Quelle est la plage du premier octet pour la classe A ?",
+      "choix": [
+        "0 à 127",
+        "128 à 191",
+        "192 à 223",
+        "224 à 239"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La classe A va de 0.0.0.0/8 à 127.0.0.0/8."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "classe-c-plage",
+      "type": "QCM",
+      "question": "Quelle est la plage du premier octet pour la classe C ?",
+      "choix": [
+        "0 à 127",
+        "128 à 191",
+        "192 à 223",
+        "240 à 255"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "La classe C va de 192.0.0.0 à 223.255.255.0."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "classe-d-multicast",
+      "type": "QCM",
+      "question": "À quoi correspond la classe D (224.0.0.0 à 239.0.0.0) ?",
+      "choix": [
+        "Adresses de multidiffusion",
+        "Adresses privées",
+        "Adresses expérimentales",
+        "Adresses de bouclage"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La classe D (224 à 239) est réservée à la multidiffusion."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "classe-e",
+      "type": "QCM",
+      "question": "Quelle plage correspond à la classe E ?",
+      "choix": [
+        "192.0.0.0 à 223.255.255.0",
+        "240.0.0.0 à 255.0.0.0",
+        "128.0.0.0 à 191.255.0.0",
+        "0.0.0.0 à 127.0.0.0"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La classe E (expérimentale) couvre 240.0.0.0 à 255.0.0.0."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "classful-gaspillage",
+      "type": "QCM",
+      "question": "Quel défaut majeur l'adressage par classe présentait-il ?",
+      "choix": [
+        "Il était trop sécurisé",
+        "Il gaspillait de nombreuses adresses IPv4",
+        "Il ne fonctionnait qu'en IPv6",
+        "Il empêchait l'utilisation du NAT"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'adressage par classe gaspillait beaucoup d'adresses ; il a été remplacé par l'adressage sans classe."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "iana-role",
+      "type": "QCM",
+      "question": "Quel organisme gère les blocs d'adresses IPv4/IPv6 et les attribue aux RIR ?",
+      "choix": [
+        "L'IANA",
+        "Le FAI",
+        "L'ICANN local",
+        "Le serveur DHCP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'IANA gère les blocs et les attribue aux organismes d'enregistrement Internet régionaux (RIR)."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "rir-europe",
+      "type": "QCM",
+      "question": "Quel RIR couvre l'Europe ?",
+      "choix": [
+        "ARIN",
+        "APNIC",
+        "RIPE NCC",
+        "LACNIC"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "RIPE NCC est le RIR pour l'Europe (ARIN : Amérique du Nord, APNIC : Asie-Pacifique, LACNIC : Amérique latine, AfriNIC : Afrique)."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "stoppe-diffusion",
+      "type": "QCM",
+      "question": "Quel est le seul périphérique qui arrête les messages de diffusion ?",
+      "choix": [
+        "Le commutateur (switch)",
+        "Le concentrateur (hub)",
+        "Le routeur",
+        "Le point d'accès Wi-Fi"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le routeur arrête les diffusions ; chaque interface de routeur délimite un domaine de diffusion."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "switch-diffusion",
+      "type": "QCM",
+      "question": "Comment un commutateur traite-t-il un message de diffusion ?",
+      "choix": [
+        "Il le bloque",
+        "Il le transmet sur toutes les interfaces sauf celle d'origine",
+        "Il le transmet uniquement à l'expéditeur",
+        "Il le route vers Internet"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le commutateur diffuse le message sur toutes ses interfaces, sauf celle d'où il provient."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "sous-reseau-but",
+      "type": "QCM",
+      "question": "Quel est le but principal de la création de sous-réseaux face à un grand domaine de diffusion ?",
+      "choix": [
+        "Augmenter le nombre d'adresses publiques",
+        "Réduire la taille des domaines de diffusion",
+        "Supprimer le besoin de routeurs",
+        "Désactiver le protocole ARP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le découpage en sous-réseaux crée de plus petits domaines de diffusion, limitant la propagation des diffusions."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "avantages-sous-reseau",
+      "type": "QCR",
+      "question": "Quels avantages apporte la segmentation en sous-réseaux ?",
+      "choix": [
+        "Réduit le trafic global et améliore les performances",
+        "Permet d'appliquer des politiques de sécurité entre sous-réseaux",
+        "Réduit le nombre de périphériques affectés par un trafic de diffusion anormal",
+        "Supprime totalement les adresses de diffusion"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Le sous-réseautage améliore les performances, la sécurité et limite l'impact des diffusions ; il ne supprime pas les adresses de diffusion."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "hotes-25",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un sous-réseau /25 fournit-il ?",
+      "choix": [
+        "62",
+        "126",
+        "254",
+        "30"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "/25 laisse 7 bits d'hôte : 2^7 - 2 = 126 hôtes."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "hotes-27",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un sous-réseau /27 fournit-il ?",
+      "choix": [
+        "14",
+        "30",
+        "62",
+        "6"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "/27 laisse 5 bits d'hôte : 2^5 - 2 = 30 hôtes."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "hotes-30",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un sous-réseau /30 fournit-il ?",
+      "choix": [
+        "2",
+        "4",
+        "6",
+        "0"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "/30 laisse 2 bits d'hôte : 2^2 - 2 = 2 hôtes, idéal pour une liaison WAN point à point."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "sous-reseaux-26-depuis-24",
+      "type": "QCM",
+      "question": "En découpant un réseau /24 avec un masque /26, combien de sous-réseaux obtient-on ?",
+      "choix": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On emprunte 2 bits : 2^2 = 4 sous-réseaux."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "formule-hotes",
+      "type": "QCM",
+      "question": "Quelle formule donne le nombre d'hôtes utilisables, n étant le nombre de bits d'hôte ?",
+      "choix": [
+        "2^n",
+        "2^n - 2",
+        "2^n + 2",
+        "n^2 - 2"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On retire l'adresse réseau et l'adresse de diffusion : 2^n - 2."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "pourquoi-moins-2",
+      "type": "QCR",
+      "question": "Pourquoi soustrait-on 2 au nombre total d'adresses pour obtenir le nombre d'hôtes utilisables ?",
+      "choix": [
+        "À cause de l'adresse réseau (tous les bits hôte à 0)",
+        "À cause de l'adresse de diffusion (tous les bits hôte à 1)",
+        "À cause de l'adresse de la passerelle",
+        "À cause de l'adresse de bouclage"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "On retire l'adresse réseau et l'adresse de diffusion, qui ne peuvent pas être attribuées à un hôte."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "formule-sous-reseaux",
+      "type": "QCM",
+      "question": "Combien de sous-réseaux obtient-on en empruntant p bits à la partie hôte ?",
+      "choix": [
+        "p^2",
+        "2^p",
+        "2^p - 2",
+        "p - 2"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Emprunter p bits crée 2^p sous-réseaux."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "hotes-16",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un réseau /16 fournit-il ?",
+      "choix": [
+        "254",
+        "1022",
+        "65534",
+        "16777214"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "/16 laisse 16 bits d'hôte : 2^16 - 2 = 65534 hôtes."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "hotes-8",
+      "type": "QCM",
+      "question": "Combien d'hôtes utilisables un réseau /8 fournit-il ?",
+      "choix": [
+        "65534",
+        "254",
+        "16777214",
+        "1048574"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "/8 laisse 24 bits d'hôte : 2^24 - 2 = 16777214 hôtes."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "100-sous-reseaux-16",
+      "type": "QCM",
+      "question": "À partir d'un /16, combien de bits faut-il emprunter pour obtenir au moins 100 sous-réseaux ?",
+      "choix": [
+        "6 bits (64)",
+        "7 bits (128)",
+        "8 bits (256)",
+        "10 bits (1024)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "2^6 = 64 (insuffisant), 2^7 = 128 ≥ 100 : il faut emprunter 7 bits."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "1000-sous-reseaux-8",
+      "type": "QCM",
+      "question": "À partir d'un /8, combien de bits faut-il emprunter pour obtenir au moins 1000 sous-réseaux ?",
+      "choix": [
+        "8 bits (256)",
+        "9 bits (512)",
+        "10 bits (1024)",
+        "12 bits (4096)"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "2^9 = 512 (insuffisant), 2^10 = 1024 ≥ 1000 : il faut emprunter 10 bits."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "limite-octet",
+      "type": "QCM",
+      "question": "Quelles longueurs de préfixe correspondent à des limites d'octet (sous-réseautage le plus simple) ?",
+      "choix": [
+        "/7, /15 et /23",
+        "/8, /16 et /24",
+        "/10, /20 et /30",
+        "/9, /17 et /25"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Segmenter à la limite d'octet correspond à /8, /16 et /24."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "vlsm-signification",
+      "type": "QCM",
+      "question": "Que permet le VLSM (Variable Length Subnet Masking) ?",
+      "choix": [
+        "D'utiliser le même masque partout",
+        "D'utiliser des masques de longueur variable pour éviter le gaspillage d'adresses",
+        "De supprimer les adresses de diffusion",
+        "De convertir IPv4 en IPv6"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le VLSM utilise des masques de longueur variable adaptés à chaque sous-réseau, évitant le gaspillage."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "vlsm-ordre",
+      "type": "QCM",
+      "question": "Par quoi faut-il commencer lorsqu'on planifie un adressage VLSM ?",
+      "choix": [
+        "Par le plus petit sous-réseau",
+        "Par le plus grand sous-réseau (le plus d'hôtes)",
+        "Par les liaisons WAN",
+        "Par l'adresse de diffusion"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On commence toujours par le plus grand sous-réseau, puis on descend vers le plus petit, pour éviter les chevauchements."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "vlsm-wan",
+      "type": "QCM",
+      "question": "Quel masque est le plus adapté à une liaison WAN point à point (2 hôtes) ?",
+      "choix": [
+        "/24",
+        "/27",
+        "/29",
+        "/30"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Un /30 fournit exactement 2 adresses d'hôte, idéal pour une liaison point à point."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "vlsm-but",
+      "type": "QCM",
+      "question": "Pourquoi le VLSM a-t-il été développé ?",
+      "choix": [
+        "Pour augmenter le nombre de classes",
+        "Pour éviter le gaspillage d'adresses du sous-réseautage classique",
+        "Pour remplacer le NAT",
+        "Pour supprimer les masques de sous-réseau"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le sous-réseautage classique gaspillait des adresses (ex. /27 sur une liaison WAN) ; le VLSM corrige cela."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "intranet-dmz",
+      "type": "QCR",
+      "question": "Concernant l'adressage d'un réseau d'entreprise, quelles affirmations sont correctes ?",
+      "choix": [
+        "L'intranet utilise généralement des adresses IPv4 privées",
+        "Les périphériques de la DMZ utilisent des adresses IPv4 publiques",
+        "L'intranet doit utiliser uniquement des adresses publiques",
+        "La DMZ regroupe les serveurs accessibles depuis Internet"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "L'intranet utilise des adresses privées ; la DMZ (serveurs exposés à Internet) utilise des adresses publiques."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "vlsm-considerations",
+      "type": "QCR",
+      "question": "Quelles considérations faut-il prendre en compte lors de la planification des sous-réseaux ?",
+      "choix": [
+        "Le nombre d'adresses d'hôte nécessaires par réseau",
+        "Le nombre de sous-réseaux nécessaires",
+        "La couleur des câbles",
+        "La marque du routeur"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Deux paramètres : le nombre d'hôtes par sous-réseau et le nombre de sous-réseaux."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "premier-sous-reseau-192-26",
+      "type": "QCM",
+      "question": "En découpant 192.168.1.0 avec un masque /26 (255.255.255.192), quelle est l'adresse de diffusion du premier sous-réseau ?",
+      "choix": [
+        "192.168.1.63",
+        "192.168.1.64",
+        "192.168.1.127",
+        "192.168.1.255"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le premier sous-réseau va de 192.168.1.0 à 192.168.1.63 (diffusion = .63)."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "second-sous-reseau-192-26",
+      "type": "QCM",
+      "question": "Toujours avec le masque /26 sur 192.168.1.0, quelle est l'adresse du second sous-réseau ?",
+      "choix": [
+        "192.168.1.32",
+        "192.168.1.63",
+        "192.168.1.64",
+        "192.168.1.128"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le second sous-réseau commence à 192.168.1.64 et va jusqu'à 192.168.1.127."
+    },
+    {
+      "module": "Adressage IPv4 (Module 11 - ITN)",
+      "id": "plage-hotes-premier-26",
+      "type": "QCM",
+      "question": "Pour le premier sous-réseau 192.168.1.0/26, quelle est la plage d'adresses d'hôtes valides ?",
+      "choix": [
+        "192.168.1.0 à 192.168.1.63",
+        "192.168.1.1 à 192.168.1.62",
+        "192.168.1.1 à 192.168.1.63",
+        "192.168.1.0 à 192.168.1.62"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On exclut l'adresse réseau (.0) et la diffusion (.63) : les hôtes vont de .1 à .62."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-need-1",
+      "type": "QCM",
+      "question": "Quelle est la principale raison du passage à IPv6 ?",
+      "choix": [
+        "IPv6 est plus rapide qu'IPv4",
+        "IPv4 manque d'adresses",
+        "IPv6 supprime le besoin de routeurs",
+        "IPv4 ne supporte pas le chiffrement"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "IPv4 manque d'adresses ; IPv6, son successeur, offre un espace d'adressage de 128 bits beaucoup plus grand."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-bits",
+      "type": "QCM",
+      "question": "Quelle est la longueur d'une adresse IPv6 ?",
+      "choix": [
+        "32 bits",
+        "48 bits",
+        "64 bits",
+        "128 bits"
+      ],
+      "reponses": [
+        3
+      ],
+      "explication": "Les adresses IPv6 ont une longueur de 128 bits et s'écrivent en hexadécimal."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-migration",
+      "type": "QCR",
+      "question": "Quelles sont les trois techniques de migration vers IPv6 définies par l'IETF ?",
+      "choix": [
+        "Double pile (dual stack)",
+        "Tunneling",
+        "Traduction (NAT64)",
+        "Diffusion (broadcast)"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les trois catégories de techniques de migration sont la double pile, le tunneling et la traduction (NAT64). IPv6 n'utilise pas de diffusion."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-dualstack",
+      "type": "QCM",
+      "question": "Que fait un périphérique configuré en « double pile » (dual stack) ?",
+      "choix": [
+        "Il encapsule l'IPv6 dans l'IPv4",
+        "Il exécute simultanément les piles IPv4 et IPv6",
+        "Il traduit les adresses IPv6 en IPv4",
+        "Il n'accepte que l'IPv6"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les périphériques double pile exécutent les piles de protocoles IPv4 et IPv6 en même temps."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-tunneling",
+      "type": "QCM",
+      "question": "En quoi consiste le tunneling IPv6 ?",
+      "choix": [
+        "Transporter un paquet IPv6 encapsulé dans un paquet IPv4",
+        "Traduire une adresse IPv6 en IPv4",
+        "Exécuter les deux piles simultanément",
+        "Compresser les zéros d'une adresse"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le tunneling transporte un paquet IPv6 sur un réseau IPv4 en l'encapsulant dans un paquet IPv4."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-hextet",
+      "type": "QCM",
+      "question": "Que désigne le terme « hextet » dans une adresse IPv6 ?",
+      "choix": [
+        "Un segment de 8 bits",
+        "Un segment de 16 bits (quatre valeurs hexadécimales)",
+        "Un segment de 32 bits",
+        "L'adresse complète"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un hextet est le terme officieux pour un segment de 16 bits, soit quatre valeurs hexadécimales. Une adresse IPv6 en compte 8."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-casse",
+      "type": "QCM",
+      "question": "Les adresses IPv6 sont-elles sensibles à la casse ?",
+      "choix": [
+        "Oui, uniquement en majuscules",
+        "Oui, uniquement en minuscules",
+        "Non, elles peuvent être notées en minuscules ou majuscules",
+        "Seulement les hextets pairs"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Les adresses IPv6 ne sont pas sensibles à la casse et peuvent être notées en minuscules ou en majuscules."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-regle1",
+      "type": "QCM",
+      "question": "Que permet la règle 1 de compression IPv6 ?",
+      "choix": [
+        "Remplacer plusieurs hextets nuls par ::",
+        "Omettre les zéros de début (leading zeros) d'un hextet",
+        "Supprimer les zéros de queue",
+        "Convertir l'adresse en décimal"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La règle 1 consiste à omettre les zéros de début (leading zeros) d'un hextet ; elle ne s'applique pas aux zéros de queue."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-regle1-ex",
+      "type": "QCM",
+      "question": "Avec la règle des zéros de début, comment s'écrit l'hextet 01ab ?",
+      "choix": [
+        "01ab",
+        "1ab",
+        "1AB0",
+        "ab"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "01ab devient 1ab : on supprime uniquement le zéro de début. (00ab deviendrait ab.)"
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-regle2",
+      "type": "QCM",
+      "question": "Que permet le double deux-points (::) dans une adresse IPv6 ?",
+      "choix": [
+        "Remplacer une seule chaîne continue d'hextets composés uniquement de zéros",
+        "Remplacer n'importe quel hextet",
+        "Séparer la partie réseau de la partie hôte",
+        "Indiquer une adresse de diffusion"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le :: peut remplacer une seule chaîne continue d'un ou plusieurs hextets composés uniquement de zéros."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-regle2-once",
+      "type": "QCM",
+      "question": "Combien de fois le double deux-points (::) peut-il apparaître dans une adresse IPv6 ?",
+      "choix": [
+        "Autant de fois que nécessaire",
+        "Une seule fois",
+        "Deux fois maximum",
+        "Jamais"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le :: ne peut être utilisé qu'une seule fois, sinon l'adresse deviendrait ambiguë (plusieurs interprétations possibles)."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-compress-ex",
+      "type": "QCM",
+      "question": "Quelle est la forme compressée de 2001:db8:cafe:1:0:0:0:1 ?",
+      "choix": [
+        "2001:db8:cafe:1::1",
+        "2001:db8:cafe::1::1",
+        "2001:db8:cafe:1:::1",
+        "2001::db8:cafe:1:1"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La chaîne 0:0:0 est remplacée une seule fois par :: → 2001:db8:cafe:1::1."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-types",
+      "type": "QCR",
+      "question": "Quelles sont les trois grandes catégories d'adresses IPv6 ?",
+      "choix": [
+        "Monodiffusion (unicast)",
+        "Multidiffusion (multicast)",
+        "Anycast",
+        "Diffusion (broadcast)"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les trois catégories sont unicast, multicast et anycast. IPv6 n'a pas d'adresse de diffusion (broadcast)."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-anycast",
+      "type": "QCM",
+      "question": "Comment est acheminé un paquet envoyé à une adresse anycast ?",
+      "choix": [
+        "Vers tous les périphériques du réseau",
+        "Vers le périphérique le plus proche ayant cette adresse",
+        "Vers la passerelle par défaut uniquement",
+        "Il est rejeté"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une adresse anycast peut être attribuée à plusieurs appareils ; le paquet est acheminé vers le périphérique le plus proche ayant cette adresse."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-broadcast",
+      "type": "QCM",
+      "question": "Quelle affirmation est correcte concernant la diffusion en IPv6 ?",
+      "choix": [
+        "IPv6 utilise la même adresse de diffusion qu'IPv4",
+        "IPv6 n'a pas d'adresse de diffusion, mais une adresse de multidiffusion tous-nœuds",
+        "La diffusion IPv6 est limitée au /64",
+        "IPv6 diffuse via anycast"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Contrairement à IPv4, IPv6 n'a pas d'adresse de diffusion ; une adresse de multidiffusion vers tous les nœuds offre globalement le même résultat."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-prefixe",
+      "type": "QCM",
+      "question": "Quelle longueur de préfixe IPv6 est recommandée pour les réseaux locaux ?",
+      "choix": [
+        "/24",
+        "/48",
+        "/64",
+        "/128"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "La longueur de préfixe /64 est recommandée pour les réseaux locaux ; SLAAC utilise 64 bits pour l'ID d'interface."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-prefixe-plage",
+      "type": "QCM",
+      "question": "Entre quelles valeurs la longueur de préfixe IPv6 peut-elle être comprise ?",
+      "choix": [
+        "0 et 32",
+        "0 et 64",
+        "0 et 128",
+        "1 et 255"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "La longueur de préfixe IPv6 peut être comprise entre 0 et 128."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-unicast-deux",
+      "type": "QCR",
+      "question": "Quelles deux adresses monodiffusion un périphérique IPv6 possède-t-il généralement ?",
+      "choix": [
+        "Global Unicast Address (GUA)",
+        "Link-Local Address (LLA)",
+        "Adresse de diffusion",
+        "Adresse MAC virtuelle"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Un appareil IPv6 a généralement deux adresses unicast : une GUA (routable sur Internet) et une LLA (locale au lien)."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-gua",
+      "type": "QCM",
+      "question": "Quelle affirmation décrit une adresse Global Unicast (GUA) ?",
+      "choix": [
+        "Elle n'est pas routable et limitée au lien local",
+        "Elle est unique au monde et routable sur Internet",
+        "Elle commence par fe80",
+        "Elle ne peut pas être attribuée à un hôte"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La GUA est similaire à une adresse IPv4 publique : unique au monde et routable sur Internet."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-gua-prefixe",
+      "type": "QCM",
+      "question": "Par quel préfixe commencent actuellement les adresses GUA IPv6 ?",
+      "choix": [
+        "fe80::/10",
+        "2000::/3",
+        "ff00::/8",
+        "fc00::/7"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les GUA actuellement attribuées ont leurs premiers bits à 001, soit 2000::/3 (commençant par 2 ou 3 en décimal)."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-gua-struct",
+      "type": "QCR",
+      "question": "Quels champs composent la structure d'une adresse GUA IPv6 ?",
+      "choix": [
+        "Préfixe de routage global",
+        "ID de sous-réseau (Subnet ID)",
+        "ID d'interface (Interface ID)",
+        "Adresse de diffusion"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Une GUA se compose du préfixe de routage global, de l'ID de sous-réseau et de l'ID d'interface."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-lla",
+      "type": "QCM",
+      "question": "Quelle est la plage des adresses link-local (LLA) IPv6 ?",
+      "choix": [
+        "2000::/3",
+        "fe80::/10",
+        "ff02::/16",
+        "::1/128"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les LLA IPv6 sont dans la gamme fe80::/10."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-lla-carac",
+      "type": "QCR",
+      "question": "Quelles affirmations sont correctes concernant une adresse link-local (LLA) ?",
+      "choix": [
+        "Les paquets avec une LLA source ou destination ne peuvent pas être routés",
+        "Chaque interface compatible IPv6 doit avoir une LLA",
+        "Si elle n'est pas configurée, l'appareil en crée une automatiquement",
+        "Elle est unique au monde et routable sur Internet"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Une LLA n'est pas routable, est obligatoire pour chaque interface IPv6 et peut être générée automatiquement. C'est la GUA qui est routable sur Internet."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-config-gua",
+      "type": "QCM",
+      "question": "Quelle commande Cisco IOS configure une GUA IPv6 sur une interface ?",
+      "choix": [
+        "ip address ipv6-adresse/prefix-length",
+        "ipv6 address ipv6-adresse/prefix-length",
+        "ipv6 enable address",
+        "set ipv6 gua"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La commande est : ipv6 address ipv6-adresse/prefix-length (ex. ipv6 address 2001:db8:acad:1::1/64)."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-config-lla",
+      "type": "QCM",
+      "question": "Quel mot-clé ajoute-t-on pour configurer manuellement une adresse link-local ?",
+      "choix": [
+        "global",
+        "link-local",
+        "static",
+        "auto"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On utilise : ipv6 address ipv6-link-local-address link-local (ex. ipv6 address fe80::1:1 link-local)."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-rs-ra",
+      "type": "QCM",
+      "question": "Quel protocole transporte les messages RS et RA utilisés pour l'adressage dynamique IPv6 ?",
+      "choix": [
+        "ARP",
+        "ICMPv6",
+        "DHCPv4",
+        "TCP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les périphériques obtiennent des GUA dynamiquement via les messages ICMPv6 RS (sollicitation de routeur) et RA (publicité de routeur)."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-rs-direction",
+      "type": "QCM",
+      "question": "Qui envoie les messages de sollicitation de routeur (RS) ?",
+      "choix": [
+        "Les routeurs vers les hôtes",
+        "Les hôtes pour découvrir les routeurs IPv6",
+        "Les serveurs DNS",
+        "Les commutateurs"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les messages RS sont envoyés par les hôtes pour découvrir les routeurs IPv6 ; les routeurs répondent par des messages RA."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-ra-methodes",
+      "type": "QCR",
+      "question": "Quelles méthodes un message RA peut-il indiquer pour configurer une GUA IPv6 ?",
+      "choix": [
+        "SLAAC",
+        "SLAAC avec serveur DHCPv6 sans état",
+        "DHCPv6 avec état (sans SLAAC)",
+        "ARP statique"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Le RA peut proposer trois méthodes : SLAAC, SLAAC + DHCPv6 sans état, ou DHCPv6 avec état."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-slaac",
+      "type": "QCM",
+      "question": "Que permet la méthode SLAAC ?",
+      "choix": [
+        "Configurer une GUA sans serveur DHCPv6",
+        "Obliger l'usage d'un serveur DHCPv6 avec état",
+        "Traduire IPv6 en IPv4",
+        "Attribuer une adresse de diffusion"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SLAAC permet à un périphérique de configurer une GUA sans les services de DHCPv6, à partir des informations du message RA."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-stateful",
+      "type": "QCM",
+      "question": "À quoi DHCPv6 « avec état » est-il comparable ?",
+      "choix": [
+        "À ARP",
+        "À DHCP pour IPv4",
+        "À SLAAC",
+        "À NAT64"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "DHCPv6 avec état est similaire à DHCP pour IPv4 : le périphérique reçoit GUA, longueur de préfixe et adresses DNS depuis le serveur."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-eui64-process",
+      "type": "QCR",
+      "question": "Quelles opérations caractérisent le processus EUI-64 ?",
+      "choix": [
+        "Insérer la valeur fffe au milieu de l'adresse MAC 48 bits",
+        "Inverser le 7e bit de l'adresse MAC",
+        "Ajouter le préfixe 2000 au début",
+        "Doubler la longueur de l'adresse MAC à 96 bits"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "EUI-64 insère fffe au milieu de la MAC 48 bits et inverse le 7e bit (de 0 à 1) pour créer un ID d'interface de 64 bits."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-eui64-source",
+      "type": "QCM",
+      "question": "Sur quoi le processus EUI-64 s'appuie-t-il pour générer l'ID d'interface ?",
+      "choix": [
+        "L'adresse IPv4 de l'hôte",
+        "L'adresse MAC Ethernet 48 bits",
+        "Le numéro de port source",
+        "Le nom de domaine"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "EUI-64 dérive l'ID d'interface de l'adresse MAC 48 bits du client."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-random-id",
+      "type": "QCM",
+      "question": "Depuis quelle version Windows utilise-t-il un ID d'interface généré aléatoirement plutôt qu'EUI-64 ?",
+      "choix": [
+        "Windows XP",
+        "Windows Vista",
+        "Windows 7",
+        "Windows 11"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "À partir de Windows Vista, Windows utilise un ID d'interface généré aléatoirement au lieu du processus EUI-64."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-dad",
+      "type": "QCM",
+      "question": "À quoi sert le processus DAD (Duplicate Address Detection) ?",
+      "choix": [
+        "À détecter une boucle de routage",
+        "À s'assurer qu'une adresse monodiffusion IPv6 est unique",
+        "À chiffrer l'adresse IPv6",
+        "À compresser les zéros"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "DAD vérifie l'unicité d'une adresse unicast ; le principe est similaire à une requête ARP pour sa propre adresse : sans réponse, l'adresse est unique."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-subnet-id",
+      "type": "QCM",
+      "question": "Où se situe le champ ID de sous-réseau dans une GUA IPv6 ?",
+      "choix": [
+        "Avant le préfixe de routage global",
+        "Entre le préfixe de routage global et l'ID d'interface",
+        "À la toute fin de l'adresse",
+        "Il n'existe pas en IPv6"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'ID de sous-réseau est la zone située entre le préfixe de routage global et l'ID d'interface."
+    },
+    {
+      "module": "Module 12 - Adressage IPv6",
+      "id": "ipv6-subnet-nombre",
+      "type": "QCM",
+      "question": "Avec un préfixe 2001:db8:acad::/48 et un ID de sous-réseau de 16 bits, combien de sous-réseaux /64 sont possibles ?",
+      "choix": [
+        "256",
+        "4 096",
+        "65 536",
+        "1 million"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Un ID de sous-réseau de 16 bits permet 65 536 sous-réseaux /64 (2^16)."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "icmp-role",
+      "type": "QCM",
+      "question": "Quel est le rôle du protocole ICMP ?",
+      "choix": [
+        "Attribuer les adresses IP dynamiquement",
+        "Fournir des commentaires sur les problèmes liés au traitement des paquets IP",
+        "Établir des sessions fiables entre applications",
+        "Chiffrer les communications réseau"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "ICMP (Internet Control Message Protocol) fournit des commentaires sur les problèmes liés au traitement des paquets IP."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "icmp-versions",
+      "type": "QCM",
+      "question": "Quelle affirmation est correcte sur ICMPv4 et ICMPv6 ?",
+      "choix": [
+        "ICMPv4 est pour IPv6 et ICMPv6 pour IPv4",
+        "ICMPv4 est le protocole de message pour IPv4 et ICMPv6 pour IPv6, avec des fonctionnalités supplémentaires",
+        "Les deux sont identiques",
+        "ICMPv6 n'existe pas"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "ICMPv4 est le protocole de message des réseaux IPv4 ; ICMPv6 est celui d'IPv6 et inclut des fonctionnalités supplémentaires."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "icmp-communs",
+      "type": "QCR",
+      "question": "Quels messages sont communs à ICMPv4 et ICMPv6 ?",
+      "choix": [
+        "Accessibilité de l'hôte",
+        "Destination ou service inaccessible",
+        "Délai dépassé (Time exceeded)",
+        "Sollicitation de routeur uniquement en IPv4"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les messages communs incluent l'accessibilité de l'hôte, destination/service inaccessible et délai dépassé."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "icmp-securite",
+      "type": "QCM",
+      "question": "Pourquoi les messages ICMPv4 ne sont-ils pas toujours autorisés sur un réseau ?",
+      "choix": [
+        "Ils consomment trop de bande passante",
+        "Ils sont souvent bloqués pour des raisons de sécurité",
+        "Ils ne fonctionnent qu'en IPv6",
+        "Ils remplacent le routage"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les messages ICMPv4 ne sont pas obligatoires et sont souvent interdits dans un réseau pour des raisons de sécurité."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "icmp-echo",
+      "type": "QCM",
+      "question": "Quel message ICMP permet de tester l'accessibilité d'un hôte ?",
+      "choix": [
+        "ICMP Redirect",
+        "ICMP Echo (Request / Reply)",
+        "ICMP Source Quench",
+        "ICMP Router Advertisement"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le message ICMP Echo (Request/Reply) teste l'accessibilité d'un hôte : si l'hôte est disponible, il répond par une réponse d'écho."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-role",
+      "type": "QCM",
+      "question": "Sur quoi repose la commande ping ?",
+      "choix": [
+        "Les messages ICMP de requête d'écho et de réponse d'écho",
+        "Le protocole TCP three-way handshake",
+        "Le protocole DHCP",
+        "Les messages RA/RS"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Ping est un utilitaire IPv4/IPv6 qui utilise les messages de requête d'écho et de réponse d'écho ICMP pour tester la connectivité."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-resume",
+      "type": "QCR",
+      "question": "Quelles informations la commande ping fournit-elle dans son résumé ?",
+      "choix": [
+        "Le taux de réussite",
+        "Le temps moyen aller-retour vers la destination",
+        "La liste complète des routeurs traversés",
+        "L'indication d'une réponse non reçue le cas échéant"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Ping fournit le taux de réussite, le temps moyen aller-retour et signale les réponses non reçues. La liste des routeurs traversés est le rôle de traceroute."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-loopback",
+      "type": "QCM",
+      "question": "Quelle adresse de loopback utilise-t-on pour tester la pile IPv4 locale ?",
+      "choix": [
+        "192.168.0.1",
+        "127.0.0.1",
+        "10.0.0.1",
+        "::1"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "On ping 127.0.0.1 pour IPv4 (et ::1 pour IPv6) afin de tester la configuration interne du protocole IP sur l'hôte local."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-loopback-ipv6",
+      "type": "QCM",
+      "question": "Quelle est l'adresse de loopback IPv6 ?",
+      "choix": [
+        "::1",
+        "fe80::1",
+        "2000::1",
+        "127.0.0.1"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "L'adresse de loopback IPv6 est ::1 (équivalent de 127.0.0.1 en IPv4)."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-loopback-resultat",
+      "type": "QCM",
+      "question": "Qu'indique une réponse réussie au ping de l'adresse de loopback ?",
+      "choix": [
+        "Que la passerelle par défaut est joignable",
+        "Que le protocole IP est correctement installé sur l'hôte",
+        "Que le réseau distant est accessible",
+        "Que le DNS fonctionne"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une réponse de 127.0.0.1 (ou ::1) indique que IP est correctement installé sur l'hôte ; un message d'erreur signifie que TCP/IP n'est pas opérationnel."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-gateway",
+      "type": "QCM",
+      "question": "Qu'indique un ping réussi vers la passerelle par défaut ?",
+      "choix": [
+        "Que l'hôte et l'interface du routeur (passerelle) sont opérationnels sur le réseau local",
+        "Que le serveur DNS répond",
+        "Que le réseau distant est joignable",
+        "Que la pile IP locale est défaillante"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Un ping réussi vers la passerelle par défaut indique que l'hôte et l'interface du routeur servant de passerelle sont tous deux opérationnels sur le réseau local."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-distant",
+      "type": "QCM",
+      "question": "Que permet de tester un ping vers un hôte distant ?",
+      "choix": [
+        "Uniquement la pile IP locale",
+        "La capacité de l'hôte local à communiquer sur un interréseau",
+        "La table ARP du serveur DNS",
+        "La vitesse du processeur"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le ping vers un hôte distant teste la capacité de l'hôte local à communiquer sur un interréseau."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-absence-reponse",
+      "type": "QCM",
+      "question": "Pourquoi un ping peut-il rester sans réponse même si l'hôte distant fonctionne ?",
+      "choix": [
+        "Parce que le ping ne fonctionne qu'en local",
+        "Parce que des administrateurs limitent ou interdisent souvent les messages ICMP (sécurité)",
+        "Parce que le ping nécessite TCP",
+        "Parce que le DNS est désactivé"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "De nombreux administrateurs limitent ou interdisent l'entrée des messages ICMP ; l'absence de réponse peut donc être due à des restrictions de sécurité."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "ping-premier",
+      "type": "QCM",
+      "question": "Pourquoi le premier ping expire-t-il fréquemment ?",
+      "choix": [
+        "Parce que la résolution d'adresse (ARP ou ND) doit d'abord être effectuée",
+        "Parce que le routeur est toujours hors service au démarrage",
+        "Parce que ICMP est désactivé par défaut",
+        "Parce que la pile IP n'est pas encore chargée"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Il est courant que le premier ping expire si la résolution d'adresse (ARP en IPv4 ou ND en IPv6) doit être réalisée avant d'envoyer la demande d'écho."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "traceroute-role",
+      "type": "QCM",
+      "question": "À quoi sert la commande traceroute (tracert) ?",
+      "choix": [
+        "À tester uniquement la pile IP locale",
+        "À tester le chemin entre deux hôtes et lister les réseaux atteints",
+        "À attribuer les TTL aux paquets",
+        "À chiffrer le trafic"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Traceroute teste le chemin entre deux hôtes et fournit la liste des réseaux atteints avec succès le long de ce chemin."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "traceroute-asterisque",
+      "type": "QCM",
+      "question": "Que signifie un astérisque (*) dans un résultat de traceroute ?",
+      "choix": [
+        "Le saut le plus rapide",
+        "Un paquet perdu ou sans réponse",
+        "La destination atteinte",
+        "Une erreur de syntaxe"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un astérisque (*) indique un paquet perdu ou sans réponse pour ce saut."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "traceroute-champs",
+      "type": "QCM",
+      "question": "Quels champs et message traceroute utilise-t-il pour fonctionner ?",
+      "choix": [
+        "Le champ TTL (IPv4) / Hop Limit (IPv6) et le message ICMP Délai dépassé",
+        "Le numéro de séquence TCP et l'ACK",
+        "Le champ Window et la somme de contrôle",
+        "Les messages RS et RA"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Traceroute utilise le champ TTL en IPv4 (Hop Limit en IPv6) ainsi que le message ICMP « Délai dépassé »."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "traceroute-ttl1",
+      "type": "QCM",
+      "question": "Quelle valeur de TTL le premier message de traceroute possède-t-il ?",
+      "choix": [
+        "0",
+        "1",
+        "64",
+        "255"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le premier message a un TTL de 1 : il s'arrête au premier routeur, qui renvoie un message ICMP de Délai dépassé."
+    },
+    {
+      "module": "Module 13 - ICMP, ping et traceroute",
+      "id": "traceroute-incr",
+      "type": "QCM",
+      "question": "Comment traceroute découvre-t-il chaque saut successif ?",
+      "choix": [
+        "En diminuant le TTL à chaque message",
+        "En incrémentant progressivement le champ TTL (1, 2, 3, ...)",
+        "En envoyant un seul paquet avec TTL = 255",
+        "En utilisant uniquement le DNS"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Traceroute incrémente progressivement le TTL (2, 3, 4...) pour chaque séquence, ce qui révèle l'adresse de chaque saut jusqu'à atteindre la destination ou une valeur maximale."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-role-1",
+      "type": "QCM",
+      "question": "Quel est le rôle principal de la couche de transport ?",
+      "choix": [
+        "Acheminer les paquets entre réseaux distants",
+        "Assurer les communications logiques entre les applications exécutées sur différents hôtes",
+        "Convertir les données en signaux électriques sur le support",
+        "Attribuer les adresses IP aux hôtes"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La couche transport est responsable des communications logiques entre applications et fait la liaison entre la couche application et les couches inférieures."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-resp-1",
+      "type": "QCR",
+      "question": "Parmi ces tâches, lesquelles sont des responsabilités de la couche de transport ?",
+      "choix": [
+        "Suivre les conversations individuelles",
+        "Segmenter les données et reconstituer les segments",
+        "Choisir le meilleur chemin de routage",
+        "Identifier, séparer et gérer plusieurs conversations (multiplexage)"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Le choix du chemin relève de la couche réseau (Internet). La couche transport suit les conversations, segmente/reconstitue et multiplexe les conversations."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-proto-1",
+      "type": "QCR",
+      "question": "Quels sont les deux protocoles de la couche de transport ?",
+      "choix": [
+        "IP",
+        "TCP",
+        "UDP",
+        "ICMP"
+      ],
+      "reponses": [
+        1,
+        2
+      ],
+      "explication": "La couche transport comprend les protocoles TCP et UDP. IP et ICMP appartiennent à la couche Internet."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-tcp-fiable",
+      "type": "QCM",
+      "question": "Quelle propriété caractérise le protocole TCP ?",
+      "choix": [
+        "Il est sans connexion et sans accusé de réception",
+        "Il assure la fiabilité et le contrôle du flux",
+        "Il ne numérote jamais les segments",
+        "Il a une surcharge plus faible qu'UDP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TCP assure la fiabilité (accusés de réception, retransmission, remise ordonnée) et le contrôle de flux, au prix d'une surcharge plus importante qu'UDP."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-tcp-operations",
+      "type": "QCR",
+      "question": "Quelles opérations de base sont réalisées par TCP ?",
+      "choix": [
+        "Numéroter et suivre les segments de données",
+        "Accuser réception des données reçues",
+        "Retransmettre toute donnée non reconnue après un certain temps",
+        "Livrer les datagrammes sans aucun contrôle d'erreur"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "TCP numérote, accuse réception et retransmet les données perdues. La livraison sans contrôle correspond à UDP."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-tcp-carac",
+      "type": "QCR",
+      "question": "Quelles sont des caractéristiques du protocole TCP ?",
+      "choix": [
+        "Il établit une session (orienté connexion)",
+        "Il garantit une livraison fiable",
+        "Il fournit la livraison dans le même ordre",
+        "Il ne soutient pas le contrôle de flux"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "TCP est orienté connexion, garantit la livraison fiable et ordonnée, et soutient le contrôle de flux."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-tcp-etat",
+      "type": "QCM",
+      "question": "Que signifie le fait que TCP soit un protocole « avec état » (stateful) ?",
+      "choix": [
+        "Il n'enregistre aucune information sur la session",
+        "Il garde une trace de l'état de la session de communication",
+        "Il fonctionne uniquement sur les réseaux locaux",
+        "Il chiffre automatiquement les données"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TCP garde une trace de l'état de la session : il enregistre les informations envoyées et reçues."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-tcp-header-taille",
+      "type": "QCM",
+      "question": "Quelle est la taille de l'en-tête TCP (sans options) ?",
+      "choix": [
+        "8 octets",
+        "16 octets",
+        "20 octets",
+        "32 octets"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "L'en-tête TCP de base fait 20 octets."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-tcp-seq",
+      "type": "QCM",
+      "question": "À quoi sert le champ « Numéro de séquence » de l'en-tête TCP ?",
+      "choix": [
+        "À identifier l'application source",
+        "Au réassemblage des données dans le bon ordre",
+        "À indiquer la taille de la fenêtre",
+        "À vérifier les erreurs de l'en-tête"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le numéro de séquence (32 bits) est utilisé à des fins de réassemblage des données."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-tcp-ack",
+      "type": "QCM",
+      "question": "Que permet d'indiquer le champ « Numéro d'accusé de réception » de l'en-tête TCP ?",
+      "choix": [
+        "La longueur de l'en-tête",
+        "Que les données ont été reçues et quel est l'octet suivant attendu",
+        "Le numéro de port de destination",
+        "Le caractère urgent des données"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le numéro d'accusé de réception (32 bits) indique que les données ont été reçues et précise l'octet suivant attendu de la source."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-tcp-window",
+      "type": "QCM",
+      "question": "Que désigne le champ « Taille de fenêtre » (Window) de l'en-tête TCP ?",
+      "choix": [
+        "Le nombre d'octets qui peuvent être acceptés",
+        "Le nombre de segments perdus",
+        "La durée maximale d'une session",
+        "La taille maximale d'un paquet IP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le champ Window (16 bits) indique le nombre d'octets qui peuvent être acceptés."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-udp-carac",
+      "type": "QCR",
+      "question": "Quelles sont des caractéristiques du protocole UDP ?",
+      "choix": [
+        "C'est un protocole sans connexion",
+        "Les segments perdus ne sont pas renvoyés",
+        "Il établit une session avant l'envoi",
+        "C'est un protocole de livraison « au mieux » (best-effort)"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "UDP est sans connexion, ne retransmet pas les données perdues et fonctionne en best-effort. Il n'établit pas de session."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-udp-header",
+      "type": "QCM",
+      "question": "Combien d'octets compte l'en-tête UDP ?",
+      "choix": [
+        "4 octets",
+        "8 octets",
+        "16 octets",
+        "20 octets"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'en-tête UDP est simple : 4 champs pour un total de 8 octets (64 bits)."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-udp-champs",
+      "type": "QCR",
+      "question": "Quels champs composent l'en-tête UDP ?",
+      "choix": [
+        "Port source",
+        "Port de destination",
+        "Numéro de séquence",
+        "Longueur et Somme de contrôle"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "L'en-tête UDP contient : port source, port de destination, longueur et somme de contrôle. Le numéro de séquence n'existe qu'en TCP."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-choix-tcp",
+      "type": "QCM",
+      "question": "Quand utilise-t-on plutôt TCP comme protocole de transport ?",
+      "choix": [
+        "Quand la vitesse prime et qu'une perte de données est tolérable",
+        "Quand toutes les données doivent arriver et être traitées dans l'ordre",
+        "Pour les communications vidéo en direct",
+        "Quand on veut une surcharge minimale"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TCP est choisi lorsqu'il est important que toutes les données arrivent et soient traitées dans le bon ordre (ex. e-mail, web)."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-appli-udp",
+      "type": "QCR",
+      "question": "Quelles applications utilisent typiquement UDP ?",
+      "choix": [
+        "VoIP (téléphonie IP)",
+        "DNS",
+        "HTTP/HTTPS (web)",
+        "TFTP et SNMP"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "VoIP, DNS, TFTP et SNMP utilisent UDP. HTTP/HTTPS utilise TCP."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-appli-tcp",
+      "type": "QCR",
+      "question": "Quelles applications utilisent typiquement TCP ?",
+      "choix": [
+        "FTP",
+        "SMTP",
+        "DHCP",
+        "HTTP"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "FTP, SMTP et HTTP utilisent TCP. DHCP utilise UDP (ports 67/68)."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-port-role",
+      "type": "QCM",
+      "question": "À quoi servent les numéros de port en TCP et UDP ?",
+      "choix": [
+        "À identifier l'adresse physique de la carte réseau",
+        "À gérer plusieurs conversations simultanées",
+        "À chiffrer les communications",
+        "À choisir la route du paquet"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TCP et UDP utilisent les numéros de port pour gérer plusieurs conversations simultanées (multiplexage)."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-port-source",
+      "type": "QCM",
+      "question": "Le numéro de port source est associé à :",
+      "choix": [
+        "L'application de destination sur l'hôte distant",
+        "L'application d'origine sur l'hôte local",
+        "L'adresse MAC de l'expéditeur",
+        "La passerelle par défaut"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le port source identifie l'application d'origine sur l'hôte local ; le port de destination identifie l'application sur l'hôte distant."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-socket",
+      "type": "QCM",
+      "question": "Qu'appelle-t-on une « interface de connexion » (socket) ?",
+      "choix": [
+        "La combinaison d'une adresse MAC et d'un VLAN",
+        "La combinaison d'une adresse IP et d'un numéro de port",
+        "La combinaison de deux adresses IP",
+        "Le numéro de séquence et l'accusé de réception"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un socket est la combinaison d'une adresse IP et d'un numéro de port (source ou destination)."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-ports-reserves",
+      "type": "QCM",
+      "question": "Quelle est la plage des ports réservés (well-known) ?",
+      "choix": [
+        "0 à 1023",
+        "1024 à 49151",
+        "49152 à 65535",
+        "0 à 65535"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les ports réservés (bien connus) vont de 0 à 1023, attribués aux services courants."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-ports-inscrits",
+      "type": "QCM",
+      "question": "Quelle est la plage des ports inscrits (registered) ?",
+      "choix": [
+        "0 à 1023",
+        "1024 à 49151",
+        "49152 à 65535",
+        "1812 à 65535"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les ports inscrits vont de 1024 à 49151, affectés par l'IANA à des applications spécifiques (ex. 1812 pour RADIUS chez Cisco)."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-ports-dyn",
+      "type": "QCM",
+      "question": "Comment appelle-t-on aussi les ports privés/dynamiques (49152 à 65535) ?",
+      "choix": [
+        "Ports réservés",
+        "Ports éphémères",
+        "Ports racine",
+        "Ports de diffusion"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les ports dynamiques (49152 à 65535) sont aussi appelés ports éphémères ; le système d'exploitation du client les attribue lors de l'ouverture d'une connexion."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-port-http",
+      "type": "QCM",
+      "question": "Quel numéro de port et protocole sont associés à HTTP ?",
+      "choix": [
+        "443 / TCP",
+        "80 / TCP",
+        "80 / UDP",
+        "8080 / TCP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "HTTP utilise le port 80 en TCP. HTTPS utilise le port 443 en TCP."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-port-dns",
+      "type": "QCM",
+      "question": "Quel port est utilisé par le service DNS ?",
+      "choix": [
+        "25",
+        "53",
+        "67",
+        "161"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "DNS utilise le port 53 (UDP et TCP)."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-port-multi",
+      "type": "QCR",
+      "question": "Associez correctement : quels couples port/application sont exacts ?",
+      "choix": [
+        "22 = SSH",
+        "23 = Telnet",
+        "443 = HTTPS",
+        "110 = SMTP"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "22 = SSH, 23 = Telnet, 443 = HTTPS. En revanche 110 = POP3 (SMTP utilise le port 25)."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-port-dhcp",
+      "type": "QCR",
+      "question": "Quels ports sont utilisés par DHCP ?",
+      "choix": [
+        "67 (serveur)",
+        "68 (client)",
+        "69",
+        "53"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "DHCP utilise le port 67 (serveur) et 68 (client), tous deux en UDP. Le port 69 est TFTP."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-netstat",
+      "type": "QCM",
+      "question": "À quoi sert la commande netstat ?",
+      "choix": [
+        "À configurer une adresse IPv6",
+        "À vérifier les connexions réseau actives",
+        "À mesurer le débit d'un lien",
+        "À attribuer des numéros de port"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Netstat est un outil important pour vérifier les connexions actives ; des connexions TCP inexpliquées peuvent représenter un risque de sécurité."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-handshake-1",
+      "type": "QCM",
+      "question": "Combien d'étapes comporte l'établissement d'une connexion TCP ?",
+      "choix": [
+        "Deux étapes",
+        "Trois étapes",
+        "Quatre étapes",
+        "Une seule étape"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'établissement TCP se fait en trois étapes (three-way handshake) : SYN, SYN-ACK, ACK."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-handshake-2",
+      "type": "QCM",
+      "question": "Dans l'établissement d'une connexion TCP, que fait le serveur à l'étape 2 ?",
+      "choix": [
+        "Il ferme la session",
+        "Il accuse réception de la session client-serveur et demande l'établissement de la session serveur-client",
+        "Il envoie uniquement les données utiles",
+        "Il ignore la demande du client"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Étape 2 : le serveur accuse réception (ACK) de la session client-serveur et demande (SYN) l'établissement de la session serveur-client."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-handshake-role",
+      "type": "QCR",
+      "question": "Que vérifie/permet la connexion TCP en trois étapes ?",
+      "choix": [
+        "Que le périphérique de destination est présent sur le réseau",
+        "Que le périphérique de destination a un service actif sur le port demandé",
+        "Qu'il informe la destination que le client veut établir une session sur ce port",
+        "Que le chemin de routage est le plus court"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "La connexion en trois étapes vérifie la présence de la destination, l'existence d'un service actif sur le port et informe la destination de la volonté d'établir une session."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-fin-session",
+      "type": "QCM",
+      "question": "Quel indicateur (flag) le client définit-il quand il n'a plus de données à envoyer pour fermer la session ?",
+      "choix": [
+        "SYN",
+        "ACK",
+        "FIN",
+        "RST"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Pour fermer la session, le client envoie un segment dont l'indicateur FIN est défini."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-reorder",
+      "type": "QCM",
+      "question": "Comment TCP réassemble-t-il les segments arrivés dans le désordre ?",
+      "choix": [
+        "Il les ignore",
+        "Grâce aux numéros d'ordre (de séquence) affectés à chaque segment",
+        "En fonction de l'adresse MAC",
+        "Il ne peut pas les réordonner"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TCP affecte des numéros d'ordre dans l'en-tête de chaque segment, ce qui permet de les réassembler dans l'ordre d'origine."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-flow-control",
+      "type": "QCM",
+      "question": "Que fait TCP en cas d'encombrement du réseau pour éviter la perte de paquets ?",
+      "choix": [
+        "Il augmente le débit d'envoi",
+        "Il utilise des mécanismes et algorithmes de gestion de l'encombrement (contrôle de flux)",
+        "Il ferme immédiatement toutes les sessions",
+        "Il passe automatiquement en UDP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "TCP utilise divers mécanismes, minuteurs et algorithmes pour contrôler le flux et prévenir l'encombrement, par exemple en réduisant le nombre d'octets envoyés avant accusé."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-udp-reorder",
+      "type": "QCM",
+      "question": "Comment UDP traite-t-il les datagrammes reçus dans le désordre ?",
+      "choix": [
+        "Il les réordonne grâce aux numéros de séquence",
+        "Il les réassemble dans l'ordre de réception, sans réordonnancement",
+        "Il les retransmet jusqu'à recevoir le bon ordre",
+        "Il rejette tout le flux"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "UDP n'effectue pas de suivi des numéros d'ordre : il réassemble les données dans l'ordre de réception, puis les transmet à l'application."
+    },
+    {
+      "module": "Module 14 - Couche de transport (TCP/UDP)",
+      "id": "transp-udp-client",
+      "type": "QCM",
+      "question": "Comment le processus client UDP choisit-il son port source ?",
+      "choix": [
+        "Il utilise toujours le port 80",
+        "Il sélectionne dynamiquement un numéro de port dans une plage",
+        "Il copie le port de destination",
+        "Il n'utilise jamais de port source"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le client UDP sélectionne dynamiquement un numéro de port source ; le port de destination est généralement le port réservé du processus serveur."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "routeur-deux-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont les deux fonctions principales d'un routeur ?",
+      "choix": [
+        "Déterminer le meilleur chemin pour acheminer les paquets",
+        "Transférer les paquets vers leur destination",
+        "Attribuer dynamiquement des adresses IP",
+        "Chiffrer les communications"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Un routeur détermine le meilleur chemin à partir de sa table de routage, puis transfère les paquets vers leur destination."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "table-routage-carte",
+      "type": "QCM",
+      "question": "Sur quoi le routeur se base-t-il pour déterminer le meilleur chemin d'un paquet ?",
+      "choix": [
+        "Sa table ARP",
+        "Sa table de routage",
+        "Le cache DNS",
+        "L'adresse MAC source"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le routeur utilise sa table de routage comme une carte pour déterminer le meilleur chemin vers un réseau donné."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "reseau-directement-connecte",
+      "type": "QCM",
+      "question": "Quand un réseau directement connecté est-il ajouté à la table de routage ?",
+      "choix": [
+        "Lorsqu'une route statique est configurée manuellement",
+        "Lorsqu'une interface locale est configurée avec une IP et un masque, et qu'elle est active (up/up)",
+        "Lorsqu'un protocole dynamique l'apprend",
+        "Lorsque le routeur redémarre"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un réseau directement connecté est ajouté lorsqu'une interface est configurée avec une adresse IP/longueur de préfixe et qu'elle est activée (up et up)."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "reseaux-distants-apprentissage",
+      "type": "QCR",
+      "question": "De quelles manières un routeur peut-il apprendre des réseaux distants ?",
+      "choix": [
+        "Par des routes statiques configurées manuellement",
+        "Par des protocoles de routage dynamique",
+        "Par les réseaux directement connectés",
+        "Par la table ARP"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Un routeur apprend les réseaux distants soit par des routes statiques (manuelles), soit par des protocoles de routage dynamique."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "route-defaut-prefixe",
+      "type": "QCM",
+      "question": "Quelle est la longueur de préfixe d'une route par défaut ?",
+      "choix": [
+        "/32",
+        "/24",
+        "/0",
+        "/128"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Une route par défaut a une longueur de préfixe /0 : aucun bit ne doit correspondre, elle est utilisée à défaut de correspondance plus spécifique."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "route-defaut-nom",
+      "type": "QCM",
+      "question": "Comment appelle-t-on parfois la route par défaut ?",
+      "choix": [
+        "Route locale",
+        "Passerelle de dernier recours",
+        "Route enfant",
+        "Route de résumé"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La route par défaut est parfois appelée passerelle de dernier recours (gateway of last resort)."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "route-defaut-entrees",
+      "type": "QCR",
+      "question": "Quelles entrées correspondent à une route par défaut ?",
+      "choix": [
+        "0.0.0.0/0 en IPv4",
+        "::/0 en IPv6",
+        "/32 en IPv4",
+        "/128 en IPv6"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "La route par défaut s'écrit 0.0.0.0/0 en IPv4 et ::/0 en IPv6. /32 et /128 sont les routes locales."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "transmission-longest-match",
+      "type": "QCM",
+      "question": "Lorsqu'il consulte sa table de routage, quel critère le routeur applique-t-il pour choisir l'entrée ?",
+      "choix": [
+        "La première entrée trouvée",
+        "Le préfixe correspondant le plus long",
+        "L'entrée avec la métrique la plus élevée",
+        "L'entrée la plus récente"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le routeur trouve le préfixe correspondant le plus long (longest match) entre l'adresse IP de destination et les entrées de la table."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "transmission-aucune-correspondance",
+      "type": "QCM",
+      "question": "Que fait le routeur s'il n'y a aucune entrée de route correspondante et aucune route par défaut ?",
+      "choix": [
+        "Il diffuse le paquet sur toutes les interfaces",
+        "Il met le paquet en attente",
+        "Il supprime (dépose) le paquet",
+        "Il renvoie le paquet à la source"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Sans correspondance ni route par défaut, le paquet est supprimé (drop)."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "transmission-mac-arp",
+      "type": "QCM",
+      "question": "Pour transférer un paquet IPv4 vers un périphérique sur un réseau Ethernet directement connecté, comment le routeur obtient-il l'adresse MAC de destination ?",
+      "choix": [
+        "Via le DNS",
+        "Via le protocole ARP",
+        "Via DHCP",
+        "Via la route par défaut"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le routeur utilise ARP (et ICMPv6 Neighbor Discovery pour IPv6) pour associer l'adresse IP de destination à une adresse MAC sur un réseau Ethernet."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "transmission-saut-suivant",
+      "type": "QCM",
+      "question": "Quand le paquet doit-il être transféré à un routeur de saut suivant ?",
+      "choix": [
+        "Quand la destination est directement connectée",
+        "Quand l'adresse IP de destination se trouve sur un réseau distant",
+        "Quand le paquet est un broadcast",
+        "Quand la table de routage est vide"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Si l'entrée indique que la destination est sur un réseau distant, le paquet est transféré au routeur de saut suivant indiqué dans la route."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "table-codes",
+      "type": "QCM",
+      "question": "Dans la table de routage, que signifie le code d'état C ?",
+      "choix": [
+        "Une route statique",
+        "Un réseau découvert par OSPF",
+        "Un réseau directement connecté",
+        "L'adresse locale d'une interface"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le code C identifie un réseau directement connecté ; L identifie l'adresse locale d'une interface."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "table-code-O",
+      "type": "QCM",
+      "question": "Que signifie le code d'état O dans la table de routage ?",
+      "choix": [
+        "Réseau directement connecté",
+        "Route statique",
+        "Réseau découvert dynamiquement via OSPF",
+        "Route locale"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le code O indique un réseau appris dynamiquement via le protocole de routage OSPF."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "table-route-locale-prefixe",
+      "type": "QCR",
+      "question": "Quelles sont les longueurs de préfixe des routes locales (code L) ?",
+      "choix": [
+        "/32 pour IPv4",
+        "/128 pour IPv6",
+        "/24 pour IPv4",
+        "/64 pour IPv6"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Les routes locales utilisent /32 en IPv4 et /128 en IPv6 : tous les bits doivent correspondre, car la route locale identifie un paquet destiné à l'interface elle-même."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "table-entrees-elements",
+      "type": "QCR",
+      "question": "Parmi ces éléments, lesquels figurent dans une entrée de la table de routage ?",
+      "choix": [
+        "La distance administrative",
+        "La métrique",
+        "L'adresse de saut suivant",
+        "Le mot de passe enable"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Une entrée contient notamment la source, le réseau de destination, la distance administrative, la métrique, le saut suivant, l'horodatage et l'interface de sortie."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "routes-statiques-caracteristiques",
+      "type": "QCM",
+      "question": "Quelle est une caractéristique des routes statiques ?",
+      "choix": [
+        "Elles sont mises à jour automatiquement si la topologie change",
+        "Elles sont configurées manuellement et doivent être reconfigurées si la topologie change",
+        "Elles s'apprennent via OSPF",
+        "Elles ont toujours une distance administrative de 110"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les routes statiques sont configurées manuellement, ne se mettent pas à jour automatiquement et doivent être reconfigurées en cas de changement de topologie."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "routes-dynamiques-taches",
+      "type": "QCR",
+      "question": "Quelles tâches les protocoles de routage dynamique effectuent-ils ?",
+      "choix": [
+        "La détection des réseaux",
+        "La gestion des tables de routage",
+        "Le chiffrement des paquets",
+        "L'attribution des adresses IP"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Les protocoles dynamiques partagent automatiquement les informations d'accessibilité, détectent les réseaux et gèrent les tables de routage."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "principe-table-decision-seul",
+      "type": "QCM",
+      "question": "Selon les principes de la table de routage, sur quoi chaque routeur prend-il ses décisions ?",
+      "choix": [
+        "Sur les tables de routage de tous les routeurs du réseau",
+        "Uniquement sur les informations de sa propre table de routage",
+        "Sur les décisions du routeur précédent",
+        "Sur la table ARP du voisin"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Chaque routeur décide seul, en fonction des seules informations de sa propre table de routage ; il ne connaît pas les tables des autres."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "principe-table-retour",
+      "type": "QCM",
+      "question": "Que dit le principe sur les informations de routage de retour ?",
+      "choix": [
+        "Une route vers une destination garantit automatiquement la route de retour",
+        "Les informations de routage relatives à un chemin ne fournissent pas d'informations de routage de retour",
+        "Le routage de retour est toujours géré par DHCP",
+        "Le retour utilise toujours la route par défaut"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Savoir transférer un paquet dans un sens ne signifie pas que le routeur sait acheminer le trafic de retour : le chemin retour n'est pas déduit."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "structure-ipv4-enfant",
+      "type": "QCM",
+      "question": "Dans une table de routage IPv4, qu'est-ce qu'une route enfant ?",
+      "choix": [
+        "Une entrée non indentée sans code source",
+        "Une entrée indentée, sous-réseau d'une adresse par classe, avec source et informations de transfert",
+        "Une route par défaut",
+        "Une route apprise par BGP uniquement"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La route enfant est l'entrée indentée (sous-réseau d'une adresse classée) ; la route parent, moins indentée et sans code source, s'affiche au-dessus."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "structure-ipv6-simple",
+      "type": "QCM",
+      "question": "Pourquoi la structure d'une table de routage IPv6 est-elle plus simple que celle d'IPv4 ?",
+      "choix": [
+        "Parce qu'IPv6 utilise des classes",
+        "Parce que l'adressage par classe n'a jamais existé en IPv6 ; chaque entrée est formatée et alignée de la même façon",
+        "Parce qu'IPv6 n'a pas de routes locales",
+        "Parce qu'IPv6 n'utilise pas de longueur de préfixe"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le concept d'adressage par classe n'a jamais fait partie d'IPv6, donc les entrées sont toutes formatées et alignées de la même manière."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "ad-definition",
+      "type": "QCM",
+      "question": "Que représente la distance administrative (AD) ?",
+      "choix": [
+        "La distance physique entre deux routeurs",
+        "La fiabilité d'une source de route (plus faible = plus fiable)",
+        "Le nombre de sauts vers la destination",
+        "La bande passante du lien"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'AD indique la fiabilité de la source de la route ; plus la valeur est faible, plus la route est fiable."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "ad-connecte-statique",
+      "type": "QCR",
+      "question": "Quelles sont les distances administratives correctes ?",
+      "choix": [
+        "Directement connecté = 0",
+        "Route statique = 1",
+        "OSPF = 110",
+        "RIP = 90"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Connecté = 0, statique = 1, OSPF = 110. RIP a une AD de 120 (90 correspond à EIGRP interne)."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "ad-ospf-rip",
+      "type": "QCM",
+      "question": "Si OSPF (AD 110) et RIP (AD 120) apprennent tous deux le même réseau, quelle route est installée dans la table ?",
+      "choix": [
+        "La route RIP",
+        "La route OSPF",
+        "Les deux routes",
+        "Aucune des deux"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La route avec la distance administrative la plus faible est préférée : OSPF (110) est installée plutôt que RIP (120)."
+    },
+    {
+      "module": "Réseaux — Module 14 : Concepts de routage",
+      "id": "metrique-definition",
+      "type": "QCM",
+      "question": "Que signifie une métrique faible pour une route ?",
+      "choix": [
+        "Que la route est moins fiable",
+        "Que la route est préférée pour atteindre le réseau distant",
+        "Que la route est désactivée",
+        "Que la route est statique"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La métrique indique le coût pour atteindre le réseau distant ; les valeurs les plus faibles indiquent les routes préférées."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "app-osi-trois-couches",
+      "type": "QCM",
+      "question": "Quelles sont les trois couches du modèle OSI qui définissent les fonctions de la couche d'application TCP/IP ?",
+      "choix": [
+        "Application, présentation et session",
+        "Application, transport et réseau",
+        "Session, transport et liaison de données",
+        "Physique, liaison de données et réseau"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Les trois couches supérieures du modèle OSI (application, présentation, session) correspondent à la seule couche application du modèle TCP/IP."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "app-role-couche-application",
+      "type": "QCM",
+      "question": "Quel est le rôle de la couche application ?",
+      "choix": [
+        "Acheminer les paquets entre réseaux distants",
+        "Fournir l'interface entre les applications et le réseau sous-jacent",
+        "Convertir les adresses MAC en adresses IP",
+        "Détecter les collisions sur le support physique"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La couche application fournit l'interface entre les applications utilisées pour communiquer et le réseau sur lequel les messages sont transmis."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "app-protocoles-connus",
+      "type": "QCR",
+      "question": "Parmi ces protocoles, lesquels sont des protocoles de couche application ?",
+      "choix": [
+        "HTTP",
+        "TCP",
+        "DNS",
+        "FTP"
+      ],
+      "reponses": [
+        0,
+        2,
+        3
+      ],
+      "explication": "HTTP, DNS et FTP sont des protocoles de couche application. TCP est un protocole de couche transport."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "presentation-trois-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont les trois fonctions principales de la couche présentation ?",
+      "choix": [
+        "Formatage des données dans un format compatible",
+        "Compression des données",
+        "Chiffrement des données",
+        "Attribution des adresses IP"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "La couche présentation formate, compresse et chiffre les données. L'attribution d'adresses IP relève du DHCP."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "session-role",
+      "type": "QCM",
+      "question": "Quelle couche crée et gère le dialogue entre applications source et destination, et redémarre les sessions interrompues ?",
+      "choix": [
+        "La couche transport",
+        "La couche présentation",
+        "La couche session",
+        "La couche réseau"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "La couche session gère l'échange d'informations pour commencer et maintenir le dialogue et relancer les sessions interrompues ou inactives."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "tcpip-compatibilite",
+      "type": "QCM",
+      "question": "Pour que la communication aboutisse, que doivent être les protocoles de couche application des hôtes source et destination ?",
+      "choix": [
+        "Différents pour des raisons de sécurité",
+        "Compatibles entre eux",
+        "Toujours chiffrés",
+        "Configurés en adressage statique"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les protocoles de couche application implémentés sur les hôtes source et destination doivent être compatibles pour communiquer."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "client-serveur-roles",
+      "type": "QCM",
+      "question": "Dans le modèle client-serveur, comment nomme-t-on le périphérique qui envoie une requête d'informations ?",
+      "choix": [
+        "Le serveur",
+        "Le client",
+        "L'homologue",
+        "Le routeur"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le périphérique qui envoie une requête est le client ; celui qui répond est le serveur."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "p2p-double-role",
+      "type": "QCM",
+      "question": "Dans un réseau peer-to-peer, quel est le comportement de chaque périphérique terminal (« homologue ») ?",
+      "choix": [
+        "Il ne peut être que client",
+        "Il ne peut être que serveur",
+        "Il peut opérer à la fois comme client et comme serveur",
+        "Il a besoin d'un serveur dédié pour fonctionner"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Chaque homologue peut agir à la fois en tant que serveur et en tant que client, sans serveur dédié."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "p2p-roles-par-requete",
+      "type": "QCM",
+      "question": "Dans un réseau P2P, en fonction de quoi les rôles de client et de serveur sont-ils définis ?",
+      "choix": [
+        "En fonction de chaque requête",
+        "En fonction de l'adresse MAC",
+        "Une fois pour toutes au démarrage",
+        "En fonction du fournisseur d'accès"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Un ordinateur peut être serveur pour une transaction et client pour une autre : les rôles se définissent à chaque requête."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "p2p-applications-communes",
+      "type": "QCR",
+      "question": "Lesquels de ces éléments sont des réseaux/applications P2P communs ?",
+      "choix": [
+        "BitTorrent",
+        "Direct Connect",
+        "Freenet",
+        "SMTP"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "BitTorrent, Direct Connect, eDonkey et Freenet sont des réseaux P2P communs. SMTP est un protocole de messagerie."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "p2p-serveur-index",
+      "type": "QCM",
+      "question": "À quoi sert le serveur d'index dans certaines applications P2P hybrides ?",
+      "choix": [
+        "À chiffrer toutes les communications",
+        "À obtenir l'emplacement d'une ressource stockée sur un autre pair",
+        "À attribuer des adresses IP aux pairs",
+        "À héberger toutes les ressources partagées"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Dans un système hybride, chaque pair accède à un serveur d'index pour connaître l'emplacement d'une ressource stockée sur un autre pair."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "http-port",
+      "type": "QCM",
+      "question": "Quel(s) port(s) le protocole HTTP utilise-t-il ?",
+      "choix": [
+        "TCP 80, 8080",
+        "TCP 25",
+        "UDP 53",
+        "TCP 110"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "HTTP utilise les ports TCP 80 et 8080."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "http-url-trois-parties",
+      "type": "QCR",
+      "question": "Quelles sont les trois parties d'une URL comme http://www.cisco.com/index.html que le navigateur interprète ?",
+      "choix": [
+        "http (protocole ou schéma)",
+        "www.cisco.com (nom du serveur)",
+        "index.html (nom du fichier demandé)",
+        "200 OK (code de réponse)"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Le navigateur interprète le protocole (http), le nom du serveur (www.cisco.com) et le nom du fichier (index.html)."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "http-types-messages",
+      "type": "QCR",
+      "question": "Quels sont les trois types de messages HTTP courants ?",
+      "choix": [
+        "GET",
+        "POST",
+        "PUT",
+        "SEND"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les trois messages HTTP courants sont GET, POST et PUT."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "http-get",
+      "type": "QCM",
+      "question": "Quel message HTTP est utilisé par le client pour demander des données (par exemple des pages HTML) ?",
+      "choix": [
+        "POST",
+        "PUT",
+        "GET",
+        "DELETE"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "GET est une requête du client pour obtenir des données auprès du serveur web."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "http-post",
+      "type": "QCM",
+      "question": "Quel message HTTP permet de télécharger des fichiers de données vers le serveur, comme des données de formulaire ?",
+      "choix": [
+        "GET",
+        "POST",
+        "HEAD",
+        "TRACE"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "POST sert à envoyer des données vers le serveur web, par exemple des données de formulaires."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "https-securite",
+      "type": "QCM",
+      "question": "Quel protocole faut-il utiliser pour des communications web sécurisées sur Internet ?",
+      "choix": [
+        "HTTP",
+        "HTTPS",
+        "FTP",
+        "TFTP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "HTTP n'est pas sécurisé ; pour des communications sécurisées, on utilise HTTPS."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "mail-smtp-envoi",
+      "type": "QCM",
+      "question": "Quel protocole de messagerie est utilisé pour envoyer des e-mails ?",
+      "choix": [
+        "POP",
+        "IMAP",
+        "SMTP",
+        "DNS"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "SMTP (Simple Mail Transfer Protocol) sert à envoyer les e-mails."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "mail-reception",
+      "type": "QCR",
+      "question": "Quels protocoles sont utilisés par les clients pour recevoir du courrier ?",
+      "choix": [
+        "POP",
+        "IMAP",
+        "SMTP",
+        "HTTP"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "POP et IMAP servent à recevoir le courrier ; SMTP sert à l'envoyer."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "smtp-port",
+      "type": "QCM",
+      "question": "Sur quel port réservé le processus SMTP serveur écoute-t-il les connexions ?",
+      "choix": [
+        "Port 25",
+        "Port 80",
+        "Port 110",
+        "Port 53"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le processus SMTP client se connecte au processus SMTP serveur sur le port réservé 25."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "smtp-en-attente",
+      "type": "QCM",
+      "question": "Que fait SMTP si le serveur de messagerie de destination n'est pas en ligne ou est occupé ?",
+      "choix": [
+        "Il supprime le message",
+        "Il met le message en attente pour un envoi ultérieur",
+        "Il renvoie le message à l'expéditeur immédiatement",
+        "Il convertit le message en POP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "SMTP met le message en attente pour le renvoyer plus tard si le serveur de destination est indisponible."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "smtp-format-message",
+      "type": "QCR",
+      "question": "Quels éléments un format de message SMTP nécessite-t-il ?",
+      "choix": [
+        "Un en-tête (adresses e-mail du destinataire et de l'expéditeur)",
+        "Un corps de message",
+        "Une adresse MAC source",
+        "Un numéro de bail DHCP"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "Les formats SMTP exigent un en-tête (adresses du destinataire et de l'expéditeur) et un corps de message."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "pop-port",
+      "type": "QCM",
+      "question": "Sur quel port TCP le service POP écoute-t-il les requêtes de connexion client ?",
+      "choix": [
+        "110",
+        "25",
+        "20",
+        "67"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le serveur démarre le service POP en écoutant sur le port TCP 110."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "pop-suppression",
+      "type": "QCM",
+      "question": "Que deviennent les messages sur le serveur lorsqu'ils sont téléchargés via le protocole POP ?",
+      "choix": [
+        "Ils restent indéfiniment sur le serveur",
+        "Ils sont supprimés du serveur",
+        "Ils sont chiffrés",
+        "Ils sont transférés en IMAP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Avec POP, les messages sont supprimés du serveur une fois téléchargés vers le client."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "imap-vs-pop",
+      "type": "QCM",
+      "question": "En quoi IMAP diffère-t-il de POP concernant les messages ?",
+      "choix": [
+        "IMAP supprime immédiatement les messages du serveur",
+        "IMAP conserve les messages originaux sur le serveur ; seules des copies sont téléchargées",
+        "IMAP n'autorise pas l'accès depuis plusieurs appareils",
+        "IMAP n'utilise pas SMTP pour l'envoi"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Avec IMAP, des copies sont téléchargées et les messages originaux restent sur le serveur jusqu'à suppression manuelle, qui est ensuite synchronisée."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "pop-sauvegarde",
+      "type": "QCM",
+      "question": "Pourquoi POP n'est-il pas recommandé pour les petites entreprises ayant besoin d'une sauvegarde centralisée ?",
+      "choix": [
+        "Parce qu'il est trop lent",
+        "Parce qu'il ne stocke pas les messages sur le serveur",
+        "Parce qu'il utilise UDP",
+        "Parce qu'il n'est pas chiffré"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "POP ne stocke pas les messages sur le serveur, il n'est donc pas adapté à une solution de sauvegarde centralisée."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dns-role",
+      "type": "QCM",
+      "question": "Quelle est la fonction principale du DNS ?",
+      "choix": [
+        "Attribuer dynamiquement des adresses IP",
+        "Traduire les noms de domaine en adresses IP",
+        "Transférer des fichiers entre client et serveur",
+        "Chiffrer les communications web"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le DNS associe les noms de ressources (ex. cisco.com) à l'adresse réseau numérique requise."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dns-port",
+      "type": "QCM",
+      "question": "Quel(s) port(s) le DNS utilise-t-il ?",
+      "choix": [
+        "TCP 53 et UDP 53",
+        "TCP 80",
+        "UDP 67 et 68",
+        "TCP 21 et 20"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le DNS utilise les ports TCP 53 et UDP 53."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dns-hierarchie",
+      "type": "QCM",
+      "question": "Comment le DNS organise-t-il sa base de données de résolution des noms ?",
+      "choix": [
+        "De façon centralisée sur un unique serveur",
+        "Selon un système hiérarchique réparti entre serveurs",
+        "Selon l'ordre d'arrivée des requêtes",
+        "Par adresse MAC"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le DNS utilise un système hiérarchique ; chaque serveur gère seulement sa petite partie de la structure globale et transfère les requêtes hors de sa zone."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dns-tld",
+      "type": "QCR",
+      "question": "Lesquels sont des exemples de domaines de premier niveau (TLD) ?",
+      "choix": [
+        ".com",
+        ".org",
+        ".au",
+        "index.html"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": ".com (entreprise), .org (à but non lucratif) et .au (Australie) sont des TLD. index.html est un nom de fichier."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "nslookup",
+      "type": "QCM",
+      "question": "Quel utilitaire permet d'interroger manuellement les serveurs DNS pour résoudre un nom d'hôte ?",
+      "choix": [
+        "ping",
+        "ipconfig",
+        "nslookup",
+        "traceroute"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "nslookup permet d'interroger manuellement les serveurs DNS et de dépanner la résolution de noms."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dhcp-role",
+      "type": "QCM",
+      "question": "Que fait le protocole DHCP pour IPv4 ?",
+      "choix": [
+        "Il traduit les noms de domaine en adresses IP",
+        "Il automatise l'affectation des adresses IPv4, masques, passerelles et autres paramètres",
+        "Il transfère des fichiers entre client et serveur",
+        "Il envoie des e-mails"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "DHCP automatise l'affectation des adresses IPv4, masques de sous-réseau, passerelles et autres paramètres réseau."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dhcp-port",
+      "type": "QCM",
+      "question": "Quels ports le protocole DHCP utilise-t-il ?",
+      "choix": [
+        "UDP 67 et 68",
+        "TCP 53",
+        "TCP 80",
+        "TCP 110"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "DHCP utilise les ports UDP 67 et 68."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dhcp-statique-usage",
+      "type": "QCM",
+      "question": "Pour quels périphériques l'adressage statique est-il généralement utilisé plutôt que DHCP ?",
+      "choix": [
+        "Les périphériques des utilisateurs finaux",
+        "Les routeurs de passerelle, commutateurs, serveurs et imprimantes",
+        "Les téléphones mobiles",
+        "Les ordinateurs portables invités"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'adressage statique est utilisé pour les équipements réseau (routeurs, commutateurs, serveurs, imprimantes) ; DHCP sert aux hôtes d'usage général."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dhcp-premier-message",
+      "type": "QCM",
+      "question": "Quel message un client envoie-t-il en premier lorsqu'il démarre le processus DHCP ?",
+      "choix": [
+        "DHCPOFFER",
+        "DHCPREQUEST",
+        "DHCPDISCOVER",
+        "DHCPACK"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le client diffuse d'abord un DHCPDISCOVER pour identifier les serveurs DHCP disponibles."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dhcp-ordre-processus",
+      "type": "QCM",
+      "question": "Quel est l'ordre correct des messages du processus DHCP ?",
+      "choix": [
+        "DHCPOFFER → DHCPDISCOVER → DHCPACK → DHCPREQUEST",
+        "DHCPDISCOVER → DHCPOFFER → DHCPREQUEST → DHCPACK",
+        "DHCPREQUEST → DHCPDISCOVER → DHCPOFFER → DHCPACK",
+        "DHCPDISCOVER → DHCPREQUEST → DHCPOFFER → DHCPACK"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le processus est : DISCOVER (client) → OFFER (serveur) → REQUEST (client) → ACK (serveur)."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dhcp-nak",
+      "type": "QCM",
+      "question": "Que se passe-t-il si l'offre n'est plus valable lorsque le client envoie son DHCPREQUEST ?",
+      "choix": [
+        "Le serveur envoie un DHCPACK quand même",
+        "Le serveur envoie un DHCPNAK et le processus recommence par un DHCPDISCOVER",
+        "Le client garde l'adresse de force",
+        "Le serveur ignore la requête"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Si l'offre n'est plus valable, le serveur répond par un DHCPNAK et le processus reprend avec un nouveau DHCPDISCOVER."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "dhcpv6-messages",
+      "type": "QCR",
+      "question": "Lesquels font partie des messages DHCPv6 ?",
+      "choix": [
+        "SOLICIT",
+        "ADVERTISE",
+        "REPLY",
+        "DISCOVER"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les messages DHCPv6 incluent SOLICIT, ADVERTISE, INFORMATION REQUEST et REPLY. DISCOVER appartient à DHCPv4."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "ftp-deux-connexions",
+      "type": "QCR",
+      "question": "Quels ports TCP le protocole FTP utilise-t-il pour ses deux connexions ?",
+      "choix": [
+        "Port 21 (contrôle)",
+        "Port 20 (données)",
+        "Port 25",
+        "Port 80"
+      ],
+      "reponses": [
+        0,
+        1
+      ],
+      "explication": "FTP utilise le port TCP 21 pour le contrôle (commandes/réponses) et le port TCP 20 pour le transfert de données."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "ftp-port-controle",
+      "type": "QCM",
+      "question": "À quoi sert la connexion sur le port TCP 21 en FTP ?",
+      "choix": [
+        "Au transfert de données",
+        "Au contrôle du trafic (commandes client et réponses serveur)",
+        "À la résolution DNS",
+        "À l'attribution d'adresses IP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le port TCP 21 sert à la connexion de contrôle : commandes client et réponses serveur."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "ftp-sens-transfert",
+      "type": "QCM",
+      "question": "Dans quel sens le transfert de données FTP peut-il se faire ?",
+      "choix": [
+        "Uniquement du serveur vers le client",
+        "Uniquement du client vers le serveur",
+        "Dans les deux sens (extraction et stockage)",
+        "Seulement en local"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le client peut extraire (télécharger) des données depuis le serveur ou en stocker (téléverser) vers le serveur."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "smb-connexion-longue",
+      "type": "QCM",
+      "question": "Quel protocole de partage de fichiers établit une connexion à long terme aux serveurs, contrairement à FTP ?",
+      "choix": [
+        "SMB",
+        "DNS",
+        "DHCP",
+        "SMTP"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "SMB établit des connexions à long terme, permettant d'accéder aux ressources du serveur comme si elles étaient locales."
+    },
+    {
+      "module": "Réseaux — Module 15 : Couche d'application",
+      "id": "smb-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont les trois fonctions des messages SMB ?",
+      "choix": [
+        "Démarrer, authentifier ou terminer des sessions",
+        "Contrôler l'accès aux fichiers et aux imprimantes",
+        "Permettre à une application d'envoyer/recevoir des messages",
+        "Traduire les noms de domaine en adresses IP"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "SMB gère les sessions, contrôle l'accès aux fichiers/imprimantes et permet l'envoi/réception de messages. La traduction de noms relève du DNS."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "menaces-quatre-types",
+      "type": "QCR",
+      "question": "Quels sont les quatre types de menaces qui peuvent apparaître une fois qu'un acteur de menace a accédé au réseau ?",
+      "choix": [
+        "Vol d'informations",
+        "Perte et manipulation de données",
+        "Usurpation d'identité et interruption de service",
+        "Optimisation de la bande passante"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les quatre types de menaces sont : vol d'informations, perte/manipulation de données, usurpation d'identité et interruption de service."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "acteur-de-menace",
+      "type": "QCM",
+      "question": "Comment appelle-t-on les intrus qui accèdent au réseau en modifiant les logiciels ou en exploitant des vulnérabilités logicielles ?",
+      "choix": [
+        "Des administrateurs",
+        "Des acteurs de menace",
+        "Des analystes",
+        "Des utilisateurs finaux"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les intrus qui exploitent les vulnérabilités logicielles sont appelés acteurs de menace (threat actors)."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "vulnerabilites-trois-niveaux",
+      "type": "QCR",
+      "question": "À quels trois niveaux les vulnérabilités interviennent-elles principalement ?",
+      "choix": [
+        "Vulnérabilités technologiques",
+        "Vulnérabilités de configuration",
+        "Vulnérabilités de la politique de sécurité",
+        "Vulnérabilités de bande passante"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les trois niveaux sont : technologique (TCP/IP, OS, équipement), configuration (comptes/mots de passe faibles, services mal configurés) et politique de sécurité."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "vulnerabilite-configuration",
+      "type": "QCM",
+      "question": "Lequel de ces éléments est un exemple de vulnérabilité de configuration ?",
+      "choix": [
+        "Une faiblesse du protocole TCP/IP",
+        "Des comptes système avec des mots de passe faciles à deviner",
+        "L'absence de politique de sécurité écrite",
+        "Une faiblesse du système d'exploitation"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Les comptes non sécurisés et mots de passe faibles relèvent de la configuration ; les faiblesses TCP/IP et OS sont technologiques, l'absence de politique relève de la politique de sécurité."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "menaces-physiques-quatre",
+      "type": "QCR",
+      "question": "Quelles sont les catégories de menaces physiques ?",
+      "choix": [
+        "Menaces matérielles",
+        "Menaces environnementales",
+        "Menaces électriques et de maintenance",
+        "Menaces logicielles"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les quatre catégories de menaces physiques sont : matérielles, environnementales (température/humidité), électriques (tension) et de maintenance."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "malware-virus",
+      "type": "QCM",
+      "question": "Comment un virus informatique se propage-t-il ?",
+      "choix": [
+        "De façon autonome, sans programme hôte",
+        "En insérant une copie de lui-même dans un autre programme",
+        "En se faisant passer pour un logiciel légitime sans se répliquer",
+        "Uniquement via le réseau sans fichier"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un virus se propage en insérant une copie de lui-même dans un autre programme, dont il fait alors partie."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "malware-ver",
+      "type": "QCM",
+      "question": "Qu'est-ce qui distingue un ver d'un virus ?",
+      "choix": [
+        "Le ver a besoin d'un fichier hôte infecté pour se diffuser",
+        "Le ver est autonome et ne nécessite ni programme d'accueil ni intervention humaine pour se propager",
+        "Le ver ne se reproduit jamais",
+        "Le ver semble toujours légitime"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Contrairement au virus, le ver est un logiciel autonome qui se propage sans programme d'accueil ni intervention humaine."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "malware-cheval-troie",
+      "type": "QCM",
+      "question": "Quelle est une caractéristique d'un cheval de Troie ?",
+      "choix": [
+        "Il se reproduit en infectant d'autres fichiers",
+        "Il semble légitime et se propage via une interaction de l'utilisateur",
+        "Il se propage sans aucune intervention humaine",
+        "Il ne cause jamais de dommages"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le cheval de Troie semble légitime, ne se reproduit pas en infectant d'autres fichiers et nécessite une interaction (ouvrir une pièce jointe, exécuter un fichier)."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "attaques-trois-categories",
+      "type": "QCR",
+      "question": "En quelles trois grandes catégories les attaques réseau sont-elles classées ?",
+      "choix": [
+        "Attaques de reconnaissance",
+        "Attaques d'accès",
+        "Attaques par déni de service",
+        "Attaques de sauvegarde"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les trois catégories sont : reconnaissance (découverte/cartographie), accès (manipulation non autorisée) et déni de service (désactivation/corruption)."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "reconnaissance-outils",
+      "type": "QCR",
+      "question": "Quels outils peuvent être utilisés lors d'une attaque de reconnaissance ?",
+      "choix": [
+        "nslookup",
+        "whois",
+        "ping",
+        "service password-encryption"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les attaques de reconnaissance utilisent nslookup et whois pour découvrir l'espace d'adresses IP, puis ping pour identifier les hôtes actifs."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "acces-quatre-types",
+      "type": "QCR",
+      "question": "Lesquels font partie des quatre types d'attaques par accès ?",
+      "choix": [
+        "Attaques par mot de passe",
+        "Exploitation de la confiance",
+        "Homme-au-milieu",
+        "Sauvegarde hors site"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les quatre attaques par accès sont : mot de passe, exploitation de la confiance, redirection de port et homme-au-milieu."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "homme-au-milieu",
+      "type": "QCM",
+      "question": "En quoi consiste une attaque de type homme-au-milieu ?",
+      "choix": [
+        "Épuiser les ressources d'un serveur",
+        "Se positionner entre deux entités légitimes pour lire ou modifier les données échangées",
+        "Insérer un virus dans un programme",
+        "Deviner un mot de passe par force brute"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'acteur de menace se place entre deux parties légitimes afin de lire ou de modifier les données qui transitent entre elles."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "dos-principe",
+      "type": "QCM",
+      "question": "Quel est le principe d'une attaque par déni de service (DoS) ?",
+      "choix": [
+        "Voler des mots de passe",
+        "Empêcher l'utilisation d'un service par les personnes autorisées en épuisant les ressources",
+        "Cartographier le réseau",
+        "Chiffrer les fichiers contre rançon"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une attaque DoS empêche l'usage d'un service par les utilisateurs autorisés en épuisant les ressources du système."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "ddos-zombies-botnet",
+      "type": "QCM",
+      "question": "Qu'est-ce qui caractérise une attaque DDoS par rapport à une attaque DoS ?",
+      "choix": [
+        "Elle provient d'une seule source",
+        "Elle provient de sources multiples et coordonnées (botnet de zombies)",
+        "Elle ne vise que les mots de passe",
+        "Elle ne cause aucune interruption"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le DDoS provient de sources multiples coordonnées : un réseau d'hôtes infectés (zombies) formant un botnet, piloté par un programme de commande et de contrôle (CNC)."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "defense-profondeur",
+      "type": "QCM",
+      "question": "Comment est aussi appelée l'approche de défense en profondeur ?",
+      "choix": [
+        "Approche par couches",
+        "Approche par classe",
+        "Approche dynamique",
+        "Approche par défaut"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "La défense en profondeur est aussi appelée approche par couches : plusieurs dispositifs et services de sécurité fonctionnent en tandem."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "defense-dispositifs",
+      "type": "QCR",
+      "question": "Quels dispositifs/services font partie de l'approche de défense en profondeur citée ?",
+      "choix": [
+        "VPN et pare-feu ASA",
+        "IPS",
+        "ESA/WSA et serveur AAA",
+        "Serveur DNS racine"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les dispositifs cités sont : VPN, pare-feu ASA, IPS, ESA/WSA et serveur AAA."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "aaa-signification",
+      "type": "QCM",
+      "question": "Que recouvrent les trois A de l'AAA (« triple A ») ?",
+      "choix": [
+        "Adressage, Acheminement, Archivage",
+        "Authentification, Autorisation, Comptabilité",
+        "Antivirus, Antispam, Antimalware",
+        "Accès, Audit, Alerte"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "AAA = Authentification (qui accède), Autorisation (quelles actions) et Comptabilité/Accounting (enregistrement de ce qui a été fait)."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "aaa-authentification",
+      "type": "QCM",
+      "question": "Dans l'AAA, à quelle question répond l'authentification ?",
+      "choix": [
+        "Quelles actions l'utilisateur peut-il effectuer ?",
+        "Qui est autorisé à accéder au réseau ?",
+        "Qu'a fait l'utilisateur pendant sa session ?",
+        "Combien de bande passante est utilisée ?"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'authentification contrôle qui est autorisé à accéder au réseau (« Who are you? »)."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "pare-feu-role",
+      "type": "QCM",
+      "question": "Quel est le rôle d'un pare-feu ?",
+      "choix": [
+        "Attribuer des adresses IP",
+        "Se placer entre des réseaux et contrôler le trafic tout en interdisant les accès non autorisés",
+        "Résoudre les noms de domaine",
+        "Sauvegarder les données"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un pare-feu se situe entre deux réseaux ou plus et contrôle le trafic entre eux en interdisant les accès non autorisés."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "pare-feu-dmz",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une DMZ (zone démilitarisée) ?",
+      "choix": [
+        "Un réseau privé totalement isolé",
+        "Un réseau spécial où se trouvent les serveurs accessibles aux utilisateurs extérieurs",
+        "Un protocole de chiffrement",
+        "Une plage d'adresses DHCP"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La DMZ est un réseau spécial hébergeant les serveurs accessibles de l'extérieur, sur lequel l'administrateur applique des politiques spécifiques."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "pare-feu-types",
+      "type": "QCR",
+      "question": "Quels sont des types de filtrage de pare-feu cités ?",
+      "choix": [
+        "Filtrage des paquets (IP/MAC)",
+        "Filtrage des applications (numéros de port)",
+        "Filtrage des URL",
+        "Filtrage des sauvegardes"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Les pare-feu utilisent notamment le filtrage des paquets (IP/MAC), des applications (ports), des URL et l'inspection minutieuse des paquets (SPI)."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "spi-definition",
+      "type": "QCM",
+      "question": "Que vérifie l'inspection minutieuse des paquets (SPI) ?",
+      "choix": [
+        "Que les paquets entrants sont des réponses légitimes aux demandes des hôtes internes",
+        "Que les mots de passe sont assez longs",
+        "Que les sauvegardes sont chiffrées",
+        "Que le DNS résout correctement"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Le SPI exige que les paquets entrants soient des réponses légitimes aux demandes internes ; les paquets non sollicités sont bloqués sauf autorisation explicite."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "endpoint-definition",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un point d'extrémité (endpoint) ?",
+      "choix": [
+        "Un protocole de routage",
+        "Un système informatique ou périphérique qui tient lieu de client réseau (ordinateur, smartphone, serveur…)",
+        "Une zone démilitarisée",
+        "Une adresse de diffusion"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Un point d'extrémité (ou hôte) est un système/périphérique servant de client réseau : portables, ordinateurs de bureau, serveurs, smartphones, tablettes."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "vers-attenuation",
+      "type": "QCM",
+      "question": "Quelle est la meilleure façon de limiter les risques d'attaque de ver ?",
+      "choix": [
+        "Désactiver le pare-feu",
+        "Télécharger les mises à jour de sécurité de l'éditeur de l'OS et appliquer les correctifs sur les systèmes vulnérables",
+        "Utiliser un mot de passe court",
+        "Ouvrir tous les ports"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Appliquer les mises à jour de sécurité de l'éditeur du système d'exploitation et les correctifs sur tous les systèmes vulnérables limite les attaques de vers."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "autosecure",
+      "type": "QCM",
+      "question": "À quoi sert la fonction Cisco AutoSecure ?",
+      "choix": [
+        "À attribuer des adresses IP",
+        "À aider à sécuriser le système d'un routeur Cisco",
+        "À sauvegarder les configurations",
+        "À résoudre les noms DNS"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "AutoSecure aide à sécuriser le système, car les paramètres de sécurité par défaut sont souvent insuffisants après installation d'un nouvel OS."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "mot-de-passe-fort",
+      "type": "QCR",
+      "question": "Quelles recommandations s'appliquent à un mot de passe fort ?",
+      "choix": [
+        "Au moins 8 caractères, de préférence 10 ou plus",
+        "Une combinaison de majuscules, minuscules, chiffres et symboles",
+        "Le modifier régulièrement",
+        "Utiliser un mot courant du dictionnaire"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "Un mot de passe fort fait au moins 8 caractères, mélange majuscules/minuscules/chiffres/symboles et est changé régulièrement. Il faut éviter les mots courants du dictionnaire."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "phrase-secrete",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une phrase secrète (phrase de passe) sur un routeur Cisco ?",
+      "choix": [
+        "Un mot de passe à un seul caractère",
+        "Un mot de passe composé d'une expression de plusieurs mots, plus long et plus difficile à deviner",
+        "Le nom d'hôte du routeur",
+        "Un code chiffré généré automatiquement"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Comme les espaces après le premier caractère sont pris en compte, on peut créer une phrase de passe de plusieurs mots, souvent plus facile à retenir et plus difficile à deviner."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "service-password-encryption",
+      "type": "QCM",
+      "question": "Que fait la commande service password-encryption ?",
+      "choix": [
+        "Elle définit une longueur minimale de mot de passe",
+        "Elle chiffre tous les mots de passe en texte clair",
+        "Elle bloque les tentatives de connexion",
+        "Elle active SSH"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "service password-encryption chiffre les mots de passe affichés en texte clair dans la configuration."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "login-block-for",
+      "type": "QCM",
+      "question": "À quoi sert la commande login block-for # attempts # within # ?",
+      "choix": [
+        "À chiffrer les mots de passe",
+        "À dissuader les attaques par force brute en bloquant après un nombre de tentatives",
+        "À générer une clé RSA",
+        "À fixer la longueur minimale du mot de passe"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "login block-for permet de dissuader les attaques par force brute en bloquant les connexions après un certain nombre de tentatives dans un délai donné."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "exec-timeout",
+      "type": "QCM",
+      "question": "Que permet la commande exec-timeout ?",
+      "choix": [
+        "Désactiver un accès EXEC privilégié inactif après une durée spécifiée",
+        "Chiffrer le trafic SSH",
+        "Définir le nom de domaine IP",
+        "Sauvegarder la configuration"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "exec-timeout déconnecte automatiquement une session EXEC privilégié restée inactive au-delà de la durée spécifiée."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "ssh-cle-rsa",
+      "type": "QCM",
+      "question": "Lors de la configuration de SSH, quelle taille de module (modulus) est recommandée au minimum ?",
+      "choix": [
+        "360 bits",
+        "512 bits",
+        "1 024 bits",
+        "128 bits"
+      ],
+      "reponses": [
+        2
+      ],
+      "explication": "Le module peut aller de 360 à 2048 bits ; il est recommandé d'utiliser au moins 1 024 bits (plus la valeur est grande, plus la clé est sûre, mais plus le traitement est lent)."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "ssh-etapes",
+      "type": "QCR",
+      "question": "Quelles étapes font partie de la configuration de SSH sur un périphérique Cisco ?",
+      "choix": [
+        "Configurer un nom d'hôte unique et un nom de domaine IP",
+        "Générer une clé RSA pour chiffrer le trafic SSH",
+        "Activer les sessions SSH entrantes avec transport input ssh",
+        "Désactiver le pare-feu ASA"
+      ],
+      "reponses": [
+        0,
+        1,
+        2
+      ],
+      "explication": "La configuration SSH inclut : nom d'hôte unique, nom de domaine IP, génération d'une clé RSA, entrée username locale, login local et transport input ssh."
+    },
+    {
+      "module": "Réseaux — Module 16 : Fondamentaux de la sécurité des réseaux",
+      "id": "services-inutilises",
+      "type": "QCM",
+      "question": "Pourquoi désactiver les services inutilisés sur un routeur ou commutateur Cisco ?",
+      "choix": [
+        "Pour augmenter le nombre d'adresses IP",
+        "Pour préserver les ressources système et empêcher les acteurs de menace d'exploiter ces services",
+        "Pour accélérer le DNS",
+        "Pour activer la route par défaut"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Désactiver les services inutilisés préserve les ressources (CPU, RAM) et réduit la surface d'attaque exploitable par les acteurs de menace."
+    }
+  ]
+}

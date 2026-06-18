@@ -1,0 +1,491 @@
+{
+  "titre": "Télécommunications — Propagation et Bilan de Liaison",
+  "description": "Questions QCM/QCR couvrant la propagation en espace libre, l'horizon radioélectrique, l'ellipsoïde de Fresnel, les équations des télécommunications, la diffraction par obstacles, les méthodes de Bullington/Epstein-Peterson/Deygout, le bilan de liaison, la rotondité de la Terre, la réflexion sur la Terre, et la propagation atmosphérique/ionosphérique.",
+  "questions": [
+    {
+      "id": "espace-libre-001",
+      "type": "QCM",
+      "question": "Quelle est la condition principale pour une propagation **en espace libre** ?",
+      "choix": [
+        "Le Tx et le Rx doivent être en visibilité directe (LOS).",
+        "La distance doit être supérieure à l'horizon radioélectrique.",
+        "La fréquence doit être inférieure à 1 GHz.",
+        "Le premier ellipsoïde de Fresnel doit être complètement dégagé."
+      ],
+      "reponses": [3],
+      "explication": "La propagation est dite **en espace libre** si **le premier ellipsoïde de Fresnel est complètement dégagé** (pas d'obstacles). La visibilité directe (LOS) est une condition préalable, mais la condition stricte est le dégagement de l'ellipsoïde."
+    },
+    {
+      "id": "espace-libre-002",
+      "type": "QCM",
+      "question": "Quelle est la formule de l'**horizon radioélectrique** $L$ (en km) ?",
+      "choix": [
+        "$L = 4.1 \\cdot (\\sqrt{h_1} + \\sqrt{h_2})$",
+        "$L = 4.1 \\cdot \\sqrt{h_1 + h_2}$",
+        "$L = 4.1 \\cdot (h_1 + h_2)$",
+        "$L = 4.1 \\cdot \\sqrt{h_1 \\cdot h_2}$"
+      ],
+      "reponses": [0],
+      "explication": "L'horizon radioélectrique est donné par $L_{(km)} = 4.1 \\cdot (\\sqrt{h_1_{(m)}} + \\sqrt{h_2_{(m)}})$, où $h_1$ et $h_2$ sont les altitudes de l'émetteur et du récepteur."
+    },
+    {
+      "id": "espace-libre-003",
+      "type": "QCM",
+      "question": "Calculer l'horizon radioélectrique pour un émetteur à 2 m et un récepteur à 3.5 m.",
+      "choix": ["10.5 km", "12.5 km", "13.5 km", "15.2 km"],
+      "reponses": [2],
+      "explication": "$L = 4.1 \\cdot (\\sqrt{2} + \\sqrt{3.5}) \\approx 4.1 \\cdot (1.414 + 1.871) \\approx 4.1 \\cdot 3.285 \\approx 13.47 \\text{ km}$."
+    },
+    {
+      "id": "espace-libre-004",
+      "type": "QCM",
+      "question": "Quelle est la formule du **rayon de l'ellipsoïde de Fresnel** à une distance $x$ de l'émetteur ?",
+      "choix": [
+        "$r(x) = \\sqrt{\\frac{\\lambda \\cdot x \\cdot (d - x)}{d}}$",
+        "$r(x) = \\sqrt{\\frac{\\lambda \\cdot d}{x}}$",
+        "$r(x) = \\frac{\\lambda \\cdot x}{d}$",
+        "$r(x) = \\sqrt{\\lambda \\cdot x \\cdot d}$"
+      ],
+      "reponses": [0],
+      "explication": "Le rayon de l'ellipsoïde de Fresnel à une distance $x$ de l'émetteur est donné par $r(x) = \\sqrt{\\frac{\\lambda \\cdot x \\cdot (d - x)}{d}}$."
+    },
+    {
+      "id": "espace-libre-005",
+      "type": "QCM",
+      "question": "Quelle est la formule du **rayon maximal** $r_{max}$ de l'ellipsoïde de Fresnel ?",
+      "choix": [
+        "$r_{max} = \\frac{1}{2} \\sqrt{\\lambda \\cdot d}$",
+        "$r_{max} = \\sqrt{\\lambda \\cdot d}$",
+        "$r_{max} = \\frac{\\lambda \\cdot d}{2}$",
+        "$r_{max} = \\sqrt{\\frac{\\lambda}{d}}$"
+      ],
+      "reponses": [0],
+      "explication": "Le rayon maximal de l'ellipsoïde de Fresnel est donné par $r_{max} = \\frac{1}{2} \\sqrt{\\lambda \\cdot d}$."
+    },
+    {
+      "id": "espace-libre-006",
+      "type": "QCM",
+      "question": "Quelle est la longueur d'onde $\\lambda$ pour une fréquence de 6 GHz ?",
+      "choix": ["5 cm", "10 cm", "50 cm", "1 m"],
+      "reponses": [0],
+      "explication": "$\\lambda = c / f = 3 \\times 10^8 / 6 \\times 10^9 = 0.05 \\text{ m} = 5 \\text{ cm}$."
+    },
+    {
+      "id": "espace-libre-007",
+      "type": "QCM",
+      "question": "Calculer $r_{max}$ pour $d = 50 \\text{ km}$ et $\\lambda = 5 \\text{ cm}$ (6 GHz).",
+      "choix": ["25 m", "50 m", "100 m", "200 m"],
+      "reponses": [0],
+      "explication": "$r_{max} = \\frac{1}{2} \\sqrt{\\lambda \\cdot d} = \\frac{1}{2} \\sqrt{0.05 \\cdot 50000} = \\frac{1}{2} \\sqrt{2500} = \\frac{1}{2} \\cdot 50 = 25 \\text{ m}$."
+    },
+    {
+      "id": "espace-libre-008",
+      "type": "QCM",
+      "question": "Quelle est la différence entre l'horizon **radioélectrique** et l'horizon **géométrique** ?",
+      "choix": [
+        "L'horizon radioélectrique prend en compte l'indice de réfraction de l'atmosphère.",
+        "L'horizon radioélectrique est toujours plus petit.",
+        "L'horizon géométrique est utilisé pour les fréquences supérieures à 1 GHz.",
+        "Il n'y a pas de différence."
+      ],
+      "reponses": [0],
+      "explication": "L'**horizon radioélectrique** prend en compte **l'indice de réfraction de l'atmosphère**, contrairement à l'horizon géométrique."
+    },
+    {
+      "id": "espace-libre-009",
+      "type": "QCM",
+      "question": "Quelle est la condition pour que l'hypothèse de propagation en espace libre **ne soit plus valide** ?",
+      "choix": [
+        "Si le premier ellipsoïde de Fresnel intercepte la surface de la Terre.",
+        "Si la distance est supérieure à 100 km.",
+        "Si la fréquence est supérieure à 1 GHz.",
+        "Si l'antenne est omnidirectionnelle."
+      ],
+      "reponses": [0],
+      "explication": "Si le premier ellipsoïde de Fresnel **intercepte la surface de la Terre**, l'hypothèse de propagation en espace libre n'est plus valide. Il faut alors prendre en compte la **propagation dans l'espace (onde d'espace)** et la **propagation très proche du sol (onde de surface)**."
+    },
+    {
+      "id": "espace-libre-010",
+      "type": "QCM",
+      "question": "Que se passe-t-il si l'ellipsoïde de Fresnel intercepte la surface de la Terre ?",
+      "choix": [
+        "L'onde reçue = onde directe + onde réfléchie.",
+        "Le signal est complètement bloqué.",
+        "La fréquence du signal est modifiée.",
+        "La polarisation du signal change."
+      ],
+      "reponses": [0],
+      "explication": "Si l'ellipsoïde de Fresnel intercepte la surface de la Terre, **l'onde reçue = onde directe + onde réfléchie** (réflexion sur le sol)."
+    },
+    {
+      "id": "equations-001",
+      "type": "QCM",
+      "question": "Quelle est la formule de la **puissance reçue** $P_r$ en espace libre ?",
+      "choix": [
+        "$P_r = \\frac{P_e \\cdot G_e \\cdot G_r}{(4\\pi d / \\lambda)^2}$",
+        "$P_r = P_e \\cdot G_e \\cdot G_r \\cdot (4\\pi d / \\lambda)^2$",
+        "$P_r = \\frac{P_e \\cdot G_e \\cdot G_r}{4\\pi d^2}$",
+        "$P_r = P_e + G_e + G_r - 20 \\log(4\\pi d / \\lambda)$"
+      ],
+      "reponses": [0],
+      "explication": "La puissance reçue en espace libre est donnée par $P_r = \\frac{P_e \\cdot G_e \\cdot G_r}{(4\\pi d / \\lambda)^2}$."
+    },
+    {
+      "id": "equations-002",
+      "type": "QCM",
+      "question": "Quelle est la formule de la **puissance reçue en dBW** ?",
+      "choix": [
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - 20 \\log(4\\pi d / \\lambda)$",
+        "$P_r(dBW) = P_e(dBW) \\cdot G_e(dBi) \\cdot G_r(dBi) - 20 \\log(4\\pi d / \\lambda)$",
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) + 20 \\log(4\\pi d / \\lambda)$",
+        "$P_r(dBW) = P_e(dBW) - G_e(dBi) - G_r(dBi) - 20 \\log(4\\pi d / \\lambda)$"
+      ],
+      "reponses": [0],
+      "explication": "La formule en dBW est $P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - 20 \\log(4\\pi d / \\lambda)$."
+    },
+    {
+      "id": "equations-003",
+      "type": "QCM",
+      "question": "Quelle est la formule de l'**atténuation en espace libre** $A_0$ (en dB) ?",
+      "choix": [
+        "$A_0 = 20 \\log(4\\pi d / \\lambda)$",
+        "$A_0 = 10 \\log(4\\pi d / \\lambda)$",
+        "$A_0 = 20 \\log(\\lambda / 4\\pi d)$",
+        "$A_0 = 10 \\log(P_e / P_r)$"
+      ],
+      "reponses": [0],
+      "explication": "L'atténuation en espace libre est donnée par $A_0 = 20 \\log(4\\pi d / \\lambda)$ (en dB)."
+    },
+    {
+      "id": "equations-004",
+      "type": "QCM",
+      "question": "Quelle est la définition de la **PIRE** ?",
+      "choix": [
+        "Puissance Isotrope Rayonnée Équivalente = $P_e \\cdot G_e$.",
+        "Puissance Isotrope Reçue Équivalente = $P_r \\cdot G_r$.",
+        "Puissance Isotrope Rayonnée Effective = $P_e / G_e$.",
+        "Puissance Isotrope Réfléchie Équivalente = $P_e \\cdot G_r$."
+      ],
+      "reponses": [0],
+      "explication": "La **PIRE** (Puissance Isotrope Rayonnée Équivalente) est définie par $PIRE = P_e \\cdot G_e$."
+    },
+    {
+      "id": "equations-005",
+      "type": "QCM",
+      "question": "Comment s'exprime la PIRE en dBW ?",
+      "choix": [
+        "$PIRE_{dBW} = P_e_{dBW} + G_e_{dB}$",
+        "$PIRE_{dBW} = P_e_{dBW} \\cdot G_e_{dB}$",
+        "$PIRE_{dBW} = P_e_{dBW} - G_e_{dB}$",
+        "$PIRE_{dBW} = G_e_{dB} / P_e_{dBW}$"
+      ],
+      "reponses": [0],
+      "explication": "En dBW, la PIRE s'exprime par $PIRE_{dBW} = P_e_{dBW} + G_e_{dB}$. En dBm, on ajoute 30 : $PIRE_{dBm} = P_e_{dBm} + G_e_{dB}$."
+    },
+    {
+      "id": "equations-006",
+      "type": "QCM",
+      "question": "Quelle est l'atténuation en espace libre pour une liaison TV hertzienne : $d = 10 \\text{ km}$, $\\lambda = 60 \\text{ cm}$ (500 MHz) ?",
+      "choix": ["96 dB", "106 dB", "116 dB", "126 dB"],
+      "reponses": [1],
+      "explication": "$A_0 = 20 \\log(4\\pi \\cdot 10^4 / 0.6) \\approx 20 \\log(209440) \\approx 20 \\cdot 5.32 \\approx 106.4 \\text{ dB}$."
+    },
+    {
+      "id": "equations-007",
+      "type": "QCM",
+      "question": "Quelle est l'atténuation en espace libre pour une liaison TV satellite : $d = 38500 \\text{ km}$, $\\lambda = 2.6 \\text{ cm}$ (11 GHz) ?",
+      "choix": ["195 dB", "205 dB", "215 dB", "225 dB"],
+      "reponses": [1],
+      "explication": "$A_0 = 20 \\log(4\\pi \\cdot 38500 \\times 10^3 / 0.026) \\approx 20 \\log(1.74 \\times 10^{10}) \\approx 20 \\cdot 10.24 \\approx 204.8 \\text{ dB} \\approx 205 \\text{ dB}$."
+    },
+    {
+      "id": "equations-008",
+      "type": "QCM",
+      "question": "Quelle est l'atténuation en espace libre pour Voyager 1 : $d = 10 \\text{ milliards de km}$, $\\lambda = 3.6 \\text{ cm}$ (8.5 GHz) ?",
+      "choix": ["300 dB", "311 dB", "320 dB", "330 dB"],
+      "reponses": [1],
+      "explication": "$A_0 = 20 \\log(4\\pi \\cdot 10^{13} / 0.036) \\approx 20 \\log(3.49 \\times 10^{15}) \\approx 20 \\cdot 15.54 \\approx 310.8 \\text{ dB} \\approx 311 \\text{ dB}$."
+    },
+    {
+      "id": "equations-009",
+      "type": "QCM",
+      "question": "Calculer la puissance reçue $P_r$ (en dBm) pour : $f = 4.5 \\text{ GHz}$, $d = 50 \\text{ km}$, $P_e = 100 \\text{ W}$, $G_e = G_r = 15 \\text{ dB}$.",
+      "choix": ["-50 dBm", "-59.6 dBm", "-65 dBm", "-70 dBm"],
+      "reponses": [1],
+      "explication": "$\\lambda = c/f \\approx 0.0667 \\text{ m}$. $A_0 \\approx 139.6 \\text{ dB}$. $P_r = 50 \\text{ dBm} + 15 + 15 - 139.6 = -59.6 \\text{ dBm}$."
+    },
+    {
+      "id": "equations-010",
+      "type": "QCM",
+      "question": "Quelle est la relation entre la puissance surfacique rayonnée et $P_e$, $G_e$ ?",
+      "choix": [
+        "$\\frac{dP}{dS} = \\frac{P_e G_e}{4\\pi d^2}$",
+        "$\\frac{dP}{dS} = \\frac{P_e}{4\\pi d^2 G_e}$",
+        "$\\frac{dP}{dS} = P_e G_e 4\\pi d^2$",
+        "$\\frac{dP}{dS} = \\frac{4\\pi d^2}{P_e G_e}$"
+      ],
+      "reponses": [0],
+      "explication": "La puissance surfacique rayonnée à la distance $d$ est donnée par $\\frac{dP}{dS} = \\frac{P_e G_e}{4\\pi d^2}$."
+    },
+    {
+      "id": "diffraction-001",
+      "type": "QCM",
+      "question": "Que se passe-t-il si un obstacle se trouve dans le premier ellipsoïde de Fresnel ?",
+      "choix": [
+        "Un affaiblissement supplémentaire $A_s$ vient s'ajouter à l'atténuation en espace libre.",
+        "Le signal est complètement bloqué.",
+        "La fréquence du signal est modifiée.",
+        "La polarisation du signal change."
+      ],
+      "reponses": [0],
+      "explication": "Si un obstacle est présent dans le premier ellipsoïde de Fresnel, un **affaiblissement supplémentaire $A_s$** (en dB) vient s'ajouter à l'atténuation en espace libre $A_0$."
+    },
+    {
+      "id": "diffraction-002",
+      "type": "QCM",
+      "question": "Quelle est la formule de $A_s$ pour $h/r < -0.5$ ?",
+      "choix": [
+        "$A_s = 0 \\text{ dB}$",
+        "$A_s = 6 + 12 \\cdot (h/r)$",
+        "$A_s = 8 + 8 \\cdot (h/r)$",
+        "$A_s = 16 + 20 \\log(h/r)$"
+      ],
+      "reponses": [0],
+      "explication": "Pour $h/r < -0.5$, l'affaiblissement supplémentaire est **$A_s = 0 \\text{ dB}$** (pas d'affaiblissement)."
+    },
+    {
+      "id": "diffraction-003",
+      "type": "QCM",
+      "question": "Quelle est la formule de $A_s$ pour $-0.5 < h/r < 0.5$ ?",
+      "choix": [
+        "$A_s = 0 \\text{ dB}$",
+        "$A_s = 6 + 12 \\cdot (h/r)$",
+        "$A_s = 8 + 8 \\cdot (h/r)$",
+        "$A_s = 16 + 20 \\log(h/r)$"
+      ],
+      "reponses": [1],
+      "explication": "Pour $-0.5 < h/r < 0.5$, l'affaiblissement supplémentaire est **$A_s = 6 + 12 \\cdot (h/r) \\text{ dB}$**."
+    },
+    {
+      "id": "diffraction-004",
+      "type": "QCM",
+      "question": "Quelle est la formule de $A_s$ pour $0.5 < h/r < 1$ ?",
+      "choix": [
+        "$A_s = 6 + 12 \\cdot (h/r)$",
+        "$A_s = 8 + 8 \\cdot (h/r)$",
+        "$A_s = 16 + 20 \\log(h/r)$",
+        "$A_s = 20 + 10 \\cdot (h/r)$"
+      ],
+      "reponses": [1],
+      "explication": "Pour $0.5 < h/r < 1$, l'affaiblissement supplémentaire est **$A_s = 8 + 8 \\cdot (h/r) \\text{ dB}$**."
+    },
+    {
+      "id": "diffraction-005",
+      "type": "QCM",
+      "question": "Quelle est la formule de $A_s$ pour $h/r > 1$ ?",
+      "choix": [
+        "$A_s = 8 + 8 \\cdot (h/r)$",
+        "$A_s = 16 + 20 \\log(h/r)$",
+        "$A_s = 20 + 10 \\cdot (h/r)$",
+        "$A_s = 6 + 12 \\cdot (h/r)$"
+      ],
+      "reponses": [1],
+      "explication": "Pour $h/r > 1$, l'affaiblissement supplémentaire est **$A_s = 16 + 20 \\log(h/r) \\text{ dB}$**."
+    },
+    {
+      "id": "diffraction-006",
+      "type": "QCM",
+      "question": "Calculer $A_s$ pour un obstacle avec $h = 228 \\text{ m}$ et $r = 58.4 \\text{ m}$.",
+      "choix": ["20 dB", "25 dB", "27.8 dB", "30 dB"],
+      "reponses": [2],
+      "explication": "$h/r = 228 / 58.4 \\approx 3.9$. Comme $h/r > 1$, on utilise $A_s = 16 + 20 \\log(3.9) \\approx 16 + 11.82 \\approx 27.82 \\text{ dB}$."
+    },
+    {
+      "id": "diffraction-007",
+      "type": "QCM",
+      "question": "Quelle méthode utilise un obstacle équivalent pour calculer l'affaiblissement dû à plusieurs obstacles ?",
+      "choix": ["Méthode de Kenneth Bullington", "Méthode d'Epstein-Peterson", "Méthode de Deygout", "Méthode de Friis"],
+      "reponses": [0],
+      "explication": "La **méthode de Kenneth Bullington** (1947) remplace les 2 obstacles par un **obstacle équivalent** pour calculer l'affaiblissement."
+    },
+    {
+      "id": "diffraction-008",
+      "type": "QCM",
+      "question": "Quelle méthode calcule les atténuations partielles dues à chaque obstacle sur les trajets partiels ?",
+      "choix": ["Méthode de Kenneth Bullington", "Méthode d'Epstein-Peterson", "Méthode de Deygout", "Méthode de Friis"],
+      "reponses": [1],
+      "explication": "La **méthode d'Epstein-Peterson** (1953) calcule les **atténuations partielles** dues à chaque obstacle sur les trajets partiels, puis les additionne."
+    },
+    {
+      "id": "diffraction-009",
+      "type": "QCM",
+      "question": "Quelle méthode donne la meilleure approximation pour le calcul de l'affaiblissement dû à plusieurs obstacles ?",
+      "choix": ["Méthode de Kenneth Bullington", "Méthode d'Epstein-Peterson", "Méthode de Deygout", "Méthode de Friis"],
+      "reponses": [2],
+      "explication": "La **méthode de Deygout** (1959) donne la **meilleure approximation** pour le calcul de l'affaiblissement dû à plusieurs obstacles."
+    },
+    {
+      "id": "diffraction-010",
+      "type": "QCM",
+      "question": "Dans la méthode de Deygout, que fait-on après avoir calculé $A_{s1}$ et $A_{s2}$ ?",
+      "choix": [
+        "On garde l'affaiblissement le plus fort et on recalcule l'affaiblissement de l'autre obstacle sur un trajet partiel.",
+        "On fait la moyenne des deux affaiblissements.",
+        "On additionne directement $A_{s1}$ et $A_{s2}$.",
+        "On multiplie $A_{s1}$ et $A_{s2}$."
+      ],
+      "reponses": [0],
+      "explication": "Dans la méthode de Deygout, on **garde l'affaiblissement le plus fort** (ex: $A_{s1}$) et on **recalcule l'affaiblissement de l'autre obstacle sur un trajet partiel** (ex: $A'_{s2}$), puis $A_{s\\text{ eq}} = A_{s1} + A'_{s2}$."
+    },
+    {
+      "id": "diffraction-011",
+      "type": "QCM",
+      "question": "Calculer l'affaiblissement total pour une liaison de 100 km à 450 MHz avec 2 obstacles (méthode de Deygout) : $A_0 = 125.5 \\text{ dB}$, $A_{s1} = 27.8 \\text{ dB}$, $A'_{s2} = 9.9 \\text{ dB}$.",
+      "choix": ["153.2 dB", "163.2 dB", "173.2 dB", "183.2 dB"],
+      "reponses": [1],
+      "explication": "$A_{s\\text{ eq}} = A_{s1} + A'_{s2} = 27.8 + 9.9 = 37.7 \\text{ dB}$. $A_{total} = A_0 + A_{s\\text{ eq}} = 125.5 + 37.7 = 163.2 \\text{ dB}$."
+    },
+    {
+      "id": "bilan-001",
+      "type": "QCM",
+      "question": "Quelle est la formule du bilan de liaison **avec obstacles** ?",
+      "choix": [
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - A_0 - A_{s\\text{ eq}}$",
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - A_0$",
+        "$P_r(dBW) = P_e(dBW) \\cdot G_e(dBi) \\cdot G_r(dBi) - A_0 - A_{s\\text{ eq}}$",
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) + A_0 + A_{s\\text{ eq}}$"
+      ],
+      "reponses": [0],
+      "explication": "Le bilan de liaison avec obstacles est donné par $P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - A_0 - A_{s\\text{ eq}}$."
+    },
+    {
+      "id": "bilan-002",
+      "type": "QCM",
+      "question": "Quelle est la formule du bilan de liaison **avec pertes dans les lignes** ?",
+      "choix": [
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - A_{total} - L_r$",
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - A_0 - L_r$",
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - A_0 - A_s - L_r$",
+        "$P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) + A_{total} + L_r$"
+      ],
+      "reponses": [0],
+      "explication": "Le bilan de liaison avec pertes dans les lignes est donné par $P_r(dBW) = P_e(dBW) + G_e(dBi) + G_r(dBi) - A_{total} - L_r$, où $A_{total} = A_0 + A_{s\\text{ eq}}$ et $L_r$ représente les pertes dans les lignes de réception."
+    },
+    {
+      "id": "bilan-003",
+      "type": "QCM",
+      "question": "Quelle est la formule de l'**atténuation totale** $A_{total}$ ?",
+      "choix": [
+        "$A_{total} = A_0 + A_{s\\text{ eq}}$",
+        "$A_{total} = A_0 - A_{s\\text{ eq}}$",
+        "$A_{total} = A_0 \\cdot A_{s\\text{ eq}}$",
+        "$A_{total} = A_0 / A_{s\\text{ eq}}$"
+      ],
+      "reponses": [0],
+      "explication": "L'**atténuation totale** est la somme de l'**atténuation en espace libre** $A_0$ et de l'**affaiblissement supplémentaire dû aux obstacles** $A_{s\\text{ eq}}$ : $A_{total} = A_0 + A_{s\\text{ eq}}$."
+    },
+    {
+      "id": "bilan-004",
+      "type": "QCM",
+      "question": "Quelle est la formule de la **correction de hauteur** $c_r$ pour la rotondité de la Terre ?",
+      "choix": [
+        "$c_r = \\frac{x \\cdot (d - x)}{2a}$",
+        "$c_r = \\frac{x + d}{2a}$",
+        "$c_r = \\frac{x \\cdot d}{2a}$",
+        "$c_r = \\frac{a}{2x \\cdot d}$"
+      ],
+      "reponses": [0],
+      "explication": "La correction de hauteur pour la rotondité de la Terre est donnée par $c_r = \\frac{x \\cdot (d - x)}{2a}$, où $a$ est le rayon terrestre (~6370 km)."
+    },
+    {
+      "id": "atmosphere-001",
+      "type": "QCM",
+      "question": "Quel phénomène atmosphérique est responsable de la **courbure de la propagation des ondes** ?",
+      "choix": ["Réfraction", "Diffusion", "Absorption", "Réflexion"],
+      "reponses": [0],
+      "explication": "La **réfraction** est responsable de la **courbure de la propagation des ondes** dans l'atmosphère."
+    },
+    {
+      "id": "atmosphere-002",
+      "type": "QCM",
+      "question": "Quel phénomène est responsable de la **diffusion d'une partie des ondes** dans l'atmosphère ?",
+      "choix": ["Réfraction", "Diffusion", "Absorption", "Réflexion"],
+      "reponses": [1],
+      "explication": "La **diffusion** est responsable de la dispersion d'une partie des ondes dans l'atmosphère (diffusion de Mie ou de Rayleigh selon la taille des particules)."
+    },
+    {
+      "id": "atmosphere-003",
+      "type": "QCM",
+      "question": "Quel phénomène est responsable de l'**absorption d'une partie de l'énergie** des ondes dans l'atmosphère ?",
+      "choix": ["Réfraction", "Diffusion", "Absorption", "Réflexion"],
+      "reponses": [2],
+      "explication": "L'**absorption** est responsable de la perte d'une partie de l'énergie des ondes dans l'atmosphère."
+    },
+    {
+      "id": "atmosphere-004",
+      "type": "QCM",
+      "question": "Quelle couche de l'atmosphère permet la **réflexion ionosphérique** ?",
+      "choix": ["Troposphère", "Stratosphère", "Ionosphère", "Exosphère"],
+      "reponses": [2],
+      "explication": "L'**ionosphère** (entre ~60 km et 1000 km) permet la **réflexion ionosphérique** des ondes électromagnétiques."
+    },
+    {
+      "id": "atmosphere-005",
+      "type": "QCM",
+      "question": "Quelle gamme de fréquences utilise principalement la réflexion ionosphérique ?",
+      "choix": ["VLF (3-30 kHz)", "HF (3-30 MHz)", "VHF (30-300 MHz)", "UHF (300-3000 MHz)"],
+      "reponses": [1],
+      "explication": "La réflexion ionosphérique est principalement utilisée pour les **ondes décamétriques (HF, 3-30 MHz)**."
+    },
+    {
+      "id": "atmosphere-006",
+      "type": "QCM",
+      "question": "Quelle est la relation entre les coefficients d'**absorption** $\\alpha_{\\lambda}$, de **réflexion** $\\rho_{\\lambda}$ et de **transmission** $\\tau_{\\lambda}$ pour une cible ?",
+      "choix": [
+        "$\\alpha_{\\lambda} + \\rho_{\\lambda} + \\tau_{\\lambda} = 1$",
+        "$\\alpha_{\\lambda} \\cdot \\rho_{\\lambda} \\cdot \\tau_{\\lambda} = 1$",
+        "$\\alpha_{\\lambda} = \\rho_{\\lambda} = \\tau_{\\lambda}$",
+        "$\\alpha_{\\lambda} - \\rho_{\\lambda} - \\tau_{\\lambda} = 1$"
+      ],
+      "reponses": [0],
+      "explication": "Le **principe de conservation de l'énergie** impose que $\\alpha_{\\lambda} + \\rho_{\\lambda} + \\tau_{\\lambda} = 1$."
+    },
+    {
+      "id": "atmosphere-007",
+      "type": "QCM",
+      "question": "Quel type de cible a un coefficient d'absorption $\\alpha_{\\lambda} = 1$ ?",
+      "choix": ["Corps noir", "Miroir parfait", "Cible transparente", "Surface métallique"],
+      "reponses": [0],
+      "explication": "Un **corps noir** a un coefficient d'absorption $\\alpha_{\\lambda} = 1$ (il absorbe toute l'énergie incidente)."
+    },
+    {
+      "id": "atmosphere-008",
+      "type": "QCM",
+      "question": "Quel type de cible a un coefficient de réflexion $\\rho_{\\lambda} = 1$ ?",
+      "choix": ["Corps noir", "Miroir parfait", "Cible transparente", "Surface rugueuse"],
+      "reponses": [1],
+      "explication": "Un **miroir parfait** a un coefficient de réflexion $\\rho_{\\lambda} = 1$ (il réfléchit toute l'énergie incidente)."
+    },
+    {
+      "id": "atmosphere-009",
+      "type": "QCM",
+      "question": "Quel type de cible a un coefficient de transmission $\\tau_{\\lambda} = 1$ ?",
+      "choix": ["Corps noir", "Miroir parfait", "Cible transparente", "Surface métallique"],
+      "reponses": [2],
+      "explication": "Une **cible transparente** a un coefficient de transmission $\\tau_{\\lambda} = 1$ (elle transmet toute l'énergie incidente)."
+    },
+    {
+      "id": "atmosphere-010",
+      "type": "QCM",
+      "question": "Quel phénomène est responsable des **mirages chauds** ?",
+      "choix": [
+        "Variation de l'indice de réfraction.",
+        "Absorption atmosphérique.",
+        "Diffusion de Rayleigh.",
+        "Réflexion ionosphérique."
+      ],
+      "reponses": [0],
+      "explication": "Les **mirages chauds** (et froids) sont dus aux **variations de l'indice de réfraction** de l'air, causées par des différences de température."
+    }
+  ]
+}

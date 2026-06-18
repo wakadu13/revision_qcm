@@ -1,0 +1,465 @@
+{
+  "titre": "Réseaux — Module 15 : Couche d'application",
+  "description": "Révision ITN v7.0 : couches application/présentation/session, client-serveur, P2P, HTTP/HTTPS, messagerie, DNS, DHCP, FTP et SMB.",
+  "questions": [
+    {
+      "id": "app-osi-trois-couches",
+      "type": "QCM",
+      "question": "Quelles sont les trois couches du modèle OSI qui définissent les fonctions de la couche d'application TCP/IP ?",
+      "choix": [
+        "Application, présentation et session",
+        "Application, transport et réseau",
+        "Session, transport et liaison de données",
+        "Physique, liaison de données et réseau"
+      ],
+      "reponses": [0],
+      "explication": "Les trois couches supérieures du modèle OSI (application, présentation, session) correspondent à la seule couche application du modèle TCP/IP."
+    },
+    {
+      "id": "app-role-couche-application",
+      "type": "QCM",
+      "question": "Quel est le rôle de la couche application ?",
+      "choix": [
+        "Acheminer les paquets entre réseaux distants",
+        "Fournir l'interface entre les applications et le réseau sous-jacent",
+        "Convertir les adresses MAC en adresses IP",
+        "Détecter les collisions sur le support physique"
+      ],
+      "reponses": [1],
+      "explication": "La couche application fournit l'interface entre les applications utilisées pour communiquer et le réseau sur lequel les messages sont transmis."
+    },
+    {
+      "id": "app-protocoles-connus",
+      "type": "QCR",
+      "question": "Parmi ces protocoles, lesquels sont des protocoles de couche application ?",
+      "choix": ["HTTP", "TCP", "DNS", "FTP"],
+      "reponses": [0, 2, 3],
+      "explication": "HTTP, DNS et FTP sont des protocoles de couche application. TCP est un protocole de couche transport."
+    },
+    {
+      "id": "presentation-trois-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont les trois fonctions principales de la couche présentation ?",
+      "choix": [
+        "Formatage des données dans un format compatible",
+        "Compression des données",
+        "Chiffrement des données",
+        "Attribution des adresses IP"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "La couche présentation formate, compresse et chiffre les données. L'attribution d'adresses IP relève du DHCP."
+    },
+    {
+      "id": "session-role",
+      "type": "QCM",
+      "question": "Quelle couche crée et gère le dialogue entre applications source et destination, et redémarre les sessions interrompues ?",
+      "choix": [
+        "La couche transport",
+        "La couche présentation",
+        "La couche session",
+        "La couche réseau"
+      ],
+      "reponses": [2],
+      "explication": "La couche session gère l'échange d'informations pour commencer et maintenir le dialogue et relancer les sessions interrompues ou inactives."
+    },
+    {
+      "id": "tcpip-compatibilite",
+      "type": "QCM",
+      "question": "Pour que la communication aboutisse, que doivent être les protocoles de couche application des hôtes source et destination ?",
+      "choix": [
+        "Différents pour des raisons de sécurité",
+        "Compatibles entre eux",
+        "Toujours chiffrés",
+        "Configurés en adressage statique"
+      ],
+      "reponses": [1],
+      "explication": "Les protocoles de couche application implémentés sur les hôtes source et destination doivent être compatibles pour communiquer."
+    },
+    {
+      "id": "client-serveur-roles",
+      "type": "QCM",
+      "question": "Dans le modèle client-serveur, comment nomme-t-on le périphérique qui envoie une requête d'informations ?",
+      "choix": ["Le serveur", "Le client", "L'homologue", "Le routeur"],
+      "reponses": [1],
+      "explication": "Le périphérique qui envoie une requête est le client ; celui qui répond est le serveur."
+    },
+    {
+      "id": "p2p-double-role",
+      "type": "QCM",
+      "question": "Dans un réseau peer-to-peer, quel est le comportement de chaque périphérique terminal (« homologue ») ?",
+      "choix": [
+        "Il ne peut être que client",
+        "Il ne peut être que serveur",
+        "Il peut opérer à la fois comme client et comme serveur",
+        "Il a besoin d'un serveur dédié pour fonctionner"
+      ],
+      "reponses": [2],
+      "explication": "Chaque homologue peut agir à la fois en tant que serveur et en tant que client, sans serveur dédié."
+    },
+    {
+      "id": "p2p-roles-par-requete",
+      "type": "QCM",
+      "question": "Dans un réseau P2P, en fonction de quoi les rôles de client et de serveur sont-ils définis ?",
+      "choix": [
+        "En fonction de chaque requête",
+        "En fonction de l'adresse MAC",
+        "Une fois pour toutes au démarrage",
+        "En fonction du fournisseur d'accès"
+      ],
+      "reponses": [0],
+      "explication": "Un ordinateur peut être serveur pour une transaction et client pour une autre : les rôles se définissent à chaque requête."
+    },
+    {
+      "id": "p2p-applications-communes",
+      "type": "QCR",
+      "question": "Lesquels de ces éléments sont des réseaux/applications P2P communs ?",
+      "choix": ["BitTorrent", "Direct Connect", "Freenet", "SMTP"],
+      "reponses": [0, 1, 2],
+      "explication": "BitTorrent, Direct Connect, eDonkey et Freenet sont des réseaux P2P communs. SMTP est un protocole de messagerie."
+    },
+    {
+      "id": "p2p-serveur-index",
+      "type": "QCM",
+      "question": "À quoi sert le serveur d'index dans certaines applications P2P hybrides ?",
+      "choix": [
+        "À chiffrer toutes les communications",
+        "À obtenir l'emplacement d'une ressource stockée sur un autre pair",
+        "À attribuer des adresses IP aux pairs",
+        "À héberger toutes les ressources partagées"
+      ],
+      "reponses": [1],
+      "explication": "Dans un système hybride, chaque pair accède à un serveur d'index pour connaître l'emplacement d'une ressource stockée sur un autre pair."
+    },
+    {
+      "id": "http-port",
+      "type": "QCM",
+      "question": "Quel(s) port(s) le protocole HTTP utilise-t-il ?",
+      "choix": ["TCP 80, 8080", "TCP 25", "UDP 53", "TCP 110"],
+      "reponses": [0],
+      "explication": "HTTP utilise les ports TCP 80 et 8080."
+    },
+    {
+      "id": "http-url-trois-parties",
+      "type": "QCR",
+      "question": "Quelles sont les trois parties d'une URL comme http://www.cisco.com/index.html que le navigateur interprète ?",
+      "choix": [
+        "http (protocole ou schéma)",
+        "www.cisco.com (nom du serveur)",
+        "index.html (nom du fichier demandé)",
+        "200 OK (code de réponse)"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Le navigateur interprète le protocole (http), le nom du serveur (www.cisco.com) et le nom du fichier (index.html)."
+    },
+    {
+      "id": "http-types-messages",
+      "type": "QCR",
+      "question": "Quels sont les trois types de messages HTTP courants ?",
+      "choix": ["GET", "POST", "PUT", "SEND"],
+      "reponses": [0, 1, 2],
+      "explication": "Les trois messages HTTP courants sont GET, POST et PUT."
+    },
+    {
+      "id": "http-get",
+      "type": "QCM",
+      "question": "Quel message HTTP est utilisé par le client pour demander des données (par exemple des pages HTML) ?",
+      "choix": ["POST", "PUT", "GET", "DELETE"],
+      "reponses": [2],
+      "explication": "GET est une requête du client pour obtenir des données auprès du serveur web."
+    },
+    {
+      "id": "http-post",
+      "type": "QCM",
+      "question": "Quel message HTTP permet de télécharger des fichiers de données vers le serveur, comme des données de formulaire ?",
+      "choix": ["GET", "POST", "HEAD", "TRACE"],
+      "reponses": [1],
+      "explication": "POST sert à envoyer des données vers le serveur web, par exemple des données de formulaires."
+    },
+    {
+      "id": "https-securite",
+      "type": "QCM",
+      "question": "Quel protocole faut-il utiliser pour des communications web sécurisées sur Internet ?",
+      "choix": ["HTTP", "HTTPS", "FTP", "TFTP"],
+      "reponses": [1],
+      "explication": "HTTP n'est pas sécurisé ; pour des communications sécurisées, on utilise HTTPS."
+    },
+    {
+      "id": "mail-smtp-envoi",
+      "type": "QCM",
+      "question": "Quel protocole de messagerie est utilisé pour envoyer des e-mails ?",
+      "choix": ["POP", "IMAP", "SMTP", "DNS"],
+      "reponses": [2],
+      "explication": "SMTP (Simple Mail Transfer Protocol) sert à envoyer les e-mails."
+    },
+    {
+      "id": "mail-reception",
+      "type": "QCR",
+      "question": "Quels protocoles sont utilisés par les clients pour recevoir du courrier ?",
+      "choix": ["POP", "IMAP", "SMTP", "HTTP"],
+      "reponses": [0, 1],
+      "explication": "POP et IMAP servent à recevoir le courrier ; SMTP sert à l'envoyer."
+    },
+    {
+      "id": "smtp-port",
+      "type": "QCM",
+      "question": "Sur quel port réservé le processus SMTP serveur écoute-t-il les connexions ?",
+      "choix": ["Port 25", "Port 80", "Port 110", "Port 53"],
+      "reponses": [0],
+      "explication": "Le processus SMTP client se connecte au processus SMTP serveur sur le port réservé 25."
+    },
+    {
+      "id": "smtp-en-attente",
+      "type": "QCM",
+      "question": "Que fait SMTP si le serveur de messagerie de destination n'est pas en ligne ou est occupé ?",
+      "choix": [
+        "Il supprime le message",
+        "Il met le message en attente pour un envoi ultérieur",
+        "Il renvoie le message à l'expéditeur immédiatement",
+        "Il convertit le message en POP"
+      ],
+      "reponses": [1],
+      "explication": "SMTP met le message en attente pour le renvoyer plus tard si le serveur de destination est indisponible."
+    },
+    {
+      "id": "smtp-format-message",
+      "type": "QCR",
+      "question": "Quels éléments un format de message SMTP nécessite-t-il ?",
+      "choix": [
+        "Un en-tête (adresses e-mail du destinataire et de l'expéditeur)",
+        "Un corps de message",
+        "Une adresse MAC source",
+        "Un numéro de bail DHCP"
+      ],
+      "reponses": [0, 1],
+      "explication": "Les formats SMTP exigent un en-tête (adresses du destinataire et de l'expéditeur) et un corps de message."
+    },
+    {
+      "id": "pop-port",
+      "type": "QCM",
+      "question": "Sur quel port TCP le service POP écoute-t-il les requêtes de connexion client ?",
+      "choix": ["110", "25", "20", "67"],
+      "reponses": [0],
+      "explication": "Le serveur démarre le service POP en écoutant sur le port TCP 110."
+    },
+    {
+      "id": "pop-suppression",
+      "type": "QCM",
+      "question": "Que deviennent les messages sur le serveur lorsqu'ils sont téléchargés via le protocole POP ?",
+      "choix": [
+        "Ils restent indéfiniment sur le serveur",
+        "Ils sont supprimés du serveur",
+        "Ils sont chiffrés",
+        "Ils sont transférés en IMAP"
+      ],
+      "reponses": [1],
+      "explication": "Avec POP, les messages sont supprimés du serveur une fois téléchargés vers le client."
+    },
+    {
+      "id": "imap-vs-pop",
+      "type": "QCM",
+      "question": "En quoi IMAP diffère-t-il de POP concernant les messages ?",
+      "choix": [
+        "IMAP supprime immédiatement les messages du serveur",
+        "IMAP conserve les messages originaux sur le serveur ; seules des copies sont téléchargées",
+        "IMAP n'autorise pas l'accès depuis plusieurs appareils",
+        "IMAP n'utilise pas SMTP pour l'envoi"
+      ],
+      "reponses": [1],
+      "explication": "Avec IMAP, des copies sont téléchargées et les messages originaux restent sur le serveur jusqu'à suppression manuelle, qui est ensuite synchronisée."
+    },
+    {
+      "id": "pop-sauvegarde",
+      "type": "QCM",
+      "question": "Pourquoi POP n'est-il pas recommandé pour les petites entreprises ayant besoin d'une sauvegarde centralisée ?",
+      "choix": [
+        "Parce qu'il est trop lent",
+        "Parce qu'il ne stocke pas les messages sur le serveur",
+        "Parce qu'il utilise UDP",
+        "Parce qu'il n'est pas chiffré"
+      ],
+      "reponses": [1],
+      "explication": "POP ne stocke pas les messages sur le serveur, il n'est donc pas adapté à une solution de sauvegarde centralisée."
+    },
+    {
+      "id": "dns-role",
+      "type": "QCM",
+      "question": "Quelle est la fonction principale du DNS ?",
+      "choix": [
+        "Attribuer dynamiquement des adresses IP",
+        "Traduire les noms de domaine en adresses IP",
+        "Transférer des fichiers entre client et serveur",
+        "Chiffrer les communications web"
+      ],
+      "reponses": [1],
+      "explication": "Le DNS associe les noms de ressources (ex. cisco.com) à l'adresse réseau numérique requise."
+    },
+    {
+      "id": "dns-port",
+      "type": "QCM",
+      "question": "Quel(s) port(s) le DNS utilise-t-il ?",
+      "choix": ["TCP 53 et UDP 53", "TCP 80", "UDP 67 et 68", "TCP 21 et 20"],
+      "reponses": [0],
+      "explication": "Le DNS utilise les ports TCP 53 et UDP 53."
+    },
+    {
+      "id": "dns-hierarchie",
+      "type": "QCM",
+      "question": "Comment le DNS organise-t-il sa base de données de résolution des noms ?",
+      "choix": [
+        "De façon centralisée sur un unique serveur",
+        "Selon un système hiérarchique réparti entre serveurs",
+        "Selon l'ordre d'arrivée des requêtes",
+        "Par adresse MAC"
+      ],
+      "reponses": [1],
+      "explication": "Le DNS utilise un système hiérarchique ; chaque serveur gère seulement sa petite partie de la structure globale et transfère les requêtes hors de sa zone."
+    },
+    {
+      "id": "dns-tld",
+      "type": "QCR",
+      "question": "Lesquels sont des exemples de domaines de premier niveau (TLD) ?",
+      "choix": [".com", ".org", ".au", "index.html"],
+      "reponses": [0, 1, 2],
+      "explication": ".com (entreprise), .org (à but non lucratif) et .au (Australie) sont des TLD. index.html est un nom de fichier."
+    },
+    {
+      "id": "nslookup",
+      "type": "QCM",
+      "question": "Quel utilitaire permet d'interroger manuellement les serveurs DNS pour résoudre un nom d'hôte ?",
+      "choix": ["ping", "ipconfig", "nslookup", "traceroute"],
+      "reponses": [2],
+      "explication": "nslookup permet d'interroger manuellement les serveurs DNS et de dépanner la résolution de noms."
+    },
+    {
+      "id": "dhcp-role",
+      "type": "QCM",
+      "question": "Que fait le protocole DHCP pour IPv4 ?",
+      "choix": [
+        "Il traduit les noms de domaine en adresses IP",
+        "Il automatise l'affectation des adresses IPv4, masques, passerelles et autres paramètres",
+        "Il transfère des fichiers entre client et serveur",
+        "Il envoie des e-mails"
+      ],
+      "reponses": [1],
+      "explication": "DHCP automatise l'affectation des adresses IPv4, masques de sous-réseau, passerelles et autres paramètres réseau."
+    },
+    {
+      "id": "dhcp-port",
+      "type": "QCM",
+      "question": "Quels ports le protocole DHCP utilise-t-il ?",
+      "choix": ["UDP 67 et 68", "TCP 53", "TCP 80", "TCP 110"],
+      "reponses": [0],
+      "explication": "DHCP utilise les ports UDP 67 et 68."
+    },
+    {
+      "id": "dhcp-statique-usage",
+      "type": "QCM",
+      "question": "Pour quels périphériques l'adressage statique est-il généralement utilisé plutôt que DHCP ?",
+      "choix": [
+        "Les périphériques des utilisateurs finaux",
+        "Les routeurs de passerelle, commutateurs, serveurs et imprimantes",
+        "Les téléphones mobiles",
+        "Les ordinateurs portables invités"
+      ],
+      "reponses": [1],
+      "explication": "L'adressage statique est utilisé pour les équipements réseau (routeurs, commutateurs, serveurs, imprimantes) ; DHCP sert aux hôtes d'usage général."
+    },
+    {
+      "id": "dhcp-premier-message",
+      "type": "QCM",
+      "question": "Quel message un client envoie-t-il en premier lorsqu'il démarre le processus DHCP ?",
+      "choix": ["DHCPOFFER", "DHCPREQUEST", "DHCPDISCOVER", "DHCPACK"],
+      "reponses": [2],
+      "explication": "Le client diffuse d'abord un DHCPDISCOVER pour identifier les serveurs DHCP disponibles."
+    },
+    {
+      "id": "dhcp-ordre-processus",
+      "type": "QCM",
+      "question": "Quel est l'ordre correct des messages du processus DHCP ?",
+      "choix": [
+        "DHCPOFFER → DHCPDISCOVER → DHCPACK → DHCPREQUEST",
+        "DHCPDISCOVER → DHCPOFFER → DHCPREQUEST → DHCPACK",
+        "DHCPREQUEST → DHCPDISCOVER → DHCPOFFER → DHCPACK",
+        "DHCPDISCOVER → DHCPREQUEST → DHCPOFFER → DHCPACK"
+      ],
+      "reponses": [1],
+      "explication": "Le processus est : DISCOVER (client) → OFFER (serveur) → REQUEST (client) → ACK (serveur)."
+    },
+    {
+      "id": "dhcp-nak",
+      "type": "QCM",
+      "question": "Que se passe-t-il si l'offre n'est plus valable lorsque le client envoie son DHCPREQUEST ?",
+      "choix": [
+        "Le serveur envoie un DHCPACK quand même",
+        "Le serveur envoie un DHCPNAK et le processus recommence par un DHCPDISCOVER",
+        "Le client garde l'adresse de force",
+        "Le serveur ignore la requête"
+      ],
+      "reponses": [1],
+      "explication": "Si l'offre n'est plus valable, le serveur répond par un DHCPNAK et le processus reprend avec un nouveau DHCPDISCOVER."
+    },
+    {
+      "id": "dhcpv6-messages",
+      "type": "QCR",
+      "question": "Lesquels font partie des messages DHCPv6 ?",
+      "choix": ["SOLICIT", "ADVERTISE", "REPLY", "DISCOVER"],
+      "reponses": [0, 1, 2],
+      "explication": "Les messages DHCPv6 incluent SOLICIT, ADVERTISE, INFORMATION REQUEST et REPLY. DISCOVER appartient à DHCPv4."
+    },
+    {
+      "id": "ftp-deux-connexions",
+      "type": "QCR",
+      "question": "Quels ports TCP le protocole FTP utilise-t-il pour ses deux connexions ?",
+      "choix": ["Port 21 (contrôle)", "Port 20 (données)", "Port 25", "Port 80"],
+      "reponses": [0, 1],
+      "explication": "FTP utilise le port TCP 21 pour le contrôle (commandes/réponses) et le port TCP 20 pour le transfert de données."
+    },
+    {
+      "id": "ftp-port-controle",
+      "type": "QCM",
+      "question": "À quoi sert la connexion sur le port TCP 21 en FTP ?",
+      "choix": [
+        "Au transfert de données",
+        "Au contrôle du trafic (commandes client et réponses serveur)",
+        "À la résolution DNS",
+        "À l'attribution d'adresses IP"
+      ],
+      "reponses": [1],
+      "explication": "Le port TCP 21 sert à la connexion de contrôle : commandes client et réponses serveur."
+    },
+    {
+      "id": "ftp-sens-transfert",
+      "type": "QCM",
+      "question": "Dans quel sens le transfert de données FTP peut-il se faire ?",
+      "choix": [
+        "Uniquement du serveur vers le client",
+        "Uniquement du client vers le serveur",
+        "Dans les deux sens (extraction et stockage)",
+        "Seulement en local"
+      ],
+      "reponses": [2],
+      "explication": "Le client peut extraire (télécharger) des données depuis le serveur ou en stocker (téléverser) vers le serveur."
+    },
+    {
+      "id": "smb-connexion-longue",
+      "type": "QCM",
+      "question": "Quel protocole de partage de fichiers établit une connexion à long terme aux serveurs, contrairement à FTP ?",
+      "choix": ["SMB", "DNS", "DHCP", "SMTP"],
+      "reponses": [0],
+      "explication": "SMB établit des connexions à long terme, permettant d'accéder aux ressources du serveur comme si elles étaient locales."
+    },
+    {
+      "id": "smb-fonctions",
+      "type": "QCR",
+      "question": "Quelles sont les trois fonctions des messages SMB ?",
+      "choix": [
+        "Démarrer, authentifier ou terminer des sessions",
+        "Contrôler l'accès aux fichiers et aux imprimantes",
+        "Permettre à une application d'envoyer/recevoir des messages",
+        "Traduire les noms de domaine en adresses IP"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "SMB gère les sessions, contrôle l'accès aux fichiers/imprimantes et permet l'envoi/réception de messages. La traduction de noms relève du DNS."
+    }
+  ]
+}

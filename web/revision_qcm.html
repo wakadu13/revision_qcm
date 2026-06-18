@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Révision QCM / QCR</title>
+
+<!-- KaTeX pour le rendu LaTeX ($...$). Dégradation gracieuse si hors ligne. -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  /* Catppuccin Mocha — fidèle à l'app d'origine */
+  --bg:#1e1e2e; --bg2:#313244; --bg3:#45475a;
+  --fg:#cdd6f4; --white:#ffffff; --muted:#6c7086; --subtle:#9399b2;
+  --accent:#89b4fa; --green:#a6e3a1; --red:#f38ba8; --yellow:#f9e2af;
+  --mauve:#cba6f7; --peach:#fab387; --teal:#94e2d5; --sky:#89dceb;
+  /* spectre des boîtes de Leitner 0->5 : du difficile (rouge) au maîtrisé (vert) */
+  --b0:#f38ba8; --b1:#fab387; --b2:#f9e2af; --b3:#89dceb; --b4:#94e2d5; --b5:#a6e3a1;
+  --radius:14px;
+  --sans:'Inter',ui-sans-serif,system-ui,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'Consolas',monospace;
+  --maxw:880px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(137,180,250,.10), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(203,166,247,.08), transparent 55%),
+    var(--bg);
+  color:var(--fg); font-family:var(--sans); line-height:1.5;
+  min-height:100vh; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:28px 20px 80px}
+
+/* ---------- En-tête ---------- */
+.topbar{display:flex;align-items:center;gap:14px;padding:6px 2px 18px}
+.logo{
+  width:42px;height:42px;border-radius:12px;flex:none;
+  display:grid;place-items:center;font-family:var(--mono);font-weight:600;
+  color:var(--bg);font-size:20px;
+  background:linear-gradient(135deg,var(--accent),var(--mauve));
+  box-shadow:0 6px 22px rgba(137,180,250,.30);
+}
+.topbar h1{font-size:18px;font-weight:600;margin:0;letter-spacing:-.01em}
+.topbar p{margin:1px 0 0;color:var(--muted);font-size:12.5px}
+.topbar .right{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+/* ---------- Cartes / écran ---------- */
+.screen{animation:rise .28s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.screen h2{font-size:25px;font-weight:700;margin:0 0 4px;letter-spacing:-.02em;color:var(--white)}
+.screen .lede{color:var(--subtle);margin:0 0 22px;font-size:14px}
+
+/* ---------- Liste navigable (menus) ---------- */
+.list{display:flex;flex-direction:column;gap:9px;margin:0;padding:0}
+.row{
+  appearance:none;border:1px solid var(--bg3);background:var(--bg2);
+  color:var(--fg);text-align:left;border-radius:var(--radius);
+  padding:15px 17px;font:inherit;font-size:15px;cursor:pointer;
+  display:flex;align-items:center;gap:14px;width:100%;
+  transition:border-color .15s,background .15s,transform .08s;
+}
+.row:hover{border-color:var(--bg3);background:#3a3c50}
+.row:focus-visible,.row.active{outline:none;border-color:var(--accent);
+  background:#3a3c50;box-shadow:0 0 0 3px rgba(137,180,250,.22)}
+.row:active{transform:translateY(1px)}
+.row .ic{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:var(--bg3);color:var(--accent);font-size:15px}
+.row .txt{flex:1;min-width:0}
+.row .txt b{font-weight:600;display:block}
+.row .txt small{color:var(--muted);font-size:12.5px;font-weight:400}
+.row .chev{color:var(--muted);font-family:var(--mono);font-size:13px}
+.row.danger .ic{color:var(--red)}
+.row.danger:focus-visible,.row.danger.active{border-color:var(--red);box-shadow:0 0 0 3px rgba(243,139,168,.20)}
+
+.backbtn{appearance:none;border:1px solid var(--bg3);background:transparent;color:var(--subtle);
+  font:inherit;font-size:13px;border-radius:10px;padding:7px 13px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;margin-bottom:18px;transition:.15s}
+.backbtn:hover{color:var(--fg);border-color:var(--muted)}
+.kbd{font-family:var(--mono);font-size:11px;color:var(--muted);
+  border:1px solid var(--bg3);border-radius:6px;padding:1px 6px;background:var(--bg2)}
+
+.hint{margin-top:22px;color:var(--muted);font-size:12.5px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.hint span{display:inline-flex;align-items:center;gap:6px}
+
+/* ---------- Quiz ---------- */
+.qbar{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.qbar .meta{font-family:var(--mono);font-size:12px;color:var(--subtle);white-space:nowrap}
+.track{flex:1;height:8px;border-radius:99px;background:var(--bg2);overflow:hidden}
+.track>i{display:block;height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--accent),var(--mauve));transition:width .4s cubic-bezier(.2,.7,.2,1)}
+.qbar .score{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+
+.qtag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:10px}
+.qtag.qcr{color:var(--mauve)}
+.qtag.trou{color:var(--teal)}
+.qtag.flash{color:var(--peach)}
+.qenonce{font-size:21px;font-weight:600;color:var(--white);line-height:1.4;margin-bottom:22px;letter-spacing:-.01em}
+
+/* ---------- TROU (texte à trous) ---------- */
+.textinput{width:100%;background:var(--bg2);border:1.5px solid var(--bg3);color:var(--fg);
+  font:inherit;font-size:16px;border-radius:var(--radius);padding:14px 16px;margin-bottom:4px}
+.textinput:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(137,180,250,.22)}
+.textinput:disabled{opacity:.6}
+
+/* ---------- FLASHCARD ---------- */
+.flashzone{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.flashverso{font-size:19px;font-weight:600;color:var(--accent);background:var(--bg2);
+  border:1px solid var(--bg3);border-radius:var(--radius);padding:16px 18px;width:100%}
+.flashbuttons{display:flex;gap:10px;flex-wrap:wrap}
+.btn.good{background:var(--green);color:var(--bg)}
+.btn.good:hover{filter:brightness(1.06)}
+.btn.bad{background:var(--red);color:var(--bg)}
+.btn.bad:hover{filter:brightness(1.06)}
+
+.choices{display:flex;flex-direction:column;gap:10px}
+.choice{
+  appearance:none;border:1.5px solid var(--bg3);background:var(--bg2);color:var(--fg);
+  border-radius:var(--radius);padding:14px 16px;font:inherit;font-size:15.5px;cursor:pointer;
+  display:flex;align-items:center;gap:14px;text-align:left;width:100%;
+  transition:border-color .14s,background .14s,transform .07s,box-shadow .14s;
+}
+.choice:hover:not(.locked){border-color:var(--muted)}
+.choice:active:not(.locked){transform:translateY(1px)}
+.choice .badge{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;
+  font-family:var(--mono);font-weight:600;font-size:14px;background:var(--bg3);color:var(--subtle);
+  transition:.14s}
+.choice .body{flex:1;min-width:0}
+.choice.sel{border-color:var(--accent);background:rgba(137,180,250,.13)}
+.choice.sel .badge{background:var(--accent);color:var(--bg)}
+.choice.locked{cursor:default}
+.choice.correct{border-color:var(--green);background:rgba(166,227,161,.14)}
+.choice.correct .badge{background:var(--green);color:var(--bg)}
+.choice.wrong{border-color:var(--red);background:rgba(243,139,168,.14)}
+.choice.wrong .badge{background:var(--red);color:var(--bg)}
+.choice .mark{margin-left:auto;font-family:var(--mono);font-weight:600;opacity:0}
+.choice.correct .mark{opacity:1;color:var(--green)}
+.choice.wrong .mark{opacity:1;color:var(--red)}
+
+.feedback{margin-top:18px;border-radius:var(--radius);padding:15px 17px;border:1px solid var(--bg3);
+  background:var(--bg2);animation:rise .25s both}
+.feedback .verdict{font-weight:700;font-size:16px;display:flex;align-items:center;gap:9px;margin-bottom:4px}
+.feedback.ok .verdict{color:var(--green)}
+.feedback.ko .verdict{color:var(--red)}
+.feedback .sub{font-size:14px;color:var(--fg)}
+.feedback .sub.good{color:var(--green)}
+.feedback .expl{font-size:13.5px;color:var(--subtle);margin-top:8px;display:flex;gap:8px;line-height:1.55}
+.feedback .expl .i{color:var(--accent);flex:none}
+
+/* mouvement de boîte de Leitner */
+.boxmove{display:inline-flex;align-items:center;gap:8px;margin-top:12px;
+  font-family:var(--mono);font-size:12px;color:var(--muted)}
+.boxmove .pill{padding:2px 9px;border-radius:99px;font-weight:600;color:var(--bg)}
+.boxmove .arrow{font-size:14px}
+
+.actionbar{margin-top:22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.btn{appearance:none;border:none;border-radius:11px;font:inherit;font-weight:600;font-size:14.5px;
+  padding:11px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:.14s,transform .07s}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.primary:hover{background:#a3c5ff}
+.btn.ghost{background:var(--bg2);color:var(--fg);border:1px solid var(--bg3)}
+.btn.ghost:hover{border-color:var(--muted)}
+.btn.danger{background:var(--red);color:var(--bg)}
+.btn .k{font-family:var(--mono);font-size:11px;opacity:.7}
+
+/* ---------- Résultats ---------- */
+.result{text-align:center;padding:18px 0}
+.bigscore{font-family:var(--mono);font-weight:600;font-size:72px;line-height:1;letter-spacing:-.03em}
+.result .pct{font-family:var(--mono);font-size:20px;margin-top:6px}
+.result .ring{width:min(260px,70%);height:10px;margin:22px auto 8px;border-radius:99px;background:var(--bg2);overflow:hidden}
+.result .ring>i{display:block;height:100%;border-radius:99px}
+.result .msg{margin-top:14px;font-size:15px;color:var(--subtle)}
+
+/* ---------- Statistiques ---------- */
+.statcard{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);
+  padding:18px 19px;margin-bottom:14px}
+.statcard h3{margin:0 0 3px;font-size:16px;font-weight:600;color:var(--accent)}
+.statcard .desc{margin:0 0 14px;font-size:12.5px;color:var(--muted)}
+.mastery{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.mastery .bar{flex:1;height:10px;border-radius:99px;background:var(--bg3);overflow:hidden}
+.mastery .bar>i{display:block;height:100%;border-radius:99px;transition:width .5s}
+.mastery .val{font-family:var(--mono);font-size:13px;font-weight:600;white-space:nowrap}
+.metrics{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;margin-bottom:16px}
+.metrics b{font-family:var(--mono);color:var(--white);font-weight:600}
+.metrics .lab{color:var(--muted);font-size:12.5px}
+
+/* échelle de Leitner — élément signature */
+.ladder{display:flex;gap:7px;align-items:flex-end;height:78px}
+.rung{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.rung .col{width:100%;border-radius:7px 7px 4px 4px;min-height:5px;transition:height .5s;
+  display:flex;align-items:flex-start;justify-content:center;padding-top:3px;
+  font-family:var(--mono);font-size:11px;font-weight:600;color:rgba(30,30,46,.85)}
+.rung .lab{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.laddernote{margin-top:10px;font-size:11.5px;color:var(--muted)}
+
+/* ---------- Vide / gestion ---------- */
+.empty{border:1.5px dashed var(--bg3);border-radius:var(--radius);padding:34px 24px;text-align:center;
+  background:rgba(49,50,68,.4)}
+.empty .em{font-size:30px;margin-bottom:8px}
+.empty h3{margin:0 0 6px;font-size:17px;color:var(--white)}
+.empty p{margin:0 auto;max-width:430px;color:var(--subtle);font-size:13.5px}
+
+.setline{display:flex;align-items:center;gap:13px;background:var(--bg2);border:1px solid var(--bg3);
+  border-radius:var(--radius);padding:13px 15px;margin-bottom:9px}
+.setline .ic{width:34px;height:34px;border-radius:9px;flex:none;display:grid;place-items:center;
+  background:var(--bg3);color:var(--accent);font-family:var(--mono);font-weight:600;font-size:13px}
+.setline .info{flex:1;min-width:0}
+.setline .info b{font-weight:600}
+.setline .info small{display:block;color:var(--muted);font-size:12px}
+.iconbtn{appearance:none;border:1px solid var(--bg3);background:transparent;color:var(--subtle);
+  width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:15px;transition:.14s;flex:none}
+.iconbtn:hover{color:var(--red);border-color:var(--red)}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 22px}
+
+/* ---------- Modale ---------- */
+.overlay{position:fixed;inset:0;background:rgba(17,17,27,.66);backdrop-filter:blur(3px);
+  display:grid;place-items:center;padding:20px;z-index:50;animation:fade .18s both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{background:var(--bg2);border:1px solid var(--bg3);border-radius:18px;padding:24px;
+  width:min(380px,100%);box-shadow:0 24px 70px rgba(0,0,0,.5);animation:rise .22s both}
+.modal h3{margin:0 0 4px;font-size:18px;color:var(--white)}
+.modal p{margin:0 0 16px;font-size:13.5px;color:var(--subtle)}
+.modal input[type=number]{width:100%;background:var(--bg);border:1px solid var(--bg3);color:var(--fg);
+  font:inherit;font-size:18px;font-family:var(--mono);text-align:center;border-radius:10px;padding:10px;
+  margin-bottom:16px;-moz-appearance:textfield}
+.modal input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(137,180,250,.22)}
+.modal .actions{display:flex;gap:10px;justify-content:flex-end}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);
+  background:var(--bg2);border:1px solid var(--bg3);color:var(--fg);
+  padding:11px 18px;border-radius:12px;font-size:13.5px;box-shadow:0 12px 40px rgba(0,0,0,.45);
+  z-index:60;animation:rise .22s both;max-width:90vw}
+.toast.err{border-color:var(--red)}
+.toast.ok{border-color:var(--green)}
+
+.katex{font-size:1em}
+.hidefile{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+@media(max-width:560px){
+  .screen h2{font-size:22px}
+  .bigscore{font-size:58px}
+  .qenonce{font-size:19px}
+  .hint{font-size:11.5px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="logo">Σ</div>
+    <div>
+      <h1>Révision QCM&nbsp;/&nbsp;QCR</h1>
+      <p>Préparation aux partiels · révision espacée (Leitner)</p>
+    </div>
+    <div class="right" id="globalStat"></div>
+  </div>
+  <div id="app"></div>
+</div>
+
+<input type="file" id="filein" class="hidefile" accept=".json,application/json" multiple>
+<input type="file" id="dirin" class="hidefile" webkitdirectory multiple>
+<input type="file" id="progin" class="hidefile" accept=".json,application/json">
+
+<!-- KaTeX (rendu LaTeX). Si indisponible hors ligne, le texte brut s'affiche. -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+<script>
+"use strict";
+/* ======================================================================
+   PORTAGE DE core.py — système de Leitner (révision espacée)
+   ====================================================================== */
+const INTERVALLES = {0:0,1:1,2:3,3:7,4:14,5:30};  // jours avant nouvelle révision
+const BOITE_MAX = 5;
+// QCM/QCR : choix à cocher. TROU : réponse texte libre (grammaire). FLASHCARD : recto/verso auto-évalué (vocabulaire).
+const TYPES_VALIDES = new Set(["QCM","QCR","TROU","FLASHCARD"]);
+const COULEUR_BOITE = ["--b0","--b1","--b2","--b3","--b4","--b5"];
+
+/* Normalise un texte pour comparer des réponses libres (TROU) avec souplesse :
+   insensible à la casse, aux accents et aux espaces superflus. */
+function normaliserTexte(s){
+  let t = String(s).trim().toLowerCase().normalize("NFKD");
+  t = t.replace(new RegExp("[\\u0300-\\u036f]", "g"), "");
+  return t.split(/\s+/).filter(Boolean).join(" ");
+}
+
+const LS_SETS = "revisionqcm.sets.v1";
+const LS_PROG = "revisionqcm.progression.v1";
+const LS_SEED = "revisionqcm.seeded.v1";
+
+let SETS = [];                 // [{id,titre,description,questions:[...]}]
+let PROG = {};                 // {set_id:{q_id:{boite,vues,correctes,derniere_revision,derniere_correcte}}}
+
+/* ---- persistance ---- */
+function saveSets(){ try{ localStorage.setItem(LS_SETS, JSON.stringify(SETS)); }catch(e){} }
+function saveProg(){ try{ localStorage.setItem(LS_PROG, JSON.stringify(PROG)); }catch(e){} }
+function loadAll(){
+  try{ SETS = JSON.parse(localStorage.getItem(LS_SETS) || "[]"); }catch(e){ SETS=[]; }
+  try{ PROG = JSON.parse(localStorage.getItem(LS_PROG) || "{}"); }catch(e){ PROG={}; }
+}
+
+/* ---- modèle Question ---- */
+function estQcr(q){ return (q.type||"").toUpperCase()==="QCR"; }
+function estTrou(q){ return (q.type||"").toUpperCase()==="TROU"; }
+function estFlashcard(q){ return (q.type||"").toUpperCase()==="FLASHCARD"; }
+function estCorrecte(q, selection){
+  const a=new Set(selection), b=new Set(q.reponses);
+  return a.size===b.size && [...a].every(x=>b.has(x));
+}
+function estCorrecteTexte(q, reponse){
+  const cible=normaliserTexte(reponse);
+  return (q.reponses_texte||[]).some(r=>normaliserTexte(r)===cible);
+}
+
+/* ---- validation d'un set (mêmes règles que core.charger_set) ----
+   `categorie` est déduite du sous-dossier d'import (cf. categorieDepuisChemin) ;
+   par défaut "Général" pour un import de fichiers isolés. */
+function validerSet(data, nomFichier, categorie="Général"){
+  const stem = nomFichier.replace(/\.[^.]+$/,"");
+  if(typeof data!=="object" || data===null || !Array.isArray(data.questions))
+    throw new Error(`${nomFichier} : clé 'questions' (liste) manquante.`);
+  const questions=[];
+  data.questions.forEach((q,idx)=>{
+    const i=idx+1, ctx=`${nomFichier} » question #${i}`;
+    if(!("question" in q)) throw new Error(`${ctx} : clé 'question' manquante.`);
+    const typeQ=String(q.type||"QCM").toUpperCase();
+    if(!TYPES_VALIDES.has(typeQ))
+      throw new Error(`${ctx} : type '${typeQ}' inconnu (QCM, QCR, TROU ou FLASHCARD).`);
+
+    let choix=[], reponses=[], reponses_texte=[], verso="";
+
+    if(typeQ==="QCM" || typeQ==="QCR"){
+      for(const clef of ["choix","reponses"])
+        if(!(clef in q)) throw new Error(`${ctx} : clé '${clef}' manquante.`);
+      choix=Array.from(q.choix); reponses=Array.from(q.reponses);
+      if(choix.length===0) throw new Error(`${ctx} : la liste 'choix' est vide.`);
+      if(reponses.length===0) throw new Error(`${ctx} : aucune bonne réponse fournie.`);
+      for(const r of reponses)
+        if(!Number.isInteger(r) || r<0 || r>=choix.length)
+          throw new Error(`${ctx} : indice de réponse ${r} hors limites (0 à ${choix.length-1}).`);
+      if(typeQ==="QCM" && reponses.length!==1)
+        throw new Error(`${ctx} : un QCM doit avoir exactement 1 réponse.`);
+    } else if(typeQ==="TROU"){
+      if(!("reponses_texte" in q))
+        throw new Error(`${ctx} : clé 'reponses_texte' manquante (liste des réponses acceptées).`);
+      reponses_texte=Array.from(q.reponses_texte).map(String);
+      if(!reponses_texte.some(r=>r.trim()))
+        throw new Error(`${ctx} : 'reponses_texte' doit contenir au moins une réponse non vide.`);
+    } else if(typeQ==="FLASHCARD"){
+      if(!("verso" in q)) throw new Error(`${ctx} : clé 'verso' manquante (dos de la carte).`);
+      verso=String(q.verso);
+      if(!verso.trim()) throw new Error(`${ctx} : 'verso' ne doit pas être vide.`);
+    }
+
+    questions.push({
+      id:String(q.id ?? `q${i}`), type:typeQ,
+      enonce:String(q.question), choix:choix.map(String),
+      reponses, reponses_texte, verso,
+      explication:String(q.explication ?? "")
+    });
+  });
+  return { id:stem, titre:String(data.titre ?? stem),
+           description:String(data.description ?? ""), questions, categorie };
+}
+
+/* ---- suivi (Progression) ---- */
+function statsQuestion(setId,qId){ return (PROG[setId]||{})[qId] || null; }
+
+function enregistrerReponse(setId,qId,correcte){
+  if(!PROG[setId]) PROG[setId]={};
+  let st=PROG[setId][qId];
+  if(!st){ st={boite:0,vues:0,correctes:0,derniere_revision:null,derniere_correcte:null}; PROG[setId][qId]=st; }
+  st.vues++;
+  if(correcte){ st.correctes++; st.boite=Math.min(BOITE_MAX, st.boite+1); }
+  else { st.boite=Math.max(0, st.boite-1); }
+  st.derniere_correcte=correcte;
+  st.derniere_revision=new Date().toISOString();
+  saveProg();
+}
+function estAReviser(setId,qId){
+  const st=statsQuestion(setId,qId);
+  if(!st || !st.derniere_revision) return true;
+  const intervalle=(st.boite in INTERVALLES)?INTERVALLES[st.boite]:30;
+  const derniere=new Date(st.derniere_revision);
+  return Date.now() >= derniere.getTime() + intervalle*86400000;
+}
+function priorite(setId,qId){
+  const st=statsQuestion(setId,qId);
+  return [ estAReviser(setId,qId)?0:1, st?st.boite:0, st?(st.derniere_revision||""):"" ];
+}
+function cmpPriorite(a,b){
+  for(let i=0;i<3;i++){ if(a[i]<b[i])return -1; if(a[i]>b[i])return 1; }
+  return 0;
+}
+function reinitialiserSet(setId){ delete PROG[setId]; saveProg(); }
+
+function resumeSet(set){
+  let vues=0,correctes=0,totalRep=0,aReviser=0;
+  const repartition={}; for(let b=0;b<=BOITE_MAX;b++) repartition[b]=0;
+  for(const q of set.questions){
+    const st=statsQuestion(set.id,q.id);
+    if(st){ vues++; correctes+=st.correctes; totalRep+=st.vues; repartition[st.boite??0]++; }
+    else repartition[0]++;
+    if(estAReviser(set.id,q.id)) aReviser++;
+  }
+  const precision=totalRep? correctes/totalRep*100 : 0;
+  const maitrise=Object.entries(repartition).reduce((s,[b,n])=>s+b*n,0);
+  const maitriseMax=BOITE_MAX*set.questions.length;
+  return { total:set.questions.length, rencontrees:vues, a_reviser:aReviser,
+           precision, repartition, pct_maitrise: maitriseMax? maitrise/maitriseMax*100 : 0 };
+}
+
+/* ======================================================================
+   RENDU & NAVIGATION (équivalent web de gui.py)
+   ====================================================================== */
+const app = document.getElementById("app");
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let keyHandler = null;
+
+function setKeys(fn){
+  if(keyHandler) document.removeEventListener("keydown", keyHandler);
+  keyHandler = fn;
+  if(fn) document.addEventListener("keydown", fn);
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* Rendu d'un texte pouvant contenir du LaTeX $...$ */
+function mathify(el){
+  if(window.renderMathInElement){
+    try{ renderMathInElement(el,{delimiters:[{left:"$",right:"$",display:false}],throwOnError:false}); }
+    catch(e){}
+  }
+}
+function screenTransition(){ app.classList.remove("screen"); void app.offsetWidth; app.classList.add("screen"); }
+
+/* Liste navigable au clavier — ↑/↓ + Entrée + Échap */
+function mountList(containerSel, onBack){
+  const rows=[...document.querySelectorAll(containerSel+" .row")];
+  if(rows.length){ rows[0].classList.add("active"); rows[0].focus({preventScroll:true}); }
+  let idx=0;
+  const setActive=i=>{
+    rows[idx].classList.remove("active");
+    idx=(i+rows.length)%rows.length;
+    rows[idx].classList.add("active"); rows[idx].focus({preventScroll:true});
+  };
+  setKeys(e=>{
+    if(e.key==="ArrowDown"||e.key==="ArrowRight"){e.preventDefault();setActive(idx+1);}
+    else if(e.key==="ArrowUp"||e.key==="ArrowLeft"){e.preventDefault();setActive(idx-1);}
+    else if(e.key==="Enter"){e.preventDefault();rows[idx].click();}
+    else if(e.key==="Escape" && onBack){e.preventDefault();onBack();}
+  });
+}
+
+function toast(msg, kind=""){
+  document.querySelectorAll(".toast").forEach(t=>t.remove());
+  const t=document.createElement("div"); t.className="toast "+kind; t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>{ t.style.opacity="0"; t.style.transition="opacity .3s"; setTimeout(()=>t.remove(),300); }, 2600);
+}
+function refreshGlobal(){
+  let total=0;
+  for(const s of SETS) for(const q of s.questions) if(estAReviser(s.id,q.id)) total++;
+  document.getElementById("globalStat").textContent = SETS.length
+    ? `${total} à réviser · ${SETS.length} set${SETS.length>1?"s":""}` : "";
+}
+
+/* ----------------------------------------------------------------------
+   MENU PRINCIPAL
+   ---------------------------------------------------------------------- */
+function showMenu(){
+  refreshGlobal(); screenTransition();
+  const has = SETS.length>0;
+  const opts=[
+    ["▶","Démarrer une session","Choisir un set et un mode de révision", showSetSelectSession, has],
+    ["✦","Révision intelligente","Toutes les questions dues, triées par priorité", startSmartRevision, has],
+    ["📊","Mes statistiques","Maîtrise, précision et répartition par boîte", showStats, true],
+    ["⟲","Réinitialiser la progression","Effacer le suivi d'un set", showResetSelect, has],
+    ["⚙","Gérer les sets","Importer, supprimer, sauvegarder", showManage, true],
+  ];
+  app.innerHTML = `
+    <div class="screen">
+      <p class="eyebrow">Menu principal</p>
+      <h2>Que veux-tu réviser ?</h2>
+      <p class="lede">${has ? `${SETS.length} set${SETS.length>1?"s":""} chargé${SETS.length>1?"s":""}. Tout est sauvegardé dans ce navigateur.`
+                           : "Aucun set pour l'instant — commence par en importer un dans « Gérer les sets »."}</p>
+      <div class="list" id="menu">
+        ${opts.map(([ic,t,d,_,on])=>`
+          <button class="row" ${on?"":"data-off"} style="${on?"":"opacity:.45;cursor:not-allowed"}">
+            <span class="ic">${ic}</span>
+            <span class="txt"><b>${t}</b><small>${d}</small></span>
+            <span class="chev">›</span>
+          </button>`).join("")}
+      </div>
+      <div class="hint">
+        <span><span class="kbd">↑</span><span class="kbd">↓</span> naviguer</span>
+        <span><span class="kbd">Entrée</span> sélectionner</span>
+      </div>
+    </div>`;
+  const rows=[...document.querySelectorAll("#menu .row")];
+  rows.forEach((r,i)=>{
+    const [, , , fn, on]=opts[i];
+    if(on) r.onclick=fn; else r.onclick=()=>toast("Importe d'abord un set de questions.","err");
+  });
+  mountList("#menu", null);
+}
+
+/* ----------------------------------------------------------------------
+   CATÉGORIES (sous-dossiers d'import, ex. "maths", "langues")
+   ---------------------------------------------------------------------- */
+function categories(){
+  return [...new Set(SETS.map(s=>s.categorie||"Général"))].sort();
+}
+
+/* Sélection d'un set, en passant par un choix de catégorie s'il y en a plusieurs.
+   `rowsHtmlFn(sets)` rend les lignes ; `onPick(set)` réagit à la sélection. */
+function showCategorizedSets(titre, eyebrow, rowsHtmlFn, onPick, onBack){
+  const cats=categories();
+  if(cats.length<=1){
+    showSetsInCategory(cats[0]||"Général", titre, eyebrow, rowsHtmlFn, onPick, onBack);
+    return;
+  }
+  screenTransition();
+  app.innerHTML=`
+    <div class="screen">
+      <button class="backbtn" id="back">‹ Retour <span class="kbd">Échap</span></button>
+      <p class="eyebrow">${esc(eyebrow)}</p>
+      <h2>${esc(titre)} — choisir une catégorie</h2>
+      <div class="list" id="cats">
+        ${cats.map((c,i)=>{
+          const n=SETS.filter(s=>(s.categorie||"Général")===c).length;
+          return `<button class="row"><span class="ic">${i+1}</span>
+            <span class="txt"><b>${esc(c)}</b><small>${n} set${n>1?"s":""}</small></span>
+            <span class="chev">›</span></button>`;
+        }).join("")}
+      </div>
+    </div>`;
+  document.getElementById("back").onclick=onBack;
+  document.querySelectorAll("#cats .row").forEach((r,i)=> r.onclick=()=>
+    showSetsInCategory(cats[i], titre, eyebrow, rowsHtmlFn, onPick,
+      ()=>showCategorizedSets(titre, eyebrow, rowsHtmlFn, onPick, onBack)));
+  mountList("#cats", onBack);
+}
+
+function showSetsInCategory(categorie, titre, eyebrow, rowsHtmlFn, onPick, onBack){
+  screenTransition();
+  const setsCat = SETS.filter(s=>(s.categorie||"Général")===categorie);
+  app.innerHTML=`
+    <div class="screen">
+      <button class="backbtn" id="back">‹ Retour <span class="kbd">Échap</span></button>
+      <p class="eyebrow">${esc(eyebrow)} — ${esc(categorie)}</p>
+      <h2>${esc(titre)}</h2>
+      <div class="list" id="sets">${rowsHtmlFn(setsCat)}</div>
+    </div>`;
+  document.getElementById("back").onclick=onBack;
+  document.querySelectorAll("#sets .row").forEach((r,i)=> r.onclick=()=>onPick(setsCat[i]));
+  mountList("#sets", onBack);
+}
+
+/* ----------------------------------------------------------------------
+   SÉLECTION DE SET (session)
+   ---------------------------------------------------------------------- */
+function setRows(sets){
+  return sets.map((s,i)=>{
+    const r=resumeSet(s);
+    return `<button class="row">
+      <span class="ic">${i+1}</span>
+      <span class="txt"><b>${esc(s.titre)}</b>
+        <small>${s.questions.length} question${s.questions.length>1?"s":""} · ${r.a_reviser} à réviser · maîtrise ${r.pct_maitrise.toFixed(0)}%</small></span>
+      <span class="chev">›</span>
+    </button>`;
+  }).join("");
+}
+function showSetSelectSession(){
+  showCategorizedSets("Choisir un set", "Session", setRows, showSessionMode, showMenu);
+}
+
+function showSessionMode(set){
+  screenTransition();
+  app.innerHTML = `
+    <div class="screen">
+      <button class="backbtn" id="back">‹ Retour <span class="kbd">Échap</span></button>
+      <p class="eyebrow">${esc(set.titre)}</p>
+      <h2>Mode de révision</h2>
+      <div class="list" id="modes">
+        <button class="row"><span class="ic">∞</span><span class="txt"><b>Toutes les questions</b><small>Ordre aléatoire</small></span><span class="chev">›</span></button>
+        <button class="row"><span class="ic">✦</span><span class="txt"><b>Seulement les questions à réviser</b><small>Triées par priorité de Leitner</small></span><span class="chev">›</span></button>
+        <button class="row"><span class="ic">#</span><span class="txt"><b>Un nombre limité</b><small>Tu choisis combien</small></span><span class="chev">›</span></button>
+      </div>
+    </div>`;
+  document.getElementById("back").onclick=showSetSelectSession;
+  const rows=document.querySelectorAll("#modes .row");
+  rows[0].onclick=()=>{ const qs=shuffle([...set.questions]); runQuiz(qs.map(q=>[set,q])); };
+  rows[1].onclick=()=>{
+    let qs=set.questions.filter(q=>estAReviser(set.id,q.id));
+    qs.sort((a,b)=>cmpPriorite(priorite(set.id,a.id),priorite(set.id,b.id)));
+    if(!qs.length){ toast("Aucune question à réviser pour ce set.","ok"); return; }
+    runQuiz(qs.map(q=>[set,q]));
+  };
+  rows[2].onclick=()=>{
+    const qs=shuffle([...set.questions]);
+    askNumber(qs.length, n=>runQuiz(qs.slice(0,n).map(q=>[set,q])));
+  };
+  mountList("#modes", showSetSelectSession);
+}
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+/* Modale « nombre de questions » */
+function askNumber(maxN, cb){
+  const ov=document.createElement("div"); ov.className="overlay";
+  ov.innerHTML=`<div class="modal" role="dialog" aria-modal="true">
+    <h3>Combien de questions ?</h3>
+    <p>Entre 1 et ${maxN}.</p>
+    <input type="number" id="num" min="1" max="${maxN}" value="${Math.min(10,maxN)}">
+    <div class="actions">
+      <button class="btn ghost" id="cancel">Annuler</button>
+      <button class="btn primary" id="ok">Commencer</button>
+    </div></div>`;
+  document.body.appendChild(ov);
+  const input=ov.querySelector("#num"); input.focus(); input.select();
+  const close=()=>{ ov.remove(); };
+  const go=()=>{ let n=parseInt(input.value,10); n=(Number.isInteger(n)&&n>0)?Math.min(maxN,n):maxN; close(); cb(n); };
+  ov.querySelector("#cancel").onclick=close;
+  ov.querySelector("#ok").onclick=go;
+  ov.onclick=e=>{ if(e.target===ov) close(); };
+  input.addEventListener("keydown",e=>{ if(e.key==="Enter"){e.preventDefault();go();} if(e.key==="Escape"){e.preventDefault();close();} });
+}
+
+/* ----------------------------------------------------------------------
+   RÉVISION INTELLIGENTE (tous sets confondus)
+   ---------------------------------------------------------------------- */
+function startSmartRevision(){
+  let pairs=[];
+  for(const s of SETS) for(const q of s.questions) if(estAReviser(s.id,q.id)) pairs.push([s,q]);
+  if(!pairs.length){
+    screenTransition();
+    app.innerHTML=`<div class="screen">
+      <button class="backbtn" id="back">‹ Retour <span class="kbd">Échap</span></button>
+      <p class="eyebrow">Révision intelligente</p>
+      <h2>Rien à réviser pour l'instant</h2>
+      <div class="empty"><div class="em">✓</div><h3>Tu es à jour</h3>
+      <p>Toutes tes questions sont dans leur intervalle de répétition. Reviens plus tard, ou lance une session « Toutes les questions ».</p></div>
+    </div>`;
+    document.getElementById("back").onclick=showMenu;
+    setKeys(e=>{ if(e.key==="Escape") showMenu(); });
+    return;
+  }
+  pairs.sort((a,b)=>cmpPriorite(priorite(a[0].id,a[1].id),priorite(b[0].id,b[1].id)));
+  askNumber(pairs.length, n=>runQuiz(pairs.slice(0,n)));
+}
+
+/* ----------------------------------------------------------------------
+   MOTEUR DE QUIZ  (équivalent de _run_quiz)
+   pairs : liste de [set, question]
+   ---------------------------------------------------------------------- */
+function runQuiz(pairs){
+  if(!pairs.length){ toast("Session vide.","err"); return; }
+  const total=pairs.length;
+  const state={index:0, score:0, selection:[], answered:false, revealed:false};
+
+  const TAG_LABEL = {
+    QCM:"QCM — une seule réponse", QCR:"QCR — plusieurs réponses possibles",
+    TROU:"Texte à trous — tape la réponse",
+    FLASHCARD:"Flashcard — essaie de te souvenir avant de retourner",
+  };
+  const TAG_CLASS = { QCR:"qcr", TROU:"trou", FLASHCARD:"flash" };
+
+  function build(){
+    screenTransition();
+    const [set,q]=pairs[state.index];
+    const num=state.index+1;
+    const pctTop=(num-1)/total*100;
+
+    let zoneHtml, hintHtml;
+    if(q.type==="TROU"){
+      zoneHtml = `<div class="trouzone"><input type="text" id="trouinput" class="textinput" autocomplete="off" placeholder="Ta réponse…"></div>`;
+      hintHtml = `<span><span class="kbd">Entrée</span> valider</span><span><span class="kbd">Q</span> quitter</span>`;
+    } else if(q.type==="FLASHCARD"){
+      zoneHtml = `<div class="flashzone" id="flashzone">
+        <button class="btn primary" id="reveal">Retourner la carte <span class="k">Espace</span></button>
+      </div>`;
+      hintHtml = `<span><span class="kbd">Espace</span> retourner</span><span><span class="kbd">Q</span> quitter</span>`;
+    } else {
+      zoneHtml = `<div class="choices" id="choices">
+          ${q.choix.map((c,i)=>`
+            <button class="choice" data-i="${i}">
+              <span class="badge">${String.fromCharCode(65+i)}</span>
+              <span class="body">${esc(c)}</span>
+              <span class="mark"></span>
+            </button>`).join("")}
+        </div>`;
+      hintHtml = `<span><span class="kbd">A</span>…<span class="kbd">${String.fromCharCode(64+q.choix.length)}</span> ${q.type==="QCR"?"cocher":"répondre"}</span>
+        <span><span class="kbd">Entrée</span> valider</span>
+        <span><span class="kbd">Q</span> quitter</span>`;
+    }
+
+    app.innerHTML=`
+      <div class="screen">
+        <div class="qbar">
+          <span class="meta">${num} / ${total}</span>
+          <span class="track"><i style="width:${pctTop}%"></i></span>
+          <span class="score">${state.score}/${num-1} · ${esc(set.titre)}</span>
+        </div>
+        <div class="qtag ${TAG_CLASS[q.type]||""}">${TAG_LABEL[q.type]||q.type}</div>
+        <div class="qenonce" id="enonce">${esc(q.enonce)}</div>
+        ${zoneHtml}
+        <div id="fbslot"></div>
+        <div class="actionbar" id="actions"></div>
+        <div class="hint" id="hint">${hintHtml}</div>
+      </div>`;
+    mathify(document.getElementById("enonce"));
+
+    if(q.type==="QCM" || q.type==="QCR"){
+      document.querySelectorAll("#choices .body").forEach(b=>mathify(b));
+      document.querySelectorAll(".choice").forEach(el=> el.onclick=()=>toggleChoice(parseInt(el.dataset.i,10)) );
+      renderChoices();
+      renderActionsChoices();
+    } else if(q.type==="TROU"){
+      const input=document.getElementById("trouinput");
+      input.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); validateTrou(); } });
+      input.focus();
+      renderActionsTrou();
+    } else if(q.type==="FLASHCARD"){
+      document.getElementById("reveal").onclick=revealFlashcard;
+      renderActionsFlashcard();
+    }
+    setKeys(onKey);
+  }
+
+  /* ---- QCM / QCR ---- */
+  function renderChoices(){
+    document.querySelectorAll(".choice").forEach(el=>{
+      const i=parseInt(el.dataset.i,10);
+      const sel=state.selection.includes(i);
+      el.className="choice"+(sel?" sel":"")+(state.answered?" locked":"");
+      const mark=el.querySelector(".mark"); mark.textContent="";
+      if(state.answered){
+        const [,q]=pairs[state.index];
+        if(q.reponses.includes(i)){ el.classList.remove("sel"); el.classList.add("correct"); mark.textContent="✓"; }
+        else if(sel){ el.classList.add("wrong"); mark.textContent="✗"; }
+      }
+    });
+  }
+
+  function toggleChoice(i){
+    if(state.answered) return;
+    const [,q]=pairs[state.index];
+    if(q.type==="QCR"){
+      const k=state.selection.indexOf(i);
+      if(k>=0) state.selection.splice(k,1); else state.selection.push(i);
+    } else state.selection=[i];
+    renderChoices();
+    renderActionsChoices();
+  }
+
+  /* ---- barres d'action : un bouton « suivant » une fois répondu, sinon les
+     boutons spécifiques au type (factorisé pour éviter la duplication) ---- */
+  function renderNextOrButtons(buttonsHtml, wireFn){
+    const bar=document.getElementById("actions");
+    if(state.answered){
+      bar.innerHTML = state.index+1>=total
+        ? `<button class="btn primary" id="next">Voir le résultat <span class="k">Entrée</span></button>`
+        : `<button class="btn primary" id="next">Question suivante <span class="k">Entrée</span></button>`;
+      bar.querySelector("#next").onclick=next;
+    } else {
+      bar.innerHTML = buttonsHtml;
+      wireFn(bar);
+    }
+  }
+  function renderActionsChoices(){
+    renderNextOrButtons(
+      `<button class="btn primary" id="val" ${state.selection.length?"":'disabled style="opacity:.5;cursor:not-allowed"'}>Valider <span class="k">Entrée</span></button>
+       <button class="btn ghost" id="quit">Quitter</button>`,
+      bar=>{ const v=bar.querySelector("#val"); if(state.selection.length) v.onclick=validateChoices; bar.querySelector("#quit").onclick=quitQuiz; }
+    );
+  }
+  function renderActionsTrou(){
+    renderNextOrButtons(
+      `<button class="btn primary" id="val">Valider <span class="k">Entrée</span></button>
+       <button class="btn ghost" id="quit">Quitter</button>`,
+      bar=>{ bar.querySelector("#val").onclick=validateTrou; bar.querySelector("#quit").onclick=quitQuiz; }
+    );
+  }
+  function renderActionsFlashcard(){
+    renderNextOrButtons(
+      `<button class="btn ghost" id="quit">Quitter</button>`,
+      bar=>{ bar.querySelector("#quit").onclick=quitQuiz; }
+    );
+  }
+
+  /* ---- bookkeeping commun (score + Leitner) puis bandeau de retour ---- */
+  function finishAnswer(set,q,correcte){
+    if(correcte) state.score++;
+    const before=statsQuestion(set.id,q.id); const boxBefore=before?before.boite:0;
+    enregistrerReponse(set.id,q.id,correcte);
+    const boxAfter=statsQuestion(set.id,q.id).boite;
+    state.answered=true;
+    state._boxBefore=boxBefore; state._boxAfter=boxAfter;
+    refreshGlobal();
+  }
+  function showFeedback(correcte, q, extraLines){
+    const slot=document.getElementById("fbslot");
+    const boxBefore=state._boxBefore, boxAfter=state._boxAfter;
+    const arrow = boxAfter>boxBefore?"↑":(boxAfter<boxBefore?"↓":"→");
+    const cb=css(COULEUR_BOITE[boxBefore]), ca=css(COULEUR_BOITE[boxAfter]);
+    slot.innerHTML=`
+      <div class="feedback ${correcte?"ok":"ko"}">
+        <div class="verdict">${correcte?"✓ Correct !":"✗ Incorrect"}</div>
+        ${extraLines.map(l=>`<div class="sub good">${esc(l)}</div>`).join("")}
+        ${q.explication?`<div class="expl"><span class="i">ⓘ</span><span id="expl">${esc(q.explication)}</span></div>`:""}
+        <div class="boxmove">
+          <span class="pill" style="background:${cb}">Boîte ${boxBefore}</span>
+          <span class="arrow">${arrow}</span>
+          <span class="pill" style="background:${ca}">Boîte ${boxAfter}</span>
+        </div>
+      </div>`;
+    if(q.explication) mathify(document.getElementById("expl"));
+  }
+
+  function validateChoices(){
+    if(state.answered || !state.selection.length) return;
+    const [set,q]=pairs[state.index];
+    const correcte=estCorrecte(q,state.selection);
+    finishAnswer(set,q,correcte);
+    renderChoices(); renderActionsChoices();
+    const bonnes=q.reponses.slice().sort((a,b)=>a-b).map(r=>String.fromCharCode(65+r)).join(", ");
+    showFeedback(correcte, q, correcte?[]:[`Bonne(s) réponse(s) : ${bonnes}`]);
+  }
+
+  /* ---- TROU ---- */
+  function validateTrou(){
+    if(state.answered) return;
+    const input=document.getElementById("trouinput");
+    const reponse=input.value.trim();
+    if(!reponse) return;
+    const [set,q]=pairs[state.index];
+    const correcte=estCorrecteTexte(q,reponse);
+    finishAnswer(set,q,correcte);
+    input.disabled=true;
+    renderActionsTrou();
+    showFeedback(correcte, q, correcte?[]:[`Réponse attendue : ${q.reponses_texte.join(" / ")}`]);
+  }
+
+  /* ---- FLASHCARD ---- */
+  function revealFlashcard(){
+    if(state.revealed) return;
+    state.revealed=true;
+    const [,q]=pairs[state.index];
+    const zone=document.getElementById("flashzone");
+    zone.innerHTML = `
+      <div class="flashverso" id="flashverso">${esc(q.verso)}</div>
+      <div class="flashbuttons">
+        <button class="btn good" id="knew">✓ Je savais <span class="k">C</span></button>
+        <button class="btn bad" id="didnt">✗ À revoir <span class="k">I</span></button>
+      </div>`;
+    mathify(document.getElementById("flashverso"));
+    document.getElementById("knew").onclick=()=>answerFlashcard(true);
+    document.getElementById("didnt").onclick=()=>answerFlashcard(false);
+  }
+  function answerFlashcard(correcte){
+    if(state.answered) return;
+    const [set,q]=pairs[state.index];
+    finishAnswer(set,q,correcte);
+    renderActionsFlashcard();
+    showFeedback(correcte, q, []);
+  }
+
+  function next(){
+    state.index++; state.selection=[]; state.answered=false; state.revealed=false;
+    if(state.index>=total) showResults(); else build();
+  }
+  function quitQuiz(){
+    if(confirm("Quitter la session ? Ta progression est déjà enregistrée.")) showMenu();
+  }
+  function onKey(e){
+    // Le champ de saisie (TROU) gère lui-même sa frappe : on ne doit pas intercepter
+    // de lettres ("Q" par exemple pourrait faire partie d'une réponse tapée).
+    if(e.target && e.target.tagName==="INPUT") return;
+
+    const [,q]=pairs[state.index];
+    const k=e.key.toUpperCase();
+    if(k==="Q"){ e.preventDefault(); quitQuiz(); return; }
+
+    if(q.type==="TROU"){
+      if(state.answered && (k==="ENTER" || e.key===" ")){ e.preventDefault(); next(); }
+      return;
+    }
+    if(q.type==="FLASHCARD"){
+      if(e.key===" "){
+        e.preventDefault();
+        if(!state.revealed) revealFlashcard();
+        else if(state.answered) next();
+      } else if(k==="ENTER" && state.answered){ e.preventDefault(); next(); }
+      else if(k==="C" && state.revealed) answerFlashcard(true);
+      else if(k==="I" && state.revealed) answerFlashcard(false);
+      return;
+    }
+    if(k==="ENTER" || e.key===" "){ e.preventDefault(); state.answered?next():validateChoices(); }
+    else if(k.length===1 && k>="A" && k<="Z"){
+      const idx=k.charCodeAt(0)-65;
+      if(idx>=0 && idx<q.choix.length){ e.preventDefault(); toggleChoice(idx); }
+    }
+  }
+
+  function showResults(){
+    screenTransition();
+    const pct=state.score/total*100;
+    const color = pct===100?css("--green"):(pct>=60?css("--yellow"):css("--red"));
+    const msg = pct===100 ? "Parfait, tout est juste."
+             : pct>=60 ? "Bon travail — continue de réviser les points faibles."
+             : "À retravailler — relance une révision intelligente bientôt.";
+    app.innerHTML=`
+      <div class="screen">
+        <p class="eyebrow">Résultat de la session</p>
+        <div class="result">
+          <div class="bigscore" style="color:${color}">${state.score} / ${total}</div>
+          <div class="pct" style="color:${color}">${pct.toFixed(0)} %</div>
+          <div class="ring"><i style="width:${pct}%;background:${color}"></i></div>
+          <div class="msg">${msg}</div>
+        </div>
+        <div class="actionbar" style="justify-content:center">
+          <button class="btn primary" id="menu">Menu principal <span class="k">Entrée</span></button>
+        </div>
+      </div>`;
+    document.getElementById("menu").onclick=showMenu;
+    setKeys(e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();showMenu();} });
+  }
+
+  build();
+}
+
+/* ----------------------------------------------------------------------
+   STATISTIQUES
+   ---------------------------------------------------------------------- */
+function showStats(){
+  screenTransition();
+  let body;
+  if(!SETS.length){
+    body=`<div class="empty"><div class="em">📊</div><h3>Pas encore de données</h3>
+      <p>Importe un set et réponds à quelques questions pour voir ta maîtrise et la répartition par boîte.</p></div>`;
+  }else{
+    body=SETS.map(s=>{
+      const r=resumeSet(s);
+      const pct=r.pct_maitrise;
+      const mcol = pct>=80?css("--green"):(pct>=40?css("--yellow"):css("--red"));
+      const maxRep=Math.max(1,...Object.values(r.repartition));
+      const rungs=Object.entries(r.repartition).map(([b,n])=>{
+        const h=Math.round(8+ (n/maxRep)*64);
+        return `<div class="rung">
+          <div class="col" style="height:${h}px;background:${css(COULEUR_BOITE[b])}">${n||""}</div>
+          <div class="lab">B${b}</div></div>`;
+      }).join("");
+      const metrics=[
+        `<span><span class="lab">Vues</span> <b>${r.rencontrees}/${r.total}</b></span>`,
+        `<span><span class="lab">À réviser</span> <b>${r.a_reviser}</b></span>`,
+        r.rencontrees?`<span><span class="lab">Précision</span> <b>${r.precision.toFixed(0)}%</b></span>`:""
+      ].join("");
+      return `<div class="statcard">
+        <h3>${esc(s.titre)}</h3>
+        <p class="desc">${s.questions.length} question${s.questions.length>1?"s":""}${s.description?" · "+esc(s.description):""}</p>
+        <div class="mastery">
+          <span class="bar"><i style="width:${pct}%;background:${mcol}"></i></span>
+          <span class="val" style="color:${mcol}">${pct.toFixed(0)}%</span>
+        </div>
+        <div class="metrics">${metrics}</div>
+        <div class="ladder">${rungs}</div>
+        <div class="laddernote">Répartition par boîte de Leitner — B0 = à revoir souvent … B5 = bien maîtrisé.</div>
+      </div>`;
+    }).join("");
+  }
+  app.innerHTML=`
+    <div class="screen">
+      <button class="backbtn" id="back">‹ Retour <span class="kbd">Échap</span></button>
+      <p class="eyebrow">Suivi</p>
+      <h2>Mes statistiques</h2>
+      ${body}
+    </div>`;
+  document.getElementById("back").onclick=showMenu;
+  setKeys(e=>{ if(e.key==="Escape") showMenu(); });
+}
+
+/* ----------------------------------------------------------------------
+   RÉINITIALISATION
+   ---------------------------------------------------------------------- */
+function resetRows(sets){
+  return sets.map(s=>`
+    <button class="row danger"><span class="ic">⟲</span>
+      <span class="txt"><b>${esc(s.titre)}</b><small>${s.questions.length} question${s.questions.length>1?"s":""}</small></span>
+      <span class="chev">›</span></button>`).join("");
+}
+function showResetSelect(){
+  showCategorizedSets("Réinitialiser un set", "Progression", resetRows, (s)=>{
+    if(confirm(`Effacer toute la progression de « ${s.titre} » ?\n\nCette action est irréversible.`)){
+      reinitialiserSet(s.id); refreshGlobal(); toast("Progression réinitialisée.","ok"); showMenu();
+    }
+  }, showMenu);
+}
+
+/* ----------------------------------------------------------------------
+   GESTION DES SETS — import / suppression / sauvegarde
+   ---------------------------------------------------------------------- */
+function showManage(){
+  screenTransition();
+  const list = SETS.length ? SETS.map((s,i)=>`
+      <div class="setline">
+        <span class="ic">${i+1}</span>
+        <span class="info"><b>${esc(s.titre)}</b><small>${s.questions.length} question${s.questions.length>1?"s":""} · ${esc(s.categorie||"Général")} · id: ${esc(s.id)}</small></span>
+        <button class="iconbtn" data-del="${i}" title="Supprimer ce set">✕</button>
+      </div>`).join("")
+    : `<div class="empty"><div class="em">📂</div><h3>Aucun set chargé</h3>
+       <p>Importe un fichier <code>.json</code> au même format que l'application d'origine (clé <code>questions</code> avec <code>question</code>, <code>choix</code>, <code>reponses</code>).</p></div>`;
+
+  app.innerHTML=`
+    <div class="screen">
+      <button class="backbtn" id="back">‹ Retour <span class="kbd">Échap</span></button>
+      <p class="eyebrow">Bibliothèque</p>
+      <h2>Gérer les sets</h2>
+      <p class="lede">Tes sets et ta progression vivent dans ce navigateur. Sauvegarde-les si tu changes d'appareil.
+      Si cette page est servie par un serveur local, le dossier <code>questions/</code> (et ses
+      sous-dossiers/catégories) est chargé automatiquement au démarrage — les boutons ci-dessous
+      servent surtout en ouvrant le fichier directement (<code>file://</code>) ou pour ajouter des sets en plus.</p>
+      <div class="tools">
+        <button class="btn primary" id="imp">＋ Importer des fichiers .json</button>
+        <button class="btn ghost" id="impdir">📁 Importer un dossier (catégories)</button>
+        <button class="btn ghost" id="exp">⤓ Sauvegarder la progression</button>
+        <button class="btn ghost" id="impprog">⤒ Restaurer une sauvegarde</button>
+      </div>
+      ${list}
+    </div>`;
+  document.getElementById("back").onclick=showMenu;
+  document.getElementById("imp").onclick=()=>document.getElementById("filein").click();
+  document.getElementById("impdir").onclick=()=>document.getElementById("dirin").click();
+  document.getElementById("exp").onclick=exportProgression;
+  document.getElementById("impprog").onclick=()=>document.getElementById("progin").click();
+  document.querySelectorAll("[data-del]").forEach(b=> b.onclick=()=>{
+    const i=parseInt(b.dataset.del,10); const s=SETS[i];
+    if(confirm(`Supprimer le set « ${s.titre} » ?\nSa progression sera aussi effacée.`)){
+      SETS.splice(i,1); delete PROG[s.id]; saveSets(); saveProg(); refreshGlobal(); showManage();
+    }
+  });
+  setKeys(e=>{ if(e.key==="Escape") showMenu(); });
+}
+
+/* Déduit la catégorie d'un fichier importé via dossier à partir de son chemin relatif
+   (ex. "questions/maths/algebre.json" -> "maths") ; "Général" si le fichier est à la racine. */
+function categorieDepuisChemin(relPath){
+  const parts=String(relPath||"").split("/");
+  return parts.length>2 ? parts[1] : "Général";
+}
+
+async function importerFichiers(files, categorieFn){
+  let ok=0; const errs=[];
+  for(const f of files){
+    if(!f.name.toLowerCase().endsWith(".json")) continue;
+    try{
+      const data=JSON.parse(await f.text());
+      const categorie=categorieFn(f);
+      const set=validerSet(data, f.name, categorie);
+      const k=SETS.findIndex(s=>s.id===set.id);
+      if(k>=0) SETS[k]=set; else SETS.push(set);
+      ok++;
+    }catch(e){ errs.push(e.message||String(e)); }
+  }
+  saveSets(); refreshGlobal();
+  if(ok) toast(`${ok} set${ok>1?"s":""} importé${ok>1?"s":""}.`+(errs.length?` ${errs.length} ignoré(s).`:""),"ok");
+  if(errs.length && !ok) toast(errs[0],"err");
+  if(errs.length) console.warn("Sets ignorés :\n"+errs.join("\n"));
+  showManage();
+}
+
+/* import de fichiers de questions isolés (toujours catégorie "Général") */
+document.getElementById("filein").addEventListener("change", async ev=>{
+  const files=[...ev.target.files]; ev.target.value="";
+  await importerFichiers(files, ()=>"Général");
+});
+
+/* import d'un dossier entier : la catégorie de chaque set vient de son sous-dossier */
+document.getElementById("dirin").addEventListener("change", async ev=>{
+  const files=[...ev.target.files]; ev.target.value="";
+  await importerFichiers(files, f=>categorieDepuisChemin(f.webkitRelativePath || f.name));
+});
+
+/* sauvegarde / restauration de la progression */
+function exportProgression(){
+  const blob=new Blob([JSON.stringify(PROG,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="progression.json"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  toast("Progression téléchargée.","ok");
+}
+document.getElementById("progin").addEventListener("change", async ev=>{
+  const f=ev.target.files[0]; ev.target.value="";
+  if(!f) return;
+  try{
+    const data=JSON.parse(await f.text());
+    if(typeof data!=="object"||data===null||Array.isArray(data)) throw new Error("Format inattendu.");
+    PROG=data; saveProg(); refreshGlobal(); toast("Sauvegarde restaurée.","ok"); showManage();
+  }catch(e){ toast("Fichier de progression illisible.","err"); }
+});
+
+/* ----------------------------------------------------------------------
+   SETS DE DÉMONSTRATION (semés au premier lancement seulement)
+   ---------------------------------------------------------------------- */
+function seedDemo(){
+  if(localStorage.getItem(LS_SEED)) return;
+  const demos=[
+    { id:"demo_maths", titre:"Maths — exemples LaTeX", categorie:"maths",
+      description:"Démonstration du rendu des équations $...$",
+      questions:[
+        {id:"aire-cercle",type:"QCM",question:"Quelle est l'aire d'un disque de rayon $r$ ?",
+         choix:["$2\\pi r$","$\\pi r^2$","$\\pi r$","$2r$"],reponses:[1],
+         explication:"L'aire vaut $\\pi r^2$ ; le périmètre vaut $2\\pi r$."},
+        {id:"derivee",type:"QCM",question:"Quelle est la dérivée de $f(x)=x^2$ ?",
+         choix:["$2x$","$x$","$x^2$","$2$"],reponses:[0],
+         explication:"$\\frac{d}{dx}x^2 = 2x$."},
+        {id:"pythagore",type:"QCR",question:"Lesquelles de ces relations sont vraies pour un triangle rectangle d'hypoténuse $c$ ?",
+         choix:["$a^2+b^2=c^2$","$c^2-a^2=b^2$","$a+b=c$","$\\sin^2\\theta+\\cos^2\\theta=1$"],reponses:[0,1,3],
+         explication:"$a+b=c$ est faux (inégalité triangulaire) ; les autres sont des identités valides."}
+      ]},
+    { id:"demo_langues", titre:"Langues — Anglais (exemple)", categorie:"langues",
+      description:"Démonstration des types FLASHCARD (vocabulaire) et TROU (grammaire)",
+      questions:[
+        {id:"voc-001",type:"FLASHCARD",question:"to achieve",verso:"réussir, accomplir",
+         explication:"Ex. : « She achieved her goal. » = Elle a atteint son objectif."},
+        {id:"voc-002",type:"FLASHCARD",question:"nevertheless",verso:"néanmoins, malgré tout"},
+        {id:"gram-trou-001",type:"TROU",question:"She ___ (go) to school every day.",
+         reponses_texte:["goes"],
+         explication:"Présent simple, 3e personne du singulier → on ajoute -es à « go »."},
+        {id:"gram-trou-002",type:"TROU",question:"I have lived here ___ 2010.",
+         reponses_texte:["since"],
+         explication:"« Since » introduit un point de départ précis dans le temps."},
+        {id:"gram-qcm-001",type:"QCM",question:"Quel auxiliaire permet de former le present perfect ?",
+         choix:["have / has","do / does","will","was / were"],reponses:[0],
+         explication:"Present perfect = have/has + participe passé."}
+      ]},
+    { id:"demo_culture", titre:"Culture générale — exemple", categorie:"Général",
+      description:"Set sans LaTeX pour démarrer vite",
+      questions:[
+        {id:"capitale",type:"QCM",question:"Quelle est la capitale de l'Australie ?",
+         choix:["Sydney","Melbourne","Canberra","Perth"],reponses:[2],
+         explication:"Canberra est la capitale ; Sydney est la plus grande ville."},
+        {id:"oceans",type:"QCR",question:"Lesquels sont des océans ?",
+         choix:["Atlantique","Méditerranée","Pacifique","Indien"],reponses:[0,2,3],
+         explication:"La Méditerranée est une mer, pas un océan."}
+      ]}
+  ];
+  for(const d of demos){
+    if(SETS.some(s=>s.id===d.id)) continue;
+    try{ const set=validerSet(d, d.id+".json", d.categorie||"Général"); set.id=d.id; SETS.push(set); }catch(e){ console.warn("démo invalide",e); }
+  }
+  saveSets();
+  localStorage.setItem(LS_SEED,"1");
+}
+
+/* ----------------------------------------------------------------------
+   CHARGEMENT AUTOMATIQUE DU DOSSIER questions/ (équivalent de core.lister_sets)
+   ---------------------------------------------------------------------- */
+/* Catégorie déduite d'un chemin relatif à questions/ (ex. "maths/algebre.json" -> "maths"). */
+function categorieDepuisCheminRelatif(relPath){
+  const parts=String(relPath||"").split("/");
+  return parts.length>1 ? parts[0] : "Général";
+}
+
+/* Charge automatiquement les sets de questions/ via manifest.json (généré par
+   build_exe.py, à côté de ce fichier). Ne fonctionne que servi par un serveur HTTP —
+   le protocole file:// bloque ces requêtes dans la plupart des navigateurs ; dans ce
+   cas on se contente silencieusement des sets déjà en localStorage (ou de la démo). */
+async function chargerDepuisDossierQuestions(){
+  let manifest;
+  try{
+    const res = await fetch("manifest.json", {cache:"no-store"});
+    if(!res.ok) return false;
+    manifest = await res.json();
+  }catch(e){ return false; }
+  if(!Array.isArray(manifest) || !manifest.length) return false;
+
+  let ok=0; const errs=[];
+  for(const relPath of manifest){
+    try{
+      const r=await fetch("questions/"+relPath, {cache:"no-store"});
+      if(!r.ok) throw new Error(`${relPath} : introuvable (HTTP ${r.status}).`);
+      const data=await r.json();
+      const categorie=categorieDepuisCheminRelatif(relPath);
+      const nomFichier=relPath.split("/").pop();
+      const set=validerSet(data, nomFichier, categorie);
+      const k=SETS.findIndex(s=>s.id===set.id);
+      if(k>=0) SETS[k]=set; else SETS.push(set);
+      ok++;
+    }catch(e){ errs.push(e.message||String(e)); }
+  }
+  if(ok) saveSets();
+  if(errs.length) console.warn("Sets ignorés (questions/) :\n"+errs.join("\n"));
+  return ok>0;
+}
+
+/* ----------------------------------------------------------------------
+   DÉMARRAGE
+   ---------------------------------------------------------------------- */
+(async function demarrer(){
+  loadAll();
+  const chargeDuDisque = await chargerDepuisDossierQuestions();
+  if(!chargeDuDisque && !SETS.length) seedDemo();
+  showMenu();
+})();
+// KaTeX peut finir de charger après le premier rendu : on relance une passe.
+window.addEventListener("load", ()=>{ refreshGlobal(); });
+</script>
+</body>
+</html>

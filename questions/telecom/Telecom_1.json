@@ -1,0 +1,1180 @@
+{
+  "titre": "Télécommunications — Introduction",
+  "description": "120 questions couvrant l'intégralité du cours : définitions, historique, modèle OSI, réglementation, canaux, décibels, Shannon, applications modernes et opérationnelles.",
+  "questions": [
+
+    {
+      "id": "intro-001",
+      "type": "QCM",
+      "question": "Quelle est la définition officielle des télécommunications selon la Conférence d'Atlantic City (1947) ?",
+      "choix": [
+        "Toute transmission de signes ou de sons par fil ou radio uniquement.",
+        "Toute transmission, émission ou réception de signes, signaux, écrits, images, sons ou renseignements de toute nature par fil, radioélectricité, optique ou autres systèmes électromagnétiques.",
+        "L'échange d'informations entre deux ordinateurs connectés à un réseau.",
+        "La diffusion de programmes télévisés ou radio par satellite."
+      ],
+      "reponses": [1],
+      "explication": "La définition de 1947 inclut tous les types de supports et d'informations."
+    },
+    {
+      "id": "intro-002",
+      "type": "QCR",
+      "question": "Quels sont les objectifs principaux des télécommunications ?",
+      "choix": [
+        "Transmettre de l'information (analogique ou numérique).",
+        "Assurer une connexion entre personnes et/ou objets.",
+        "Garantir une transmission rapide (débit élevé).",
+        "Assurer une qualité optimale (faible taux d'erreur).",
+        "Remplacer les interactions humaines par des machines."
+      ],
+      "reponses": [0, 1, 2, 3],
+      "explication": "Les objectifs incluent la transmission d'information, la connexion, la rapidité et la qualité."
+    },
+    {
+      "id": "intro-003",
+      "type": "QCM",
+      "question": "Quel terme a été créé en 1904 par Édouard Estaunié ?",
+      "choix": ["Radioélectricité", "Télégraphie", "Télécommunication", "Transmission hertzienne"],
+      "reponses": [2]
+    },
+    {
+      "id": "intro-004",
+      "type": "QCR",
+      "question": "Quels domaines sont couverts par les télécommunications ?",
+      "choix": [
+        "Transmission (émissions, transmissions, réception de signaux).",
+        "Communications (partage d'informations).",
+        "Systèmes électroniques (traitement numérique/analogique du signal).",
+        "Architecture logicielle.",
+        "Gestion des bases de données."
+      ],
+      "reponses": [0, 1, 2]
+    },
+    {
+      "id": "intro-005",
+      "type": "QCM",
+      "question": "À quelle couche du modèle OSI correspond la transmission des signaux ?",
+      "choix": ["Couche Application (7)", "Couche Transport (4)", "Couche Physique (1)", "Couche Réseau (3)"],
+      "reponses": [2]
+    },
+    {
+      "id": "intro-006",
+      "type": "QCM",
+      "question": "Quel élément de la chaîne de transmission transforme l'information brute en énergie électrique ?",
+      "choix": ["L'émetteur", "La source", "Le canal", "Le récepteur"],
+      "reponses": [1]
+    },
+    {
+      "id": "intro-007",
+      "type": "QCR",
+      "question": "Quels sont les rôles de l'émetteur dans la chaîne de transmission ?",
+      "choix": [
+        "Moduler le signal pour la transmission.",
+        "Amplifier la puissance du signal.",
+        "Convertir l'information brute en énergie électrique.",
+        "Traiter le signal reçu pour atténuer le bruit.",
+        "Transformer le signal en vue de son émission."
+      ],
+      "reponses": [0, 1, 4]
+    },
+    {
+      "id": "intro-008",
+      "type": "QCM",
+      "question": "Quel type de bruit est irréductible pour une température donnée ?",
+      "choix": ["Bruit thermique", "Bruit cosmique", "Bruit artificiel", "Bruit de grenaille"],
+      "reponses": [0]
+    },
+    {
+      "id": "intro-009",
+      "type": "QCM",
+      "question": "Quelle est la bande passante à -3 dB d'un canal de transmission ?",
+      "choix": [
+        "La plage de fréquences où l'atténuation est maximale.",
+        "La plage de fréquences où l'atténuation (en décimal) est au maximum égale au double de sa valeur minimale.",
+        "La fréquence centrale du canal.",
+        "La fréquence à laquelle le signal est complètement atténué."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "intro-010",
+      "type": "QCM",
+      "question": "Quel théorème donne la capacité maximale d'un canal bruité ?",
+      "choix": ["Théorème de Nyquist", "Théorème de Shannon", "Loi de Moore", "Principe de Huygens"],
+      "reponses": [1]
+    },
+
+    {
+      "id": "hist-001",
+      "type": "QCM",
+      "question": "En quelle année a eu lieu la première conversation téléphonique (Bell) ?",
+      "choix": ["1876", "1896", "1901", "1927"],
+      "reponses": [0]
+    },
+    {
+      "id": "hist-002",
+      "type": "QCM",
+      "question": "Qui a réalisé la première liaison radio transatlantique en 1901 ?",
+      "choix": ["Thomas Edison", "Nikola Tesla", "Guglielmo Marconi", "Alexandre Popov"],
+      "reponses": [2]
+    },
+    {
+      "id": "hist-003",
+      "type": "QCR",
+      "question": "Quelles innovations technologiques ont favorisé l'essor des télécommunications ?",
+      "choix": [
+        "Recherches sur les ondes électromagnétiques",
+        "Création du transistor",
+        "La conquête spatiale",
+        "L'essor du numérique",
+        "Les systèmes optroniques"
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "hist-004",
+      "type": "QCM",
+      "question": "Quel satellite a été le premier satellite de télécommunications commercial (1962) ?",
+      "choix": ["Sputnik", "Telstar", "Intelsat I", "Ariane"],
+      "reponses": [1]
+    },
+    {
+      "id": "hist-005",
+      "type": "QCM",
+      "question": "En quelle année a été lancée la théorie de l'information par Shannon ?",
+      "choix": ["1927", "1946", "1948", "1962"],
+      "reponses": [2]
+    },
+    {
+      "id": "hist-006",
+      "type": "QCM",
+      "question": "Quel système de télégraphie optique a quadrillé la France avec 534 tours en 1844 ?",
+      "choix": ["Télégraphe de Morse", "Télégraphe électrique", "Télégraphe de Chappe", "Radio Chappe"],
+      "reponses": [2]
+    },
+    {
+      "id": "hist-007",
+      "type": "QCR",
+      "question": "Quelles générations de téléphonie mobile sont actuellement en service en France ?",
+      "choix": ["1G", "2G", "3G", "4G", "5G", "6G"],
+      "reponses": [1, 2, 3, 4]
+    },
+    {
+      "id": "hist-008",
+      "type": "QCM",
+      "question": "Quel était le débit moyen de la 2G en France ?",
+      "choix": ["50 kbits/s", "10 Mbits/s", "100 Mbits/s", "1 Gbits/s"],
+      "reponses": [0]
+    },
+    {
+      "id": "hist-009",
+      "type": "QCM",
+      "question": "Quel était le débit moyen de la 4G en France ?",
+      "choix": ["10 kbits/s", "10 Mbits/s", "10-100 Mbits/s", "1 Gbits/s"],
+      "reponses": [2]
+    },
+    {
+      "id": "hist-010",
+      "type": "QCM",
+      "question": "Quelle fréquence est utilisée par la 5G en France pour les débits très élevés (2022-2023) ?",
+      "choix": ["700 MHz", "2.1 GHz", "3.5 GHz", "26 GHz"],
+      "reponses": [3]
+    },
+
+    {
+      "id": "osi-001",
+      "type": "QCM",
+      "question": "Combien de couches compose le modèle OSI ?",
+      "choix": ["5", "7", "9", "10"],
+      "reponses": [1]
+    },
+    {
+      "id": "osi-002",
+      "type": "QCR",
+      "question": "Quelles sont les 7 couches du modèle OSI, de la plus basse à la plus haute ?",
+      "choix": [
+        "Physique",
+        "Liaison de données",
+        "Réseau",
+        "Transport",
+        "Session",
+        "Présentation",
+        "Application"
+      ],
+      "reponses": [0, 1, 2, 3, 4, 5, 6]
+    },
+    {
+      "id": "osi-003",
+      "type": "QCM",
+      "question": "À quelle couche du modèle OSI correspond la transmission des bits bruts sur un support physique ?",
+      "choix": ["Couche Application", "Couche Physique", "Couche Réseau", "Couche Transport"],
+      "reponses": [1]
+    },
+    {
+      "id": "osi-004",
+      "type": "QCM",
+      "question": "Quel composant de la chaîne de transmission est responsable de la compensation de l'affaiblissement du signal ?",
+      "choix": ["Source", "Émetteur", "Canal", "Récepteur"],
+      "reponses": [3]
+    },
+    {
+      "id": "osi-005",
+      "type": "QCR",
+      "question": "Quels sont les 5 éléments de la chaîne de transmission ?",
+      "choix": [
+        "Source d'information",
+        "Émetteur",
+        "Canal de transmission",
+        "Récepteur",
+        "Destinataire",
+        "Amplificateur"
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "osi-006",
+      "type": "QCM",
+      "question": "Quel est le rôle de la source d'information dans la chaîne de transmission ?",
+      "choix": [
+        "Amplifier le signal.",
+        "Transformer l'information brute en énergie électrique (transduction).",
+        "Moduler le signal.",
+        "Corriger les erreurs de transmission."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "osi-007",
+      "type": "QCM",
+      "question": "Quel est le rôle du canal de transmission ?",
+      "choix": [
+        "Générer le signal.",
+        "Permettre le transfert à distance du signal contenant l'information.",
+        "Corriger les erreurs.",
+        "Amplifier le signal."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "osi-008",
+      "type": "QCM",
+      "question": "Quel est le rôle du destinataire dans la chaîne de transmission ?",
+      "choix": [
+        "Émettre le signal.",
+        "Réaliser la transduction de réception pour retrouver la nature originale du message.",
+        "Amplifier le signal.",
+        "Moduler le signal."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "osi-009",
+      "type": "QCR",
+      "question": "Quels sont les effets du canal sur le signal ?",
+      "choix": [
+        "Affaiblissement (atténuation de la puissance).",
+        "Filtrage fréquentielle (sélectivité en fréquences).",
+        "Retard (influence sur le temps de propagation).",
+        "Addition de bruit (déformation du signal).",
+        "Amplification du signal."
+      ],
+      "reponses": [0, 1, 2, 3]
+    },
+    {
+      "id": "osi-010",
+      "type": "QCM",
+      "question": "Quel phénomène se produit lorsque le signal reçu est une somme de répliques du signal d'origine ?",
+      "choix": ["Affaiblissement", "Trajet multiple", "Bruit thermique", "Déphasage"],
+      "reponses": [1]
+    },
+
+    {
+      "id": "reg-001",
+      "type": "QCM",
+      "question": "Quel organisme international gère le Règlement des Radiocommunications (RR) ?",
+      "choix": ["ITU-T", "UIT-R", "CEPT", "ANFr"],
+      "reponses": [1]
+    },
+    {
+      "id": "reg-002",
+      "type": "QCM",
+      "question": "Toutes les combien d'années le Règlement des Radiocommunications (RR) est-il mis à jour ?",
+      "choix": ["1 an", "2 ans", "3-4 ans", "5 ans"],
+      "reponses": [2]
+    },
+    {
+      "id": "reg-003",
+      "type": "QCR",
+      "question": "Quels services sont définis par le Règlement des Radiocommunications (RR) ?",
+      "choix": [
+        "Services terrestres (fixe, mobile, radiolocalisation).",
+        "Services de radiodiffusion.",
+        "Services de radioastronomie.",
+        "Services spatiaux.",
+        "Services de téléphonie fixe uniquement."
+      ],
+      "reponses": [0, 1, 2, 3]
+    },
+    {
+      "id": "reg-004",
+      "type": "QCM",
+      "question": "Quel organisme européen prépare les Conférences Mondiales des Radiocommunications (CMR) ?",
+      "choix": ["UIT-R", "CEPT", "ANFr", "ARCEP"],
+      "reponses": [1]
+    },
+    {
+      "id": "reg-005",
+      "type": "QCM",
+      "question": "Quel est le document de référence pour la réglementation française des fréquences ?",
+      "choix": [
+        "Tableau National de Répartition des Bandes de Fréquences (TNRBF)",
+        "Règlement des Radiocommunications (RR)",
+        "Norme ISO 9001",
+        "Loi Godfrain"
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "reg-006",
+      "type": "QCR",
+      "question": "Quels sont les affectataires primaires des bandes de fréquences en France ?",
+      "choix": [
+        "Ministère des Armées",
+        "ARCEP",
+        "CSA",
+        "Ministère de l'Intérieur",
+        "ANFr"
+      ],
+      "reponses": [0, 1, 2, 3]
+    },
+    {
+      "id": "reg-007",
+      "type": "QCM",
+      "question": "Quel organisme français gère, planifie et contrôle les usages du spectre électromagnétique ?",
+      "choix": ["ARCEP", "CSA", "ANFr", "DGNUM"],
+      "reponses": [2]
+    },
+    {
+      "id": "reg-008",
+      "type": "QCM",
+      "question": "Quel texte de référence régit l'utilisation du spectre au sein de l'OTAN ?",
+      "choix": [
+        "Règlement des Radiocommunications (RR)",
+        "NJFA (NATO Joint Frequency Agreement)",
+        "TNRBF",
+        "Directives CEPT"
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "reg-009",
+      "type": "QCM",
+      "question": "En combien de régions le monde est-il découpé par le Règlement des Radiocommunications (RR) ?",
+      "choix": ["2", "3", "4", "5"],
+      "reponses": [1]
+    },
+    {
+      "id": "reg-010",
+      "type": "QCR",
+      "question": "Quels sont les statuts possibles d'un affectataire dans le TNRBF ?",
+      "choix": [
+        "Exclusif",
+        "Primaire",
+        "Secondaire",
+        "À égalité de droits",
+        "Temporaire"
+      ],
+      "reponses": [0, 1, 2, 3]
+    },
+
+    {
+      "id": "canal-001",
+      "type": "QCM",
+      "question": "Quel est le modèle de canal le plus simple (mais pas forcément le plus réaliste) ?",
+      "choix": ["Canal de Rayleigh", "Canal de Rice", "Canal gaussien (AWGN)", "Canal à évanouissement"],
+      "reponses": [2]
+    },
+    {
+      "id": "canal-002",
+      "type": "QCM",
+      "question": "Quel modèle de canal suppose une propagation uniquement par multi-trajets sans ligne de vue directe ?",
+      "choix": ["Canal de Rayleigh", "Canal de Rice", "Canal gaussien", "Canal à évanouissement"],
+      "reponses": [0]
+    },
+    {
+      "id": "canal-003",
+      "type": "QCM",
+      "question": "Quel modèle de canal suppose une propagation par multi-trajets ET une ligne de vue directe (LOS) ?",
+      "choix": ["Canal de Rayleigh", "Canal de Rice", "Canal gaussien", "Canal à évanouissement"],
+      "reponses": [1]
+    },
+    {
+      "id": "canal-004",
+      "type": "QCM",
+      "question": "Dans le modèle du canal gaussien, comment s'exprime le signal en sortie u(t) ?",
+      "choix": [
+        "$u(t) = s(t) + b(t)$",
+        "$u(t) = a \\cdot s(t) + b(t)$",
+        "$u(t) = a \\cdot s(t - \\\\tau) + b(t)$",
+        "$u(t) = \\\\sum_{i=1}^{N} a_i s(t - \\\\tau_i) + b(t)$"
+      ],
+      "reponses": [1],
+      "explication": "Dans le canal gaussien, le signal en sortie est modélisé par $u(t) = a \\cdot s(t) + b(t)$."
+    },
+    {
+      "id": "canal-005",
+      "type": "QCR",
+      "question": "Quels sont les types de perturbations du canal mentionnés dans le cours ?",
+      "choix": [
+        "Affaiblissement (atténuation de la puissance).",
+        "Filtrage fréquentielle (sélectivité en fréquences).",
+        "Retard (influence sur le temps de propagation).",
+        "Addition de bruit (déformation du signal).",
+        "Déphasage (décalage de phase).",
+        "Trajet multiple (somme de répliques du signal)."
+      ],
+      "reponses": [0, 1, 2, 3, 4, 5]
+    },
+    {
+      "id": "canal-006",
+      "type": "QCM",
+      "question": "Quelle est la cause principale du bruit thermique dans un système électronique ?",
+      "choix": [
+        "L'agitation des électrons dans les conducteurs.",
+        "Les interférences avec d'autres signaux.",
+        "Les défauts de fabrication des composants.",
+        "Les rayonnements cosmiques."
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "canal-007",
+      "type": "QCR",
+      "question": "Quelles sont les sources de bruit dans un système de télécommunication ?",
+      "choix": [
+        "Bruit thermique (interne).",
+        "Bruit de grenaille (interne).",
+        "Bruit cosmique (externe, naturel).",
+        "Bruit atmosphérique (externe, naturel).",
+        "Parasites industriels (externe, artificiel)."
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "canal-008",
+      "type": "QCM",
+      "question": "Quel type de bruit est généré par des commutations de courant dans les circuits électroniques ?",
+      "choix": ["Bruit thermique", "Bruit de grenaille", "Bruit cosmique", "Bruit impulsif"],
+      "reponses": [3]
+    },
+    {
+      "id": "canal-009",
+      "type": "QCR",
+      "question": "Comment peut-on réduire le bruit dans un système de télécommunication ?",
+      "choix": [
+        "En utilisant des blindages.",
+        "En choisissant des composants de qualité.",
+        "En augmentant la puissance d'émission.",
+        "En utilisant un mode de construction soigné."
+      ],
+      "reponses": [0, 1, 3]
+    },
+    {
+      "id": "canal-010",
+      "type": "QCM",
+      "question": "Quel est l'effet d'un SNR (Rapport Signal/Bruit) de 0 dB sur un signal ?",
+      "choix": [
+        "Le signal est parfaitement clair.",
+        "Le signal est fortement bruité (niveau du signal = niveau du bruit).",
+        "Le signal est inaudible.",
+        "Le signal est amplifié."
+      ],
+      "reponses": [1]
+    },
+
+    {
+      "id": "db-001",
+      "type": "QCM",
+      "question": "Comment s'exprime un décibel (dB) en fonction d'un rapport de puissance A ?",
+      "choix": [
+        "$A_{[dB]} = 10 \\\\cdot \\\\log_{10}(A)$",
+        "$A_{[dB]} = 20 \\\\cdot \\\\log_{10}(A)$",
+        "$A_{[dB]} = \\\\ln(A)$",
+        "$A_{[dB]} = A^2$"
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "db-002",
+      "type": "QCM",
+      "question": "Comment s'exprime un décibel-watt (dBW) en fonction d'une puissance P en watts ?",
+      "choix": [
+        "$P_{[dBW]} = 10 \\\\cdot \\\\log_{10}(P_{[W]})$",
+        "$P_{[dBW]} = 20 \\\\cdot \\\\log_{10}(P_{[W]})$",
+        "$P_{[dBW]} = P_{[W]} \\\\cdot 10$",
+        "$P_{[dBW]} = \\\\log_{10}(P_{[W]})$"
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "db-003",
+      "type": "QCM",
+      "question": "Comment s'exprime un décibel-milliwatt (dBm) en fonction d'une puissance P en milliwatts ?",
+      "choix": [
+        "$P_{[dBm]} = 10 \\\\cdot \\\\log_{10}(P_{[mW]})$",
+        "$P_{[dBm]} = 20 \\\\cdot \\\\log_{10}(P_{[mW]})$",
+        "$P_{[dBm]} = P_{[mW]} \\\\cdot 10$",
+        "$P_{[dBm]} = \\\\log_{10}(P_{[mW]}) \\\\cdot 100$"
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "db-004",
+      "type": "QCM",
+      "question": "Comment convertir une puissance de 1 W en dBW ?",
+      "choix": ["0 dBW", "1 dBW", "10 dBW", "20 dBW"],
+      "reponses": [0]
+    },
+    {
+      "id": "db-005",
+      "type": "QCM",
+      "question": "Comment convertir une puissance de 1 mW en dBm ?",
+      "choix": ["0 dBm", "1 dBm", "10 dBm", "20 dBm"],
+      "reponses": [0]
+    },
+    {
+      "id": "db-006",
+      "type": "QCM",
+      "question": "Quelle est la relation entre dBW et dBm ?",
+      "choix": [
+        "$P_{[dBm]} = P_{[dBW]} + 30$",
+        "$P_{[dBm]} = P_{[dBW]} - 30$",
+        "$P_{[dBm]} = 10 \\\\cdot P_{[dBW]}$",
+        "$P_{[dBm]} = P_{[dBW]}$"
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "db-007",
+      "type": "QCM",
+      "question": "Quelle puissance en watts correspond à 30 dBW ?",
+      "choix": ["1 W", "10 W", "100 W", "1000 W"],
+      "reponses": [3]
+    },
+    {
+      "id": "db-008",
+      "type": "QCM",
+      "question": "Quelle puissance en milliwatts correspond à 20 dBm ?",
+      "choix": ["1 mW", "10 mW", "100 mW", "1000 mW"],
+      "reponses": [2]
+    },
+    {
+      "id": "db-009",
+      "type": "QCM",
+      "question": "Quelle est la puissance en watts d'un signal de 23 dBm ?",
+      "choix": ["0.02 W", "0.2 W", "2 W", "20 W"],
+      "reponses": [1]
+    },
+    {
+      "id": "db-010",
+      "type": "QCM",
+      "question": "Quelle puissance en milliwatts correspond à 36 dBm ?",
+      "choix": ["40 mW", "400 mW", "4000 mW", "40000 mW"],
+      "reponses": [2]
+    },
+
+    {
+      "id": "shannon-001",
+      "type": "QCM",
+      "question": "Quelle est la formule de la capacité maximale d'un canal bruité selon Shannon ?",
+      "choix": [
+        "$C = B \\\\cdot \\\\log_2(1 + S/N)$",
+        "$C = B \\\\cdot (1 + S/N)$",
+        "$C = 2B \\\\cdot \\\\log_2(S/N)$",
+        "$C = B^2 / (S/N)$"
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "shannon-002",
+      "type": "QCM",
+      "question": "Dans la formule de Shannon, que représente B ?",
+      "choix": [
+        "La bande passante du canal (en Hz).",
+        "Le débit binaire (en bits/s).",
+        "Le rapport signal/bruit (en dB).",
+        "La puissance du signal (en W)."
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "shannon-003",
+      "type": "QCM",
+      "question": "Dans la formule de Shannon, que représente S/N ?",
+      "choix": [
+        "Le rapport signal/bruit en décibels (dB).",
+        "Le rapport signal/bruit en linéaire (sans unité).",
+        "La puissance du signal en watts.",
+        "La puissance du bruit en watts."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "shannon-004",
+      "type": "QCM",
+      "question": "Si un canal a une bande passante de 10 kHz et un S/N de 1000 (linéaire), quelle est sa capacité maximale ?",
+      "choix": ["~30 000 bits/s", "~100 000 bits/s", "~300 000 bits/s", "~1 000 000 bits/s"],
+      "reponses": [1],
+      "explication": "$C = 10\\,000 \\\\cdot \\\\log_2(1 + 1000) \\\\approx 10\\,000 \\\\cdot 10 = 100\\,000 bits/s$."
+    },
+    {
+      "id": "shannon-005",
+      "type": "QCM",
+      "question": "Si un canal a un SNR de 20 dB, quel est le rapport S/N en linéaire ?",
+      "choix": ["20", "100", "200", "1000"],
+      "reponses": [1]
+    },
+    {
+      "id": "shannon-006",
+      "type": "QCM",
+      "question": "Si un canal a un SNR de 0 dB, quel est le rapport S/N en linéaire ?",
+      "choix": ["0", "1", "10", "0.1"],
+      "reponses": [1]
+    },
+    {
+      "id": "shannon-007",
+      "type": "QCM",
+      "question": "Quelle est la capacité maximale d'un canal avec une bande passante de 1 MHz et un SNR de 30 dB ?",
+      "choix": ["~10 Mbits/s", "~20 Mbits/s", "~30 Mbits/s", "~40 Mbits/s"],
+      "reponses": [0],
+      "explication": "$S/N = 10^{30/10} = 1000$. $C = 1\\,000\\,000 \\\\cdot \\\\log_2(1001) \\\\approx 10\\,000\\,000 bits/s = 10 Mbits/s$."
+    },
+    {
+      "id": "shannon-008",
+      "type": "QCM",
+      "question": "Quel est l'impact d'une augmentation de la bande passante sur la capacité du canal selon Shannon ?",
+      "choix": [
+        "La capacité augmente linéairement.",
+        "La capacité augmente exponentiellement.",
+        "La capacité diminue.",
+        "La capacité reste inchangée."
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "shannon-009",
+      "type": "QCM",
+      "question": "Quel est l'impact d'une augmentation du rapport S/N sur la capacité du canal selon Shannon ?",
+      "choix": [
+        "La capacité augmente linéairement.",
+        "La capacité augmente logarithmiquement.",
+        "La capacité diminue.",
+        "La capacité reste inchangée."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "shannon-010",
+      "type": "QCM",
+      "question": "Quelle est la capacité maximale théorique d'un canal sans bruit (S/N → ∞) ?",
+      "choix": [
+        "$C = B$",
+        "$C = B \\\\cdot \\\\log_2(S/N)$",
+        "$C \\\\to \\\\infty$",
+        "$C = 2B$"
+      ],
+      "reponses": [2]
+    },
+
+    {
+      "id": "app-mod-001",
+      "type": "QCM",
+      "question": "Quel projet de Google visait à fournir un accès Internet mondial via des ballons stratosphériques ?",
+      "choix": ["Starlink", "Loon", "Kuiper", "OneWeb"],
+      "reponses": [1]
+    },
+    {
+      "id": "app-mod-002",
+      "type": "QCM",
+      "question": "Quel acteur propose un accès Internet mondial par satellites avec la constellation Starlink ?",
+      "choix": ["Amazon", "Elon Musk (SpaceX)", "OneWeb", "Google"],
+      "reponses": [1]
+    },
+    {
+      "id": "app-mod-003",
+      "type": "QCR",
+      "question": "Quels sont les enjeux actuels des télécommunications mentionnés dans le cours ?",
+      "choix": [
+        "Opérationnels et stratégiques (ex: soutien des missions militaires).",
+        "Économiques et financiers (ex: investissements des opérateurs).",
+        "Sociétaux (ex: accès numérique pour tous).",
+        "Technologiques (ex: optimisation des performances des SIC).",
+        "Environnementaux (ex: réduction de l'empreinte carbone)."
+      ],
+      "reponses": [0, 1, 2, 3]
+    },
+    {
+      "id": "app-mod-004",
+      "type": "QCM",
+      "question": "Quel était le montant total investi par les opérateurs français dans les réseaux télécoms entre 2011 et 2021 ?",
+      "choix": ["50 milliards d'euros", "80 milliards d'euros", "113 milliards d'euros", "200 milliards d'euros"],
+      "reponses": [2]
+    },
+    {
+      "id": "app-mod-005",
+      "type": "QCR",
+      "question": "Quelles sont les tendances principales des télécommunications modernes ?",
+      "choix": [
+        "Hautes fréquences.",
+        "Convergence des réseaux.",
+        "Haut débit.",
+        "Intelligence Artificielle (IA).",
+        "Moins de latence."
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "app-mod-006",
+      "type": "QCM",
+      "question": "Quel est l'objectif du Plan France Numérique 2020 ?",
+      "choix": [
+        "Remplacer toutes les connexions filaires par du sans-fil.",
+        "Rendre le numérique accessible à tous les Français.",
+        "Interdire les réseaux sociaux en France.",
+        "Créer un réseau 6G d'ici 2020."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "app-mod-007",
+      "type": "QCR",
+      "question": "Quels sont les domaines d'application de la 5G mentionnés dans le cours ?",
+      "choix": [
+        "Objets connectés (IoT).",
+        "Jeux en ligne.",
+        "Industrie 4.0.",
+        "Ville intelligente (Smart City).",
+        "Médecine à distance (télémédecine)."
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "app-mod-008",
+      "type": "QCM",
+      "question": "Quelle fréquence est utilisée par le WiFi (norme 802.11b/g/n) ?",
+      "choix": ["2.4 GHz", "5 GHz", "60 GHz", "900 MHz"],
+      "reponses": [0]
+    },
+    {
+      "id": "app-mod-009",
+      "type": "QCM",
+      "question": "Quelle technologie permet une connexion sans fil à courte distance entre appareils ?",
+      "choix": ["WiFi", "Bluetooth", "4G", "LoRa"],
+      "reponses": [1]
+    },
+    {
+      "id": "app-mod-010",
+      "type": "QCM",
+      "question": "Quel est le débit moyen de la 5G en France ?",
+      "choix": ["10-100 Mbits/s", "100-400 Mbits/s", "1-10 Gbits/s", "10-100 Gbits/s"],
+      "reponses": [1]
+    },
+
+    {
+      "id": "app-op-001",
+      "type": "QCM",
+      "question": "Quel est le nom du réseau résilient du ministère des Armées, rénové entre 2017 et 2021 ?",
+      "choix": ["POINCARE", "SOCRATE", "SYMPHONIE", "ICARE"],
+      "reponses": [1]
+    },
+    {
+      "id": "app-op-002",
+      "type": "QCM",
+      "question": "Quelle architecture d'interconnexion sécurisée a été réalisée pour le ministère des Armées ?",
+      "choix": ["POINCARE", "SOCRATE", "SYMPHONIE", "DESCARTES"],
+      "reponses": [0]
+    },
+    {
+      "id": "app-op-003",
+      "type": "QCR",
+      "question": "Quels sont les 4 programmes d'armement mentionnés pour la modernisation des télécommunications du ministère des Armées ?",
+      "choix": [
+        "POINCARE",
+        "SOCRATE Cœur Résilient",
+        "SYMPHONIE",
+        "ICARE",
+        "DESCARTES"
+      ],
+      "reponses": [0, 1, 2, 3]
+    },
+    {
+      "id": "app-op-004",
+      "type": "QCM",
+      "question": "Quel est le nom du premier programme de satellites de télécommunications militaires français (lancé en 1984) ?",
+      "choix": ["Syracuse", "Athena-Fidus", "Comsat NG", "Telecom 1A"],
+      "reponses": [3]
+    },
+    {
+      "id": "app-op-005",
+      "type": "QCM",
+      "question": "En quelle année a été lancé le premier satellite Syracuse 3 ?",
+      "choix": ["1995", "2000", "2005", "2010"],
+      "reponses": [2]
+    },
+    {
+      "id": "app-op-006",
+      "type": "QCM",
+      "question": "Quel satellite permet une interopérabilité franco-italienne depuis 2014 ?",
+      "choix": ["Syracuse 3B", "Athena-Fidus", "Comsat NG", "Helios 2"],
+      "reponses": [1]
+    },
+    {
+      "id": "app-op-007",
+      "type": "QCR",
+      "question": "Quels sont les nouveaux utilisateurs des satellites Syracuse 4 ?",
+      "choix": [
+        "Drones",
+        "Troupes terrestres en mouvement",
+        "Porteurs aéronautiques",
+        "Satellites de reconnaissance",
+        "Bateaux de guerre"
+      ],
+      "reponses": [0, 1, 2]
+    },
+    {
+      "id": "app-op-008",
+      "type": "QCM",
+      "question": "Quelle bande de fréquences est utilisée par Syracuse 4 pour des débits plus importants ?",
+      "choix": ["Bande C", "Bande X", "Bande Ka", "Bande L"],
+      "reponses": [2]
+    },
+    {
+      "id": "app-op-009",
+      "type": "QCM",
+      "question": "Quel est le débit de la liaison Athena-Fidus ?",
+      "choix": ["1 Gbit/s", "3 Gbits/s", "10 Gbits/s", "100 Gbits/s"],
+      "reponses": [1]
+    },
+    {
+      "id": "app-op-010",
+      "type": "QCM",
+      "question": "Quel satellite permet la détection et localisation des signaux électromagnétiques (radars, communications) ?",
+      "choix": ["Helios 2", "CSO", "Ceres", "Pléiades"],
+      "reponses": [2]
+    },
+
+    {
+      "id": "quot-001",
+      "type": "QCM",
+      "question": "Quelle technologie utilise la radiodiffusion (radio FM, TV) ?",
+      "choix": ["Ondes millimétriques", "Ondes décamétriques", "Ondes métriques et décimétriques", "Ondes kilométriques"],
+      "reponses": [2]
+    },
+    {
+      "id": "quot-002",
+      "type": "QCM",
+      "question": "Quelle technologie permet une connexion Internet via le réseau électrique ?",
+      "choix": ["ADSL", "Fibre optique", "CPL", "4G"],
+      "reponses": [2]
+    },
+    {
+      "id": "quot-003",
+      "type": "QCR",
+      "question": "Quels sont les supports physiques pour l'accès Internet mentionnés dans le cours ?",
+      "choix": [
+        "Le câble (coaxial).",
+        "L'ADSL (paires de cuivre).",
+        "La fibre optique.",
+        "Le satellite.",
+        "Le WiFi."
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "quot-004",
+      "type": "QCM",
+      "question": "Quelle technologie utilise la tour Eiffel pour la diffusion TV/radio ?",
+      "choix": ["Fibre optique", "Ondes hertziennes", "Câble coaxial", "Satellite"],
+      "reponses": [1]
+    },
+    {
+      "id": "quot-005",
+      "type": "QCM",
+      "question": "Quel était le débit de la 1G (années 1980) ?",
+      "choix": ["2.4 Kb/s", "9.6 Kb/s", "56 Kb/s", "128 Kb/s"],
+      "reponses": [0]
+    },
+    {
+      "id": "quot-006",
+      "type": "QCR",
+      "question": "Quelles fréquences sont utilisées par la 4G en France ?",
+      "choix": [
+        "700 MHz",
+        "800 MHz",
+        "900 MHz",
+        "1800 MHz",
+        "2100 MHz",
+        "2600 MHz"
+      ],
+      "reponses": [0, 1, 2, 3, 4, 5]
+    },
+    {
+      "id": "quot-007",
+      "type": "QCM",
+      "question": "Quelle génération de téléphonie mobile utilise la bande 26 GHz ?",
+      "choix": ["3G", "4G", "5G", "6G"],
+      "reponses": [2]
+    },
+    {
+      "id": "quot-008",
+      "type": "QCM",
+      "question": "Quel est l'objectif principal de la 6G (prévue vers 2030) ?",
+      "choix": [
+        "Débit supérieur à 1 Gbit/s.",
+        "Réalité virtuelle immersive.",
+        "Industrie 5.0.",
+        "Toutes les réponses ci-dessus."
+      ],
+      "reponses": [3]
+    },
+    {
+      "id": "quot-009",
+      "type": "QCM",
+      "question": "Quelle technologie permet une connexion haut débit en mouvement (ex: train, voiture) ?",
+      "choix": ["ADSL", "Fibre optique", "4G/5G", "CPL"],
+      "reponses": [2]
+    },
+    {
+      "id": "quot-010",
+      "type": "QCM",
+      "question": "Quel est le débit de la fibre optique (FTTH) en France ?",
+      "choix": ["100 Mbits/s", "1 Gbit/s", "10 Gbits/s", "Jusqu'à 10 Gbits/s"],
+      "reponses": [3]
+    },
+
+    {
+      "id": "enj-001",
+      "type": "QCR",
+      "question": "Quels sont les enjeux opérationnels et stratégiques des télécommunications pour les armées ?",
+      "choix": [
+        "Soutien des missions (exercices, OPINT, OPEX).",
+        "Disponibilité des moyens.",
+        "Projectabilité des systèmes.",
+        "Interopérabilité avec les alliés.",
+        "Sécurité des transmissions."
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "enj-002",
+      "type": "QCM",
+      "question": "Quel concept décrit la boucle décisionnelle en stratégie militaire ?",
+      "choix": ["OODA Loop", "Network Centric Warfare", "C4ISR", "IW"],
+      "reponses": [0]
+    },
+    {
+      "id": "enj-003",
+      "type": "QCM",
+      "question": "Quel concept militaire repose sur l'interconnexion des capteurs, décideurs et effecteurs ?",
+      "choix": ["OODA Loop", "Network Centric Warfare", "C4ISR", "Guerre électronique"],
+      "reponses": [1]
+    },
+    {
+      "id": "enj-004",
+      "type": "QCR",
+      "question": "Quels sont les enjeux technologiques des télécommunications modernes ?",
+      "choix": [
+        "Optimisation des performances des SIC.",
+        "Adaptation aux innovations technologiques.",
+        "Normalisation (ISO, interarmées, interalliés).",
+        "Proximité avec la guerre électronique.",
+        "Réduction des coûts."
+      ],
+      "reponses": [0, 1, 2, 3]
+    },
+    {
+      "id": "enj-005",
+      "type": "QCR",
+      "question": "Quels sont les domaines de la SSI (Sécurité des Systèmes d'Information) mentionnés dans le cours ?",
+      "choix": [
+        "Sécurité des transmissions.",
+        "Sécurité des communications.",
+        "Maîtrise de l'information.",
+        "Protection des données personnelles.",
+        "Chiffrement des emails."
+      ],
+      "reponses": [0, 1, 2]
+    },
+    {
+      "id": "enj-006",
+      "type": "QCM",
+      "question": "Quel organisme régule les télécommunications en France ?",
+      "choix": ["ANFr", "ARCEP", "CSA", "Ministère des Armées"],
+      "reponses": [1]
+    },
+    {
+      "id": "enj-007",
+      "type": "QCR",
+      "question": "Quels sont les acteurs majeurs du numérique mentionnés dans le cours ?",
+      "choix": [
+        "GAFAM (Google, Apple, Facebook, Amazon, Microsoft).",
+        "NATU (Netflix, Airbnb, Tesla, Uber).",
+        "BATX (Baidu, Alibaba, Tencent, Xiaomi).",
+        "Les opérateurs télécoms traditionnels.",
+        "Les startups françaises."
+      ],
+      "reponses": [0, 1]
+    },
+    {
+      "id": "enj-008",
+      "type": "QCM",
+      "question": "Quel est l'objectif du Plan France Numérique 2020 ?",
+      "choix": [
+        "Remplacer toutes les connexions filaires par du sans-fil.",
+        "Rendre le numérique accessible à tous les Français.",
+        "Interdire les réseaux sociaux en France.",
+        "Créer un réseau 6G d'ici 2020."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "enj-009",
+      "type": "QCR",
+      "question": "Quelles sont les principales tendances des télécommunications modernes ?",
+      "choix": [
+        "Hautes fréquences.",
+        "Convergence des réseaux.",
+        "Haut débit.",
+        "Intelligence Artificielle (IA).",
+        "Moins de latence."
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "enj-010",
+      "type": "QCM",
+      "question": "Quel est le montant investi par les opérateurs français dans les réseaux télécoms entre 2011 et 2021 ?",
+      "choix": ["50 milliards d'euros", "80 milliards d'euros", "113 milliards d'euros", "200 milliards d'euros"],
+      "reponses": [2]
+    },
+
+    {
+      "id": "synth-001",
+      "type": "QCM",
+      "question": "Quel est le rôle principal des télécommunications ?",
+      "choix": [
+        "Transmettre de l'information entre acteurs.",
+        "Stocker des données.",
+        "Traiter des images.",
+        "Créer des algorithmes."
+      ],
+      "reponses": [0]
+    },
+    {
+      "id": "synth-002",
+      "type": "QCR",
+      "question": "Quels sont les 3 piliers des télécommunications selon le cours ?",
+      "choix": [
+        "Transmission.",
+        "Communications.",
+        "Systèmes électroniques.",
+        "Réglementation.",
+        "Innovation."
+      ],
+      "reponses": [0, 1, 2]
+    },
+    {
+      "id": "synth-003",
+      "type": "QCM",
+      "question": "Quel est le support de transmission le plus utilisé pour les communications mobiles ?",
+      "choix": ["Filaire (cuivre).", "Fibre optique.", "Ondes radio.", "Satellite."],
+      "reponses": [2]
+    },
+    {
+      "id": "synth-004",
+      "type": "QCM",
+      "question": "Quel est le défi majeur des télécommunications modernes ?",
+      "choix": [
+        "Augmenter la latence.",
+        "Réduire la bande passante.",
+        "Garantir une qualité de service (QoS) élevée.",
+        "Supprimer tous les bruits."
+      ],
+      "reponses": [2]
+    },
+    {
+      "id": "synth-005",
+      "type": "QCR",
+      "question": "Quels sont les critères pour une transmission réussie selon le cours ?",
+      "choix": [
+        "Vitesse (débit élevé).",
+        "Qualité (faible taux d'erreur).",
+        "Disponibilité (accès permanent).",
+        "Sécurité (protection des données).",
+        "Coût (gratuit)."
+      ],
+      "reponses": [0, 1, 2, 3]
+    },
+    {
+      "id": "synth-006",
+      "type": "QCM",
+      "question": "Quel est le principe fondamental de la théorie de l'information de Shannon ?",
+      "choix": [
+        "La capacité d'un canal est illimitée.",
+        "La capacité d'un canal dépend de sa bande passante et du rapport signal/bruit.",
+        "Le bruit peut être totalement éliminé.",
+        "Les signaux analogiques sont supérieurs aux signaux numériques."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "synth-007",
+      "type": "QCM",
+      "question": "Quel est le rôle de la réglementation dans les télécommunications ?",
+      "choix": [
+        "Empêcher toute innovation technologique.",
+        "Limiter les brouillages et organiser l'usage du spectre.",
+        "Imposer un monopole à un seul opérateur.",
+        "Interdire les communications internationales."
+      ],
+      "reponses": [1]
+    },
+    {
+      "id": "synth-008",
+      "type": "QCR",
+      "question": "Quels sont les acteurs clés de la réglementation des télécommunications en France ?",
+      "choix": [
+        "UIT-R (international).",
+        "CEPT (européen).",
+        "ANFr (national).",
+        "ARCEP (national).",
+        "NATO (militaire)."
+      ],
+      "reponses": [0, 1, 2, 3, 4]
+    },
+    {
+      "id": "synth-009",
+      "type": "QCM",
+      "question": "Quel est l'impact de la 5G sur les télécommunications modernes ?",
+      "choix": [
+        "Débit plus faible que la 4G.",
+        "Latence accrue.",
+        "Nouveaux usages (IoT, industrie 4.0, télémédecine).",
+        "Remplacement immédiat de la 4G."
+      ],
+      "reponses": [2]
+    },
+    {
+      "id": "synth-010",
+      "type": "QCM",
+      "question": "Quel est le futur des télécommunications selon le cours ?",
+      "choix": [
+        "Ralentissement des innovations.",
+        "Convergence des réseaux et haut débit.",
+        "Disparition des communications sans fil.",
+        "Retour aux signaux de fumée."
+      ],
+      "reponses": [1]
+    }
+  ]
+}

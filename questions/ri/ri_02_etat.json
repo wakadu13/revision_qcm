@@ -1,0 +1,143 @@
+{
+  "titre": "RI — Partie II : L'État (Montevideo, reconnaissance, Vatican/Sealand)",
+  "description": "Critères de Montevideo (1933), théories de la reconnaissance, cas du Saint-Siège et de Sealand.",
+  "questions": [
+    {
+      "id": "c2-montevideo",
+      "type": "QCM",
+      "question": "Les critères constitutifs de l'État sont codifiés par :",
+      "choix": [
+        "La Convention de Montego Bay (1982)",
+        "La Convention de Montevideo (1933)",
+        "La Charte de l'ONU (1945)",
+        "Les Accords du Latran (1929)"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Convention de Montevideo de 1933 sur les droits et devoirs des États."
+    },
+    {
+      "id": "c2-criteres-etat",
+      "type": "QCR",
+      "question": "Quels sont des critères constitutifs de l'État (Montevideo) ?",
+      "choix": [
+        "Un territoire délimité",
+        "Une population permanente",
+        "Une religion d'État",
+        "Un gouvernement effectif"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Territoire, population permanente, gouvernement effectif, et capacité d'entrer en relations. La religion n'est pas un critère."
+    },
+    {
+      "id": "c2-souverainete-externe",
+      "type": "QCM",
+      "question": "La « capacité d'entrer en relations avec les autres États » correspond à :",
+      "choix": [
+        "La souveraineté interne",
+        "La souveraineté externe",
+        "La reconnaissance constitutive",
+        "Le droit de veto"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "C'est le 4e critère de Montevideo : la souveraineté externe."
+    },
+    {
+      "id": "c2-declarative",
+      "type": "QCM",
+      "question": "Selon la théorie déclarative de la reconnaissance :",
+      "choix": [
+        "L'État n'existe que s'il est reconnu",
+        "L'État existe dès que les critères sont réunis ; la reconnaissance ne fait que le constater",
+        "La reconnaissance crée l'État",
+        "Seule l'ONU peut reconnaître un État"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Théorie déclarative (dominante) : la reconnaissance constate un fait préexistant."
+    },
+    {
+      "id": "c2-constitutive",
+      "type": "QCM",
+      "question": "Selon la théorie constitutive de la reconnaissance :",
+      "choix": [
+        "La reconnaissance ne fait que constater",
+        "Un État n'existe pleinement sur la scène internationale que s'il est reconnu",
+        "Les critères de Montevideo suffisent toujours",
+        "La reconnaissance est interdite"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La pratique mêle les deux : juridiquement déclarative, politiquement constitutive."
+    },
+    {
+      "id": "c2-vatican-sujet",
+      "type": "QCM",
+      "question": "Dans le cas du Vatican, le sujet de droit international est :",
+      "choix": [
+        "La Cité du Vatican (le territoire)",
+        "Le Saint-Siège (l'autorité spirituelle)",
+        "L'Italie",
+        "Le Conseil de l'Europe"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Subtilité essentielle : le sujet de DI est le Saint-Siège, pas le territoire vatican."
+    },
+    {
+      "id": "c2-latran",
+      "type": "QCM",
+      "question": "La Cité du Vatican est née des :",
+      "choix": [
+        "Accords du Latran (1929)",
+        "Traité de Rome (1957)",
+        "Convention de Montevideo (1933)",
+        "Concordat de 1801"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Accords du Latran (11 février 1929)."
+    },
+    {
+      "id": "c2-sealand",
+      "type": "QCM",
+      "question": "La principauté de Sealand est :",
+      "choix": [
+        "Un État reconnu par l'ONU",
+        "Une micronation non reconnue, ne remplissant pas les critères de Montevideo",
+        "Un territoire français",
+        "Une organisation internationale"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Ancienne plateforme militaire autoproclamée « État » en 1967, reconnue par personne : contre-exemple parfait."
+    },
+    {
+      "id": "c2-vatican-sealand",
+      "type": "QCM",
+      "question": "Le couple Vatican / Sealand illustre surtout le rôle de :",
+      "choix": [
+        "La population",
+        "La reconnaissance",
+        "La monnaie",
+        "L'armée"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Le Vatican (micro-territoire reconnu) vs Sealand (auto-proclamation sans reconnaissance) : la reconnaissance fait la différence."
+    }
+  ]
+}

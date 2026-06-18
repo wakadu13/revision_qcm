@@ -1,0 +1,539 @@
+{
+  "titre": "Ch.1 - Signaux déterministes à temps continu",
+  "description": "Modélisation, classification, représentation de Fourier, notation de Dirac, spectres d'énergie et de puissance.",
+  "questions": [
+    {
+      "id": "ch1-modelisation-1",
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un signal au sens du traitement du signal ?",
+      "choix": [
+        "Une grandeur exclusivement électrique",
+        "Une représentation physique d'une information",
+        "Une fonction nécessairement périodique",
+        "Une distribution mathématique sans support physique"
+      ],
+      "reponses": [1],
+      "explication": "Un signal est une représentation physique d'une information. Il est le plus souvent électrique, mais peut aussi être acoustique, optique, etc."
+    },
+    {
+      "id": "ch1-modelisation-2",
+      "type": "QCM",
+      "question": "La théorie du signal est-elle dépendante de la nature physique du signal ?",
+      "choix": [
+        "Oui, elle dépend de la nature physique",
+        "Non, elle reste indépendante de la nature physique",
+        "Uniquement pour les signaux optiques",
+        "Uniquement pour les signaux électriques"
+      ],
+      "reponses": [1],
+      "explication": "La théorie du signal reste indépendante de la nature physique du signal (électrique, acoustique, optique, etc.)."
+    },
+    {
+      "id": "ch1-determ-aleat-1",
+      "type": "QCM",
+      "question": "Un signal est dit déterministe lorsque :",
+      "choix": [
+        "Son équation temporelle peut être parfaitement prédite par un modèle mathématique",
+        "Il ne peut pas être prévu de façon certaine",
+        "Il transporte de l'information utile",
+        "Il possède une énergie infinie"
+      ],
+      "reponses": [0],
+      "explication": "Un signal est déterministe si son équation temporelle peut être parfaitement prédite par un modèle mathématique. Son intérêt principal est l'emploi en laboratoire comme signal de test."
+    },
+    {
+      "id": "ch1-determ-aleat-2",
+      "type": "QCM",
+      "question": "Quels signaux sont les véritables porteurs d'information ?",
+      "choix": [
+        "Les signaux déterministes",
+        "Les signaux aléatoires",
+        "Les signaux de test",
+        "Les signaux d'excitation de laboratoire"
+      ],
+      "reponses": [1],
+      "explication": "Si un signal ne peut être prévu de façon certaine, il est aléatoire. C'est le cas de tous les signaux porteurs d'information."
+    },
+    {
+      "id": "ch1-energie-1",
+      "type": "QCM",
+      "question": "Quelle est l'expression de l'énergie d'un signal $x(t)$ ?",
+      "choix": [
+        "$E_x = \\int_{\\mathbb{R}} x(t)\\,dt$",
+        "$E_x = \\int_{\\mathbb{R}} |x(t)|^2\\,dt$",
+        "$E_x = \\lim_{T\\to\\infty} \\frac{1}{T}\\int_{-T/2}^{T/2} |x(t)|^2\\,dt$",
+        "$E_x = \\int_{\\mathbb{R}} |x(t)|\\,dt$"
+      ],
+      "reponses": [1],
+      "explication": "L'énergie d'un signal réel ou complexe vaut $E_x = \\int_{\\mathbb{R}} |x(t)|^2\\,dt$."
+    },
+    {
+      "id": "ch1-puissance-1",
+      "type": "QCM",
+      "question": "Quelle est l'expression de la puissance moyenne d'un signal $x(t)$ ?",
+      "choix": [
+        "$P_x = \\int_{\\mathbb{R}} |x(t)|^2\\,dt$",
+        "$P_x = \\lim_{T\\to\\infty} \\frac{1}{T}\\int_{-T/2}^{T/2} |x(t)|^2\\,dt$",
+        "$P_x = \\frac{1}{T}\\int_{\\mathbb{R}} |x(t)|^2\\,dt$",
+        "$P_x = \\lim_{T\\to\\infty} \\int_{-T/2}^{T/2} |x(t)|\\,dt$"
+      ],
+      "reponses": [1],
+      "explication": "La puissance moyenne est $P_x = \\lim_{T\\to\\infty} \\frac{1}{T}\\int_{-T/2}^{T/2} |x(t)|^2\\,dt$."
+    },
+    {
+      "id": "ch1-classif-energie",
+      "type": "QCM",
+      "question": "Un signal à énergie finie possède :",
+      "choix": [
+        "Une puissance moyenne infinie",
+        "Une puissance moyenne nulle",
+        "Une énergie nulle",
+        "Une puissance moyenne égale à son énergie"
+      ],
+      "reponses": [1],
+      "explication": "Un signal à énergie finie a une puissance moyenne nulle. Ce sont les signaux à support temporel fini (transitoires ou causaux)."
+    },
+    {
+      "id": "ch1-classif-puissance",
+      "type": "QCM",
+      "question": "Un signal à puissance moyenne finie est :",
+      "choix": [
+        "Un signal transitoire d'énergie finie",
+        "Un signal permanent (ou non causal) d'énergie infinie",
+        "Un signal toujours périodique d'énergie nulle",
+        "Un signal causal à support fini"
+      ],
+      "reponses": [1],
+      "explication": "Les signaux à puissance moyenne finie ont une énergie infinie : ce sont les signaux permanents (ou non causaux)."
+    },
+    {
+      "id": "ch1-classif-types",
+      "type": "QCR",
+      "question": "Parmi les classifications d'un signal selon l'amplitude et le temps, lesquelles sont correctes ?",
+      "choix": [
+        "Temps continu : défini pour toute valeur de t dans un intervalle",
+        "Temps discret : défini seulement pour certaines valeurs discrètes de t",
+        "Analogique : amplitude pouvant prendre toute valeur dans un intervalle",
+        "Quantifié : amplitude pouvant prendre toute valeur continue"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Un signal quantifié a une amplitude ne pouvant prendre que certaines valeurs discrètes (et non continues), les trois autres propositions sont exactes."
+    },
+    {
+      "id": "ch1-sf-exp",
+      "type": "QCM",
+      "question": "L'expression de la série de Fourier exponentielle d'un signal périodique est :",
+      "choix": [
+        "$x(t) = \\sum_{k=-\\infty}^{\\infty} X_k\\,e^{j2\\pi kF t}$",
+        "$x(t) = \\int_{\\mathbb{R}} X(f)\\,e^{j2\\pi f t}\\,df$",
+        "$x(t) = \\sum_{k=0}^{\\infty} X_k\\,e^{-j2\\pi kF t}$",
+        "$x(t) = \\sum_{k=-\\infty}^{\\infty} X_k\\,e^{j2\\pi k t}$"
+      ],
+      "reponses": [0],
+      "explication": "Un signal périodique de période T à énergie finie sur cette période s'écrit $x(t) = \\sum_{k=-\\infty}^{\\infty} X_k\\,e^{j2\\pi kF t}$ avec $F = 1/T$."
+    },
+    {
+      "id": "ch1-sf-coef",
+      "type": "QCM",
+      "question": "Comment calcule-t-on les coefficients de Fourier $X_k$ ?",
+      "choix": [
+        "$X_k = \\frac{1}{T}\\int_{(T)} x(t)\\,e^{j2\\pi kF t}\\,dt$",
+        "$X_k = \\frac{1}{T}\\int_{(T)} x(t)\\,e^{-j2\\pi kF t}\\,dt$",
+        "$X_k = \\int_{(T)} x(t)\\,e^{-j2\\pi kF t}\\,dt$",
+        "$X_k = T\\int_{(T)} x(t)\\,e^{-j2\\pi kF t}\\,dt$"
+      ],
+      "reponses": [1],
+      "explication": "$X_k = \\frac{1}{T}\\int_{(T)} x(t)\\,e^{-j2\\pi kF t}\\,dt$."
+    },
+    {
+      "id": "ch1-sf-continue",
+      "type": "QCM",
+      "question": "À quoi correspond la composante continue $X_0$ d'un signal périodique ?",
+      "choix": [
+        "À l'amplitude du fondamental",
+        "À sa valeur moyenne",
+        "À la somme de toutes les harmoniques",
+        "À la valeur efficace du signal"
+      ],
+      "reponses": [1],
+      "explication": "La composante continue $X_0 = \\frac{1}{T}\\int_{(T)} x(t)\\,dt$ est égale à la valeur moyenne du signal."
+    },
+    {
+      "id": "ch1-sf-fondamental",
+      "type": "QCM",
+      "question": "Le fondamental d'un signal périodique est constitué des composantes pour :",
+      "choix": [
+        "$|k| = 0$",
+        "$|k| = 1$",
+        "$|k| > 1$",
+        "$k = 0$ et $k = 1$"
+      ],
+      "reponses": [1],
+      "explication": "Le fondamental est constitué des composantes pour $|k| = 1$ ; les harmoniques correspondent à $|k| > 1$."
+    },
+    {
+      "id": "ch1-sf-hermitienne",
+      "type": "QCM",
+      "question": "Pour un signal réel, quelle relation lie les coefficients de Fourier (symétrie hermitienne) ?",
+      "choix": [
+        "$X_k = X_{-k}$",
+        "$X_k = X_{-k}^*$",
+        "$X_k = -X_{-k}$",
+        "$X_k = X_k^*$"
+      ],
+      "reponses": [1],
+      "explication": "Pour un signal réel, $X_k = X_{-k}^*$ : les coefficients présentent une symétrie hermitienne."
+    },
+    {
+      "id": "ch1-sf-trigo",
+      "type": "QCM",
+      "question": "Dans la représentation unilatérale (série trigonométrique), comment relie-t-on $c_k$ et $|X_k|$ pour $k > 0$ ?",
+      "choix": [
+        "$c_k = |X_k|$",
+        "$c_k = 2|X_k|$",
+        "$c_k = |X_k|/2$",
+        "$c_k = |X_k|^2$"
+      ],
+      "reponses": [1],
+      "explication": "Pour la série trigonométrique, $c_k = 2|X_k|$ pour $k > 0$ et $\\phi_k = \\arg X_k$ pour $k > 0$."
+    },
+    {
+      "id": "ch1-tf-directe",
+      "type": "QCM",
+      "question": "Quelle est l'expression de la transformée de Fourier directe $X(f)$ ?",
+      "choix": [
+        "$X(f) = \\int_{\\mathbb{R}} x(t)\\,e^{j2\\pi f t}\\,dt$",
+        "$X(f) = \\int_{\\mathbb{R}} x(t)\\,e^{-j2\\pi f t}\\,dt$",
+        "$X(f) = \\int_{\\mathbb{R}} X(f)\\,e^{j2\\pi f t}\\,df$",
+        "$X(f) = \\sum_{k} X_k\\,e^{-j2\\pi kF t}$"
+      ],
+      "reponses": [1],
+      "explication": "$X(f) = \\int_{\\mathbb{R}} x(t)\\,e^{-j2\\pi f t}\\,dt$, tandis que la transformée inverse est $x(t) = \\int_{\\mathbb{R}} X(f)\\,e^{j2\\pi f t}\\,df$."
+    },
+    {
+      "id": "ch1-tf-spectre",
+      "type": "QCM",
+      "question": "Le spectre d'un signal non périodique est :",
+      "choix": [
+        "Un spectre de raies espacées de F",
+        "Un spectre continu",
+        "Toujours nul",
+        "Un peigne de Dirac"
+      ],
+      "reponses": [1],
+      "explication": "Quand $T \\to \\infty$, alors $F \\to 0$ : le spectre d'un signal non périodique devient un spectre continu (le spectre de raies est propre aux signaux périodiques)."
+    },
+    {
+      "id": "ch1-convolution-def",
+      "type": "QCM",
+      "question": "Quelle est la définition du produit de convolution $z(t) = x(t) * y(t)$ ?",
+      "choix": [
+        "$z(t) = \\int_{\\mathbb{R}} x(\\tau)\\,y(t-\\tau)\\,d\\tau$",
+        "$z(t) = \\int_{\\mathbb{R}} x(\\tau)\\,y(\\tau)\\,d\\tau$",
+        "$z(t) = x(t)\\cdot y(t)$",
+        "$z(t) = \\int_{\\mathbb{R}} x(t)\\,y(t-\\tau)\\,d\\tau$"
+      ],
+      "reponses": [0],
+      "explication": "Le produit de convolution est $z(t) = x(t) * y(t) = \\int_{\\mathbb{R}} x(\\tau)\\,y(t-\\tau)\\,d\\tau$. Il est commutatif."
+    },
+    {
+      "id": "ch1-convolution-tf",
+      "type": "QCR",
+      "question": "Quelles relations entre convolution et transformée de Fourier sont vraies ?",
+      "choix": [
+        "$x(t) * y(t) \\xrightarrow{\\mathcal{F}} X(f)\\cdot Y(f)$",
+        "$x(t)\\cdot y(t) \\xrightarrow{\\mathcal{F}} X(f) * Y(f)$",
+        "$x(t) * y(t) \\xrightarrow{\\mathcal{F}} X(f) * Y(f)$",
+        "$x(t)\\cdot y(t) \\xrightarrow{\\mathcal{F}} X(f)\\cdot Y(f)$"
+      ],
+      "reponses": [0, 1],
+      "explication": "La TF d'un produit de convolution est le produit des TF, et réciproquement la TF d'un produit est le produit de convolution des TF."
+    },
+    {
+      "id": "ch1-prop-translation",
+      "type": "QCM",
+      "question": "Propriété de translation : à quoi correspond la TF de $x(t - t_0)$ ?",
+      "choix": [
+        "$X(f - f_0)$",
+        "$X(f)\\,e^{-j2\\pi f t_0}$",
+        "$X(f)\\,e^{j2\\pi f t_0}$",
+        "$\\frac{1}{|t_0|}X(f/t_0)$"
+      ],
+      "reponses": [1],
+      "explication": "Translation temporelle : $x(t - t_0) \\xleftrightarrow{\\mathcal{F}} X(f)\\,e^{-j2\\pi f t_0}$."
+    },
+    {
+      "id": "ch1-prop-modulation",
+      "type": "QCM",
+      "question": "Propriété de modulation : à quoi correspond la TF de $x(t)\\,e^{j2\\pi f_0 t}$ ?",
+      "choix": [
+        "$X(f)\\,e^{-j2\\pi f t_0}$",
+        "$X(f - f_0)$",
+        "$X(f + f_0)$",
+        "$X^*(-f)$"
+      ],
+      "reponses": [1],
+      "explication": "Modulation : $x(t)\\,e^{j2\\pi f_0 t} \\xleftrightarrow{\\mathcal{F}} X(f - f_0)$ (décalage en fréquence)."
+    },
+    {
+      "id": "ch1-prop-homothetie",
+      "type": "QCM",
+      "question": "Propriété d'homothétie : à quoi correspond la TF de $x(at)$ ?",
+      "choix": [
+        "$|a|\\,X(af)$",
+        "$\\frac{1}{|a|}\\,X\\!\\left(\\frac{f}{a}\\right)$",
+        "$X(af)$",
+        "$a\\,X(f/a)$"
+      ],
+      "reponses": [1],
+      "explication": "Homothétie : $x(at) \\xleftrightarrow{\\mathcal{F}} \\frac{1}{|a|}\\,X\\!\\left(\\frac{f}{a}\\right)$."
+    },
+    {
+      "id": "ch1-prop-conjugaison",
+      "type": "QCM",
+      "question": "Propriété de conjugaison : à quoi correspond la TF de $x^*(t)$ ?",
+      "choix": [
+        "$X^*(f)$",
+        "$X^*(-f)$",
+        "$X(-f)$",
+        "$-X^*(f)$"
+      ],
+      "reponses": [1],
+      "explication": "Conjugaison : $x^*(t) \\xleftrightarrow{\\mathcal{F}} X^*(-f)$."
+    },
+    {
+      "id": "ch1-rect-tf",
+      "type": "QCM",
+      "question": "La transformée de Fourier d'une impulsion rectangulaire de largeur $\\tau$ et de hauteur 1 est :",
+      "choix": [
+        "$X(f) = \\tau\\,\\dfrac{\\sin \\pi f \\tau}{\\pi f \\tau}$ (sinus cardinal)",
+        "$X(f) = \\delta(f)$",
+        "$X(f) = \\dfrac{1}{\\tau}$",
+        "$X(f) = e^{-j2\\pi f \\tau}$"
+      ],
+      "reponses": [0],
+      "explication": "La TF d'un rectangle est un sinus cardinal : $X(f) = \\tau\\,\\dfrac{\\sin \\pi f \\tau}{\\pi f \\tau}$."
+    },
+    {
+      "id": "ch1-dirac-nature",
+      "type": "QCM",
+      "question": "L'impulsion de Dirac $\\delta(t)$ est :",
+      "choix": [
+        "Une fonction continue",
+        "Une distribution (pas une fonction)",
+        "Une fonction périodique",
+        "Un signal analogique réalisable"
+      ],
+      "reponses": [1],
+      "explication": "$\\delta(t)$ n'est pas une fonction mais une distribution. On peut la voir comme la limite d'une impulsion de largeur $\\tau$ et de hauteur $1/\\tau$ lorsque $\\tau \\to 0$."
+    },
+    {
+      "id": "ch1-dirac-integrale",
+      "type": "QCM",
+      "question": "Que vaut $\\int_{\\mathbb{R}} \\delta(t)\\,dt$ ?",
+      "choix": [
+        "0",
+        "1",
+        "$+\\infty$",
+        "$1/\\tau$"
+      ],
+      "reponses": [1],
+      "explication": "L'intégrale de l'impulsion de Dirac vaut 1 : $\\int_{\\mathbb{R}} \\delta(t)\\,dt = 1$."
+    },
+    {
+      "id": "ch1-dirac-prop-prod",
+      "type": "QCM",
+      "question": "Que vaut $\\int_{\\mathbb{R}} f(t)\\,\\delta(t - t_0)\\,dt$ ?",
+      "choix": [
+        "$f(0)$",
+        "$f(t_0)$",
+        "$\\delta(t_0)$",
+        "$1$"
+      ],
+      "reponses": [1],
+      "explication": "Propriété de prélèvement : $\\int_{\\mathbb{R}} f(t)\\,\\delta(t - t_0)\\,dt = f(t_0)$."
+    },
+    {
+      "id": "ch1-dirac-neutre",
+      "type": "QCM",
+      "question": "Que montre la propriété $x(t) * \\delta(t) = x(t)$ ?",
+      "choix": [
+        "Que le Dirac est l'élément neutre de la convolution",
+        "Que le Dirac annule tout signal",
+        "Que le Dirac est l'élément neutre de la multiplication",
+        "Que le Dirac dérive le signal"
+      ],
+      "reponses": [0],
+      "explication": "$x(t) * \\delta(t) = x(t)$ montre que l'impulsion de Dirac est l'élément neutre de la convolution."
+    },
+    {
+      "id": "ch1-dirac-decale",
+      "type": "QCM",
+      "question": "Que vaut $x(t) * \\delta(t - t_0)$ ?",
+      "choix": [
+        "$x(t)$",
+        "$x(t - t_0)$",
+        "$x(t_0)$",
+        "$x(t + t_0)$"
+      ],
+      "reponses": [1],
+      "explication": "La convolution par un Dirac décalé translate le signal : $x(t) * \\delta(t - t_0) = x(t - t_0)$."
+    },
+    {
+      "id": "ch1-dirac-tf",
+      "type": "QCR",
+      "question": "Quelles paires de transformées de Fourier de Dirac sont correctes ?",
+      "choix": [
+        "$\\delta(t) \\xleftrightarrow{\\mathcal{F}} 1$",
+        "$1 \\xleftrightarrow{\\mathcal{F}} \\delta(f)$",
+        "$\\delta(t - t_0) \\xleftrightarrow{\\mathcal{F}} e^{-j2\\pi f t_0}$",
+        "$e^{j2\\pi f_0 t} \\xleftrightarrow{\\mathcal{F}} \\delta(f + f_0)$"
+      ],
+      "reponses": [0, 1, 2],
+      "explication": "Les trois premières sont exactes. La dernière est fausse : $e^{j2\\pi f_0 t} \\xleftrightarrow{\\mathcal{F}} \\delta(f - f_0)$ (et non $f + f_0$)."
+    },
+    {
+      "id": "ch1-peigne-def",
+      "type": "QCM",
+      "question": "Comment définit-on un peigne de Dirac de période T ?",
+      "choix": [
+        "$p(t) = \\sum_{n=-\\infty}^{\\infty} \\delta(t - nT)$",
+        "$p(t) = \\delta(t - T)$",
+        "$p(t) = \\sum_{n=0}^{\\infty} \\delta(t - n)$",
+        "$p(t) = \\int_{\\mathbb{R}} \\delta(t - nT)\\,dn$"
+      ],
+      "reponses": [0],
+      "explication": "Le peigne de Dirac est la répétition périodique d'impulsions de Dirac : $p(t) = \\sum_{n=-\\infty}^{\\infty} \\delta(t - nT)$."
+    },
+    {
+      "id": "ch1-peigne-tf",
+      "type": "QCM",
+      "question": "La transformée de Fourier d'un peigne de Dirac de hauteur 1 et de période T est :",
+      "choix": [
+        "Un peigne de hauteur T et de période F",
+        "Un peigne de hauteur $1/T$ et de période fréquentielle $F = 1/T$",
+        "Un sinus cardinal",
+        "Une impulsion de Dirac unique"
+      ],
+      "reponses": [1],
+      "explication": "$P(f) = \\frac{1}{T}\\sum_{k} \\delta(f - kF)$ : c'est un peigne de Dirac de hauteur $1/T$ et de période fréquentielle $F = 1/T$."
+    },
+    {
+      "id": "ch1-periodisation-h",
+      "type": "QCM",
+      "question": "Périodiser un signal $x(t)$ avec un peigne $p(t)$ revient à calculer :",
+      "choix": [
+        "$h(t) = x(t)\\cdot p(t)$",
+        "$h(t) = x(t) * p(t)$",
+        "$h(t) = x(t) + p(t)$",
+        "$h(t) = X(f)\\cdot P(f)$"
+      ],
+      "reponses": [1],
+      "explication": "La périodisation s'obtient par convolution : $h(t) = x(t) * p(t)$, où $x(t)$ est le motif répété."
+    },
+    {
+      "id": "ch1-periodisation-dualite",
+      "type": "QCR",
+      "question": "Quelles propriétés de dualité périodisation/échantillonnage sont correctes ?",
+      "choix": [
+        "Périodiser dans le temps revient à échantillonner dans les fréquences",
+        "Périodiser dans les fréquences revient à échantillonner dans le temps",
+        "Périodiser dans le temps revient à périodiser dans les fréquences",
+        "Échantillonner dans le temps revient à échantillonner dans les fréquences"
+      ],
+      "reponses": [0, 1],
+      "explication": "Les deux propriétés duales sont : périodiser dans le temps = échantillonner en fréquences, et réciproquement."
+    },
+    {
+      "id": "ch1-intercorrelation",
+      "type": "QCM",
+      "question": "Quelle est la définition de la fonction d'intercorrélation de deux signaux d'énergie finie ?",
+      "choix": [
+        "$R_{x,y}(\\tau) = \\int_{\\mathbb{R}} x(t)\\,y(t)\\,dt$",
+        "$R_{x,y}(\\tau) = \\int_{\\mathbb{R}} x(t)\\,y^*(t - \\tau)\\,dt$",
+        "$R_{x,y}(\\tau) = x(t) * y(t)$",
+        "$R_{x,y}(\\tau) = \\int_{\\mathbb{R}} x(\\tau)\\,y(t - \\tau)\\,d\\tau$"
+      ],
+      "reponses": [1],
+      "explication": "L'intercorrélation (ou produit de corrélation) vaut $R_{x,y}(\\tau) = \\int_{\\mathbb{R}} x(t)\\,y^*(t - \\tau)\\,dt$, où $y^*$ est le conjugué."
+    },
+    {
+      "id": "ch1-autocorr-0",
+      "type": "QCM",
+      "question": "Que vaut la fonction d'autocorrélation à l'origine, $R_x(0)$ ?",
+      "choix": [
+        "La puissance moyenne $P_x$",
+        "L'énergie $E_x$ du signal",
+        "Zéro",
+        "La valeur moyenne du signal"
+      ],
+      "reponses": [1],
+      "explication": "$R_x(0) = \\int_{\\mathbb{R}} |x(t)|^2\\,dt = E_x$ : l'autocorrélation à l'origine est égale à l'énergie du signal."
+    },
+    {
+      "id": "ch1-dse-def",
+      "type": "QCM",
+      "question": "Quelle est l'expression de la densité spectrale d'énergie (DSE) $S_x(f)$ ?",
+      "choix": [
+        "$S_x(f) = X(f)$",
+        "$S_x(f) = |X(f)|^2$",
+        "$S_x(f) = |X(f)|$",
+        "$S_x(f) = X^*(f)$"
+      ],
+      "reponses": [1],
+      "explication": "La DSE vaut $S_x(f) = |X(f)|^2$, et c'est la transformée de Fourier de la fonction d'autocorrélation."
+    },
+    {
+      "id": "ch1-dse-tf",
+      "type": "QCM",
+      "question": "La densité spectrale d'énergie est :",
+      "choix": [
+        "La transformée de Fourier du signal",
+        "La transformée de Fourier de la fonction d'autocorrélation",
+        "La dérivée de la fonction d'autocorrélation",
+        "Le carré de la fonction d'intercorrélation"
+      ],
+      "reponses": [1],
+      "explication": "La DSE est la transformée de Fourier de la fonction d'autocorrélation du signal."
+    },
+    {
+      "id": "ch1-puiss-finie-1",
+      "type": "QCM",
+      "question": "Les signaux à puissance finie (énergie infinie) sont :",
+      "choix": [
+        "Physiquement réalisables et toujours transitoires",
+        "Physiquement irréalisables, modélisant les signaux à caractère permanent",
+        "Toujours à support temporel fini",
+        "De puissance moyenne nulle"
+      ],
+      "reponses": [1],
+      "explication": "Ces signaux possèdent une énergie infinie et sont physiquement irréalisables ; ils modélisent les signaux permanents (périodiques ou pseudo-périodiques)."
+    },
+    {
+      "id": "ch1-autocorr-periodique",
+      "type": "QCM",
+      "question": "La fonction d'autocorrélation d'un signal périodique est :",
+      "choix": [
+        "Apériodique",
+        "Périodique de même période",
+        "Toujours nulle",
+        "Une impulsion de Dirac"
+      ],
+      "reponses": [1],
+      "explication": "La fonction d'autocorrélation d'un signal périodique est périodique de même période."
+    },
+    {
+      "id": "ch1-dsp-raies",
+      "type": "QCM",
+      "question": "Comment passe-t-on du spectre de module d'un signal périodique à sa densité spectrale de puissance (DSP) ?",
+      "choix": [
+        "En doublant chaque raie spectrale",
+        "En remplaçant chaque raie spectrale par son carré",
+        "En prenant la racine carrée de chaque raie",
+        "En supprimant la composante continue"
+      ],
+      "reponses": [1],
+      "explication": "On passe au DSP en remplaçant chaque raie spectrale $|X_k|$ par son carré $|X_k|^2$ : $S_x(f) = \\sum_k |X_k|^2 \\delta(f - kF)$."
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "titre": "RI — Partie I : Penser les RI (société/communauté, sujets/acteurs)",
+  "description": "Société vs communauté internationale ; sujets (droits/obligations) vs acteurs (influence de fait).",
+  "questions": [
+    {
+      "id": "c1-societe-def",
+      "type": "QCM",
+      "question": "Qu'est-ce que la « société internationale » ?",
+      "choix": [
+        "Un ensemble d'États partageant des valeurs profondes et un destin commun",
+        "Un ensemble d'États juxtaposés qui coexistent et coopèrent par intérêt, sur la base de règles communes",
+        "Un gouvernement mondial unique",
+        "Une grande ONG mondiale"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La société internationale = des États souverains et rivaux qui coopèrent par intérêt via le droit international, sans valeurs profondément partagées."
+    },
+    {
+      "id": "c1-communaute-def",
+      "type": "QCM",
+      "question": "Qu'est-ce que la « communauté internationale » ?",
+      "choix": [
+        "Une simple coexistence d'intérêts",
+        "Une notion exigeante supposant solidarité, valeurs et destin communs",
+        "L'absence de tout droit international",
+        "Un État hégémonique unique"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "La communauté internationale est une notion plus idéaliste (droits de l'homme, patrimoine commun de l'humanité)."
+    },
+    {
+      "id": "c1-origine-distinction",
+      "type": "QCM",
+      "question": "L'opposition société / communauté internationale est héritée de :",
+      "choix": [
+        "Tönnies (sociologie) et l'École anglaise des RI (Hedley Bull)",
+        "Karl Marx",
+        "Montesquieu",
+        "Emmanuel Kant"
+      ],
+      "reponses": [
+        0
+      ],
+      "explication": "Distinction héritée de la sociologie de Tönnies et de l'École anglaise (Hedley Bull)."
+    },
+    {
+      "id": "c1-sujet-plan",
+      "type": "QCM",
+      "question": "Le SUJET de droit international se définit sur le plan :",
+      "choix": [
+        "Factuel (capacité d'influence)",
+        "Juridique (titularité de droits/obligations)",
+        "Militaire",
+        "Économique"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Sujet (Pr Kolb) : « toute entité à laquelle une norme de droit international reconnaît directement des droits ou obligations » — plan juridique."
+    },
+    {
+      "id": "c1-acteur-plan",
+      "type": "QCM",
+      "question": "L'ACTEUR des relations internationales se définit sur le plan :",
+      "choix": [
+        "Juridique",
+        "Factuel (capacité d'influence effective)",
+        "Moral",
+        "Religieux"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Acteur (Pr Merle) : entité qui contribue effectivement à l'activité internationale — plan factuel."
+    },
+    {
+      "id": "c1-sujet-acteur",
+      "type": "QCM",
+      "question": "Quelle affirmation est exacte ?",
+      "choix": [
+        "Tout acteur est un sujet",
+        "Tout sujet est un acteur, mais tout acteur n'est pas un sujet",
+        "Sujet et acteur sont synonymes",
+        "Un État n'est qu'un acteur"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "Une multinationale ou Elon Musk pèsent (acteurs) sans être titulaires de droits en DI (pas des sujets)."
+    },
+    {
+      "id": "c1-acteurs-guilhaudis",
+      "type": "QCR",
+      "question": "Selon le Pr Guilhaudis, sont des ACTEURS des RI :",
+      "choix": [
+        "Les firmes multinationales",
+        "La mafia",
+        "Uniquement les États",
+        "L'opinion publique"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
+      "explication": "Guilhaudis : « États, OI, ONG, firmes multinationales, individus, villes, opinion publique et la mafia »."
+    },
+    {
+      "id": "c1-musk-acteur",
+      "type": "QCM",
+      "question": "Une multinationale ou Elon Musk sont, en droit international :",
+      "choix": [
+        "Des sujets de droit international",
+        "Des acteurs, sans être des sujets de droit international",
+        "Ni sujets ni acteurs",
+        "Des organisations internationales"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "L'écart entre puissance de fait (acteur) et reconnaissance de droit (sujet) est un grand problème contemporain."
+    }
+  ]
+}
