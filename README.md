@@ -4,12 +4,17 @@ Application de révision pour partiels à partir de sets de questions JSON, avec
 **suivi d'apprentissage** par révision espacée (système de Leitner).
 Disponible en interface graphique (GUI) et en ligne de commande (CLI).
 
+Écrite en **Rust** : un seul exécutable natif de ~8 Mo, sans interpréteur ni
+dépendance à installer, qui démarre instantanément (voir [Performances](#performances)).
+
 ---
 
 ## Lancement
 
+Prérequis pour compiler : la chaîne d'outils Rust ([rustup.rs](https://rustup.rs)).
+
 ```bash
-uv run python src/app.py
+cargo run --release
 ```
 
 Au démarrage, le programme demande le mode d'interface :
@@ -25,11 +30,13 @@ Au démarrage, le programme demande le mode d'interface :
 On peut aussi forcer le mode via un argument :
 
 ```bash
-uv run python src/app.py --cli
-uv run python src/app.py --gui
+cargo run --release -- --cli
+cargo run --release -- --gui
 ```
 
-Une version web autonome (sans installation Python) est aussi disponible dans
+(ou directement `revision_qcm --cli` / `revision_qcm --gui` avec l'exécutable compilé).
+
+Une version web autonome (sans installation) est aussi disponible dans
 [`web/revision_qcm.html`](web/revision_qcm.html) — ouvrable directement dans un
 navigateur, ou servie avec les vrais sets de `questions/` via un petit serveur local
 (voir [Version web](#version-web) plus bas).
@@ -38,7 +45,9 @@ navigateur, ou servie avec les vrais sets de `questions/` via un petit serveur l
 
 ## Interface graphique (GUI)
 
-Fenêtre sombre avec navigation entièrement au clavier.
+Fenêtre sombre avec navigation entièrement au clavier (ou à la souris), rendue par le
+GPU via [egui](https://github.com/emilk/egui) : l'écran n'est redessiné que lorsqu'un
+événement survient, l'application ne consomme donc rien au repos.
 
 ### Navigation dans les menus
 
@@ -60,6 +69,7 @@ La touche utile dépend du **type de question** :
 | **FLASHCARD** (recto/verso) | `Espace` retourne la carte · `C` = « je savais », `I` = « à revoir » · puis `Entrée`/`Espace` pour la suivante · `Q` quitte |
 
 Pour les questions à choix (QCM/QCR), un clic sur un choix fonctionne aussi.
+Les lettres suivent la disposition du clavier (AZERTY comme QWERTY).
 Pour les flashcards, le bouton « Retourner la carte » fait la même chose que `Espace`.
 
 ### Équations mathématiques (LaTeX)
@@ -77,9 +87,25 @@ Exemples de syntaxe utilisable dans les fichiers JSON :
 | `$\int_0^1 f(x)\,dx$` | intégrale de 0 à 1 |
 | `$\sum_{i=1}^{n} i$` | somme de 1 à n |
 | `$\vec{F} = m\vec{a}$` | vecteurs |
+| `$\left(\frac{\pi D}{\lambda}\right)^2$` | parenthèses extensibles |
+| `$x(t) \xleftrightarrow{\mathcal{F}} X(f)$` | flèche annotée |
 
-Le rendu utilise le moteur **mathtext de matplotlib** — aucune installation LaTeX
-système n'est requise. La CLI affiche le texte brut tel qu'écrit dans le JSON.
+Le rendu est assuré par un **moteur de mise en page mathématique intégré** (`src/math.rs`,
+inspiré de TeX) : aucune installation LaTeX ni bibliothèque externe n'est requise, le
+rendu est vectoriel (net à tous les zooms) et s'adapte aux couleurs de l'interface.
+Le texte autour des formules passe à la ligne automatiquement, et une formule trop
+longue est coupée après un signe `=` ou un opérateur, comme en TeX.
+
+Commandes prises en charge : fractions (`\frac`, `\dfrac`, `\binom`), racines
+(`\sqrt`, `\sqrt[n]`), indices/exposants, grands opérateurs (`\sum`, `\prod`, `\int`,
+`\oint`…) et fonctions (`\lim`, `\log`, `\sin`, `\max`, `\operatorname`…),
+délimiteurs extensibles (`\left` / `\right`), lettres grecques et symboles usuels
+(`\cdot`, `\approx`, `\leq`, `\to`, `\infty`…), `\text`, `\mathrm`, `\mathbb`,
+`\mathcal`, accents (`\vec`, `\hat`, `\bar`, `\overline`, `\tilde`, `\dot`),
+flèches annotées (`\xrightarrow`, `\xleftrightarrow`), `\overset` / `\underset` et
+espacements (`\,`, `\;`, `\quad`…). Une commande inconnue est affichée telle quelle.
+
+La CLI affiche le texte brut tel qu'écrit dans le JSON.
 
 ---
 
@@ -243,10 +269,15 @@ Selon le `type`, seuls certains champs sont requis :
 - Les `reponses` (QCM/QCR) sont des **indices** : `0` = premier choix, `1` = deuxième, etc.
 - Un `QCM` doit avoir exactement **une** réponse ; un `QCR` peut en avoir plusieurs.
 - Pour `TROU`, la comparaison de la réponse saisie est **souple** : casse, accents et
-  espaces superflus sont ignorés (`normaliser_texte` dans `core.py`). « Goes », « GOES »
+  espaces superflus sont ignorés (`normaliser_texte` dans `core.rs`). « Goes », « GOES »
   et « goes » sont donc équivalents.
 - Dans le JSON, le backslash LaTeX doit être doublé : `\\frac`, `\\alpha`, etc.
 - Un fichier mal formé est signalé au lancement et simplement ignoré.
+
+`progression.json` garde exactement le même format que la version Python précédente :
+une progression existante est reprise telle quelle. Il est écrit de façon atomique
+(fichier temporaire puis renommage) : une coupure pendant la sauvegarde ne peut pas le
+corrompre.
 
 ---
 
@@ -254,13 +285,16 @@ Selon le `type`, seuls certains champs sont requis :
 
 ```bash
 # Build avec console (CLI + GUI)
-uv run python src/build_exe.py
+cargo run --release --bin build_dist
 
-# Build GUI uniquement (pas de fenêtre noire)
-uv run python src/build_exe.py --windowed
+# Build GUI uniquement (pas de fenêtre noire sous Windows)
+cargo run --release --bin build_dist -- --windowed
 ```
 
-`dist/` est entièrement régénéré à chaque build (rien à y modifier à la main) :
+L'exécutable est compilé en mode release avec optimisations maximales (LTO complète,
+une seule unité de compilation, symboles retirés). Les éléments de `dist/` sont
+régénérés à chaque build (rien à y modifier à la main) ; `dist/progression.json` est
+conservé :
 
 ```
 dist/
@@ -273,6 +307,7 @@ dist/
     └── *.json
 ```
 
+Sous Windows l'exécutable s'appelle `revision_qcm.exe`, sous Linux/macOS `revision_qcm`.
 `progression.json` est créé automatiquement dans le même dossier au premier lancement.
 
 ---
@@ -280,16 +315,40 @@ dist/
 ## Version web
 
 [`web/revision_qcm.html`](web/revision_qcm.html) est une version autonome (HTML/JS,
-sans dépendance Python) de l'application, avec les mêmes fonctionnalités (4 types de
+le seul langage exécutable nativement par un navigateur) de l'application, avec les mêmes fonctionnalités (4 types de
 questions, catégories, suivi de Leitner). La progression est sauvegardée dans le
 `localStorage` du navigateur.
 
 - **Ouverte directement** (double-clic, `file://`) : les sets se chargent via import
   manuel ou glisser-déposer d'un dossier (écran « Gérer les sets »).
-- **Servie par un serveur HTTP local** (ex. `python -m http.server` depuis `dist/`) :
+- **Servie par un serveur HTTP local** (ex. `python -m http.server` ou `npx serve` depuis `dist/`) :
   les sets de `questions/` se chargent **automatiquement** au démarrage via
   `manifest.json`, comme la CLI/GUI. Nécessaire car les navigateurs bloquent les
   requêtes `fetch()` vers des fichiers locaux en `file://`.
+
+---
+
+## Performances
+
+Mesures sur la même machine, avec les 34 sets du dépôt (moyenne de 20 lancements) :
+
+| Opération | Python (avant) | Rust (maintenant) |
+|-----------|---------------:|------------------:|
+| Démarrage CLI + chargement des sets + sortie | 72 ms | **7 ms** |
+| Écran de statistiques (34 sets) | 82 ms | **13 ms** |
+| Ouverture de la fenêtre GUI | > 1 s (import de matplotlib) | **≈ 85 ms** |
+| Taille de l'exécutable distribué | dizaines de Mo (PyInstaller + matplotlib) | **≈ 8 Mo** |
+
+Ce qui fait la différence :
+
+- code natif compilé (aucun interpréteur, aucune extraction temporaire au lancement
+  comme avec un `.exe` PyInstaller « onefile ») ;
+- sets chargés **en parallèle** sur tous les cœurs ;
+- réponses texte (TROU) normalisées une seule fois au chargement, dates de révision
+  converties une seule fois à la lecture de `progression.json` ;
+- formules LaTeX analysées une seule fois puis mises en cache, et dessinées directement
+  par le GPU (plus de passage par une image PNG générée par matplotlib) ;
+- interface redessinée uniquement sur événement : 0 % de CPU au repos.
 
 ---
 
@@ -298,29 +357,40 @@ questions, catégories, suivi de Leitner). La progression est sauvegardée dans 
 ```
 revision_qcm/
 ├── src/
-│   ├── app.py           # point d'entrée, choix CLI/GUI, interface CLI
-│   ├── core.py          # modèles, chargement JSON, algorithme de Leitner
-│   ├── gui.py            # interface graphique tkinter avec rendu LaTeX
-│   └── build_exe.py      # génération du .exe + dist/ via PyInstaller
+│   ├── main.rs           # point d'entrée, choix CLI/GUI
+│   ├── cli.rs            # interface ligne de commande
+│   ├── core.rs           # modèles, chargement JSON, algorithme de Leitner
+│   ├── gui.rs            # interface graphique (egui)
+│   ├── math.rs           # moteur de rendu des formules LaTeX
+│   ├── paths.rs          # emplacement de questions/ et progression.json
+│   └── bin/
+│       └── build_dist.rs # génération de dist/ (exécutable + questions + web)
+├── assets/fonts/         # police DejaVu Sans embarquée (texte + symboles mathématiques)
 ├── web/
-│   └── revision_qcm.html # version web autonome (HTML/JS, sans Python)
-├── questions/             # sets de questions (.json), organisés en sous-dossiers/catégories
-├── pyproject.toml         # dépendances Python (uv)
-├── dist/                  # généré par build_exe.py (gitignored)
-├── build/                 # fichiers intermédiaires PyInstaller (gitignored)
-└── progression.json       # progression utilisateur (créé automatiquement, gitignored)
+│   └── revision_qcm.html # version web autonome (HTML/JS)
+├── questions/            # sets de questions (.json), organisés en sous-dossiers/catégories
+├── Cargo.toml            # dépendances Rust et profil d'optimisation
+├── dist/                 # généré par build_dist (gitignored)
+├── target/               # compilation Rust (gitignored)
+└── progression.json      # progression utilisateur (créé automatiquement, gitignored)
 ```
 
 ---
 
 ## Dépendances
 
-Gérées automatiquement par `uv` :
+Gérées automatiquement par `cargo` et compilées dans l'exécutable :
 
-| Paquet | Rôle |
-|--------|------|
-| `matplotlib` | Rendu des équations LaTeX ($...$) dans la GUI |
-| `pillow` | Conversion des images matplotlib → tkinter |
-| `pyinstaller` | Génération du .exe (dépendance de développement) |
+| Crate | Rôle |
+|-------|------|
+| `eframe` / `egui` | Interface graphique accélérée par le GPU |
+| `serde`, `serde_json`, `indexmap` | Lecture des sets et de `progression.json` |
+| `chrono` | Dates de révision (intervalles de Leitner) |
+| `unicode-normalization` | Comparaison souple des réponses (accents) |
+| `fastrand` | Mélange aléatoire des questions |
 
-`tkinter` est inclus dans la bibliothèque standard Python.
+Tests : `cargo test` (chargement de tous les sets du dépôt, analyse de toutes leurs
+formules LaTeX, algorithme de Leitner, compatibilité du format de progression).
+
+Sous Linux, l'interface graphique nécessite les bibliothèques système habituelles
+(X11 ou Wayland, `libxkbcommon-x11`, OpenGL) ; rien à installer sous Windows et macOS.

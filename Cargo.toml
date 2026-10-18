@@ -1,0 +1,27 @@
+[package]
+name = "revision_qcm"
+version = "1.0.0"
+edition = "2024"
+description = "Révision QCM / QCR / TROU / FLASHCARD avec suivi de Leitner (CLI + GUI)"
+default-run = "revision_qcm"
+
+[features]
+# Build Windows sans fenêtre console (GUI uniquement).
+windowed = []
+
+[dependencies]
+eframe = { version = "0.37", default-features = false, features = ["glow", "default_fonts", "wayland", "x11"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+indexmap = { version = "2", features = ["serde"] }
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+unicode-normalization = "0.1"
+fastrand = "2"
+
+# Optimisations maximales pour le binaire distribué.
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true

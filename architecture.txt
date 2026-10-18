@@ -4,325 +4,268 @@ ARCHITECTURE ET FONCTIONNEMENT — Révision QCM / QCR
 
 VUE D'ENSEMBLE
 --------------
-Le programme est organisé en trois modules distincts selon le principe de
-séparation des responsabilités :
+Application écrite en Rust, compilée en un seul exécutable natif. Le code est
+organisé en modules distincts selon le principe de séparation des responsabilités :
 
-  core.py  →  Logique métier pure (données, algorithmes, persistance)
-  app.py   →  Interface CLI + point d'entrée du programme
-  gui.py   →  Interface graphique tkinter
+  core.rs   →  Logique métier pure (données, algorithmes, persistance)
+  cli.rs    →  Interface en ligne de commande
+  gui.rs    →  Interface graphique (egui, rendu GPU)
+  math.rs   →  Moteur de rendu des formules LaTeX ($...$) pour la GUI
+  paths.rs  →  Emplacement de questions/ et progression.json
+  main.rs   →  Point d'entrée : choix CLI / GUI
+
+  bin/build_dist.rs  →  Outil de génération de dist/ (binaire séparé)
 
 
 DIAGRAMME DE DÉPENDANCES
 -------------------------
 
-  app.py ──────┐
-               ├──→  core.py
-  gui.py ──────┘
+  main.rs ──┬──→ cli.rs ──┬──→ core.rs
+            │             └──→ paths.rs
+            └──→ gui.rs ──┬──→ core.rs
+                          ├──→ math.rs
+                          └──→ paths.rs
 
-  app.py  importe  gui.py  (uniquement si l'utilisateur choisit la GUI)
-  gui.py  importe  core.py
-  app.py  importe  core.py
-  core.py n'importe aucun autre module du projet (pas de dépendance circulaire)
+  bin/build_dist.rs ──→ core.rs (inclus via #[path], pour lister_sets)
+
+  core.rs et math.rs n'importent aucun autre module du projet
+  (pas de dépendance circulaire).
 
 
 ========================================================================
-MODULE core.py — Cœur métier
+MODULE core.rs — Cœur métier
 ========================================================================
 
 Contient les modèles de données et toute la logique d'apprentissage.
-Aucune dépendance vers app.py ou gui.py.
 
---- Classe Question (dataclass) ---
+--- Fonction normaliser_texte(s) → String ---
+
+  Comparaison souple des réponses libres : minuscules (avec ß → ss),
+  décomposition Unicode NFKD puis suppression des accents (marques
+  combinantes), espaces multiples réduits à un seul.
+
+
+--- Enum TypeQuestion ---
+
+  Qcm | Qcr | Trou | Flashcard
+
+
+--- Struct Question ---
 
 Représente une question individuelle.
 
-Attributs :
-  id         str          Identifiant unique (stable, sert de clé de progression)
-  type       str          "QCM" ou "QCR"
-  enonce     str          Texte de la question
-  choix      list[str]    Liste des propositions (A, B, C, D…)
-  reponses   list[int]    Indices (0-based) des bonnes réponses
-  explication str         Texte affiché après la réponse (facultatif)
-
-Propriétés / méthodes :
-  est_qcr             → bool   Vrai si le type est QCR
-  est_correcte(sel)   → bool   Vrai si sel == set(reponses)
-
-
---- Classe QuestionSet (dataclass) ---
-
-Représente un fichier JSON chargé, c'est-à-dire un ensemble de questions
-sur un même thème.
-
-Attributs :
-  id          str              Identifiant = nom du fichier sans extension
-  titre       str              Titre affiché
-  description str              Description courte
-  questions   list[Question]   Toutes les questions du set
-  chemin      Path             Chemin absolu vers le fichier source
+Champs :
+  id                    String          Identifiant unique (stable, clé de progression)
+  type_q                TypeQuestion
+  enonce                String          Texte de la question / recto
+  choix                 Vec<String>     Propositions (QCM/QCR)
+  reponses              Vec<usize>      Indices (0-based) des bonnes réponses, triés
+  reponses_texte        Vec<String>     Réponses acceptées (TROU)
+  reponses_normalisees  Vec<String>     Idem, normalisées une fois au chargement
+  verso                 String          Dos de la carte (FLASHCARD)
+  explication           String          Affichée après la réponse (facultatif)
 
 Méthodes :
-  __len__()   → int   Nombre de questions
+  est_qcr() / est_trou() / est_flashcard()   → bool
+  est_correcte(&[usize])                     → bool   sélection == bonnes réponses
+  est_correcte_texte(&str)                   → bool   TROU, comparaison souple
 
 
---- Classe Progression ---
+--- Struct QuestionSet ---
 
-Gère la persistance et l'exploitation de l'historique des réponses.
+Un fichier JSON chargé : un ensemble de questions sur un même thème.
+
+Champs :
+  id          String           Nom du fichier sans extension
+  titre       String           Titre affiché
+  description String           Description courte
+  questions   Vec<Question>
+  chemin      PathBuf          Chemin du fichier source
+  categorie   String           Sous-dossier de questions/ (défaut : "Général")
+
+
+--- Chargement ---
+
+  charger_set(chemin, racine) → Result<QuestionSet, String>
+    Lit et valide un fichier JSON. Erreur avec message clair si malformé :
+    clés obligatoires, indices dans les bornes, exactement 1 réponse pour un
+    QCM, 'reponses_texte' non vide pour TROU, 'verso' pour FLASHCARD…
+
+  lister_sets(dossier) → Vec<PathBuf>
+    Fichiers .json du dossier et de ses sous-dossiers, triés.
+
+  charger_tous_les_sets(dossier) → (Vec<Arc<QuestionSet>>, Vec<String>)
+    Charge tous les sets EN PARALLÈLE (un lot de fichiers par cœur via
+    std::thread::scope). Renvoie les sets valides (ordre de lister_sets)
+    et les messages d'erreur des fichiers ignorés.
+
+  categories(sets) → Vec<String>   Catégories distinctes, triées.
+
+
+--- Struct Progression ---
+
+Persistance et exploitation de l'historique des réponses.
 Implémente l'algorithme de révision espacée de Leitner.
 
-Stockage : fichier JSON (progression.json)
-Structure interne :
+Stockage : progression.json (format identique à l'ancienne version Python)
   {
     "set_id": {
       "question_id": {
         "boite": int (0–5),
         "vues": int,
         "correctes": int,
-        "derniere_revision": "2026-06-17T10:00:00",
+        "derniere_revision": "2026-06-17T10:00:00" | null,
         "derniere_correcte": bool | null
       }
     }
   }
+En mémoire : IndexMap<String, IndexMap<String, StatsQuestion>> (ordre des
+clés conservé) ; les dates sont converties en NaiveDateTime une seule fois
+à la lecture.
 
 Méthodes principales :
-  __init__(chemin)
-    Charge le fichier JSON si existant, sinon démarre avec un dict vide.
+  new(chemin)
+    Charge le fichier s'il existe ; fichier absent ou corrompu → vide.
 
   enregistrer_reponse(set_id, q_id, correcte)
     Met à jour les stats et ajuste la boîte de Leitner :
-      - Bonne réponse  → boite = min(5, boite + 1)
+      - Bonne réponse    → boite = min(5, boite + 1)
       - Mauvaise réponse → boite = max(0, boite - 1)
 
   est_a_reviser(set_id, q_id) → bool
     Vrai si la question n'a jamais été vue OU si l'intervalle est écoulé.
     Intervalles (jours) : boite 0→0, 1→1, 2→3, 3→7, 4→14, 5→30
 
-  priorite(set_id, q_id) → tuple
-    Clé de tri pour la révision intelligente :
-      (0 si à réviser sinon 1,  boite,  date dernière révision)
+  priorite(set_id, q_id) → (bool, u8, Option<date>)
+    Clé de tri : (pas à réviser ?, boite, date dernière révision)
     → priorise les plus urgentes et les moins maîtrisées.
 
-  resume_set(qset) → dict
-    Calcule les statistiques d'un set :
-      total, rencontrees, a_reviser, precision, repartition, pct_maitrise
+  questions_a_reviser(sets) → Vec<(Arc<QuestionSet>, usize)>
+    Toutes les questions à réviser, tous sets confondus, triées par priorité
+    (tri stable : à égalité, l'ordre des sets est conservé).
+
+  resume_set(qset) → Resume
+    total, rencontrees, a_reviser, precision, repartition, pct_maitrise
 
   sauvegarder()
-    Écrit le dict interne dans progression.json (UTF-8, indenté).
+    Écriture ATOMIQUE : progression.json.tmp puis renommage — une coupure
+    pendant l'écriture ne peut pas corrompre le fichier.
 
   reinitialiser_set(set_id)
-    Supprime toutes les données d'un set (dict.pop).
-
-
---- Fonctions de chargement ---
-
-  charger_set(chemin) → QuestionSet
-    Lit et valide un fichier JSON. Lève ValueError si malformé.
-    Valide : présence des clés obligatoires, cohérence des indices,
-    exactement 1 réponse pour QCM, etc.
-
-  lister_sets(dossier) → list[Path]
-    Retourne la liste triée des fichiers .json dans un dossier.
+    Supprime toutes les données d'un set.
 
 
 ========================================================================
-MODULE app.py — Interface CLI et point d'entrée
+MODULE cli.rs — Interface ligne de commande
 ========================================================================
 
-Gère l'interaction en ligne de commande et orchestre le démarrage.
-
---- Classe C ---
-
-Classe utilitaire statique qui encapsule les codes couleur ANSI.
-Désactivée automatiquement si stdout n'est pas un terminal (sys.stdout.isatty()).
-
-Méthodes (toutes @classmethod) :
-  gras, faible, vert, rouge, jaune, bleu
-  Chacune prend un str et retourne le str coloré (ou inchangé hors TTY).
-
+--- Module c ---
+  Codes couleur ANSI (gras, faible, vert, rouge, jaune, bleu), désactivés
+  automatiquement si la sortie n'est pas un terminal.
 
 --- Fonctions d'affichage ---
+  titre(texte)              Encadré bleu avec le texte
+  barre_progression(pct, l) "[####----]  42.5%"
+  demander(invite)          Lit une ligne ; fin d'entrée (EOF) → "q"
 
-  titre(texte)              Affiche un encadré bleu avec le texte
-  barre_progression(pct)    Retourne une chaîne "[####----] 42.5%"
-  demander(invite)          Wrapper autour de input(), gère EOF/KeyboardInterrupt
+--- Quiz ---
+  parser_selection(saisie, n) → Vec<usize>
+    "AC", "a c" ou "a,c" → [0, 2] ; lettres hors plage ignorées.
 
+  poser_question(q, numero, total) → Option<bool>
+    Affiche la question selon son type (poser_choix / poser_trou /
+    poser_flashcard), recueille la réponse, affiche le retour.
+    Some(juste) ou None si l'utilisateur quitte.
 
---- Fonctions de quiz ---
+  derouler(questions, prog) → (score, répondues)
+    Boucle commune aux sessions et à la révision intelligente ;
+    sauvegarde après chaque réponse (robustesse).
 
-  parser_selection(saisie, n) → list[int]
-    Convertit "AC" ou "a c" ou "a,c" en [0, 2].
-    Filtre les lettres invalides (hors plage 0..n-1).
-
-  poser_question(q, numero, total) → bool | None
-    Affiche une question, recueille la réponse, affiche le feedback.
-    Retourne True/False (justesse) ou None si l'utilisateur quitte.
-
-  lancer_session(qset, questions, prog)
-    Déroule une session : boucle sur les questions, appelle poser_question,
-    enregistre la réponse, sauvegarde après chaque question (robustesse).
-    Affiche le score final.
-
-
---- Fonctions de menu ---
-
-  charger_tous_les_sets()   Charge tous les .json depuis questions/
-  choisir_set(sets)         Menu numéroté pour sélectionner un set
-  menu_session(sets, prog)             Session sur un set choisi
-  menu_revision_intelligente(sets, prog)  Révision multi-sets priorisée
-  menu_statistiques(sets, prog)        Affiche les stats de chaque set
-  menu_reinitialiser(sets, prog)       Remet à zéro la progression d'un set
-
-
---- Point d'entrée ---
-
-  choisir_interface() → str
-    Logique de sélection CLI/GUI :
-      1. Argument --gui ou --cli → retourne directement
-      2. Pas de terminal (exe windowed) → "gui"
-      3. Sinon → affiche le menu de choix dans le terminal
-
-  main()
-    Boucle principale CLI : charge les sets, affiche le menu, route les choix.
-
-  if __name__ == "__main__":
-    mode = choisir_interface()
-    si mode == "gui" → importe gui et appelle lancer_gui()
-    sinon → appelle main()
+--- Menus ---
+  choisir_categorie / choisir_set, menu_session, menu_revision_intelligente,
+  menu_statistiques, menu_reinitialiser, main (boucle principale),
+  demander_interface (menu de choix CLI/GUI au lancement).
 
 
 ========================================================================
-MODULE gui.py — Interface graphique tkinter
+MODULE gui.rs — Interface graphique (egui / eframe)
 ========================================================================
 
-Une seule classe principale : RevisionGUI.
-Pattern : une seule fenêtre, les "écrans" sont des tk.Frame détruits et
-recréés à chaque navigation (méthode _clear).
+Mode « immédiat » : à chaque frame, l'écran courant est entièrement décrit
+à partir de l'état ; egui ne redessine que sur événement (clavier, souris,
+redimensionnement) → 0 % CPU au repos. Rendu OpenGL (glow).
 
---- Fonctions module-level : rendu LaTeX ---
+--- État : struct RevisionGui ---
+  prog        Progression
+  sets        Vec<Arc<QuestionSet>>   Rechargés à chaque retour au menu
+                                      (modification des JSON à chaud)
+  ecran       Ecran                   Écran affiché
+  dialogue    Option<Dialogue>        Fenêtre modale ouverte, s'il y en a une
 
-  _LATEX_OK : bool
-    Vrai si matplotlib et pillow sont disponibles.
-    Tentative d'import silencieuse au chargement du module.
+--- enum Ecran ---
+  MenuPrincipal, Categories, SetsCategorie, ModeSession,
+  Quiz(Quiz), Resultat, Statistiques
 
-  _has_math(text) → bool
-    Vrai si _LATEX_OK et "$" présent dans le texte.
+--- enum Dialogue (fenêtres modales) ---
+  Info       message + OK (Entrée/Échap)
+  Nombre     saisie du nombre de questions (valeur proposée présélectionnée)
+  Confirmer  Oui (O/Entrée) / Non (N/Échap) : réinitialisation, quitter le quiz
 
-  _render_math(text, fontsize, max_w_px) → PhotoImage | None
-    Utilise matplotlib.figure.Figure + FigureCanvasAgg pour rendre
-    le texte (avec mathtext $...$) en image PNG transparente.
-    Retourne None si le rendu échoue (expression invalide, etc.).
+Tant qu'un dialogue est ouvert, le clavier ne pilote plus l'écran dessous.
 
-  _label_or_math(parent, text, font, fg, bg, max_w, **kwargs) → tk.Label
-    Sélecteur automatique :
-      - Si le texte contient $...$ → _render_math → Label image
-      - Sinon → Label texte classique
-    Utilisé pour l'énoncé, les choix et les explications.
+--- struct Quiz : moteur commun (session simple ET révision intelligente) ---
+  paires     Vec<(Arc<QuestionSet>, usize)>  Peut mélanger plusieurs sets
+  index, score, selection, repondu, revele, correcte, saisie
 
+  ecran_quiz() : lit le clavier → action (Basculer, Valider, Suivante,
+  Reveler, Repondre, Quitter), dessine l'écran, puis applique l'action
+  (enregistrement + sauvegarde de la progression).
+  Les lettres sont lues via les événements texte : elles suivent la
+  disposition du clavier (AZERTY/QWERTY).
 
---- Classe RevisionGUI ---
+--- Widgets ---
+  liste_nav     Liste navigable ↑↓ / Début / Fin / Entrée / Échap / clic
+  carte_choix   Choix de QCM/QCR : lettre + texte riche (formules), cliquable
+  barre         Barre de progression arrondie
+  bouton, petit_bouton
 
-  __init__()
-    Crée la fenêtre Tk, charge la progression, appelle _show_main_menu.
-
-  Attributs d'instance :
-    root   tk.Tk             La fenêtre principale
-    prog   core.Progression  Chargée depuis progression.json
-    sets   list[QuestionSet] Chargés à chaque écran principal
-    _frame tk.Frame | None   Le frame actuellement affiché
-
-
-  -- Helpers de mise en page --
-
-  _charger_sets()
-    Recharge tous les sets depuis questions/.
-
-  _clear() → tk.Frame
-    Détruit le frame courant, en crée un nouveau et le retourne.
-
-  _header(parent, text)
-    Ajoute un titre centré + ligne de séparation en haut du frame.
-
-  _footer(parent, text)
-    Ajoute une ligne d'aide clavier en bas du frame.
-
-  _nav_list(parent, items, on_select, on_back) → tk.Listbox
-    Crée une Listbox avec scrollbar, thème sombre, navigation ↑↓+Entrée.
-    Binds : <Return> → on_select(index), <Escape> → on_back().
+--- Thème et polices ---
+  Palette Catppuccin Mocha. Police DejaVu Sans (et Bold) embarquée dans
+  l'exécutable : couvre le grec et les symboles mathématiques.
 
 
-  -- Écrans de navigation --
+========================================================================
+MODULE math.rs — Rendu des formules LaTeX
+========================================================================
 
-  _show_main_menu()
-    5 options : Session, Révision intelligente, Stats, Réinitialiser, Quitter.
+Mini-moteur inspiré de TeX, sans dépendance externe.
 
-  _show_set_selection_session()
-    Liste les sets disponibles → _show_session_mode(qset).
+1. ANALYSE
+   analyser_texte(texte) → Vec<Segment>
+     Découpe le texte en Texte / Formule sur les « $ » non échappés
+     (nombre impair de $ → tout est du texte). Résultat mis en cache.
+   Analyseur::liste() → Vec<Noeud>
+     Arbre : Sym (symbole + classe TeX), Texte, Groupe, Frac, Racine,
+     Scripts (indices/exposants), GrandOp (∑ ∫ lim log…), Delims
+     (\left…\right), Espace, XFleche, Accent, Pile (\overset…).
+     Tolère un backslash doublé par erreur (« \\tau » → τ).
 
-  _show_session_mode(qset)
-    3 modes : toutes, à réviser, nombre limité → _show_quiz ou _dialog_nombre.
+2. MISE EN PAGE (struct Moteur)
+   Chaque nœud devient une Boite (largeur, hauteur, profondeur, éléments :
+   texte, filets, traits, disques) positionnée par rapport à sa ligne de base.
+   - espacement entre atomes selon la table de TeX (Ord, Op, Bin, Rel…),
+     « − » unaire détecté automatiquement ;
+   - fractions centrées sur l'axe mathématique, racines et délimiteurs
+     dessinés en vectoriel à la bonne hauteur ;
+   - italique pour les variables, avec correction d'italique.
 
-  _dialog_nombre(max_n, callback)
-    Fenêtre modale (Toplevel) pour saisir un nombre. Appelle callback(n).
-
-  _start_revision_intelligente()
-    Collecte toutes les questions à réviser (tous sets), trie par priorité,
-    ouvre _dialog_nombre puis _run_quiz.
-
-  _show_statistiques()
-    Canvas scrollable listant chaque set avec sa barre de maîtrise Leitner.
-
-  _show_set_selection_reset()
-    Liste les sets → _confirm_reset(qset).
-
-  _confirm_reset(qset)
-    Boîte de dialogue de confirmation, puis reinitialiser_set + sauvegarder.
-
-
-  -- Moteur de quiz --
-
-  _show_quiz(qset, questions)
-    Convertit en liste de paires (qset, question) et appelle _run_quiz.
-
-  _run_quiz(pairs)
-    Moteur commun pour sessions simples ET révision intelligente.
-    Utilise une fonction interne build() rappelée à chaque question.
-
-    Variables de session (dict "state") :
-      index     int        Index de la question courante
-      score     int        Nombre de bonnes réponses
-      selection list[int]  Indices sélectionnés par l'utilisateur
-      answered  bool       Vrai après validation, avant passage à la suivante
-
-    Fonctions internes de build() :
-      refresh()     Met à jour les couleurs des widgets de choix
-      toggle(i)     Sélectionne/désélectionne le choix i
-      validate()    Valide la réponse, affiche le feedback, sauvegarde
-      next_q()      Passe à la question suivante ou show_results()
-      quit_quiz()   Demande confirmation, retourne au menu
-      on_key(event) Dispatche les événements clavier (A-D, Entrée, Q)
-
-    Widgets de choix :
-      Chaque choix est un tk.Frame (outer) contenant :
-        - un tk.Label pour la lettre ("  A.  ")
-        - un tk.Label pour le texte ou l'image LaTeX
-      Clic souris : bind <Button-1> sur outer + letter + content
-      Focus : <FocusIn> redirige vers le frame principal (pour garder
-              les bindings clavier actifs)
-
-    show_results()
-      Affiche le score final en grand, une barre de progression,
-      un message d'encouragement et un bouton retour.
-
-
-  run()
-    Lance la boucle principale tkinter (root.mainloop()).
-
-
---- Fonction module-level ---
-
-  lancer_gui()
-    Instancie RevisionGUI et appelle run().
-    Appelée depuis app.py quand l'utilisateur choisit la GUI.
+3. PARAGRAPHE
+   disposer(ui, texte, taille, largeur) → Paragraphe
+     Texte et formules sont répartis en lignes ; retour à la ligne entre les
+     mots, et dans une formule après une relation (=, ≈…) ou un opérateur.
+   Paragraphe::peindre(painter, origine, couleur)
+     Dessine le tout ; la couleur est choisie au dessin (choix sélectionné,
+     correct, incorrect…) sans refaire la mise en page.
 
 
 ========================================================================
@@ -330,55 +273,59 @@ FLUX DE DONNÉES
 ========================================================================
 
 1. DÉMARRAGE
-   app.py : choisir_interface()
-     → CLI : main() → menu → fonctions de quiz → core.Progression
-     → GUI : lancer_gui() → RevisionGUI.__init__() → _show_main_menu()
+   main.rs : choisir_interface()
+     --gui / --cli, sinon GUI si pas de terminal, sinon menu de choix
+     → CLI : cli::main()
+     → GUI : gui::lancer_gui() → RevisionGui::new() → menu principal
 
 2. CHARGEMENT DES QUESTIONS
-   core.lister_sets(dossier) → list[Path]
-   core.charger_set(chemin) → QuestionSet (contient list[Question])
+   core::charger_tous_les_sets(questions/)  (en parallèle)
+     → lister_sets() → charger_set() pour chaque fichier
 
 3. SESSION DE QUIZ
    Utilisateur sélectionne → questions filtrées/mélangées → boucle :
      a. Affiche question + choix
      b. Utilisateur répond
-     c. q.est_correcte(selection) → bool
+     c. q.est_correcte(...) / q.est_correcte_texte(...) / auto-évaluation
      d. prog.enregistrer_reponse(set_id, q_id, correcte)
-     e. prog.sauvegarder() → écrit progression.json
+     e. prog.sauvegarder() → écrit progression.json (atomique)
 
 4. RÉVISION INTELLIGENTE
-   Pour chaque (set, question) :
-     prog.est_a_reviser(set_id, q_id) → filtrage
-     prog.priorite(set_id, q_id)      → tri
+   prog.questions_a_reviser(sets) → filtrage + tri par priorité
    → même boucle de quiz
 
 5. STATISTIQUES
-   prog.resume_set(qset) → dict avec pct_maitrise, repartition, etc.
-   Aucune modification de l'état.
+   prog.resume_set(qset) → Resume ; aucune modification de l'état.
 
 
 ========================================================================
-PERSISTANCE
+PERSISTANCE ET EMPLACEMENTS (paths.rs)
 ========================================================================
+
+  Racine des données :
+    - exécutable lancé depuis target/ (cargo run) → racine du projet ;
+    - sinon → dossier de l'exécutable (ex. dist/).
 
   progression.json
-    Créé automatiquement au premier lancement dans le même dossier que le .exe
-    (ou à côté de app.py en mode développement).
-    Sauvegardé après CHAQUE réponse pour résister aux interruptions.
-    Format JSON humainement lisible, encodage UTF-8.
+    Créé automatiquement au premier lancement. Sauvegardé après CHAQUE
+    réponse. JSON lisible (indenté), UTF-8, compatible avec l'ancienne
+    version Python.
 
-  questions/*.json
+  questions/**/*.json
     Fichiers statiques, jamais modifiés par le programme.
-    Rechargés à chaque ouverture d'un écran principal (permet de les modifier
-    à chaud sans redémarrer).
+    Rechargés à chaque retour au menu principal (modifiables à chaud).
 
 
 ========================================================================
-DÉTECTION DU MODE EXÉCUTABLE (PyInstaller)
+COMPILATION ET DISTRIBUTION
 ========================================================================
 
-  getattr(sys, "frozen", False)
-    Vrai quand l'application tourne depuis un .exe PyInstaller.
-    Dans ce cas, BASE = Path(sys.executable).parent (dossier du .exe)
-    plutôt que Path(__file__).parent (dossier du script .py).
-    Permet de toujours trouver questions/ et progression.json au bon endroit.
+  cargo run --release                         Lancer l'application
+  cargo test                                  Tests unitaires
+  cargo run --release --bin build_dist        Générer dist/
+  cargo run --release --bin build_dist -- --windowed
+                                              Idem, sans console (Windows)
+
+  Profil release (Cargo.toml) : opt-level 3, LTO complète, codegen-units = 1,
+  panic = abort, symboles retirés.
+  La feature « windowed » active windows_subsystem = "windows".
