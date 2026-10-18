@@ -1,15 +1,9 @@
-/.python-version
-/.venv
-/uv.lock
+# Artefacts de compilation Rust
+/target/
 
-# Bytecode Python
-__pycache__/
-*.pyc
-
-# Artefacts de build (régénérés par src/build_exe.py)
-/build/
+# Artefacts de build (régénérés par `cargo run --release --bin build_dist`)
 /dist/
-*.spec
 
 # Données utilisateur (progression de révision), pas du code source
 progression.json
+progression.json.tmp

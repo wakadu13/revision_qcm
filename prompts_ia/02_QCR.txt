@@ -1,0 +1,102 @@
+======================================================================
+PROMPT IA — Cartes QCR (plusieurs bonnes réponses possibles)
+Application « Révision QCM » — à copier-coller en entier dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ton
+cours tout en bas, puis copie TOUT ce texte dans l'IA. Enregistre le bloc
+JSON obtenu dans questions/<matière>/<nom_du_set>.json, puis vérifie-le :
+    revision_qcm --verifier questions/<matière>/<nom_du_set>.json
+
+PARAMÈTRES
+- Matière / chapitre ........ : [ex. Relations internationales — l'ONU]
+- Niveau visé ............... : [ex. L2]
+- Nombre de questions ....... : [ex. 15]
+- Préfixe des identifiants .. : [ex. onu]   → onu-001, onu-002…
+- Titre du set .............. : [ex. L'Organisation des Nations unies]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un enseignant expert de la matière indiquée et un concepteur
+d'évaluations rigoureux. Rédige des questions QCR (questions à réponses
+multiples : l'étudiant doit cocher TOUTES les bonnes propositions et
+seulement elles) à partir du COURS fourni en bas (ou, s'il est vide, de
+tes connaissances fiables), au format JSON décrit ci-dessous.
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte, utilise « … » plutôt que ".
+- Structure :
+  {
+    "titre": "<Titre du set>",
+    "description": "<une phrase>",
+    "questions": [ { question }, … ]
+  }
+- Chaque question :
+  {
+    "id": "<préfixe>-001",
+    "type": "QCR",
+    "question": "<énoncé : « Lesquelles de ces propositions… ? »>",
+    "choix": ["<A>", "<B>", "<C>", "<D>", "<E>"],
+    "reponses": [<indices des bonnes réponses, triés>],
+    "explication": "<pour chaque proposition : vraie ou fausse, et pourquoi>"
+  }
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "reponses" contient AU MOINS UN entier ; indices à partir de 0
+  (0 = premier choix) et tous présents dans "choix".
+- Formules : LaTeX entre $…$, backslashs DOUBLÉS dans le JSON
+  ("$\\Delta$", "$\\frac{a}{b}$"), chaque $ fermé.
+
+3) QUALITÉ PÉDAGOGIQUE
+- 4 ou 5 propositions ; chacune est une affirmation qui se juge
+  vraie/fausse indépendamment des autres.
+- Nombre de bonnes réponses VARIABLE d'une question à l'autre (de 1 à
+  « toutes sauf une ») : l'étudiant ne doit pas pouvoir deviner combien
+  cocher. Évite que toutes les propositions soient vraies.
+- Les fausses propositions sont des erreurs plausibles (confusions,
+  généralisations abusives, dates ou chiffres voisins), jamais absurdes.
+- Pas de proposition qui en contient une autre, pas de négation piège.
+- L'explication reprend chaque proposition (A, B, C…) en une courte
+  phrase : vraie/fausse + justification.
+- Reste strictement fidèle au cours ; n'invente aucun fait.
+
+4) EXEMPLE (format exact attendu)
+```json
+{
+  "titre": "L'Organisation des Nations unies",
+  "description": "Organes, fonctionnement et rôle de l'ONU.",
+  "questions": [
+    {
+      "id": "onu-001",
+      "type": "QCR",
+      "question": "Lesquels de ces États sont membres permanents du Conseil de sécurité ?",
+      "choix": ["France", "Allemagne", "Chine", "Japon", "Royaume-Uni"],
+      "reponses": [0, 2, 4],
+      "explication": "Les 5 membres permanents sont la Chine, les États-Unis, la France, le Royaume-Uni et la Russie. L'Allemagne et le Japon n'en font pas partie (ils y siègent parfois comme membres non permanents)."
+    },
+    {
+      "id": "onu-002",
+      "type": "QCR",
+      "question": "Quelles affirmations sur l'Assemblée générale sont exactes ?",
+      "choix": ["Chaque État membre y dispose d'une voix", "Ses résolutions sont toujours juridiquement contraignantes", "Elle vote le budget de l'Organisation", "Elle peut imposer des sanctions militaires"],
+      "reponses": [0, 2],
+      "explication": "A : vrai (un État, une voix). B : faux, ses résolutions sont en général des recommandations. C : vrai. D : faux, c'est le Conseil de sécurité qui décide des mesures coercitives."
+    }
+  ]
+}
+```
+
+5) AVANT DE RÉPONDRE, VÉRIFIE
+- Pour chaque question, recompte les indices depuis 0 et vérifie que
+  "reponses" contient exactement les propositions vraies.
+- Les id sont uniques, le nombre de questions demandé est atteint.
+- Le JSON est valide.
+
+----------------------------------------------------------------------
+COURS / CONTENU SOURCE
+----------------------------------------------------------------------
+[Colle ici ton cours, tes notes ou le chapitre à réviser.]

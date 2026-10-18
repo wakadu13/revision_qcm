@@ -1,0 +1,103 @@
+======================================================================
+PROMPT IA — FLASHCARDS (recto / verso, auto-évaluées)
+Application « Révision QCM » — à copier-coller en entier dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ton
+cours tout en bas, puis copie TOUT ce texte dans l'IA. Enregistre le bloc
+JSON obtenu dans questions/<matière>/<nom_du_set>.json, puis vérifie-le :
+    revision_qcm --verifier questions/<matière>/<nom_du_set>.json
+
+(Pour du vocabulaire de langue étrangère, préfère le fichier
+06_LANGUE_VOCABULAIRE.txt : production, contexte et répétition FSRS.)
+
+PARAMÈTRES
+- Matière / chapitre ........ : [ex. Maths — signaux déterministes]
+- Niveau visé ............... : [ex. L3]
+- Nombre de cartes .......... : [ex. 30]
+- Préfixe des identifiants .. : [ex. sig]   → sig-001, sig-002…
+- Titre du set .............. : [ex. Signaux déterministes — l'essentiel]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un expert de la mémorisation espacée (règles de rédaction de
+cartes de SuperMemo / Anki) et de la matière indiquée. Rédige des
+flashcards : l'étudiant lit le recto, essaie de se souvenir, retourne la
+carte et s'auto-évalue. Base-toi sur le COURS fourni en bas (ou, s'il
+est vide, sur tes connaissances fiables). Format JSON ci-dessous.
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte, utilise « … » plutôt que ".
+- Structure :
+  {
+    "titre": "<Titre du set>",
+    "description": "<une phrase>",
+    "questions": [ { carte }, … ]
+  }
+- Chaque carte :
+  {
+    "id": "<préfixe>-001",
+    "type": "FLASHCARD",
+    "question": "<recto : une question précise>",
+    "verso": "<réponse courte>",
+    "explication": "<facultatif : contexte, exemple, moyen mnémotechnique>"
+  }
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "verso" est obligatoire et non vide.
+- Formules : LaTeX entre $…$, backslashs DOUBLÉS dans le JSON
+  ("$\\int_0^T x(t)\\,dt$"), chaque $ fermé.
+
+3) QUALITÉ PÉDAGOGIQUE (règles de rédaction des bonnes cartes)
+- Principe d'information minimale : UNE carte = UN fait. Découpe les
+  notions complexes en plusieurs cartes simples.
+- Le recto est une vraie question précise (« Que vaut la transformée de
+  Fourier d'une porte de largeur T ? »), pas un mot isolé.
+- Verso court : un mot, une valeur, une formule ou une phrase. Jamais de
+  longue liste ; une énumération devient plusieurs cartes, ou une carte
+  par élément (« Quel est le 2e principe de… ? »).
+- Une seule réponse correcte possible pour le recto.
+- Pour les définitions importantes, fais deux cartes : notion → définition
+  ET définition → notion.
+- Rattache au concret : exemples, ordres de grandeur, cas d'usage, dans
+  l'explication.
+- Ajoute dans l'explication un moyen mnémotechnique quand c'est utile.
+- Reste strictement fidèle au cours ; n'invente aucun fait.
+
+4) EXEMPLE (format exact attendu)
+```json
+{
+  "titre": "Signaux déterministes — l'essentiel",
+  "description": "Définitions et transformées usuelles.",
+  "questions": [
+    {
+      "id": "sig-001",
+      "type": "FLASHCARD",
+      "question": "Quelle est l'énergie d'un signal $x(t)$ ?",
+      "verso": "$E = \\int_{-\\infty}^{+\\infty} |x(t)|^2\\,dt$",
+      "explication": "Un signal est dit « à énergie finie » si cette intégrale converge."
+    },
+    {
+      "id": "sig-002",
+      "type": "FLASHCARD",
+      "question": "Quelle est la transformée de Fourier de $\\delta(t)$ ?",
+      "verso": "1",
+      "explication": "L'impulsion de Dirac contient toutes les fréquences avec la même amplitude."
+    }
+  ]
+}
+```
+
+5) AVANT DE RÉPONDRE, VÉRIFIE
+- Chaque carte ne teste qu'un fait, chaque verso est court et juste.
+- Les id sont uniques, le nombre de cartes demandé est atteint.
+- Le JSON est valide.
+
+----------------------------------------------------------------------
+COURS / CONTENU SOURCE
+----------------------------------------------------------------------
+[Colle ici ton cours, tes notes ou le chapitre à réviser.]

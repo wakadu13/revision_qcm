@@ -1,0 +1,122 @@
+======================================================================
+PROMPT IA — Langues : GRAMMAIRE en phrases à trous, QCM et QCR
+Application « Révision QCM », module Langues — à copier-coller dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ton
+cours de grammaire tout en bas (facultatif), puis copie TOUT ce texte
+dans l'IA. Enregistre le bloc JSON obtenu dans questions/langues/<nom>.json
+(ex. anglais_grammaire_present_perfect.json), puis vérifie-le :
+    revision_qcm --verifier questions/langues/<nom>.json
+
+PARAMÈTRES
+- Langue étudiée ............ : [ex. Anglais]   (orthographe identique dans tous tes fichiers)
+- Point(s) de grammaire ..... : [ex. present perfect vs prétérit ; since / for]
+- Niveau (CECRL) ............ : [ex. B1]
+- Nombre d'exercices ........ : [ex. 20 (environ 70 % de phrases à trous, 30 % de QCM/QCR)]
+- Préfixe des identifiants .. : [ex. en-pp]
+- Caractères spéciaux ....... : [ex. espagnol : "á", "é", "í", "ó", "ú", "ñ", "¿", "¡" ; anglais : aucun]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un professeur de langue expérimenté. Produis des exercices de
+grammaire au format JSON ci-dessous, sur le(s) point(s) indiqué(s), à
+partir du COURS fourni en bas (s'il est vide : de tes connaissances).
+Privilégie les phrases à trous : produire la forme ancre bien mieux que
+la reconnaître dans une liste.
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte français, utilise « … » plutôt que ".
+- Structure :
+  {
+    "langue": "<Langue étudiée>",
+    "titre": "<Langue> — grammaire : <point>",
+    "caracteres_speciaux": [ … ],
+    "grammaire": [ { exercice }, … ]
+  }
+- Phrase à trous :
+  { "id": "<préfixe>-001", "type": "TROU",
+    "question": "<phrase avec ___ et l'indice entre parenthèses>",
+    "reponses_texte": ["<réponse>", "<variante acceptée>"],
+    "traduction": "<facultatif : sens de la phrase en français>",
+    "explication": "<la règle appliquée>" }
+- QCM (une bonne réponse) :
+  { "id": "<préfixe>-002", "type": "QCM",
+    "question": "<énoncé>", "choix": ["…", "…", "…", "…"],
+    "reponses": [<indice>], "explication": "<règle>" }
+- QCR (plusieurs bonnes réponses) : comme QCM avec "type": "QCR" et
+  "reponses" = [indices de toutes les bonnes propositions].
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "langue" obligatoire ; "id" uniques.
+- TROU : "reponses_texte" = liste avec au moins une réponse non vide.
+- QCM/QCR : indices à partir de 0 (0 = premier choix), présents dans
+  "choix" ; exactement un pour QCM, au moins un pour QCR.
+
+3) COMMENT LA RÉPONSE EST CORRIGÉE (important)
+- Phrases à trous : majuscules, espaces et ponctuation finale ignorés ;
+  mais PAS les accents ni les lettres (« goes » ≠ « goed », « está » ≠
+  « esta »). Liste donc toutes les variantes correctes : forme contractée
+  et pleine (« haven't finished », « have not finished »), synonymes
+  grammaticalement corrects.
+
+4) QUALITÉ PÉDAGOGIQUE
+- Un seul ___ par phrase ; l'élément à trouver est la forme grammaticale
+  visée (verbe conjugué, préposition, pronom relatif, auxiliaire…).
+- Indice entre parenthèses quand il faut savoir quel mot transformer :
+  « She ___ (go) to school every day. », « They ___ (not / finish)… ».
+- Phrases courtes, naturelles, au niveau indiqué, avec un contexte qui
+  ne laisse qu'UNE réponse possible (marqueurs de temps : yesterday,
+  since 2010, already…).
+- Alterne les cas d'usage et inclus les pièges typiques des francophones
+  (calques du français).
+- "explication" : la règle en une ou deux phrases, avec le contre-exemple
+  fautif quand c'est utile.
+- QCM/QCR : distracteurs = erreurs réelles d'apprenants.
+
+5) EXEMPLE (format exact attendu)
+```json
+{
+  "langue": "Anglais",
+  "titre": "Anglais — grammaire : present perfect et prétérit",
+  "caracteres_speciaux": [],
+  "grammaire": [
+    {
+      "id": "en-pp-001",
+      "type": "TROU",
+      "question": "I ___ (live) here since 2015.",
+      "reponses_texte": ["have lived", "'ve lived", "have been living", "'ve been living"],
+      "traduction": "J'habite ici depuis 2015.",
+      "explication": "« depuis » + action toujours vraie → present perfect, jamais le présent simple."
+    },
+    {
+      "id": "en-pp-002",
+      "type": "TROU",
+      "question": "We ___ (visit) Rome last summer.",
+      "reponses_texte": ["visited"],
+      "explication": "Moment passé précis et terminé (last summer) → prétérit."
+    },
+    {
+      "id": "en-pp-003",
+      "type": "QCM",
+      "question": "Choisis la bonne phrase :",
+      "choix": ["I have seen him yesterday.", "I saw him yesterday.", "I have saw him yesterday.", "I seen him yesterday."],
+      "reponses": [1],
+      "explication": "« yesterday » impose le prétérit : I saw him yesterday."
+    }
+  ]
+}
+```
+
+6) AVANT DE RÉPONDRE, VÉRIFIE
+- Chaque phrase n'admet que les réponses listées ; variantes complètes.
+- Indices des QCM recomptés depuis 0 ; id uniques ; JSON valide.
+
+----------------------------------------------------------------------
+COURS DE GRAMMAIRE (facultatif)
+----------------------------------------------------------------------
+[Colle ici ton cours ou tes notes de grammaire.]
