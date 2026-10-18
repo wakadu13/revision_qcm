@@ -1,0 +1,106 @@
+======================================================================
+PROMPT IA — Cartes TROU (texte à trous, réponse tapée au clavier)
+Application « Révision QCM » — à copier-coller en entier dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ton
+cours tout en bas, puis copie TOUT ce texte dans l'IA. Enregistre le bloc
+JSON obtenu dans questions/<matière>/<nom_du_set>.json, puis vérifie-le :
+    revision_qcm --verifier questions/<matière>/<nom_du_set>.json
+
+(Pour une langue étrangère, préfère les fichiers 06 à 10 : module Langues.)
+
+PARAMÈTRES
+- Matière / chapitre ........ : [ex. Télécoms — modulation]
+- Niveau visé ............... : [ex. BUT 2e année]
+- Nombre de questions ....... : [ex. 20]
+- Préfixe des identifiants .. : [ex. modu]   → modu-001, modu-002…
+- Titre du set .............. : [ex. Modulations numériques]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un enseignant expert de la matière indiquée. Rédige des phrases à
+trous : l'étudiant voit la phrase et TAPE le mot manquant. Base-toi sur
+le COURS fourni en bas (ou, s'il est vide, sur tes connaissances
+fiables). Format JSON décrit ci-dessous.
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte, utilise « … » plutôt que ".
+- Structure :
+  {
+    "titre": "<Titre du set>",
+    "description": "<une phrase>",
+    "questions": [ { question }, … ]
+  }
+- Chaque question :
+  {
+    "id": "<préfixe>-001",
+    "type": "TROU",
+    "question": "<phrase contenant ___ à l'endroit du trou>",
+    "reponses_texte": ["<réponse>", "<variante acceptée>", …],
+    "explication": "<rappel de la notion>"
+  }
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "reponses_texte" est une LISTE contenant au moins une réponse non vide.
+- Formules : LaTeX entre $…$, backslashs DOUBLÉS dans le JSON
+  ("$\\omega$"), chaque $ fermé. La réponse à taper, elle, ne doit
+  jamais être du LaTeX.
+
+3) COMMENT LA RÉPONSE EST CORRIGÉE (important pour bien rédiger)
+- La saisie est comparée à chaque élément de "reponses_texte" en
+  ignorant seulement : majuscules, accents et espaces en trop.
+- Tout le reste doit correspondre exactement : liste donc TOUTES les
+  formes correctes raisonnables : synonymes, singulier/pluriel,
+  abréviation et forme longue (« QAM », « modulation d'amplitude en
+  quadrature »), nombre écrit avec virgule ET avec point (« 0,5 »,
+  « 0.5 »), avec et sans unité (« 3 dB », « 3 »).
+
+4) QUALITÉ PÉDAGOGIQUE
+- UN seul trou ( ___ ) par phrase, placé sur le mot-clé à retenir (terme
+  technique, valeur, nom propre, unité), jamais sur un mot banal.
+- Réponse courte : 1 à 3 mots, ou un nombre.
+- La phrase doit permettre UNE seule réponse sans ambiguïté ; si besoin,
+  ajoute un indice entre parenthèses : « (unité) », « (2 mots) »,
+  « (sigle) ».
+- Phrase autonome, compréhensible sans le cours sous les yeux.
+- L'explication redonne la règle ou la formule en une ou deux phrases.
+- Reste strictement fidèle au cours ; n'invente aucun fait.
+
+5) EXEMPLE (format exact attendu)
+```json
+{
+  "titre": "Modulations numériques",
+  "description": "Notions clés des modulations ASK, FSK, PSK et QAM.",
+  "questions": [
+    {
+      "id": "modu-001",
+      "type": "TROU",
+      "question": "Une modulation 16-QAM transmet ___ bits par symbole.",
+      "reponses_texte": ["4", "quatre"],
+      "explication": "$\\log_2(16) = 4$ bits par symbole."
+    },
+    {
+      "id": "modu-002",
+      "type": "TROU",
+      "question": "La modulation qui fait varier la phase de la porteuse s'appelle la ___ (sigle).",
+      "reponses_texte": ["PSK", "modulation de phase", "phase shift keying"],
+      "explication": "PSK = Phase Shift Keying ; ASK agit sur l'amplitude, FSK sur la fréquence."
+    }
+  ]
+}
+```
+
+6) AVANT DE RÉPONDRE, VÉRIFIE
+- Chaque phrase contient exactement un « ___ ».
+- Chaque réponse est juste et toutes les variantes utiles sont listées.
+- Les id sont uniques, le JSON est valide.
+
+----------------------------------------------------------------------
+COURS / CONTENU SOURCE
+----------------------------------------------------------------------
+[Colle ici ton cours, tes notes ou le chapitre à réviser.]

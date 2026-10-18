@@ -1,0 +1,134 @@
+======================================================================
+PROMPT IA — Langues : VOCABULAIRE
+Application « Révision QCM », module Langues — à copier-coller dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ta
+liste de mots ou ton texte tout en bas, puis copie TOUT ce texte dans
+l'IA. Enregistre le bloc JSON obtenu dans questions/langues/<nom>.json
+(ex. anglais_vocab_travail.json), puis vérifie-le :
+    revision_qcm --verifier questions/langues/<nom>.json
+Plusieurs fichiers d'une même langue sont regroupés automatiquement dans
+le module Langues : tu peux générer un fichier par thème.
+
+Chaque mot devient automatiquement trois exercices : reconnaissance
+(langue → français), production (français → langue, à taper) et rappel en
+contexte (l'exemple à compléter), planifiés par répétition espacée.
+
+PARAMÈTRES
+- Langue étudiée ............ : [ex. Anglais]   (orthographe identique dans tous tes fichiers)
+- Thème ..................... : [ex. le monde du travail]
+- Niveau (CECRL) ............ : [ex. B1]
+- Nombre de mots ............ : [ex. 30]
+- Préfixe des identifiants .. : [ex. en-travail]   → en-travail-001…
+- Particules facultatives ... : [ex. anglais : "to", "a", "an", "the" ; espagnol : "el", "la", "los", "las", "un", "una" ; allemand : aucune, l'article fait partie du mot]
+- Caractères spéciaux ....... : [ex. espagnol : "á", "é", "í", "ó", "ú", "ñ", "¿", "¡" ; allemand : "ä", "ö", "ü", "ß" ; anglais : aucun]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un professeur de langue expérimenté et un lexicographe rigoureux.
+Produis une liste de vocabulaire au format JSON décrit ci-dessous, à
+partir de la LISTE ou du TEXTE fourni en bas (s'il est vide : choisis
+les mots les plus fréquents et utiles pour le thème et le niveau).
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte français, utilise « … » plutôt que ".
+- Structure :
+  {
+    "langue": "<Langue étudiée>",
+    "titre": "<Langue> — vocabulaire : <thème>",
+    "particules_optionnelles": [ … ],
+    "caracteres_speciaux": [ … ],
+    "vocabulaire": [ { mot }, … ]
+  }
+- Chaque mot :
+  {
+    "id": "<préfixe>-001",
+    "mot": "<mot dans la langue étudiée, forme de dictionnaire>",
+    "traductions": ["<traduction française principale>", "<2e sens éventuel>"],
+    "exemple": "<phrase naturelle où le mot cible est entre [crochets]>",
+    "exemple_traduction": "<traduction française de la phrase>",
+    "note": "<facultatif : faux ami, irrégularité, registre, collocation>",
+    "prononciation": "<facultatif : API, ex. /əˈtʃiːv/>",
+    "variantes": ["<facultatif : autres formes acceptées, ex. orthographe US>"]
+  }
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "langue", et pour chaque mot "mot" et "traductions" (non vide) sont
+  obligatoires.
+- Les "id" sont uniques dans le fichier.
+- Dans "exemple", UNE seule paire de [crochets], autour de la forme
+  EXACTE du mot telle qu'elle apparaît dans la phrase (elle peut être
+  conjuguée ou accordée : « She finally [achieved] her goal. »). C'est ce
+  que l'étudiant devra taper dans l'exercice en contexte.
+
+3) QUALITÉ PÉDAGOGIQUE
+- Forme de dictionnaire dans "mot" : verbes anglais avec « to » (to
+  achieve), noms avec leur article (a deadline ; la casa ; der Tisch —
+  en allemand l'article et le genre sont à apprendre avec le mot).
+- 1 à 3 traductions maximum, les sens les plus courants ; pas de longue
+  liste.
+- ÉVITE que deux mots du fichier aient la même traduction : l'exercice
+  de production affiche la traduction française, elle doit désigner un
+  seul mot. Si deux mots sont proches, précise le sens
+  (« un but (sport) » / « un but (objectif) »).
+- Exemple : phrase courte (6 à 12 mots), naturelle, au niveau indiqué,
+  qui illustre le sens et l'usage typique (collocation fréquente).
+- "note" : signale systématiquement les faux amis (actually ≠
+  actuellement), les formes irrégulières (lend – lent – lent), les
+  constructions (to avoid + V-ing), le registre (familier, soutenu).
+- Ordonne les mots du plus fréquent/utile au moins fréquent : les
+  premiers seront appris en premier.
+- N'invente pas de mots ; vérifie l'orthographe et les accents.
+
+4) EXEMPLE (format exact attendu)
+```json
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire : le monde du travail",
+  "particules_optionnelles": ["to", "a", "an", "the"],
+  "caracteres_speciaux": [],
+  "vocabulaire": [
+    {
+      "id": "en-travail-001",
+      "mot": "to apply for",
+      "traductions": ["postuler à", "faire une demande de"],
+      "exemple": "She [applied] for a job in a bank.",
+      "exemple_traduction": "Elle a postulé à un emploi dans une banque.",
+      "note": "to apply for a job (postuler) ≠ to apply something (appliquer)"
+    },
+    {
+      "id": "en-travail-002",
+      "mot": "a salary",
+      "traductions": ["un salaire"],
+      "exemple": "He earns a good [salary].",
+      "exemple_traduction": "Il gagne un bon salaire.",
+      "note": "to earn a salary = gagner un salaire",
+      "prononciation": "/ˈsæləri/"
+    },
+    {
+      "id": "en-travail-003",
+      "mot": "a résumé",
+      "traductions": ["un CV"],
+      "exemple": "Please send your [résumé] by email.",
+      "exemple_traduction": "Merci d'envoyer votre CV par e-mail.",
+      "note": "Américain ; en anglais britannique : a CV.",
+      "variantes": ["a resume", "a CV"]
+    }
+  ]
+}
+```
+
+5) AVANT DE RÉPONDRE, VÉRIFIE
+- Chaque exemple contient exactement une paire de [crochets].
+- Aucune traduction française n'est partagée par deux mots.
+- Orthographe, accents et traductions justes ; id uniques ; JSON valide.
+
+----------------------------------------------------------------------
+LISTE DE MOTS OU TEXTE SOURCE
+----------------------------------------------------------------------
+[Colle ici ta liste de mots, un texte, ou laisse vide pour que l'IA choisisse.]

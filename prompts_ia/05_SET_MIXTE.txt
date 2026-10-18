@@ -1,0 +1,120 @@
+======================================================================
+PROMPT IA — Set mixte (QCM + QCR + TROU + FLASHCARD dans un même fichier)
+Application « Révision QCM » — à copier-coller en entier dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ton
+cours tout en bas, puis copie TOUT ce texte dans l'IA. Enregistre le bloc
+JSON obtenu dans questions/<matière>/<nom_du_set>.json, puis vérifie-le :
+    revision_qcm --verifier questions/<matière>/<nom_du_set>.json
+
+Varier les formes d'interrogation sur une même notion (reconnaître,
+choisir, rappeler) renforce la mémorisation : c'est le meilleur choix
+pour réviser un chapitre complet.
+
+PARAMÈTRES
+- Matière / chapitre ........ : [ex. Radar — équation du radar]
+- Niveau visé ............... : [ex. Master 1]
+- Nombre total de questions . : [ex. 30]
+- Répartition souhaitée ..... : [ex. 40 % QCM, 15 % QCR, 25 % TROU, 20 % FLASHCARD]
+- Préfixe des identifiants .. : [ex. radar]   → radar-001, radar-002…
+- Titre du set .............. : [ex. Équation du radar]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un enseignant expert de la matière indiquée et un concepteur
+d'évaluations rigoureux. Produis un set de révision mêlant quatre types
+de questions, à partir du COURS fourni en bas (ou, s'il est vide, de tes
+connaissances fiables), au format JSON décrit ci-dessous.
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte, utilise « … » plutôt que ".
+- Structure :
+  { "titre": "…", "description": "…", "questions": [ … ] }
+- Les quatre types de question (tous ont "id", "type", "question" et
+  une "explication" facultative mais fortement recommandée) :
+  • QCM       : "choix" (liste de 4 propositions) + "reponses" = [UN indice]
+  • QCR       : "choix" (4 ou 5 propositions) + "reponses" = [indices des
+                bonnes propositions, au moins un]
+  • TROU      : phrase contenant ___ + "reponses_texte" = [réponse,
+                variantes acceptées…]
+  • FLASHCARD : recto dans "question" + réponse courte dans "verso"
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- Indices de "reponses" à partir de 0 (0 = premier choix), présents dans
+  "choix" ; exactement un pour QCM, au moins un pour QCR.
+- "reponses_texte" (TROU) : liste avec au moins une réponse non vide.
+- "verso" (FLASHCARD) : non vide.
+- "id" uniques.
+- Formules : LaTeX entre $…$, backslashs DOUBLÉS dans le JSON
+  ("$\\lambda$", "$\\frac{P}{4\\pi d^2}$"), chaque $ fermé.
+
+3) QUALITÉ PÉDAGOGIQUE
+- Couvre tout le chapitre ; chaque notion importante apparaît sous au
+  moins deux formes différentes (ex. une FLASHCARD de définition et un
+  QCM d'application).
+- QCM/QCR : distracteurs plausibles issus des erreurs fréquentes, choix
+  de longueurs comparables, position de la bonne réponse variée, pas de
+  « toutes les réponses ». QCR : nombre de bonnes réponses variable.
+- TROU : un seul ___ sur un mot-clé, réponse de 1 à 3 mots ; la saisie
+  est comparée sans tenir compte des majuscules, accents et espaces :
+  liste toutes les autres variantes (synonymes, sigles, « 0,5 »/« 0.5 »).
+- FLASHCARD : un seul fait par carte, recto = question précise, verso
+  court.
+- Explications courtes qui justifient la réponse.
+- Alterne les types dans la liste (ne les regroupe pas par blocs).
+- Reste strictement fidèle au cours ; n'invente aucun fait.
+
+4) EXEMPLE (format exact attendu)
+```json
+{
+  "titre": "Équation du radar",
+  "description": "Puissance reçue, portée et ordres de grandeur.",
+  "questions": [
+    {
+      "id": "radar-001",
+      "type": "FLASHCARD",
+      "question": "Comment varie la puissance reçue par un radar avec la distance $d$ de la cible ?",
+      "verso": "En $\\frac{1}{d^4}$",
+      "explication": "Aller-retour : $\\frac{1}{d^2}$ à l'aller et $\\frac{1}{d^2}$ au retour."
+    },
+    {
+      "id": "radar-002",
+      "type": "QCM",
+      "question": "Si la distance de la cible double, la puissance reçue est divisée par :",
+      "choix": ["2", "4", "8", "16"],
+      "reponses": [3],
+      "explication": "$2^4 = 16$. Le piège « 4 » correspond à un trajet simple."
+    },
+    {
+      "id": "radar-003",
+      "type": "TROU",
+      "question": "La surface équivalente radar se note $\\sigma$ et s'exprime en ___.",
+      "reponses_texte": ["m²", "m2", "mètres carrés", "mètre carré"],
+      "explication": "C'est une surface : elle s'exprime en m² (ou en dBm² en échelle logarithmique)."
+    },
+    {
+      "id": "radar-004",
+      "type": "QCR",
+      "question": "Quels paramètres augmentent la portée maximale d'un radar ?",
+      "choix": ["Augmenter la puissance émise", "Augmenter le gain d'antenne", "Augmenter le seuil de détection", "Augmenter la surface équivalente radar de la cible"],
+      "reponses": [0, 1, 3],
+      "explication": "A, B et D augmentent le signal reçu. C est faux : un seuil plus élevé exige plus de signal, donc réduit la portée."
+    }
+  ]
+}
+```
+
+5) AVANT DE RÉPONDRE, VÉRIFIE
+- Répartition et nombre total respectés, id uniques.
+- Chaque indice de "reponses" recompté depuis 0, chaque calcul juste.
+- Le JSON est valide.
+
+----------------------------------------------------------------------
+COURS / CONTENU SOURCE
+----------------------------------------------------------------------
+[Colle ici ton cours, tes notes ou le chapitre à réviser.]

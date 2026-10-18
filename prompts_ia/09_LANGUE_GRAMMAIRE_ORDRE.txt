@@ -1,0 +1,107 @@
+======================================================================
+PROMPT IA — Langues : GRAMMAIRE, remise en ordre de mots
+Application « Révision QCM », module Langues — à copier-coller dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ton
+cours tout en bas (facultatif), puis copie TOUT ce texte dans l'IA.
+Enregistre le bloc JSON obtenu dans questions/langues/<nom>.json
+(ex. anglais_ordre_des_mots.json), puis vérifie-le :
+    revision_qcm --verifier questions/langues/<nom>.json
+
+L'étudiant voit la traduction française et les mots mélangés ; il les
+remet dans l'ordre (clic ou numéros). Idéal pour la syntaxe : place des
+adverbes, questions, négation, verbe en fin de proposition (allemand)…
+
+PARAMÈTRES
+- Langue étudiée ............ : [ex. Allemand]   (orthographe identique dans tous tes fichiers)
+- Point(s) de syntaxe ....... : [ex. verbe en 2e position, subordonnées avec « weil » et « dass »]
+- Niveau (CECRL) ............ : [ex. A2]
+- Nombre de phrases ......... : [ex. 15]
+- Préfixe des identifiants .. : [ex. de-ordre]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un professeur de langue expérimenté. Produis des exercices de
+remise en ordre de mots au format JSON ci-dessous, sur le(s) point(s) de
+syntaxe indiqué(s), à partir du COURS fourni en bas (s'il est vide : de
+tes connaissances).
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte français, utilise « … » plutôt que ".
+- Structure :
+  {
+    "langue": "<Langue étudiée>",
+    "titre": "<Langue> — ordre des mots : <point>",
+    "grammaire": [ { exercice }, … ]
+  }
+- Chaque exercice :
+  {
+    "id": "<préfixe>-001",
+    "type": "ORDRE",
+    "phrase": "<la phrase correcte, avec sa ponctuation finale>",
+    "variantes": ["<facultatif : autre ordre tout aussi correct>"],
+    "traduction": "<traduction française (affichée comme consigne)>",
+    "explication": "<la règle de syntaxe illustrée>"
+  }
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "langue" obligatoire ; "phrase" obligatoire, d'au moins 2 mots ;
+  "id" uniques.
+
+3) FONCTIONNEMENT (important pour bien rédiger)
+- La phrase est découpée aux espaces : chaque mot devient une étiquette
+  (une virgule ou une apostrophe reste collée à son mot : « rains, »,
+  « don't »). La ponctuation finale (. ! ?) est retirée, et la première
+  lettre est mise en minuscule pour ne pas trahir le premier mot.
+- La réponse est comparée à "phrase" et aux "variantes" en ignorant
+  majuscules et ponctuation finale.
+
+4) QUALITÉ PÉDAGOGIQUE
+- 4 à 9 mots par phrase (au-delà de 9, les raccourcis clavier par numéro
+  ne fonctionnent plus et l'exercice devient fastidieux).
+- La phrase doit avoir un ordre UNIQUE ; si un autre ordre est tout aussi
+  correct (adverbe déplaçable…), ajoute-le dans "variantes", ou choisis
+  une autre phrase.
+- Chaque phrase met en jeu le point de syntaxe visé ; la traduction
+  française doit être naturelle (l'étudiant ne doit pas pouvoir recopier
+  l'ordre du français mot à mot quand la règle diffère).
+- "explication" : la règle d'ordre des mots en une phrase.
+
+5) EXEMPLE (format exact attendu)
+```json
+{
+  "langue": "Allemand",
+  "titre": "Allemand — ordre des mots : verbe et subordonnées",
+  "grammaire": [
+    {
+      "id": "de-ordre-001",
+      "type": "ORDRE",
+      "phrase": "Morgen fahre ich nach Berlin.",
+      "variantes": ["Ich fahre morgen nach Berlin."],
+      "traduction": "Demain, je vais à Berlin.",
+      "explication": "Verbe conjugué en 2e position : si la phrase commence par « Morgen », le sujet passe après le verbe."
+    },
+    {
+      "id": "de-ordre-002",
+      "type": "ORDRE",
+      "phrase": "Ich bleibe zu Hause, weil ich krank bin.",
+      "traduction": "Je reste à la maison parce que je suis malade.",
+      "explication": "Après « weil », le verbe conjugué va en fin de subordonnée."
+    }
+  ]
+}
+```
+
+6) AVANT DE RÉPONDRE, VÉRIFIE
+- 4 à 9 mots par phrase ; ordre unique ou variantes listées.
+- Orthographe juste ; id uniques ; JSON valide.
+
+----------------------------------------------------------------------
+COURS (facultatif)
+----------------------------------------------------------------------
+[Colle ici ton cours ou tes notes.]

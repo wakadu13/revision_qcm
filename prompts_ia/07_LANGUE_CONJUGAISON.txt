@@ -1,0 +1,138 @@
+======================================================================
+PROMPT IA — Langues : CONJUGAISON (tableaux et verbes irréguliers)
+Application « Révision QCM », module Langues — à copier-coller dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, puis
+copie TOUT ce texte dans l'IA. Enregistre le bloc JSON obtenu dans
+questions/langues/<nom>.json (ex. espagnol_conjugaison_presente.json),
+puis vérifie-le :
+    revision_qcm --verifier questions/langues/<nom>.json
+
+Chaque forme de chaque tableau devient un exercice séparé (« tú → hablas »),
+planifié par répétition espacée ; le tableau complet est montré à la
+correction.
+
+PARAMÈTRES
+- Langue étudiée ............ : [ex. Espagnol]   (orthographe identique dans tous tes fichiers)
+- Verbes .................... : [ex. ser, estar, tener, ir, hacer, hablar, comer, vivir — ou « les 15 verbes les plus fréquents »]
+- Temps / modes ............. : [ex. presente, pretérito indefinido]
+- Type de tableau ........... : [« conjugaison par personne » OU « temps primitifs des verbes irréguliers » (ex. go – went – gone)]
+- Préfixe des identifiants .. : [ex. es-conj]
+- Caractères spéciaux ....... : [ex. espagnol : "á", "é", "í", "ó", "ú", "ñ" ; allemand : "ä", "ö", "ü", "ß" ; anglais : aucun]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un professeur de langue expérimenté et un grammairien rigoureux.
+Produis les tableaux de conjugaison demandés au format JSON ci-dessous.
+L'exactitude des formes est primordiale : vérifie chaque forme, chaque
+accent, chaque irrégularité.
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire.
+- Structure :
+  {
+    "langue": "<Langue étudiée>",
+    "titre": "<Langue> — conjugaison : <temps>",
+    "caracteres_speciaux": [ … ],
+    "conjugaison": [ { tableau }, … ]
+  }
+- Un tableau = UN verbe à UN temps :
+  {
+    "id": "<préfixe>-<verbe>-<temps abrégé>",
+    "verbe": "<infinitif>",
+    "traduction": "<sens en français>",
+    "temps": "<nom du temps, toujours écrit de la même façon>",
+    "formes": {
+      "<personne 1>": "<forme>",
+      "<personne 2>": "<forme>",
+      …
+    },
+    "explication": "<règle de formation ou irrégularité à retenir>"
+  }
+- Une forme peut être une LISTE de réponses acceptées quand plusieurs
+  sont correctes : "he / she / it": ["doesn't like", "does not like"].
+  La première de la liste est celle affichée dans le tableau.
+- Verbes irréguliers (temps primitifs) : un tableau par verbe, avec
+  "temps": "verbe irrégulier" et des clés comme "prétérit" et
+  "participe passé" (anglais) ou « Präteritum », « Partizip II »
+  (allemand).
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "langue", et pour chaque tableau "verbe", "temps" et "formes" (objet
+  non vide, aucune forme vide) sont obligatoires.
+- Les "id" sont uniques dans le fichier.
+
+3) COMMENT LA RÉPONSE EST CORRIGÉE (important)
+- L'étudiant voit « Conjugue « ser » (être) — presente » puis la personne
+  (« tú ») et tape SEULEMENT la forme verbale, sans le pronom.
+- Majuscules, espaces et ponctuation finale sont ignorés, mais PAS les
+  accents ni les lettres : « hablo » ≠ « habló ». N'écris donc dans
+  "formes" que la forme verbale, sans pronom.
+- Mets dans une liste toutes les variantes réellement correctes
+  (formes contractée et pleine, variantes régionales admises).
+
+4) QUALITÉ PÉDAGOGIQUE
+- Libellés de personnes identiques dans tous les tableaux d'une même
+  langue, dans l'ordre habituel (ex. espagnol : "yo", "tú",
+  "él / ella / usted", "nosotros", "vosotros", "ellos / ellas / ustedes" ;
+  anglais : "I", "you", "he / she / it", "we", "they" ; allemand :
+  "ich", "du", "er / sie / es", "wir", "ihr", "sie / Sie").
+- "explication" : la règle de formation (terminaisons), la particularité
+  du verbe (diphtongue, radical irrégulier, changement orthographique)
+  et, si utile, un piège fréquent.
+- Classe les tableaux du plus fréquent au moins fréquent.
+
+5) EXEMPLE (format exact attendu)
+```json
+{
+  "langue": "Espagnol",
+  "titre": "Espagnol — conjugaison : presente",
+  "caracteres_speciaux": ["á", "é", "í", "ó", "ú", "ñ"],
+  "conjugaison": [
+    {
+      "id": "es-conj-tener-pres",
+      "verbe": "tener",
+      "traduction": "avoir",
+      "temps": "presente",
+      "formes": {
+        "yo": "tengo",
+        "tú": "tienes",
+        "él / ella / usted": "tiene",
+        "nosotros": "tenemos",
+        "vosotros": "tenéis",
+        "ellos / ellas / ustedes": "tienen"
+      },
+      "explication": "Diphtongue e → ie aux personnes accentuées sur le radical, et « yo tengo » irrégulier."
+    },
+    {
+      "id": "es-conj-hablar-pres",
+      "verbe": "hablar",
+      "traduction": "parler",
+      "temps": "presente",
+      "formes": {
+        "yo": "hablo",
+        "tú": "hablas",
+        "él / ella / usted": "habla",
+        "nosotros": "hablamos",
+        "vosotros": "habláis",
+        "ellos / ellas / ustedes": "hablan"
+      },
+      "explication": "Modèle des verbes en -ar : -o, -as, -a, -amos, -áis, -an."
+    }
+  ]
+}
+```
+Exemple de verbe irrégulier (anglais), dans la même liste "conjugaison" :
+  { "id": "en-irr-go", "verbe": "to go", "traduction": "aller",
+    "temps": "verbe irrégulier",
+    "formes": { "prétérit": "went", "participe passé": "gone" } }
+
+6) AVANT DE RÉPONDRE, VÉRIFIE
+- Relis chaque forme une par une (accents, radical, terminaison).
+- Pas de pronom dans les formes ; libellés de personnes cohérents.
+- Id uniques ; JSON valide.

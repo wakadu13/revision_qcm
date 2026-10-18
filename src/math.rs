@@ -1699,6 +1699,58 @@ pub fn afficher(ui: &mut Ui, para: &Paragraphe, couleur: Color32) -> Response {
     resp
 }
 
+/// Problèmes de rendu d'un texte (utilisé par `--verifier`) : formule `$`
+/// non fermée, commandes LaTeX inconnues (affichées telles quelles).
+pub fn diagnostiquer(texte: &str) -> Vec<String> {
+    let dollars = texte.matches('$').count() - texte.matches("\\$").count();
+    if dollars % 2 == 1 {
+        return vec!["nombre impair de $ : formule non fermée (le texte s'affichera brut)".into()];
+    }
+    fn visiter(noeuds: &[Noeud], acc: &mut Vec<String>) {
+        for n in noeuds {
+            match n {
+                Noeud::Texte(t) if t.starts_with('\\') => {
+                    acc.push(format!("commande LaTeX inconnue : {t}"));
+                }
+                Noeud::Groupe(g) => visiter(g, acc),
+                Noeud::Frac { num, den, .. } => {
+                    visiter(num, acc);
+                    visiter(den, acc);
+                }
+                Noeud::Racine { indice, corps } => {
+                    visiter(indice.as_deref().unwrap_or_default(), acc);
+                    visiter(corps, acc);
+                }
+                Noeud::Scripts { base, sub, sup } => {
+                    visiter(std::slice::from_ref(base), acc);
+                    visiter(sub.as_deref().unwrap_or_default(), acc);
+                    visiter(sup.as_deref().unwrap_or_default(), acc);
+                }
+                Noeud::Delims { corps, .. } | Noeud::Accent { corps, .. } => visiter(corps, acc),
+                Noeud::XFleche { label, .. } => visiter(label, acc),
+                Noeud::Pile {
+                    dessus,
+                    base,
+                    dessous,
+                } => {
+                    visiter(dessus.as_deref().unwrap_or_default(), acc);
+                    visiter(base, acc);
+                    visiter(dessous.as_deref().unwrap_or_default(), acc);
+                }
+                _ => {}
+            }
+        }
+    }
+    let mut pb = Vec::new();
+    for seg in analyser_texte(texte) {
+        if let Segment::Formule(f) = seg {
+            visiter(&f, &mut pb);
+        }
+    }
+    pb.dedup();
+    pb
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1753,6 +1805,13 @@ mod tests {
         // Backslash doublé par erreur dans le JSON : toléré.
         assert_eq!(resume(&analyser_formule(r"t - \\tau")), "t − τ");
         assert_eq!(resume(&analyser_formule(r"f'(x)")), "S(f||′) ( x )");
+    }
+
+    #[test]
+    fn diagnostic() {
+        assert!(diagnostiquer(r"Aire $\pi r^2$").is_empty());
+        assert_eq!(diagnostiquer(r"coût 5$").len(), 1);
+        assert!(diagnostiquer(r"$\foo{x}$")[0].contains(r"\foo"));
     }
 
     #[test]

@@ -32,6 +32,7 @@ On peut aussi forcer le mode via un argument :
 ```bash
 cargo run --release -- --cli
 cargo run --release -- --gui
+cargo run --release -- --verifier questions   # contrôle des fichiers de questions
 ```
 
 (ou directement `revision_qcm --cli` / `revision_qcm --gui` avec l'exécutable compilé).
@@ -383,6 +384,45 @@ corrompre.
 
 ---
 
+## Générer ses cartes avec une IA
+
+Le dossier [`prompts_ia/`](prompts_ia/) contient un prompt prêt à copier-coller dans
+une IA (ChatGPT, Claude, Gemini, Mistral…) **pour chaque type de carte** :
+
+| Fichier | Produit |
+|---------|---------|
+| `01_QCM.txt` | QCM (une bonne réponse) |
+| `02_QCR.txt` | QCR (plusieurs bonnes réponses) |
+| `03_TROU.txt` | phrases à trous |
+| `04_FLASHCARD.txt` | flashcards recto/verso |
+| `05_SET_MIXTE.txt` | set mêlant les 4 types (recommandé pour un chapitre) |
+| `06_LANGUE_VOCABULAIRE.txt` | vocabulaire (module Langues) |
+| `07_LANGUE_CONJUGAISON.txt` | tableaux de conjugaison, verbes irréguliers |
+| `08_LANGUE_GRAMMAIRE_TROU_QCM.txt` | grammaire : phrases à trous, QCM, QCR |
+| `09_LANGUE_GRAMMAIRE_ORDRE.txt` | grammaire : remise en ordre de mots |
+| `10_LANGUE_GRAMMAIRE_CORRECTION.txt` | grammaire : correction d'erreurs |
+
+Chaque prompt contient des paramètres à remplir (matière, niveau, nombre de cartes),
+le format JSON exact, les règles de validité, des consignes pédagogiques pour obtenir
+de bonnes cartes, un exemple, et un emplacement pour coller ton cours. Mode d'emploi
+détaillé : [`prompts_ia/00_LISEZMOI.txt`](prompts_ia/00_LISEZMOI.txt).
+
+Avant d'utiliser un fichier généré, vérifie-le :
+
+```bash
+revision_qcm --verifier questions/reseaux/mon_set.json   # un fichier
+revision_qcm --verifier questions                          # tout un dossier
+# (depuis les sources : cargo run --release -- --verifier …)
+```
+
+La commande signale les erreurs bloquantes (message précis à recoller à l'IA pour
+qu'elle corrige) et des avertissements : formule `$` non fermée, commande LaTeX
+inconnue, identifiant en double, traduction commune à deux mots, phrase à ordonner
+trop longue, QCR dont toutes les réponses sont justes. Un test automatique garantit
+que l'exemple de chaque prompt est accepté par l'application.
+
+---
+
 ## Générer un exécutable (.exe)
 
 ```bash
@@ -405,6 +445,7 @@ dist/
 ├── manifest.json       # liste des sets, pour le chargement auto. de la version web
 ├── README.md
 ├── architecture.txt
+├── prompts_ia/         # prompts pour générer des cartes avec une IA
 └── questions/
     └── *.json
 ```
@@ -468,11 +509,13 @@ revision_qcm/
 │   ├── fsrs.rs           # algorithme de répétition espacée FSRS
 │   ├── bibliotheque.rs   # chargement de questions/ (sets + fichiers de langue)
 │   ├── cli/langues.rs    # module Langues en ligne de commande
+│   ├── cli/verifier.rs   # commande --verifier (contrôle des fichiers)
 │   ├── gui/langues.rs    # module Langues en interface graphique
 │   ├── paths.rs          # emplacement de questions/ et progression.json
 │   └── bin/
 │       └── build_dist.rs # génération de dist/ (exécutable + questions + web)
 ├── assets/fonts/         # police DejaVu Sans embarquée (texte + symboles mathématiques)
+├── prompts_ia/           # un prompt IA par type de carte (+ mode d'emploi)
 ├── web/
 │   └── revision_qcm.html # version web autonome (HTML/JS)
 ├── questions/            # sets de questions (.json), organisés en sous-dossiers/catégories

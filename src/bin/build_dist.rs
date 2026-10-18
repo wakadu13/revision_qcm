@@ -99,6 +99,17 @@ fn construire(windowed: bool) -> Result<(), String> {
         println!("manifest.json généré ({n} sets)");
     }
 
+    // Prompts IA (un fichier par type de carte)
+    let p_src = racine.join("prompts_ia");
+    if p_src.exists() {
+        let p_dst = dist.join("prompts_ia");
+        if p_dst.exists() {
+            fs::remove_dir_all(&p_dst).map_err(|e| e.to_string())?;
+        }
+        copier_dossier(&p_src, &p_dst).map_err(|e| e.to_string())?;
+        println!("Dossier prompts_ia/ copié dans dist/");
+    }
+
     // README, documentation et version web autonome (web/ = code source, pas un artefact)
     for (src, nom) in [
         (racine.join("README.md"), "README.md"),

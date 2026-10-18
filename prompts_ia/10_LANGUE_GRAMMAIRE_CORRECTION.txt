@@ -1,0 +1,114 @@
+======================================================================
+PROMPT IA — Langues : GRAMMAIRE, correction d'erreurs
+Application « Révision QCM », module Langues — à copier-coller dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ton
+cours ou tes erreurs fréquentes tout en bas (facultatif), puis copie TOUT
+ce texte dans l'IA. Enregistre le bloc JSON obtenu dans
+questions/langues/<nom>.json (ex. anglais_erreurs_frequentes.json), puis
+vérifie-le :
+    revision_qcm --verifier questions/langues/<nom>.json
+
+L'étudiant voit une phrase contenant UNE erreur ; la phrase est
+pré-remplie dans le champ et il la corrige. Idéal pour éliminer les
+fautes typiques (calques du français, accords, temps).
+
+PARAMÈTRES
+- Langue étudiée ............ : [ex. Anglais]   (orthographe identique dans tous tes fichiers)
+- Points visés .............. : [ex. erreurs typiques des francophones en B1 — ou tes propres erreurs, collées en bas]
+- Niveau (CECRL) ............ : [ex. B1]
+- Nombre de phrases ......... : [ex. 20]
+- Préfixe des identifiants .. : [ex. en-corr]
+- Caractères spéciaux ....... : [ex. espagnol : "á", "é", "í", "ó", "ú", "ñ", "¿", "¡" ; anglais : aucun]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un professeur de langue expérimenté qui connaît les erreurs
+typiques des francophones. Produis des exercices de correction d'erreur
+au format JSON ci-dessous, sur les points indiqués, à partir des
+éléments fournis en bas (s'il est vide : de tes connaissances).
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte français, utilise « … » plutôt que ".
+- Structure :
+  {
+    "langue": "<Langue étudiée>",
+    "titre": "<Langue> — correction d'erreurs : <points>",
+    "caracteres_speciaux": [ … ],
+    "grammaire": [ { exercice }, … ]
+  }
+- Chaque exercice :
+  {
+    "id": "<préfixe>-001",
+    "type": "CORRECTION",
+    "phrase": "<phrase contenant exactement UNE erreur>",
+    "corrections": ["<phrase corrigée>", "<autre correction acceptable>"],
+    "traduction": "<facultatif : sens voulu, en français>",
+    "explication": "<pourquoi c'était faux, et la règle>"
+  }
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "langue" obligatoire ; "phrase" et "corrections" (liste non vide)
+  obligatoires ; "id" uniques.
+
+3) COMMENT LA RÉPONSE EST CORRIGÉE (important)
+- L'étudiant retape la phrase entière corrigée. Elle est comparée à
+  chaque élément de "corrections" en ignorant majuscules, espaces en trop,
+  apostrophes typographiques et ponctuation finale ; tout le reste doit
+  être identique (accents compris).
+- Liste donc TOUTES les corrections raisonnables : forme contractée et
+  pleine (« He doesn't like… » / « He does not like… »), autres
+  formulations minimales correctes.
+- Une correction = la phrase d'origine avec l'erreur corrigée, sans
+  autre modification (ne reformule pas le reste).
+
+4) QUALITÉ PÉDAGOGIQUE
+- Exactement UNE erreur par phrase, et une erreur réaliste, fréquente
+  chez les apprenants (calque du français, faux ami, accord, auxiliaire,
+  temps, préposition, ordre des mots).
+- Phrase courte (5 à 12 mots), naturelle, au niveau indiqué ; le reste
+  de la phrase est irréprochable.
+- Varie les types d'erreur d'un exercice à l'autre.
+- "traduction" quand le sens voulu pourrait être ambigu.
+- "explication" : nomme l'erreur et donne la règle en une ou deux phrases.
+
+5) EXEMPLE (format exact attendu)
+```json
+{
+  "langue": "Anglais",
+  "titre": "Anglais — correction d'erreurs : fautes fréquentes",
+  "caracteres_speciaux": [],
+  "grammaire": [
+    {
+      "id": "en-corr-001",
+      "type": "CORRECTION",
+      "phrase": "I am agree with you.",
+      "corrections": ["I agree with you."],
+      "explication": "« agree » est un verbe : pas d'auxiliaire « be » (calque de « je suis d'accord »)."
+    },
+    {
+      "id": "en-corr-002",
+      "type": "CORRECTION",
+      "phrase": "She explained me the problem.",
+      "corrections": ["She explained the problem to me."],
+      "traduction": "Elle m'a expliqué le problème.",
+      "explication": "explain something to somebody : jamais « explain somebody »."
+    }
+  ]
+}
+```
+
+6) AVANT DE RÉPONDRE, VÉRIFIE
+- Une seule erreur par phrase ; chaque correction est entièrement juste.
+- Toutes les corrections acceptables sont listées ; id uniques ; JSON
+  valide.
+
+----------------------------------------------------------------------
+ÉLÉMENTS SOURCE (facultatif)
+----------------------------------------------------------------------
+[Colle ici ton cours, ou une liste de tes propres erreurs (copies corrigées, etc.).]

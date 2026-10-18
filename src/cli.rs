@@ -4,6 +4,9 @@ use std::io::{self, BufRead, IsTerminal, Write};
 use std::sync::{Arc, OnceLock};
 
 mod langues;
+mod verifier;
+
+pub use verifier::verifier;
 
 use crate::bibliotheque::{self, Bibliotheque};
 use crate::core::{self, Progression, Question, QuestionSet};

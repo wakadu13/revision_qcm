@@ -271,6 +271,17 @@ MODULE cli.rs — Interface ligne de commande
   poser (un exercice selon sa forme), lancer (déroulé de session avec
   réessais), diff_colore (lettres fausses surlignées).
 
+--- Vérification : cli/verifier.rs ---
+  verifier(chemins) : `revision_qcm --verifier <fichier | dossier>`.
+  Charge chaque fichier comme l'application (set classique ou langue) ;
+  ✓ + résumé, ou ✗ + message d'erreur ; avertissements : LaTeX
+  (math::diagnostiquer : $ non fermé, commande inconnue), id en double,
+  TROU sans « ___ », QCR entièrement juste, traduction de vocabulaire
+  partagée, exemple sans [crochets], phrase à ordonner de plus de 9 mots.
+  Code de sortie 1 si un fichier est invalide.
+  Un test vérifie que l'exemple JSON de chaque prompt de prompts_ia/
+  passe sans erreur ni avertissement.
+
 --- Menus ---
   choisir_categorie / choisir_set, menu_session, menu_revision_intelligente,
   menu_statistiques, menu_reinitialiser, main (boucle principale),
@@ -422,6 +433,7 @@ COMPILATION ET DISTRIBUTION
 ========================================================================
 
   cargo run --release                         Lancer l'application
+  cargo run --release -- --verifier questions Vérifier des fichiers de questions
   cargo test                                  Tests unitaires
   cargo run --release --bin build_dist        Générer dist/
   cargo run --release --bin build_dist -- --windowed

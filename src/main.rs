@@ -4,6 +4,8 @@
 //!     cargo run --release            (ou directement l'exécutable revision_qcm)
 //!     cargo run --release -- --cli   (force la ligne de commande)
 //!     cargo run --release -- --gui   (force l'interface graphique)
+//!     cargo run --release -- --verifier <fichier.json | dossier>
+//!                                    (contrôle des fichiers, ex. générés par une IA)
 //!
 //! Les sets de questions sont des fichiers JSON dans le dossier `questions/`.
 //! La progression est sauvegardée dans `progression.json`.
@@ -39,6 +41,10 @@ fn choisir_interface() -> &'static str {
 }
 
 fn main() {
+    let args: Vec<String> = std::env::args().skip(1).collect();
+    if let Some(i) = args.iter().position(|a| a == "--verifier") {
+        std::process::exit(cli::verifier(&args[i + 1..]));
+    }
     if choisir_interface() == "gui" {
         if let Err(e) = gui::lancer_gui() {
             eprintln!("Impossible de lancer l'interface graphique : {e}");

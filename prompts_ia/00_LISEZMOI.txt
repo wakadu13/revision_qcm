@@ -1,0 +1,67 @@
+======================================================================
+PROMPTS IA — Générer ses sets de cartes avec une IA
+======================================================================
+
+Chaque fichier de ce dossier est un prompt complet, prêt à être
+copié-collé dans une IA (ChatGPT, Claude, Gemini, Mistral, Copilot…).
+Il contient le format exact attendu par l'application, les règles de
+validité, des consignes pédagogiques (comment rédiger de bonnes cartes)
+et un exemple.
+
+QUEL FICHIER CHOISIR ?
+
+  Révision d'un cours (matières classiques)
+    01_QCM.txt ........................ une seule bonne réponse
+    02_QCR.txt ........................ plusieurs bonnes réponses
+    03_TROU.txt ....................... phrase à trous, réponse tapée
+    04_FLASHCARD.txt .................. recto / verso, auto-évaluée
+    05_SET_MIXTE.txt .................. les 4 types dans un même set
+                                        (recommandé pour un chapitre entier)
+
+  Module Langues
+    06_LANGUE_VOCABULAIRE.txt ......... mots + traductions + exemples
+    07_LANGUE_CONJUGAISON.txt ......... tableaux de conjugaison, verbes irréguliers
+    08_LANGUE_GRAMMAIRE_TROU_QCM.txt .. grammaire : phrases à trous, QCM, QCR
+    09_LANGUE_GRAMMAIRE_ORDRE.txt ..... grammaire : remise en ordre de mots
+    10_LANGUE_GRAMMAIRE_CORRECTION.txt  grammaire : correction d'erreurs
+
+MARCHE À SUIVRE
+
+  1. Ouvre le fichier voulu et remplis les champs [entre crochets] de la
+     partie PARAMÈTRES (matière, niveau, nombre de cartes…).
+  2. Colle ton cours (ou ta liste de mots) tout en bas, à l'endroit
+     indiqué. Sans cours, l'IA utilise ses connaissances : relis alors
+     le résultat avec encore plus d'attention.
+  3. Copie TOUT le texte du fichier dans l'IA et envoie.
+  4. Copie le bloc JSON de la réponse dans un nouveau fichier .json :
+       - matière classique : questions/<matière>/<nom_du_set>.json
+         (le sous-dossier devient la catégorie : maths, reseaux…)
+       - langue : questions/langues/<nom>.json
+     Encodage UTF-8 (c'est le cas par défaut dans VS Code, Notepad++,
+     le Bloc-notes récent…).
+  5. Vérifie le fichier :
+       revision_qcm --verifier questions/<matière>/<nom_du_set>.json
+     (ou tout un dossier : revision_qcm --verifier questions)
+     - « ✓ » : le fichier est accepté ; lis les éventuels « ⚠ »
+       (formule non fermée, identifiant en double, traduction ambiguë…).
+     - « ✗ » : le message indique la question fautive. Recolle-le à
+       l'IA (« Corrige cette erreur : … ») et remplace le fichier.
+  6. Lance l'application : le set apparaît dans sa catégorie (ou dans
+     Langues). Les fichiers sont rechargés à chaque retour au menu.
+
+CONSEILS
+
+  - Relis toujours les cartes : une IA peut se tromper, surtout sur les
+    calculs, les dates et les formes rares. Une carte fausse s'apprend
+    aussi bien qu'une juste…
+  - Pour un long cours, génère par chapitre (20 à 40 cartes par
+    fichier) : la qualité est meilleure et les erreurs plus faciles à
+    corriger.
+  - Ne renomme plus un fichier et ne change plus les "id" une fois que
+    tu as commencé à réviser : ils servent à suivre ta progression.
+  - Pour ajouter des cartes à un set existant, demande à l'IA de
+    continuer la numérotation des id (ex. « commence à ipv4-021 »), puis
+    ajoute-les à la liste "questions" du fichier.
+  - Langues : plusieurs fichiers d'une même langue (même valeur de
+    "langue", ex. "Anglais") sont regroupés automatiquement. Fais un
+    fichier par thème de vocabulaire ou par point de grammaire.

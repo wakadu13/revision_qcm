@@ -1,0 +1,112 @@
+======================================================================
+PROMPT IA — Cartes QCM (une seule bonne réponse)
+Application « Révision QCM » — à copier-coller en entier dans une IA
+======================================================================
+
+MODE D'EMPLOI : remplis les champs [entre crochets] ci-dessous, colle ton
+cours tout en bas, puis copie TOUT ce texte dans l'IA (ChatGPT, Claude,
+Gemini, Mistral…). Enregistre le bloc JSON obtenu dans
+questions/<matière>/<nom_du_set>.json, puis vérifie-le avec :
+    revision_qcm --verifier questions/<matière>/<nom_du_set>.json
+
+PARAMÈTRES
+- Matière / chapitre ........ : [ex. Réseaux — adressage IPv4]
+- Niveau visé ............... : [ex. L3, partiel de fin de semestre]
+- Nombre de questions ....... : [ex. 20]
+- Préfixe des identifiants .. : [ex. ipv4]   → ipv4-001, ipv4-002…
+- Titre du set .............. : [ex. Adressage IPv4]
+
+----------------------------------------------------------------------
+CONSIGNES POUR L'IA
+----------------------------------------------------------------------
+Tu es un enseignant expert de la matière indiquée et un concepteur
+d'évaluations rigoureux. Rédige des questions QCM (une seule bonne
+réponse) à partir du COURS fourni en bas (ou, s'il est vide, de tes
+connaissances fiables sur la matière), au format JSON décrit ci-dessous.
+
+1) FORMAT DE SORTIE — OBLIGATOIRE
+- Réponds UNIQUEMENT par un bloc ```json … ``` contenant UN objet JSON,
+  sans aucun texte avant ou après.
+- JSON strict : guillemets doubles, aucune virgule finale, aucun
+  commentaire. Dans le texte, utilise les guillemets « … » plutôt que ",
+  ou échappe-les en \".
+- Structure :
+  {
+    "titre": "<Titre du set>",
+    "description": "<une phrase>",
+    "questions": [ { question }, … ]
+  }
+- Chaque question :
+  {
+    "id": "<préfixe>-001",          (unique, numérotation sur 3 chiffres)
+    "type": "QCM",
+    "question": "<énoncé>",
+    "choix": ["<A>", "<B>", "<C>", "<D>"],
+    "reponses": [<indice de la bonne réponse>],
+    "explication": "<pourquoi c'est juste, et pourquoi les autres sont faux>"
+  }
+
+2) RÈGLES DE VALIDITÉ (sinon le fichier est rejeté)
+- "reponses" contient EXACTEMENT UN entier.
+- Les indices commencent à 0 : 0 = premier choix, 1 = deuxième, etc.
+  L'indice doit exister dans "choix".
+- "choix" n'est jamais vide.
+- Formules mathématiques : LaTeX entre $…$, avec les backslashs DOUBLÉS
+  dans le JSON : "$\\frac{1}{2}$", "$\\lambda$", "$\\sqrt{x}$". Chaque $
+  ouvrant doit avoir son $ fermant. Pour écrire un vrai symbole dollar,
+  écris \\$.
+
+3) QUALITÉ PÉDAGOGIQUE
+- Une seule notion par question ; énoncé autonome, compréhensible sans
+  le cours sous les yeux.
+- Exactement 4 choix (3 à 5 acceptés), de longueur et de forme
+  comparables : la bonne réponse ne doit pas se repérer à sa longueur.
+- Distracteurs plausibles, tirés des erreurs fréquentes des étudiants
+  (confusions classiques, erreurs de calcul typiques, inversion de
+  notions voisines). Jamais de choix absurde.
+- Interdits : « toutes les réponses », « aucune des réponses », double
+  négation, piège purement verbal.
+- Varie la position de la bonne réponse (répartis-la sur 0, 1, 2 et 3).
+- Mélange les niveaux : environ 30 % de restitution (définitions,
+  valeurs), 50 % de compréhension/application (calcul, cas concret),
+  20 % d'analyse (comparer, diagnostiquer).
+- L'explication justifie la bonne réponse ET dit en une phrase pourquoi
+  le distracteur le plus tentant est faux.
+- Reste strictement fidèle au cours ; n'invente aucun fait.
+
+4) EXEMPLE (format exact attendu)
+```json
+{
+  "titre": "Adressage IPv4",
+  "description": "Masques, classes et calculs de sous-réseaux.",
+  "questions": [
+    {
+      "id": "ipv4-001",
+      "type": "QCM",
+      "question": "Combien d'adresses d'hôtes utilisables contient un réseau /26 ?",
+      "choix": ["64", "62", "30", "126"],
+      "reponses": [1],
+      "explication": "Un /26 laisse $32 - 26 = 6$ bits d'hôte, soit $2^6 = 64$ adresses, dont 2 réservées (réseau et diffusion) : 62. Le piège « 64 » oublie ces 2 adresses."
+    },
+    {
+      "id": "ipv4-002",
+      "type": "QCM",
+      "question": "Quel masque correspond à la notation /20 ?",
+      "choix": ["255.255.255.0", "255.255.240.0", "255.255.248.0", "255.240.0.0"],
+      "reponses": [1],
+      "explication": "/20 = 8 + 8 + 4 bits à 1 : le 3e octet vaut 11110000 = 240. 255.255.248.0 correspond à /21."
+    }
+  ]
+}
+```
+
+5) AVANT DE RÉPONDRE, VÉRIFIE
+- Le nombre de questions demandé est atteint, les id sont uniques.
+- Chaque "reponses" pointe vers le bon choix (recompte depuis 0).
+- Chaque calcul de l'explication est juste.
+- Le JSON est valide.
+
+----------------------------------------------------------------------
+COURS / CONTENU SOURCE
+----------------------------------------------------------------------
+[Colle ici ton cours, tes notes ou le chapitre à réviser.]
