@@ -3,6 +3,9 @@
 use std::io::{self, BufRead, IsTerminal, Write};
 use std::sync::{Arc, OnceLock};
 
+mod langues;
+
+use crate::bibliotheque::{self, Bibliotheque};
 use crate::core::{self, Progression, Question, QuestionSet};
 use crate::paths;
 
@@ -295,12 +298,12 @@ fn lancer_session(qset: &Arc<QuestionSet>, indices: Vec<usize>, prog: &mut Progr
 // ---------------------------------------------------------------------------
 // Écrans / menus
 // ---------------------------------------------------------------------------
-fn charger_tous_les_sets() -> Vec<Arc<QuestionSet>> {
-    let (sets, erreurs) = core::charger_tous_les_sets(&paths::dossier_questions());
-    for e in erreurs {
+fn charger_bibliotheque() -> Bibliotheque {
+    let b = bibliotheque::charger(&paths::dossier_questions());
+    for e in &b.erreurs {
         println!("{}", c::rouge(&format!("  ⚠ {e}")));
     }
-    sets
+    b
 }
 
 /// Lit un choix numéroté entre 1 et `n` ; `None` pour « retour » ou une saisie invalide.
@@ -465,8 +468,9 @@ pub fn main() {
 
     titre("Révision QCM / QCR — Préparation aux partiels");
     loop {
-        let sets = charger_tous_les_sets();
-        if sets.is_empty() {
+        let bib = charger_bibliotheque();
+        let sets = &bib.sets;
+        if sets.is_empty() && bib.langues.is_empty() {
             println!(
                 "{}",
                 c::jaune(&format!(
@@ -482,17 +486,22 @@ pub fn main() {
             "  {}. Révision intelligente (questions à réviser)",
             c::bleu("2")
         );
-        println!("  {}. Voir mes statistiques", c::bleu("3"));
-        println!("  {}. Réinitialiser la progression d'un set", c::bleu("4"));
-        println!("  {}. Quitter", c::bleu("5"));
+        println!(
+            "  {}. Langues (vocabulaire, conjugaison, grammaire)",
+            c::bleu("3")
+        );
+        println!("  {}. Voir mes statistiques", c::bleu("4"));
+        println!("  {}. Réinitialiser la progression d'un set", c::bleu("5"));
+        println!("  {}. Quitter", c::bleu("6"));
         let choix = demander("Choix : ");
 
         match choix.as_str() {
-            "1" if !sets.is_empty() => menu_session(&sets, &mut prog),
-            "2" if !sets.is_empty() => menu_revision_intelligente(&sets, &mut prog),
-            "3" => menu_statistiques(&sets, &prog),
-            "4" if !sets.is_empty() => menu_reinitialiser(&sets, &mut prog),
-            "5" | "q" => {
+            "1" if !sets.is_empty() => menu_session(sets, &mut prog),
+            "2" if !sets.is_empty() => menu_revision_intelligente(sets, &mut prog),
+            "3" => langues::menu(&bib.langues, &mut prog),
+            "4" => menu_statistiques(sets, &prog),
+            "5" if !sets.is_empty() => menu_reinitialiser(sets, &mut prog),
+            "6" | "q" => {
                 println!("À bientôt, et bon courage pour tes partiels ! 👋");
                 break;
             }

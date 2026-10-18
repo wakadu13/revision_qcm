@@ -12,7 +12,11 @@ use eframe::egui::{
     ViewportCommand, pos2, vec2,
 };
 
+mod langues;
+
+use crate::bibliotheque;
 use crate::core::{self, Progression, Question, QuestionSet, TypeQuestion};
+use crate::langues::{Mode, SetLangue};
 use crate::math;
 use crate::paths;
 
@@ -118,18 +122,34 @@ enum Ecran {
     Resultat {
         score: usize,
         total: usize,
+        /// Session de langue : retour au menu de cette langue.
+        langue: Option<String>,
     },
     Statistiques,
+    Langues {
+        sel: usize,
+    },
+    LangueMenu {
+        langue: String,
+        sel: usize,
+    },
+    QuizLangue(Box<langues::QuizLangue>),
+    StatsLangue {
+        langue: String,
+    },
 }
 
 enum ActionNombre {
     Session(Arc<QuestionSet>, Vec<usize>),
     Revision(Vec<(Arc<QuestionSet>, usize)>),
+    Langue(String, Mode),
 }
 
 enum ActionConfirmee {
     Reinitialiser(Arc<QuestionSet>),
+    ReinitialiserLangue(String),
     QuitterQuiz,
+    QuitterQuizLangue(String),
 }
 
 enum Dialogue {
@@ -160,6 +180,7 @@ enum Nav {
 pub struct RevisionGui {
     prog: Progression,
     sets: Vec<Arc<QuestionSet>>,
+    langues: Vec<Arc<SetLangue>>,
     erreurs_affichees: Vec<String>,
     ecran: Ecran,
     dialogue: Option<Dialogue>,
@@ -171,6 +192,7 @@ impl RevisionGui {
         let mut app = Self {
             prog: Progression::new(paths::fichier_progression()),
             sets: Vec::new(),
+            langues: Vec::new(),
             erreurs_affichees: Vec::new(),
             ecran: Ecran::MenuPrincipal { sel: 0 },
             dialogue: None,
@@ -184,8 +206,10 @@ impl RevisionGui {
     // -----------------------------------------------------------------------
     /// Recharge les sets depuis questions/ (permet de les modifier à chaud).
     fn charger_sets(&mut self) {
-        let (sets, erreurs) = core::charger_tous_les_sets(&paths::dossier_questions());
-        self.sets = sets;
+        let bib = bibliotheque::charger(&paths::dossier_questions());
+        let erreurs = bib.erreurs;
+        self.sets = bib.sets;
+        self.langues = bib.langues;
         if !erreurs.is_empty() && erreurs != self.erreurs_affichees && self.dialogue.is_none() {
             self.dialogue = Some(Dialogue::Info {
                 titre: "Sets ignorés".into(),
@@ -428,6 +452,7 @@ impl RevisionGui {
             let items = [
                 "Démarrer une session",
                 "Révision intelligente",
+                "Langues — vocabulaire, conjugaison, grammaire",
                 "Mes statistiques",
                 "Réinitialiser la progression",
                 "Quitter",
@@ -438,11 +463,12 @@ impl RevisionGui {
         match nav {
             Nav::Choix(0) => self.aller_choix_set(But::Session),
             Nav::Choix(1) => self.revision_intelligente(),
-            Nav::Choix(2) => {
+            Nav::Choix(2) => self.aller_langues(),
+            Nav::Choix(3) => {
                 self.charger_sets();
                 self.ecran = Ecran::Statistiques;
             }
-            Nav::Choix(3) => self.aller_choix_set(But::Reinitialiser),
+            Nav::Choix(4) => self.aller_choix_set(But::Reinitialiser),
             Nav::Choix(_) | Nav::Retour => ui.ctx().send_viewport_cmd(ViewportCommand::Close),
             Nav::Rien => {}
         }
@@ -833,6 +859,7 @@ impl RevisionGui {
                     fin = Some(Ecran::Resultat {
                         score: quiz.score,
                         total,
+                        langue: None,
                     });
                 } else {
                     let (paires, index, score) =
@@ -870,9 +897,15 @@ impl RevisionGui {
     }
 
     fn ecran_resultat(&mut self, ui: &mut Ui, actif: bool) {
-        let Ecran::Resultat { score, total } = self.ecran else {
+        let Ecran::Resultat {
+            score,
+            total,
+            langue,
+        } = &self.ecran
+        else {
             return;
         };
+        let (score, total, langue) = (*score, (*total).max(1), langue.clone());
         let pct = score as f32 / total as f32 * 100.0;
         let couleur = if pct >= 100.0 {
             GREEN
@@ -913,13 +946,21 @@ impl RevisionGui {
                 ui.add_space(14.0);
                 ui.label(RichText::new(message).size(F_MED).color(FG));
                 ui.add_space(28.0);
-                if bouton(ui, "Menu principal  (Entrée)", ACCENT).clicked() {
+                let libelle = if langue.is_some() {
+                    "Continuer  (Entrée)"
+                } else {
+                    "Menu principal  (Entrée)"
+                };
+                if bouton(ui, libelle, ACCENT).clicked() {
                     retour = true;
                 }
             });
         });
         if retour {
-            self.aller_menu();
+            match langue {
+                Some(langue) => self.aller_langue(langue),
+                None => self.aller_menu(),
+            }
         }
     }
 
@@ -1186,6 +1227,7 @@ impl RevisionGui {
                     paires.truncate(n);
                     self.lancer_quiz(paires);
                 }
+                ActionNombre::Langue(langue, mode) => self.lancer_session_langue(langue, mode, n),
             }
         }
         match confirme {
@@ -1198,6 +1240,14 @@ impl RevisionGui {
                 }
             }
             Some(ActionConfirmee::QuitterQuiz) => self.aller_menu(),
+            Some(ActionConfirmee::ReinitialiserLangue(langue)) => {
+                for s in crate::langues::sets_de(&self.langues, &langue) {
+                    self.prog.reinitialiser_set(&s.id);
+                }
+                self.sauvegarder();
+                self.info("Réinitialisé", "Progression effacée.");
+            }
+            Some(ActionConfirmee::QuitterQuizLangue(langue)) => self.aller_langue(langue),
             None => {}
         }
         ctx.request_repaint();
@@ -1216,6 +1266,10 @@ impl eframe::App for RevisionGui {
             Ecran::Quiz(_) => self.ecran_quiz(ui, actif),
             Ecran::Resultat { .. } => self.ecran_resultat(ui, actif),
             Ecran::Statistiques => self.ecran_statistiques(ui, actif),
+            Ecran::Langues { .. } => self.ecran_langues(ui, actif),
+            Ecran::LangueMenu { .. } => self.ecran_langue_menu(ui, actif),
+            Ecran::QuizLangue(_) => self.ecran_quiz_langue(ui, actif),
+            Ecran::StatsLangue { .. } => self.ecran_stats_langue(ui, actif),
         }
         let ctx = ui.ctx().clone();
         self.dialogues(&ctx);

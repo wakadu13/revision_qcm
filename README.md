@@ -138,6 +138,8 @@ Saisir le numéro de l'option affichée, puis `Entrée`.
     on essaie de se rappeler la réponse avant de retourner la carte.
 - Questions chargées depuis des fichiers `.json` dans le dossier `questions/`
   (et ses sous-dossiers, voir [Catégories](#catégories) ci-dessous).
+- **Module Langues** : vocabulaire, conjugaison et grammaire avec répétition espacée
+  FSRS, rappel actif et exercices entrelacés (voir [Module Langues](#module-langues)).
 - **Feedback immédiat** après chaque réponse : résultat, bonne réponse, explication.
 - **Révision intelligente** : ne propose que les questions « à réviser »
   (jamais vues ou dont l'intervalle de Leitner est écoulé), triées par priorité.
@@ -172,13 +174,10 @@ la catégorie par défaut **« Général »**. Déplacer un fichier dans un sous
 casse pas sa progression : l'identifiant de suivi reste le nom du fichier, pas son
 chemin.
 
-### Révision de langues
+### Langues
 
-Les types **FLASHCARD** (vocabulaire) et **TROU** (grammaire) ont été pensés pour
-réviser une langue en combinant plusieurs formes d'apprentissage dans un même set :
-flashcards pour mémoriser du vocabulaire, phrases à trous pour la conjugaison/les
-prépositions, QCM/QCR pour les règles de grammaire. Voir l'exemple complet dans
-`questions/langues/langues_anglais.json`, qui mélange les 4 types.
+Un module dédié aux langues (vocabulaire, conjugaison, grammaire) est accessible depuis
+le menu principal. Voir [Module Langues](#module-langues) ci-dessous.
 
 ### Système de Leitner
 
@@ -197,6 +196,109 @@ Plus la boîte est haute, plus l'intervalle avant la prochaine révision est lon
 | 3 | 7 jours |
 | 4 | 14 jours |
 | 5 | 30 jours |
+
+---
+
+## Module Langues
+
+Menu principal → **Langues**. Le module est construit sur les techniques dont l'efficacité
+est la mieux établie par la recherche sur la mémoire et l'apprentissage des langues :
+
+| Technique | Mise en œuvre |
+|-----------|---------------|
+| **Répétition espacée optimisée** | Algorithme **FSRS** (celui d'Anki depuis 2023) : chaque élément a sa propre stabilité et sa difficulté, et revient au moment où la probabilité de s'en souvenir tombe à 90 %. À rétention égale, il demande moins de révisions que les boîtes de Leitner ou SM-2. |
+| **Rappel actif en production** | On **tape** le mot ou la forme verbale (au lieu de le reconnaître dans une liste) : produire ancre bien mieux que reconnaître. |
+| **Plusieurs facettes par mot** | Un mot est d'abord découvert en **reconnaissance** (anglais → français, carte auto-évaluée). Une fois connu, il revient en **production** (français → anglais) et **en contexte** (phrase à compléter). Deux facettes d'un même mot ne tombent jamais dans la même session. |
+| **Conjugaison personne par personne** | Chaque forme (« he / she / it → is ») est suivie séparément (2 formes d'un même tableau au plus par session), et le **tableau complet** s'affiche à la correction, avec la ligne demandée surlignée. Les verbes irréguliers sont travaillés de la même façon (prétérit, participe passé). |
+| **Grammaire par la pratique** | Phrases à trous, **remise en ordre de mots**, **correction d'erreurs** (la phrase fautive est pré-remplie, il suffit de la corriger), et QCM/QCR pour les règles. |
+| **Entrelacement** | Vocabulaire, conjugaison et grammaire sont mélangés dans la session du jour (jamais deux exercices du même genre d'affilée quand c'est possible) : apprendre en mélangeant les types d'exercices retient mieux que de les enchaîner par blocs. |
+| **Correction immédiate + réessai** | Les lettres fausses ou manquantes sont surlignées dans la bonne réponse, et un exercice raté revient **quelques questions plus tard** dans la même session. |
+| **Quota de nouveautés** | 20 nouveaux éléments par jour au plus (réglable), pour garder une charge de révisions tenable les jours suivants. Les révisions dues passent toujours en premier. |
+| **Tolérance raisonnable** | En vocabulaire, un accent oublié ou une faute de frappe compte comme « presque » (révision un peu plus rapprochée), pas comme un échec. En conjugaison et en grammaire, la réponse doit être exacte (« goed » n'est pas « goes », « hablo » n'est pas « habló »). Casse, espaces et ponctuation finale sont toujours ignorés. |
+
+Modes proposés : **Session du jour** (recommandé : tout mélangé), **Vocabulaire**,
+**Conjugaison**, **Grammaire**, **Points faibles** (éléments souvent oubliés),
+**Statistiques** (éléments appris, maîtrisés, rétention estimée, révisions à venir,
+éléments les plus difficiles).
+
+### Touches (GUI)
+
+| Exercice | Touches |
+|----------|---------|
+| Carte (reconnaissance) | `Espace` retourne la carte, puis `1` À revoir · `2` Difficile · `3` Bien (ou `Espace`) · `4` Facile. Chaque bouton indique quand la carte reviendra. |
+| Réponse à taper | `Entrée` valide ; des boutons insèrent les caractères spéciaux de la langue (á, ñ, ß…) à la position du curseur |
+| Remise en ordre | clic sur les mots, ou leur numéro au clavier ; `⌫` retire le dernier ; `Entrée` valide |
+| Après la correction | `Entrée`/`Espace` suivant · `F` « c'était trop facile » (espace davantage la prochaine révision) · `Q` quitter |
+
+En CLI, les mêmes exercices sont proposés (remise en ordre : taper la phrase ou les
+numéros des mots).
+
+### Format d'un fichier de langue
+
+Un fichier de langue se reconnaît à sa clé `"langue"` (et l'absence de `"questions"`).
+Il se place dans `questions/` comme les autres sets (par exemple `questions/langues/`).
+Plusieurs fichiers d'une même langue sont regroupés automatiquement.
+
+```json
+{
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire, conjugaison & grammaire",
+  "particules_optionnelles": ["to", "a", "an", "the"],
+  "caracteres_speciaux": [],
+  "nouveaux_par_jour": 20,
+
+  "vocabulaire": [
+    {
+      "id": "voc-001",
+      "mot": "to achieve",
+      "traductions": ["réussir", "accomplir"],
+      "exemple": "She finally [achieved] her goal.",
+      "exemple_traduction": "Elle a enfin atteint son objectif.",
+      "note": "achievement (n.) = une réussite"
+    }
+  ],
+
+  "conjugaison": [
+    {
+      "id": "conj-be-present",
+      "verbe": "to be", "traduction": "être", "temps": "present simple",
+      "formes": { "I": "am", "you": "are", "he / she / it": "is", "we": "are", "they": "are" }
+    },
+    {
+      "id": "irr-go", "verbe": "to go", "traduction": "aller", "temps": "verbe irrégulier",
+      "formes": { "prétérit": "went", "participe passé": "gone" }
+    }
+  ],
+
+  "grammaire": [
+    { "id": "g1", "type": "TROU", "question": "She ___ (go) to school every day.", "reponses_texte": ["goes"] },
+    { "id": "g2", "type": "ORDRE", "phrase": "She has never been to London.", "traduction": "Elle n'est jamais allée à Londres." },
+    { "id": "g3", "type": "CORRECTION", "phrase": "He don't like coffee.",
+      "corrections": ["He doesn't like coffee.", "He does not like coffee."] },
+    { "id": "g4", "type": "QCM", "question": "...", "choix": ["...", "..."], "reponses": [0] }
+  ]
+}
+```
+
+| Champ | Détail |
+|-------|--------|
+| `langue` | **obligatoire** — nom affiché ; regroupe les fichiers d'une même langue |
+| `langue_maternelle` | défaut « Français » (affiché dans le sens des exercices : EN → FR) |
+| `particules_optionnelles` | mots facultatifs en tête de réponse : avec `"to"`, « achieve » est accepté pour « to achieve » |
+| `caracteres_speciaux` | boutons d'insertion sous le champ de saisie (ex. `["á", "é", "ñ", "¿"]`) |
+| `nouveaux_par_jour` | quota de nouveaux éléments par jour (défaut 20) |
+| `vocabulaire[]` | `mot` et `traductions` (texte ou liste) obligatoires ; `exemple` avec le mot à trouver **entre crochets** (crée l'exercice en contexte), `exemple_traduction`, `note`, `prononciation`, `variantes` (autres réponses acceptées) facultatifs |
+| `conjugaison[]` | `verbe`, `temps` et `formes` (personne → forme, ou liste de formes acceptées) obligatoires ; `traduction`, `explication` facultatifs |
+| `grammaire[]` | `TROU`, `QCM`, `QCR`, `FLASHCARD` (même format que les sets classiques), `ORDRE` (`phrase`, `variantes`, `traduction`) ou `CORRECTION` (`phrase` fautive, `corrections`) ; `explication` et `traduction` facultatifs partout |
+
+Les `id` servent au suivi : garde-les **stables**. Exemples complets :
+`questions/langues/langues_anglais.json` (40 mots dont les faux amis courants, temps
+principaux, 27 verbes irréguliers, 32 exercices de grammaire) et
+`questions/langues/espagnol_debutant.json` (caractères spéciaux, ser/estar).
+
+La version web convertit ces fichiers en questions classiques (cartes et textes à trous)
+pour rester utilisable, sans les fonctions avancées du module (FSRS, facettes, remise
+en ordre interactive).
 
 ---
 
@@ -362,6 +464,11 @@ revision_qcm/
 │   ├── core.rs           # modèles, chargement JSON, algorithme de Leitner
 │   ├── gui.rs            # interface graphique (egui)
 │   ├── math.rs           # moteur de rendu des formules LaTeX
+│   ├── langues.rs        # module Langues : exercices, correction, sessions
+│   ├── fsrs.rs           # algorithme de répétition espacée FSRS
+│   ├── bibliotheque.rs   # chargement de questions/ (sets + fichiers de langue)
+│   ├── cli/langues.rs    # module Langues en ligne de commande
+│   ├── gui/langues.rs    # module Langues en interface graphique
 │   ├── paths.rs          # emplacement de questions/ et progression.json
 │   └── bin/
 │       └── build_dist.rs # génération de dist/ (exécutable + questions + web)

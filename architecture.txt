@@ -7,12 +7,15 @@ VUE D'ENSEMBLE
 Application écrite en Rust, compilée en un seul exécutable natif. Le code est
 organisé en modules distincts selon le principe de séparation des responsabilités :
 
-  core.rs   →  Logique métier pure (données, algorithmes, persistance)
-  cli.rs    →  Interface en ligne de commande
-  gui.rs    →  Interface graphique (egui, rendu GPU)
-  math.rs   →  Moteur de rendu des formules LaTeX ($...$) pour la GUI
-  paths.rs  →  Emplacement de questions/ et progression.json
-  main.rs   →  Point d'entrée : choix CLI / GUI
+  core.rs          →  Logique métier pure (données, algorithmes, persistance)
+  langues.rs       →  Module Langues : exercices, correction, sessions, stats
+  fsrs.rs          →  Algorithme de répétition espacée FSRS
+  bibliotheque.rs  →  Chargement de questions/ (sets classiques + langues)
+  cli.rs           →  Interface en ligne de commande (+ cli/langues.rs)
+  gui.rs           →  Interface graphique (egui, rendu GPU) (+ gui/langues.rs)
+  math.rs          →  Moteur de rendu des formules LaTeX ($...$) pour la GUI
+  paths.rs         →  Emplacement de questions/ et progression.json
+  main.rs          →  Point d'entrée : choix CLI / GUI
 
   bin/build_dist.rs  →  Outil de génération de dist/ (binaire séparé)
 
@@ -20,15 +23,16 @@ organisé en modules distincts selon le principe de séparation des responsabili
 DIAGRAMME DE DÉPENDANCES
 -------------------------
 
-  main.rs ──┬──→ cli.rs ──┬──→ core.rs
-            │             └──→ paths.rs
-            └──→ gui.rs ──┬──→ core.rs
+  main.rs ──┬──→ cli.rs ──┬──→ bibliotheque.rs ──┬──→ core.rs
+            │             ├──→ langues.rs        └──→ langues.rs ──┬──→ core.rs
+            │             └──→ paths.rs                            └──→ fsrs.rs
+            └──→ gui.rs ──┬──→ bibliotheque.rs, langues.rs, core.rs
                           ├──→ math.rs
                           └──→ paths.rs
 
   bin/build_dist.rs ──→ core.rs (inclus via #[path], pour lister_sets)
 
-  core.rs et math.rs n'importent aucun autre module du projet
+  core.rs, fsrs.rs et math.rs n'importent aucun autre module du projet
   (pas de dépendance circulaire).
 
 
@@ -86,18 +90,22 @@ Champs :
 
 --- Chargement ---
 
-  charger_set(chemin, racine) → Result<QuestionSet, String>
-    Lit et valide un fichier JSON. Erreur avec message clair si malformé :
-    clés obligatoires, indices dans les bornes, exactement 1 réponse pour un
-    QCM, 'reponses_texte' non vide pour TROU, 'verso' pour FLASHCARD…
+  lire_fichier(chemin, racine) → Result<FichierJson, String>
+    Lit et analyse un fichier JSON ; déduit la catégorie (sous-dossier).
+
+  set_depuis_json(FichierJson) → Result<QuestionSet, String>
+  question_depuis_json(valeur, rang, contexte) → Result<Question, String>
+    Validation, avec message clair si malformé : clés obligatoires, indices
+    dans les bornes, exactement 1 réponse pour un QCM, 'reponses_texte' non
+    vide pour TROU, 'verso' pour FLASHCARD… (réutilisé par le module Langues
+    pour ses exercices de grammaire).
 
   lister_sets(dossier) → Vec<PathBuf>
     Fichiers .json du dossier et de ses sous-dossiers, triés.
 
-  charger_tous_les_sets(dossier) → (Vec<Arc<QuestionSet>>, Vec<String>)
-    Charge tous les sets EN PARALLÈLE (un lot de fichiers par cœur via
-    std::thread::scope). Renvoie les sets valides (ordre de lister_sets)
-    et les messages d'erreur des fichiers ignorés.
+  traiter_en_parallele(dossier, f) → Vec<T>
+    Applique f à chaque fichier EN PARALLÈLE (un lot de fichiers par cœur
+    via std::thread::scope), résultats dans l'ordre de lister_sets.
 
   categories(sets) → Vec<String>   Catégories distinctes, triées.
 
@@ -115,7 +123,10 @@ Stockage : progression.json (format identique à l'ancienne version Python)
         "vues": int,
         "correctes": int,
         "derniere_revision": "2026-06-17T10:00:00" | null,
-        "derniere_correcte": bool | null
+        "derniere_correcte": bool | null,
+        // module Langues uniquement (absents sinon) :
+        "stabilite": float, "difficulte": float,
+        "echeance": "2026-06-20T10:00:00", "decouverte": "...", "oublis": int
       }
     }
   }
@@ -156,6 +167,80 @@ Méthodes principales :
 
 
 ========================================================================
+MODULE bibliotheque.rs — Chargement de questions/
+========================================================================
+
+  charger(dossier) → Bibliotheque { sets, langues, erreurs }
+    Lit tous les fichiers en parallèle ; un JSON avec la clé "langue" (et
+    sans "questions") est un fichier de langue, sinon un set classique.
+
+
+========================================================================
+MODULE fsrs.rs — Répétition espacée (FSRS v4.5)
+========================================================================
+
+  Chaque élément a une stabilité S (jours avant que la probabilité de
+  rappel tombe à 90 %) et une difficulté D (1 à 10).
+    retrievabilite(t, S) = (1 + 19/81 · t/S)^-0,5
+    premiere(note)              → état initial (S et D selon la note)
+    suivante(état, jours, note) → nouvel état
+      - succès : S augmente d'autant plus que D est faible et que le
+        souvenir était proche de l'oubli (R faible) ;
+      - oubli  : S repart d'une valeur basse.
+    intervalle_jours(S) = S (rétention visée : 90 %)
+  Notes : ARevoir (1), Difficile (2), Bien (3), Facile (4).
+  Paramètres : valeurs par défaut publiées de FSRS-4.5.
+
+
+========================================================================
+MODULE langues.rs — Module Langues
+========================================================================
+
+--- Modèle ---
+  SetLangue    un fichier de langue : langue, titre, exercices, particules
+               optionnelles, caractères spéciaux, quota de nouveautés
+  Exercice     une FACETTE suivie séparément dans progression.json :
+                 id (clé de suivi), entree (élément d'origine), genre
+                 (Vocabulaire / Conjugaison / Grammaire), forme, détails,
+                 prérequis, max_par_session
+  Forme        Carte (auto-évaluée) | Saisie (réponse tapée, tolérante ou
+               non, pré-remplie, tableau de conjugaison) | Choix (QCM/QCR)
+               | Ordre (mots à remettre dans l'ordre)
+
+--- Génération des facettes (set_depuis_json) ---
+  vocabulaire  → {id}#rec  carte langue → français
+               → {id}#prod saisie français → langue  (prérequis : #rec appris)
+               → {id}#ctx  phrase de l'exemple à compléter (mot entre crochets)
+  conjugaison  → {id}#{personne} : une saisie par forme (2 max par session)
+  grammaire    → TROU / ORDRE / CORRECTION / QCM / QCR / FLASHCARD
+
+--- Correction ---
+  normaliser_strict : casse, espaces, apostrophes, ponctuation finale ignorés
+  noter_saisie → Verdict Juste / Accents / Faute (tolérance vocabulaire :
+    distance d'édition ≤ 1 dès 5 lettres, ≤ 2 dès 10) / Faux
+  Verdict → note FSRS : Juste → Bien, Accents/Faute → Difficile, Faux → À revoir
+  diff(saisie, attendu) : plus longue sous-séquence commune → lettres à surligner
+
+--- Sessions ---
+  construire_session(sets, prog, mode, n)
+    1. révisions dues (échéance passée), les plus menacées d'oubli d'abord ;
+    2. nouveautés débloquées, réparties à parts égales entre les genres,
+       dans la limite du quota du jour (quota_nouveaux) ;
+    3. au plus max_par_session facettes par élément ;
+    4. entrelacer : chaque genre réparti uniformément sur la session.
+  Mode : Quotidien | Genre(g) | PointsFaibles (oublis > 0 ou dernier échec)
+  reprogrammer : un exercice raté revient 4 positions plus loin (2 fois max)
+  enregistrer(prog, set, exo, note) : stats + boîte + état FSRS + échéance
+    (« À revoir » → 10 min ; sinon intervalle FSRS arrondi, ≥ 1 jour)
+  prevision : délai affiché sur les boutons de note
+
+--- Statistiques ---
+  resume(sets, prog) → par genre : total, nouveaux, à revoir, maîtrisés
+    (S ≥ 21 j), rétention estimée ; révisions des 7 prochains jours ;
+    éléments les plus souvent oubliés.
+
+
+========================================================================
 MODULE cli.rs — Interface ligne de commande
 ========================================================================
 
@@ -181,6 +266,11 @@ MODULE cli.rs — Interface ligne de commande
     Boucle commune aux sessions et à la révision intelligente ;
     sauvegarde après chaque réponse (robustesse).
 
+--- Module Langues : cli/langues.rs ---
+  menu (choix de la langue, modes, statistiques, réinitialisation),
+  poser (un exercice selon sa forme), lancer (déroulé de session avec
+  réessais), diff_colore (lettres fausses surlignées).
+
 --- Menus ---
   choisir_categorie / choisir_set, menu_session, menu_revision_intelligente,
   menu_statistiques, menu_reinitialiser, main (boucle principale),
@@ -204,7 +294,8 @@ redimensionnement) → 0 % CPU au repos. Rendu OpenGL (glow).
 
 --- enum Ecran ---
   MenuPrincipal, Categories, SetsCategorie, ModeSession,
-  Quiz(Quiz), Resultat, Statistiques
+  Quiz(Quiz), Resultat, Statistiques,
+  Langues, LangueMenu, QuizLangue(QuizLangue), StatsLangue (gui/langues.rs)
 
 --- enum Dialogue (fenêtres modales) ---
   Info       message + OK (Entrée/Échap)
@@ -222,6 +313,16 @@ Tant qu'un dialogue est ouvert, le clavier ne pilote plus l'écran dessous.
   (enregistrement + sauvegarde de la progression).
   Les lettres sont lues via les événements texte : elles suivent la
   disposition du clavier (AZERTY/QWERTY).
+
+--- Module Langues : gui/langues.rs ---
+  QuizLangue : file d'ExoSession, état de l'exercice courant (saisie,
+  sélection, mots placés, verdict, note). Le clavier et les clics donnent
+  une action (Valider, Noter, Placer, Retirer, Suivante, Facile, Quitter)
+  appliquée en fin de frame ; la révision est enregistrée en quittant
+  l'exercice (la touche F peut encore la passer en « Facile »).
+  Boutons de note avec le délai prévu, tableau de conjugaison surligné,
+  réponse attendue avec les lettres fausses soulignées, boutons de
+  caractères spéciaux insérés au curseur.
 
 --- Widgets ---
   liste_nav     Liste navigable ↑↓ / Début / Fin / Entrée / Échap / clic

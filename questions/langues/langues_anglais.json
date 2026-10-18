@@ -1,107 +1,1110 @@
 {
-  "titre": "Langues — Anglais (vocabulaire & grammaire)",
-  "description": "Set de démonstration pour la révision de langues : mélange de flashcards (vocabulaire), de phrases à trous (grammaire), de QCM et de QCR (règles de grammaire), pour varier les types de mémorisation.",
-  "questions": [
+  "langue": "Anglais",
+  "titre": "Anglais — vocabulaire, conjugaison & grammaire",
+  "description": "Vocabulaire courant (faux amis inclus), verbes irréguliers et temps principaux, grammaire par la pratique.",
+  "particules_optionnelles": [
+    "to",
+    "a",
+    "an",
+    "the"
+  ],
+  "vocabulaire": [
     {
       "id": "voc-001",
-      "type": "FLASHCARD",
-      "question": "to achieve",
-      "verso": "réussir, accomplir",
-      "explication": "Ex. : « She achieved her goal. » = Elle a atteint son objectif."
+      "mot": "to achieve",
+      "traductions": [
+        "réussir",
+        "accomplir"
+      ],
+      "exemple": "She finally [achieved] her goal.",
+      "exemple_traduction": "Elle a enfin atteint son objectif.",
+      "note": "achievement (n.) = une réussite"
     },
     {
       "id": "voc-002",
-      "type": "FLASHCARD",
-      "question": "nevertheless",
-      "verso": "néanmoins, malgré tout",
-      "explication": "Connecteur logique utilisé pour introduire une opposition, comme « however »."
+      "mot": "nevertheless",
+      "traductions": [
+        "néanmoins",
+        "malgré tout"
+      ],
+      "exemple": "It was raining; [nevertheless], we went out.",
+      "exemple_traduction": "Il pleuvait ; néanmoins, nous sommes sortis.",
+      "note": "Connecteur d'opposition, comme « however »."
     },
     {
       "id": "voc-003",
-      "type": "FLASHCARD",
-      "question": "a deadline",
-      "verso": "une échéance, une date limite",
-      "explication": "Ex. : « The deadline is Friday. » = L'échéance est vendredi."
+      "mot": "a deadline",
+      "traductions": [
+        "une échéance",
+        "une date limite"
+      ],
+      "exemple": "The [deadline] is Friday.",
+      "exemple_traduction": "L'échéance est vendredi."
     },
     {
       "id": "voc-004",
-      "type": "FLASHCARD",
-      "question": "to rely on (somebody)",
-      "verso": "compter sur (quelqu'un)",
-      "explication": "Ex. : « You can rely on me. » = Tu peux compter sur moi."
+      "mot": "to rely on",
+      "traductions": [
+        "compter sur"
+      ],
+      "exemple": "You can [rely] on me.",
+      "exemple_traduction": "Tu peux compter sur moi.",
+      "note": "reliable (adj.) = fiable"
     },
     {
       "id": "voc-005",
-      "type": "FLASHCARD",
-      "question": "an outcome",
-      "verso": "un résultat, une issue",
-      "explication": "Souvent utilisé pour le résultat d'un processus ou d'une décision."
+      "mot": "an outcome",
+      "traductions": [
+        "un résultat",
+        "une issue"
+      ],
+      "exemple": "Nobody knows the [outcome] of the vote.",
+      "exemple_traduction": "Personne ne connaît l'issue du vote."
     },
     {
       "id": "voc-006",
-      "type": "FLASHCARD",
-      "question": "thorough",
-      "verso": "minutieux, approfondi",
-      "explication": "Attention à la prononciation : /ˈθʌrə/, ne pas confondre avec « through »."
+      "mot": "thorough",
+      "traductions": [
+        "minutieux",
+        "approfondi"
+      ],
+      "exemple": "The police carried out a [thorough] search.",
+      "exemple_traduction": "La police a mené une fouille minutieuse.",
+      "note": "Prononciation /ˈθʌrə/ : ne pas confondre avec « through »."
     },
+    {
+      "id": "voc-007",
+      "mot": "to improve",
+      "traductions": [
+        "améliorer",
+        "s'améliorer"
+      ],
+      "exemple": "Her English has [improved] a lot.",
+      "exemple_traduction": "Son anglais s'est beaucoup amélioré."
+    },
+    {
+      "id": "voc-008",
+      "mot": "to borrow",
+      "traductions": [
+        "emprunter"
+      ],
+      "exemple": "Can I [borrow] your pen?",
+      "exemple_traduction": "Je peux emprunter ton stylo ?",
+      "note": "to borrow = emprunter ≠ to lend = prêter"
+    },
+    {
+      "id": "voc-009",
+      "mot": "to lend",
+      "traductions": [
+        "prêter"
+      ],
+      "exemple": "Could you [lend] me ten euros?",
+      "exemple_traduction": "Tu pourrais me prêter dix euros ?",
+      "note": "Verbe irrégulier : lend – lent – lent"
+    },
+    {
+      "id": "voc-010",
+      "mot": "actually",
+      "traductions": [
+        "en fait",
+        "en réalité"
+      ],
+      "exemple": "[Actually], I don't agree.",
+      "exemple_traduction": "En fait, je ne suis pas d'accord.",
+      "note": "Faux ami : « actuellement » se dit « currently »."
+    },
+    {
+      "id": "voc-011",
+      "mot": "currently",
+      "traductions": [
+        "actuellement"
+      ],
+      "exemple": "She is [currently] working in London.",
+      "exemple_traduction": "Elle travaille actuellement à Londres."
+    },
+    {
+      "id": "voc-012",
+      "mot": "eventually",
+      "traductions": [
+        "finalement",
+        "à la longue"
+      ],
+      "exemple": "He [eventually] found a job.",
+      "exemple_traduction": "Il a fini par trouver un travail.",
+      "note": "Faux ami : « éventuellement » se dit « possibly »."
+    },
+    {
+      "id": "voc-013",
+      "mot": "to require",
+      "traductions": [
+        "exiger",
+        "nécessiter"
+      ],
+      "exemple": "This job [requires] patience.",
+      "exemple_traduction": "Ce travail exige de la patience."
+    },
+    {
+      "id": "voc-014",
+      "mot": "to provide",
+      "traductions": [
+        "fournir"
+      ],
+      "exemple": "The hotel [provides] free breakfast.",
+      "exemple_traduction": "L'hôtel fournit le petit-déjeuner gratuitement."
+    },
+    {
+      "id": "voc-015",
+      "mot": "a skill",
+      "traductions": [
+        "une compétence",
+        "un savoir-faire"
+      ],
+      "exemple": "Communication is a key [skill].",
+      "exemple_traduction": "La communication est une compétence clé."
+    },
+    {
+      "id": "voc-016",
+      "mot": "to struggle",
+      "traductions": [
+        "avoir du mal",
+        "lutter"
+      ],
+      "exemple": "I [struggle] to wake up early.",
+      "exemple_traduction": "J'ai du mal à me lever tôt."
+    },
+    {
+      "id": "voc-017",
+      "mot": "to avoid",
+      "traductions": [
+        "éviter"
+      ],
+      "exemple": "Try to [avoid] sugar.",
+      "exemple_traduction": "Essaie d'éviter le sucre.",
+      "note": "to avoid + V-ing : « avoid eating »"
+    },
+    {
+      "id": "voc-018",
+      "mot": "a purpose",
+      "traductions": [
+        "un but",
+        "une finalité"
+      ],
+      "exemple": "What is the [purpose] of your visit?",
+      "exemple_traduction": "Quel est le but de votre visite ?"
+    },
+    {
+      "id": "voc-019",
+      "mot": "reliable",
+      "traductions": [
+        "fiable"
+      ],
+      "exemple": "My old car is very [reliable].",
+      "exemple_traduction": "Ma vieille voiture est très fiable."
+    },
+    {
+      "id": "voc-020",
+      "mot": "to suggest",
+      "traductions": [
+        "suggérer",
+        "proposer"
+      ],
+      "exemple": "I [suggest] we leave now.",
+      "exemple_traduction": "Je propose qu'on parte maintenant."
+    },
+    {
+      "id": "voc-021",
+      "mot": "although",
+      "traductions": [
+        "bien que",
+        "quoique"
+      ],
+      "exemple": "[Although] it was late, she kept working.",
+      "exemple_traduction": "Bien qu'il fût tard, elle a continué à travailler."
+    },
+    {
+      "id": "voc-022",
+      "mot": "whereas",
+      "traductions": [
+        "alors que",
+        "tandis que"
+      ],
+      "exemple": "I like tea, [whereas] my brother prefers coffee.",
+      "exemple_traduction": "J'aime le thé, alors que mon frère préfère le café."
+    },
+    {
+      "id": "voc-023",
+      "mot": "to deal with",
+      "traductions": [
+        "gérer",
+        "s'occuper de"
+      ],
+      "exemple": "She knows how to [deal] with stress.",
+      "exemple_traduction": "Elle sait gérer le stress."
+    },
+    {
+      "id": "voc-024",
+      "mot": "a challenge",
+      "traductions": [
+        "un défi"
+      ],
+      "exemple": "Learning a language is a real [challenge].",
+      "exemple_traduction": "Apprendre une langue est un vrai défi."
+    },
+    {
+      "id": "voc-025",
+      "mot": "to increase",
+      "traductions": [
+        "augmenter"
+      ],
+      "exemple": "Prices [increased] by 5%.",
+      "exemple_traduction": "Les prix ont augmenté de 5 %."
+    },
+    {
+      "id": "voc-026",
+      "mot": "to decrease",
+      "traductions": [
+        "diminuer",
+        "baisser"
+      ],
+      "exemple": "Unemployment has [decreased].",
+      "exemple_traduction": "Le chômage a baissé."
+    },
+    {
+      "id": "voc-027",
+      "mot": "a meeting",
+      "traductions": [
+        "une réunion"
+      ],
+      "exemple": "The [meeting] starts at nine.",
+      "exemple_traduction": "La réunion commence à neuf heures."
+    },
+    {
+      "id": "voc-028",
+      "mot": "to apply for",
+      "traductions": [
+        "postuler à",
+        "faire une demande de"
+      ],
+      "exemple": "He [applied] for a new job.",
+      "exemple_traduction": "Il a postulé à un nouveau poste."
+    },
+    {
+      "id": "voc-029",
+      "mot": "a fee",
+      "traductions": [
+        "des frais",
+        "un tarif"
+      ],
+      "exemple": "The entrance [fee] is ten pounds.",
+      "exemple_traduction": "Le droit d'entrée est de dix livres."
+    },
+    {
+      "id": "voc-030",
+      "mot": "to warn",
+      "traductions": [
+        "avertir",
+        "prévenir"
+      ],
+      "exemple": "I [warned] you about the traffic.",
+      "exemple_traduction": "Je t'avais prévenu pour la circulation."
+    },
+    {
+      "id": "voc-031",
+      "mot": "to remind",
+      "traductions": [
+        "rappeler (quelque chose à quelqu'un)"
+      ],
+      "exemple": "[Remind] me to call her.",
+      "exemple_traduction": "Rappelle-moi de l'appeler.",
+      "note": "to remind ≠ to remember (se souvenir)"
+    },
+    {
+      "id": "voc-032",
+      "mot": "to remember",
+      "traductions": [
+        "se souvenir de",
+        "se rappeler"
+      ],
+      "exemple": "I don't [remember] his name.",
+      "exemple_traduction": "Je ne me souviens pas de son nom."
+    },
+    {
+      "id": "voc-033",
+      "mot": "sensible",
+      "traductions": [
+        "raisonnable",
+        "sensé"
+      ],
+      "exemple": "That's a [sensible] decision.",
+      "exemple_traduction": "C'est une décision raisonnable.",
+      "note": "Faux ami : « sensible » se dit « sensitive »."
+    },
+    {
+      "id": "voc-034",
+      "mot": "sensitive",
+      "traductions": [
+        "sensible"
+      ],
+      "exemple": "She is very [sensitive] to criticism.",
+      "exemple_traduction": "Elle est très sensible à la critique."
+    },
+    {
+      "id": "voc-035",
+      "mot": "to attend",
+      "traductions": [
+        "assister à"
+      ],
+      "exemple": "Did you [attend] the conference?",
+      "exemple_traduction": "As-tu assisté à la conférence ?",
+      "note": "Faux ami : « attendre » se dit « to wait for »."
+    },
+    {
+      "id": "voc-036",
+      "mot": "to wait for",
+      "traductions": [
+        "attendre"
+      ],
+      "exemple": "I'm [waiting] for the bus.",
+      "exemple_traduction": "J'attends le bus."
+    },
+    {
+      "id": "voc-037",
+      "mot": "a library",
+      "traductions": [
+        "une bibliothèque"
+      ],
+      "exemple": "I study at the [library].",
+      "exemple_traduction": "J'étudie à la bibliothèque.",
+      "note": "Faux ami : « librairie » se dit « bookshop »."
+    },
+    {
+      "id": "voc-038",
+      "mot": "a bookshop",
+      "traductions": [
+        "une librairie"
+      ],
+      "exemple": "I bought it in a [bookshop].",
+      "exemple_traduction": "Je l'ai acheté dans une librairie.",
+      "variantes": [
+        "a bookstore"
+      ]
+    },
+    {
+      "id": "voc-039",
+      "mot": "to afford",
+      "traductions": [
+        "avoir les moyens de"
+      ],
+      "exemple": "I can't [afford] a new car.",
+      "exemple_traduction": "Je n'ai pas les moyens d'acheter une nouvelle voiture."
+    },
+    {
+      "id": "voc-040",
+      "mot": "overwhelmed",
+      "traductions": [
+        "débordé",
+        "submergé"
+      ],
+      "exemple": "I feel [overwhelmed] by work.",
+      "exemple_traduction": "Je me sens débordé par le travail."
+    }
+  ],
+  "conjugaison": [
+    {
+      "id": "conj-be-present",
+      "verbe": "to be",
+      "traduction": "être",
+      "temps": "present simple",
+      "formes": {
+        "I": "am",
+        "you": "are",
+        "he / she / it": "is",
+        "we": "are",
+        "they": "are"
+      }
+    },
+    {
+      "id": "conj-be-past",
+      "verbe": "to be",
+      "traduction": "être",
+      "temps": "past simple (prétérit)",
+      "formes": {
+        "I": "was",
+        "you": "were",
+        "he / she / it": "was",
+        "we": "were",
+        "they": "were"
+      },
+      "explication": "Seul verbe dont le prétérit a deux formes : was / were."
+    },
+    {
+      "id": "conj-have-present",
+      "verbe": "to have",
+      "traduction": "avoir",
+      "temps": "present simple",
+      "formes": {
+        "I": "have",
+        "you": "have",
+        "he / she / it": "has",
+        "we": "have",
+        "they": "have"
+      }
+    },
+    {
+      "id": "conj-do-present",
+      "verbe": "to do",
+      "traduction": "faire",
+      "temps": "present simple",
+      "formes": {
+        "I": "do",
+        "you": "do",
+        "he / she / it": "does",
+        "we": "do",
+        "they": "do"
+      },
+      "explication": "« do / does » sert aussi d'auxiliaire pour les questions et la négation."
+    },
+    {
+      "id": "conj-go-present",
+      "verbe": "to go",
+      "traduction": "aller",
+      "temps": "present simple",
+      "formes": {
+        "I": "go",
+        "you": "go",
+        "he / she / it": "goes",
+        "we": "go",
+        "they": "go"
+      },
+      "explication": "3e personne du singulier : -s, ou -es après -o, -s, -sh, -ch, -x."
+    },
+    {
+      "id": "conj-like-neg",
+      "verbe": "to like",
+      "traduction": "aimer",
+      "temps": "present simple — forme négative",
+      "formes": {
+        "I": [
+          "don't like",
+          "do not like"
+        ],
+        "you": [
+          "don't like",
+          "do not like"
+        ],
+        "he / she / it": [
+          "doesn't like",
+          "does not like"
+        ],
+        "we": [
+          "don't like",
+          "do not like"
+        ],
+        "they": [
+          "don't like",
+          "do not like"
+        ]
+      },
+      "explication": "Négation : don't / doesn't + base verbale (jamais « doesn't likes »)."
+    },
+    {
+      "id": "conj-work-cont",
+      "verbe": "to work",
+      "traduction": "travailler",
+      "temps": "present continuous",
+      "formes": {
+        "I": [
+          "am working"
+        ],
+        "you": [
+          "are working"
+        ],
+        "he / she / it": [
+          "is working"
+        ],
+        "we": [
+          "are working"
+        ],
+        "they": [
+          "are working"
+        ]
+      },
+      "explication": "be + V-ing : action en cours au moment où l'on parle."
+    },
+    {
+      "id": "conj-finish-pp",
+      "verbe": "to finish",
+      "traduction": "finir",
+      "temps": "present perfect",
+      "formes": {
+        "I": [
+          "have finished"
+        ],
+        "you": [
+          "have finished"
+        ],
+        "he / she / it": [
+          "has finished"
+        ],
+        "we": [
+          "have finished"
+        ],
+        "they": [
+          "have finished"
+        ]
+      },
+      "explication": "have / has + participe passé : lien entre passé et présent."
+    },
+    {
+      "id": "conj-help-will",
+      "verbe": "to help",
+      "traduction": "aider",
+      "temps": "future (will)",
+      "formes": {
+        "I": [
+          "will help"
+        ],
+        "you": [
+          "will help"
+        ],
+        "he / she / it": [
+          "will help"
+        ],
+        "we": [
+          "will help"
+        ],
+        "they": [
+          "will help"
+        ]
+      },
+      "explication": "will + base verbale, identique à toutes les personnes."
+    },
+    {
+      "id": "irr-go",
+      "verbe": "to go",
+      "traduction": "aller",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "went",
+        "participe passé": "gone"
+      }
+    },
+    {
+      "id": "irr-be",
+      "verbe": "to be",
+      "traduction": "être",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": [
+          "was / were",
+          "was/were",
+          "was, were",
+          "was were"
+        ],
+        "participe passé": "been"
+      }
+    },
+    {
+      "id": "irr-have",
+      "verbe": "to have",
+      "traduction": "avoir",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "had",
+        "participe passé": "had"
+      }
+    },
+    {
+      "id": "irr-do",
+      "verbe": "to do",
+      "traduction": "faire",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "did",
+        "participe passé": "done"
+      }
+    },
+    {
+      "id": "irr-make",
+      "verbe": "to make",
+      "traduction": "faire, fabriquer",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "made",
+        "participe passé": "made"
+      }
+    },
+    {
+      "id": "irr-take",
+      "verbe": "to take",
+      "traduction": "prendre",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "took",
+        "participe passé": "taken"
+      }
+    },
+    {
+      "id": "irr-see",
+      "verbe": "to see",
+      "traduction": "voir",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "saw",
+        "participe passé": "seen"
+      }
+    },
+    {
+      "id": "irr-give",
+      "verbe": "to give",
+      "traduction": "donner",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "gave",
+        "participe passé": "given"
+      }
+    },
+    {
+      "id": "irr-know",
+      "verbe": "to know",
+      "traduction": "savoir, connaître",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "knew",
+        "participe passé": "known"
+      }
+    },
+    {
+      "id": "irr-think",
+      "verbe": "to think",
+      "traduction": "penser",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "thought",
+        "participe passé": "thought"
+      }
+    },
+    {
+      "id": "irr-buy",
+      "verbe": "to buy",
+      "traduction": "acheter",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "bought",
+        "participe passé": "bought"
+      }
+    },
+    {
+      "id": "irr-bring",
+      "verbe": "to bring",
+      "traduction": "apporter",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "brought",
+        "participe passé": "brought"
+      }
+    },
+    {
+      "id": "irr-write",
+      "verbe": "to write",
+      "traduction": "écrire",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "wrote",
+        "participe passé": "written"
+      }
+    },
+    {
+      "id": "irr-speak",
+      "verbe": "to speak",
+      "traduction": "parler",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "spoke",
+        "participe passé": "spoken"
+      }
+    },
+    {
+      "id": "irr-begin",
+      "verbe": "to begin",
+      "traduction": "commencer",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "began",
+        "participe passé": "begun"
+      }
+    },
+    {
+      "id": "irr-choose",
+      "verbe": "to choose",
+      "traduction": "choisir",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "chose",
+        "participe passé": "chosen"
+      }
+    },
+    {
+      "id": "irr-drive",
+      "verbe": "to drive",
+      "traduction": "conduire",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "drove",
+        "participe passé": "driven"
+      }
+    },
+    {
+      "id": "irr-eat",
+      "verbe": "to eat",
+      "traduction": "manger",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "ate",
+        "participe passé": "eaten"
+      }
+    },
+    {
+      "id": "irr-forget",
+      "verbe": "to forget",
+      "traduction": "oublier",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "forgot",
+        "participe passé": "forgotten"
+      }
+    },
+    {
+      "id": "irr-teach",
+      "verbe": "to teach",
+      "traduction": "enseigner",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "taught",
+        "participe passé": "taught"
+      }
+    },
+    {
+      "id": "irr-catch",
+      "verbe": "to catch",
+      "traduction": "attraper",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "caught",
+        "participe passé": "caught"
+      }
+    },
+    {
+      "id": "irr-feel",
+      "verbe": "to feel",
+      "traduction": "ressentir",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "felt",
+        "participe passé": "felt"
+      }
+    },
+    {
+      "id": "irr-leave",
+      "verbe": "to leave",
+      "traduction": "partir, quitter",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "left",
+        "participe passé": "left"
+      }
+    },
+    {
+      "id": "irr-find",
+      "verbe": "to find",
+      "traduction": "trouver",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "found",
+        "participe passé": "found"
+      }
+    },
+    {
+      "id": "irr-understand",
+      "verbe": "to understand",
+      "traduction": "comprendre",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "understood",
+        "participe passé": "understood"
+      }
+    },
+    {
+      "id": "irr-break",
+      "verbe": "to break",
+      "traduction": "casser",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "broke",
+        "participe passé": "broken"
+      }
+    },
+    {
+      "id": "irr-fall",
+      "verbe": "to fall",
+      "traduction": "tomber",
+      "temps": "verbe irrégulier",
+      "formes": {
+        "prétérit": "fell",
+        "participe passé": "fallen"
+      }
+    }
+  ],
+  "grammaire": [
     {
       "id": "gram-trou-001",
       "type": "TROU",
       "question": "She ___ (go) to school every day.",
-      "reponses_texte": ["goes"],
+      "reponses_texte": [
+        "goes"
+      ],
       "explication": "Présent simple, 3e personne du singulier → on ajoute -es à « go »."
     },
     {
       "id": "gram-trou-002",
       "type": "TROU",
       "question": "If I ___ (be) you, I would apologize.",
-      "reponses_texte": ["were"],
+      "reponses_texte": [
+        "were"
+      ],
       "explication": "Conditionnel (2e forme) : on utilise toujours « were » après « if », même avec « I »."
     },
     {
       "id": "gram-trou-003",
       "type": "TROU",
       "question": "I have lived here ___ 2010.",
-      "reponses_texte": ["since"],
+      "reponses_texte": [
+        "since"
+      ],
       "explication": "« Since » introduit un point de départ précis dans le temps ; « for » introduit une durée."
     },
     {
       "id": "gram-trou-004",
       "type": "TROU",
       "question": "He is interested ___ learning French.",
-      "reponses_texte": ["in"],
+      "reponses_texte": [
+        "in"
+      ],
       "explication": "« To be interested in » : préposition fixe après cet adjectif."
     },
     {
       "id": "gram-trou-005",
       "type": "TROU",
       "question": "They ___ (not / finish) their homework yet.",
-      "reponses_texte": ["haven't finished", "have not finished"],
+      "reponses_texte": [
+        "haven't finished",
+        "have not finished"
+      ],
       "explication": "Present perfect négatif : « haven't/have not » + participe passé, avec « yet » en fin de phrase."
+    },
+    {
+      "id": "gram-trou-006",
+      "type": "TROU",
+      "question": "I'm used to ___ (work) at night.",
+      "reponses_texte": [
+        "working"
+      ],
+      "explication": "« be used to » + V-ing = avoir l'habitude de (« to » est ici une préposition)."
+    },
+    {
+      "id": "gram-trou-007",
+      "type": "TROU",
+      "question": "By the time we arrived, the film ___ (already / start).",
+      "reponses_texte": [
+        "had already started"
+      ],
+      "explication": "Past perfect (had + participe passé) : action antérieure à une autre action passée."
+    },
+    {
+      "id": "gram-trou-008",
+      "type": "TROU",
+      "question": "You ___ smoke here: it's forbidden.",
+      "reponses_texte": [
+        "mustn't",
+        "must not"
+      ],
+      "explication": "mustn't = interdiction ; don't have to = absence d'obligation."
+    },
+    {
+      "id": "gram-trou-009",
+      "type": "TROU",
+      "question": "This is the man ___ car was stolen.",
+      "reponses_texte": [
+        "whose"
+      ],
+      "explication": "« whose » = dont (possession)."
+    },
+    {
+      "id": "gram-trou-010",
+      "type": "TROU",
+      "question": "How ___ money do you have?",
+      "reponses_texte": [
+        "much"
+      ],
+      "explication": "much + indénombrable (money) ; many + dénombrable (How many books?)."
+    },
+    {
+      "id": "gram-ordre-001",
+      "type": "ORDRE",
+      "phrase": "She has never been to London.",
+      "traduction": "Elle n'est jamais allée à Londres.",
+      "explication": "L'adverbe de fréquence se place entre l'auxiliaire et le participe passé."
+    },
+    {
+      "id": "gram-ordre-002",
+      "type": "ORDRE",
+      "phrase": "Do you often go to the cinema?",
+      "traduction": "Vas-tu souvent au cinéma ?",
+      "explication": "Question : auxiliaire + sujet + adverbe + verbe."
+    },
+    {
+      "id": "gram-ordre-003",
+      "type": "ORDRE",
+      "phrase": "I have been living here for ten years.",
+      "traduction": "J'habite ici depuis dix ans.",
+      "explication": "Present perfect continuous + for (durée) : action commencée dans le passé et toujours en cours."
+    },
+    {
+      "id": "gram-ordre-004",
+      "type": "ORDRE",
+      "phrase": "What time does the train leave?",
+      "traduction": "À quelle heure part le train ?"
+    },
+    {
+      "id": "gram-ordre-005",
+      "type": "ORDRE",
+      "phrase": "He is the tallest boy in the class.",
+      "traduction": "C'est le garçon le plus grand de la classe.",
+      "explication": "Superlatif court : the + adjectif-est ; « in » après un superlatif (et non « of »)."
+    },
+    {
+      "id": "gram-ordre-006",
+      "type": "ORDRE",
+      "phrase": "She told me that she was tired.",
+      "traduction": "Elle m'a dit qu'elle était fatiguée.",
+      "explication": "Discours indirect : le temps recule d'un cran (is → was)."
+    },
+    {
+      "id": "gram-ordre-007",
+      "type": "ORDRE",
+      "phrase": "If it rains, we will stay at home.",
+      "traduction": "S'il pleut, nous resterons à la maison.",
+      "explication": "Condition réelle : if + présent, will + base verbale (jamais « will » après « if »)."
+    },
+    {
+      "id": "gram-corr-001",
+      "type": "CORRECTION",
+      "phrase": "He don't like coffee.",
+      "corrections": [
+        "He doesn't like coffee.",
+        "He does not like coffee."
+      ],
+      "explication": "3e personne du singulier : doesn't."
+    },
+    {
+      "id": "gram-corr-002",
+      "type": "CORRECTION",
+      "phrase": "I am agree with you.",
+      "corrections": [
+        "I agree with you."
+      ],
+      "explication": "« agree » est un verbe : pas d'auxiliaire « be »."
+    },
+    {
+      "id": "gram-corr-003",
+      "type": "CORRECTION",
+      "phrase": "She has visited Paris last year.",
+      "corrections": [
+        "She visited Paris last year."
+      ],
+      "explication": "Moment passé précis (last year) → prétérit, pas present perfect."
+    },
+    {
+      "id": "gram-corr-004",
+      "type": "CORRECTION",
+      "phrase": "I live here since 2015.",
+      "corrections": [
+        "I have lived here since 2015.",
+        "I've lived here since 2015.",
+        "I have been living here since 2015.",
+        "I've been living here since 2015."
+      ],
+      "explication": "« depuis » + action toujours vraie → present perfect (et non présent)."
+    },
+    {
+      "id": "gram-corr-005",
+      "type": "CORRECTION",
+      "phrase": "There is many people here.",
+      "corrections": [
+        "There are many people here.",
+        "There are a lot of people here."
+      ],
+      "explication": "« people » est pluriel : there are."
+    },
+    {
+      "id": "gram-corr-006",
+      "type": "CORRECTION",
+      "phrase": "He explained me the rule.",
+      "corrections": [
+        "He explained the rule to me."
+      ],
+      "explication": "explain something to somebody (jamais « explain somebody »)."
+    },
+    {
+      "id": "gram-corr-007",
+      "type": "CORRECTION",
+      "phrase": "I look forward to see you.",
+      "corrections": [
+        "I look forward to seeing you.",
+        "I'm looking forward to seeing you.",
+        "I am looking forward to seeing you."
+      ],
+      "explication": "look forward to + V-ing (« to » est une préposition)."
+    },
+    {
+      "id": "gram-corr-008",
+      "type": "CORRECTION",
+      "phrase": "She is more tall than her brother.",
+      "corrections": [
+        "She is taller than her brother.",
+        "She's taller than her brother."
+      ],
+      "explication": "Adjectif court : comparatif en -er (tall → taller)."
     },
     {
       "id": "gram-qcm-001",
       "type": "QCM",
       "question": "Quel auxiliaire permet de former le present perfect ?",
-      "choix": ["have / has", "do / does", "will", "was / were"],
-      "reponses": [0],
+      "choix": [
+        "have / has",
+        "do / does",
+        "will",
+        "was / were"
+      ],
+      "reponses": [
+        0
+      ],
       "explication": "Present perfect = have/has + participe passé (ex. « She has finished »)."
     },
     {
       "id": "gram-qcm-002",
       "type": "QCM",
       "question": "Quelle est la forme comparative correcte de « good » ?",
-      "choix": ["gooder", "better", "more good", "best"],
-      "reponses": [1],
+      "choix": [
+        "gooder",
+        "better",
+        "more good",
+        "best"
+      ],
+      "reponses": [
+        1
+      ],
       "explication": "« Good » est irrégulier : good → better (comparatif) → best (superlatif)."
-    },
-    {
-      "id": "gram-qcm-003",
-      "type": "QCM",
-      "question": "Quel mot est un synonyme de « happy » ?",
-      "choix": ["sad", "joyful", "angry", "tired"],
-      "reponses": [1],
-      "explication": "« Joyful » signifie joyeux, comme « happy »."
     },
     {
       "id": "gram-qcm-004",
@@ -113,31 +1116,76 @@
         "The book is wrote by him.",
         "The book writed by him."
       ],
-      "reponses": [1],
+      "reponses": [
+        1
+      ],
       "explication": "Passif = be + participe passé. Le participe passé irrégulier de « write » est « written »."
+    },
+    {
+      "id": "gram-qcm-003",
+      "type": "QCM",
+      "question": "Quel mot est un synonyme de « happy » ?",
+      "choix": [
+        "sad",
+        "joyful",
+        "angry",
+        "tired"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "« Joyful » signifie joyeux, comme « happy »."
     },
     {
       "id": "gram-qcr-001",
       "type": "QCR",
       "question": "Lesquels de ces verbes sont irréguliers en anglais ?",
-      "choix": ["go", "walk", "eat", "play", "see"],
-      "reponses": [0, 2, 4],
+      "choix": [
+        "go",
+        "walk",
+        "eat",
+        "play",
+        "see"
+      ],
+      "reponses": [
+        0,
+        2,
+        4
+      ],
       "explication": "Irréguliers : go → went → gone ; eat → ate → eaten ; see → saw → seen. « walk » et « play » sont réguliers (+ed)."
     },
     {
       "id": "gram-qcr-002",
       "type": "QCR",
       "question": "Quelles prépositions peuvent suivre le verbe « depend » ?",
-      "choix": ["on", "in", "of", "upon"],
-      "reponses": [0, 3],
+      "choix": [
+        "on",
+        "in",
+        "of",
+        "upon"
+      ],
+      "reponses": [
+        0,
+        3
+      ],
       "explication": "« To depend on/upon something » : les deux sont correctes, « upon » est plus formel."
     },
     {
       "id": "gram-qcr-003",
       "type": "QCR",
       "question": "Lesquels de ces mots sont des verbes modaux ?",
-      "choix": ["can", "must", "walk", "might", "eat"],
-      "reponses": [0, 1, 3],
+      "choix": [
+        "can",
+        "must",
+        "walk",
+        "might",
+        "eat"
+      ],
+      "reponses": [
+        0,
+        1,
+        3
+      ],
       "explication": "Modaux : can, must, might (entre autres : will, would, should, may, could). Ils n'ont pas de -s à la 3e personne et sont suivis de l'infinitif sans « to »."
     }
   ]

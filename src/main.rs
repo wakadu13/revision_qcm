@@ -11,9 +11,12 @@
 // Build « --windowed » : pas de fenêtre console sous Windows (GUI uniquement).
 #![cfg_attr(all(windows, feature = "windowed"), windows_subsystem = "windows")]
 
+mod bibliotheque;
 mod cli;
 mod core;
+mod fsrs;
 mod gui;
+mod langues;
 mod math;
 mod paths;
 

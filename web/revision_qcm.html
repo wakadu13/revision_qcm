@@ -323,11 +323,52 @@ function estCorrecteTexte(q, reponse){
   return (q.reponses_texte||[]).some(r=>normaliserTexte(r)===cible);
 }
 
+/* ---- fichiers de langue (« langue » + vocabulaire / conjugaison / grammaire) ----
+   Le module Langues complet (FSRS, facettes, remise en ordre interactive…) est dans
+   l'application ; ici, ces fichiers sont convertis en questions classiques pour
+   rester utilisables dans la version web. */
+function aplatirSetLangue(data){
+  const liste=v=>Array.isArray(v)?v.map(String):(v==null?[]:[String(v)]);
+  const sansPonct=r=>[r, r.replace(/[.!?…]+$/,"").trim()];
+  const questions=[];
+  (data.vocabulaire||[]).forEach((v,i)=>{
+    const id=String(v.id ?? `voc${i+1}`);
+    const ex=v.exemple ? `Ex. : « ${String(v.exemple).replace(/[\[\]]/g,"")} »`
+      +(v.exemple_traduction?` = « ${v.exemple_traduction} »`:"") : "";
+    questions.push({id:id+"#rec", type:"FLASHCARD", question:String(v.mot),
+      verso:liste(v.traductions ?? v.traduction).join(", "),
+      explication:[ex, v.note||""].filter(Boolean).join(" — ")});
+  });
+  (data.conjugaison||[]).forEach((c,i)=>{
+    const id=String(c.id ?? `conj${i+1}`);
+    for(const [p,f] of Object.entries(c.formes||{}))
+      questions.push({id:`${id}#${p}`, type:"TROU",
+        question:`${c.verbe}${c.traduction?` (${c.traduction})`:""} — ${c.temps} : ${p} ___`,
+        reponses_texte:liste(f), explication:String(c.explication||"")});
+  });
+  (data.grammaire||[]).forEach((g,i)=>{
+    const t=String(g.type||"QCM").toUpperCase(), id=String(g.id ?? `gram${i+1}`);
+    const expl=String(g.explication||"");
+    if(t==="ORDRE"){
+      const mots=String(g.phrase).replace(/[.!?…]+$/,"").split(/\s+/).sort(()=>Math.random()-.5);
+      questions.push({id, type:"TROU",
+        question:`Remets les mots dans l'ordre : ${mots.join(" / ")}`+(g.traduction?` (« ${g.traduction} »)`:""),
+        reponses_texte:[g.phrase,...liste(g.variantes)].flatMap(sansPonct), explication:expl});
+    } else if(t==="CORRECTION"){
+      questions.push({id, type:"TROU", question:`Corrige l'erreur : « ${g.phrase} »`,
+        reponses_texte:liste(g.corrections ?? g.correction).flatMap(sansPonct), explication:expl});
+    } else questions.push(g);
+  });
+  return {titre:data.titre ?? data.langue, description:data.description ?? "", questions};
+}
+
 /* ---- validation d'un set (mêmes règles que core.charger_set) ----
    `categorie` est déduite du sous-dossier d'import (cf. categorieDepuisChemin) ;
    par défaut "Général" pour un import de fichiers isolés. */
 function validerSet(data, nomFichier, categorie="Général"){
   const stem = nomFichier.replace(/\.[^.]+$/,"");
+  if(data && typeof data==="object" && "langue" in data && !Array.isArray(data.questions))
+    data=aplatirSetLangue(data);
   if(typeof data!=="object" || data===null || !Array.isArray(data.questions))
     throw new Error(`${nomFichier} : clé 'questions' (liste) manquante.`);
   const questions=[];

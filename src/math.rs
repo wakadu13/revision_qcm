@@ -1770,7 +1770,7 @@ mod tests {
     #[test]
     fn toutes_les_formules_du_depot_s_analysent() {
         let dossier = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("questions");
-        let (sets, _) = crate::core::charger_tous_les_sets(&dossier);
+        let sets = crate::bibliotheque::charger(&dossier).sets;
         let mut n = 0;
         for s in &sets {
             for q in &s.questions {

@@ -1,0 +1,253 @@
+{
+  "langue": "Espagnol",
+  "titre": "Espagnol — débutant (A1)",
+  "description": "Premiers mots, ser/estar, présent et passé simple réguliers.",
+  "particules_optionnelles": [
+    "el",
+    "la",
+    "los",
+    "las",
+    "un",
+    "una"
+  ],
+  "caracteres_speciaux": [
+    "á",
+    "é",
+    "í",
+    "ó",
+    "ú",
+    "ñ",
+    "ü",
+    "¿",
+    "¡"
+  ],
+  "vocabulaire": [
+    {
+      "id": "es-voc-001",
+      "mot": "la casa",
+      "traductions": [
+        "la maison"
+      ],
+      "exemple": "Mi [casa] es pequeña.",
+      "exemple_traduction": "Ma maison est petite."
+    },
+    {
+      "id": "es-voc-002",
+      "mot": "el trabajo",
+      "traductions": [
+        "le travail"
+      ],
+      "exemple": "Busco [trabajo].",
+      "exemple_traduction": "Je cherche du travail."
+    },
+    {
+      "id": "es-voc-003",
+      "mot": "aprender",
+      "traductions": [
+        "apprendre"
+      ],
+      "exemple": "Quiero [aprender] español.",
+      "exemple_traduction": "Je veux apprendre l'espagnol."
+    },
+    {
+      "id": "es-voc-004",
+      "mot": "la ciudad",
+      "traductions": [
+        "la ville"
+      ],
+      "exemple": "Madrid es una [ciudad] grande.",
+      "exemple_traduction": "Madrid est une grande ville."
+    },
+    {
+      "id": "es-voc-005",
+      "mot": "siempre",
+      "traductions": [
+        "toujours"
+      ],
+      "exemple": "[Siempre] llego tarde.",
+      "exemple_traduction": "J'arrive toujours en retard."
+    },
+    {
+      "id": "es-voc-006",
+      "mot": "el año",
+      "traductions": [
+        "l'année",
+        "l'an"
+      ],
+      "exemple": "El [año] pasado fui a México.",
+      "exemple_traduction": "L'année dernière, je suis allé au Mexique.",
+      "note": "Attention au tilde : « año » (année) ≠ « ano »."
+    },
+    {
+      "id": "es-voc-007",
+      "mot": "mañana",
+      "traductions": [
+        "demain"
+      ],
+      "exemple": "[Mañana] voy al médico.",
+      "exemple_traduction": "Demain, je vais chez le médecin.",
+      "note": "« la mañana » = le matin."
+    },
+    {
+      "id": "es-voc-008",
+      "mot": "la llave",
+      "traductions": [
+        "la clé"
+      ],
+      "exemple": "No encuentro la [llave].",
+      "exemple_traduction": "Je ne trouve pas la clé."
+    },
+    {
+      "id": "es-voc-009",
+      "mot": "despacio",
+      "traductions": [
+        "lentement"
+      ],
+      "exemple": "Habla más [despacio], por favor.",
+      "exemple_traduction": "Parle plus lentement, s'il te plaît."
+    },
+    {
+      "id": "es-voc-010",
+      "mot": "embarazada",
+      "traductions": [
+        "enceinte"
+      ],
+      "exemple": "Mi hermana está [embarazada].",
+      "exemple_traduction": "Ma sœur est enceinte.",
+      "note": "Faux ami : « gêné » se dit « avergonzado »."
+    }
+  ],
+  "conjugaison": [
+    {
+      "id": "es-ser",
+      "verbe": "ser",
+      "traduction": "être (identité, caractéristique)",
+      "temps": "presente",
+      "formes": {
+        "yo": "soy",
+        "tú": "eres",
+        "él / ella / usted": "es",
+        "nosotros": "somos",
+        "vosotros": "sois",
+        "ellos / ellas / ustedes": "son"
+      }
+    },
+    {
+      "id": "es-estar",
+      "verbe": "estar",
+      "traduction": "être (état, lieu)",
+      "temps": "presente",
+      "formes": {
+        "yo": "estoy",
+        "tú": "estás",
+        "él / ella / usted": "está",
+        "nosotros": "estamos",
+        "vosotros": "estáis",
+        "ellos / ellas / ustedes": "están"
+      }
+    },
+    {
+      "id": "es-tener",
+      "verbe": "tener",
+      "traduction": "avoir",
+      "temps": "presente",
+      "formes": {
+        "yo": "tengo",
+        "tú": "tienes",
+        "él / ella / usted": "tiene",
+        "nosotros": "tenemos",
+        "vosotros": "tenéis",
+        "ellos / ellas / ustedes": "tienen"
+      }
+    },
+    {
+      "id": "es-hablar-pres",
+      "verbe": "hablar",
+      "traduction": "parler",
+      "temps": "presente",
+      "formes": {
+        "yo": "hablo",
+        "tú": "hablas",
+        "él / ella / usted": "habla",
+        "nosotros": "hablamos",
+        "vosotros": "habláis",
+        "ellos / ellas / ustedes": "hablan"
+      },
+      "explication": "Verbes en -ar : -o, -as, -a, -amos, -áis, -an."
+    },
+    {
+      "id": "es-hablar-pret",
+      "verbe": "hablar",
+      "traduction": "parler",
+      "temps": "pretérito indefinido",
+      "formes": {
+        "yo": "hablé",
+        "tú": "hablaste",
+        "él / ella / usted": "habló",
+        "nosotros": "hablamos",
+        "vosotros": "hablasteis",
+        "ellos / ellas / ustedes": "hablaron"
+      },
+      "explication": "L'accent compte : « hablo » (je parle) ≠ « habló » (il a parlé)."
+    }
+  ],
+  "grammaire": [
+    {
+      "id": "es-trou-001",
+      "type": "TROU",
+      "question": "Yo ___ (ser) estudiante.",
+      "reponses_texte": [
+        "soy"
+      ],
+      "explication": "Identité / profession → ser."
+    },
+    {
+      "id": "es-trou-002",
+      "type": "TROU",
+      "question": "Mi madre ___ (estar) en casa.",
+      "reponses_texte": [
+        "está"
+      ],
+      "explication": "Localisation → estar."
+    },
+    {
+      "id": "es-trou-003",
+      "type": "TROU",
+      "question": "Ayer nosotros ___ (hablar) con Juan.",
+      "reponses_texte": [
+        "hablamos"
+      ],
+      "explication": "« ayer » → pretérito indefinido ; même forme qu'au présent pour « nosotros »."
+    },
+    {
+      "id": "es-qcm-001",
+      "type": "QCM",
+      "question": "« La sopa ___ fría. » (La soupe est froide.)",
+      "choix": [
+        "es",
+        "está"
+      ],
+      "reponses": [
+        1
+      ],
+      "explication": "État passager → estar."
+    },
+    {
+      "id": "es-ordre-001",
+      "type": "ORDRE",
+      "phrase": "¿Dónde está la estación?",
+      "traduction": "Où est la gare ?",
+      "explication": "Les questions s'ouvrent par « ¿ »."
+    },
+    {
+      "id": "es-corr-001",
+      "type": "CORRECTION",
+      "phrase": "Hoy soy muy cansado.",
+      "corrections": [
+        "Hoy estoy muy cansado."
+      ],
+      "traduction": "Aujourd'hui, je suis très fatigué.",
+      "explication": "Un état passager (fatigue) s'exprime avec estar."
+    }
+  ]
+}

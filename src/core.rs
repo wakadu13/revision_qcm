@@ -141,7 +141,7 @@ impl QuestionSet {
 // Chargement et validation des sets
 // ---------------------------------------------------------------------------
 /// Équivalent de `str(x)` en Python pour les valeurs JSON scalaires.
-fn en_texte(v: &Value) -> String {
+pub fn en_texte(v: &Value) -> String {
     match v {
         Value::String(s) => s.clone(),
         Value::Null => "None".to_string(),
@@ -151,19 +151,28 @@ fn en_texte(v: &Value) -> String {
     }
 }
 
-fn liste<'a>(v: &'a Value, contexte: &str, clef: &str) -> Result<&'a Vec<Value>, String> {
+pub fn liste<'a>(v: &'a Value, contexte: &str, clef: &str) -> Result<&'a Vec<Value>, String> {
     v.as_array()
         .ok_or_else(|| format!("{contexte} : '{clef}' doit être une liste."))
 }
 
-/// Charge et valide un set de questions depuis un fichier JSON.
+/// Un fichier JSON de `questions/`, lu et analysé, pas encore validé.
+pub struct FichierJson {
+    /// Nom du fichier (ex. "algebre.json"), pour les messages d'erreur.
+    pub nom: String,
+    /// Nom sans extension : identifiant stable du set.
+    pub stem: String,
+    pub categorie: String,
+    pub chemin: PathBuf,
+    pub data: Value,
+}
+
+/// Lit et analyse un fichier JSON.
 ///
 /// `racine` est le dossier `questions/` : si le fichier se trouve dans un
 /// sous-dossier de `racine` (ex. `questions/maths/algebre.json`), ce sous-dossier
-/// devient la `categorie` du set (ex. "maths"). Sinon, la catégorie est "Général".
-///
-/// Renvoie une erreur avec un message clair si le fichier est malformé.
-pub fn charger_set(chemin: &Path, racine: Option<&Path>) -> Result<QuestionSet, String> {
+/// devient la `categorie` (ex. "maths"). Sinon, la catégorie est "Général".
+pub fn lire_fichier(chemin: &Path, racine: Option<&Path>) -> Result<FichierJson, String> {
     let nom = chemin
         .file_name()
         .map(|n| n.to_string_lossy().into_owned())
@@ -187,120 +196,143 @@ pub fn charger_set(chemin: &Path, racine: Option<&Path>) -> Result<QuestionSet, 
     })?;
     let data: Value =
         serde_json::from_slice(&octets).map_err(|e| format!("JSON invalide dans {nom} : {e}"))?;
+    Ok(FichierJson {
+        nom,
+        stem,
+        categorie,
+        chemin: chemin.to_path_buf(),
+        data,
+    })
+}
 
+/// Valide une question (QCM, QCR, TROU ou FLASHCARD). `i` est son rang (à partir
+/// de 1), utilisé pour l'identifiant par défaut `q{i}`.
+pub fn question_depuis_json(q: &Value, i: usize, contexte: &str) -> Result<Question, String> {
+    let q = q
+        .as_object()
+        .ok_or_else(|| format!("{contexte} : la question doit être un objet JSON."))?;
+    let enonce = q
+        .get("question")
+        .ok_or_else(|| format!("{contexte} : clé 'question' manquante."))?;
+
+    let type_txt = q
+        .get("type")
+        .map(en_texte)
+        .unwrap_or_else(|| "QCM".to_string())
+        .to_uppercase();
+    let type_q = TypeQuestion::depuis_str(&type_txt).ok_or_else(|| {
+        format!("{contexte} : type '{type_txt}' inconnu (QCM, QCR, TROU ou FLASHCARD).")
+    })?;
+
+    let mut choix = Vec::new();
+    let mut reponses = Vec::new();
+    let mut reponses_texte = Vec::new();
+    let mut verso = String::new();
+
+    match type_q {
+        TypeQuestion::Qcm | TypeQuestion::Qcr => {
+            for clef in ["choix", "reponses"] {
+                if !q.contains_key(clef) {
+                    return Err(format!("{contexte} : clé '{clef}' manquante."));
+                }
+            }
+            choix = liste(&q["choix"], contexte, "choix")?
+                .iter()
+                .map(en_texte)
+                .collect();
+            let brutes_rep = liste(&q["reponses"], contexte, "reponses")?;
+            if choix.is_empty() {
+                return Err(format!("{contexte} : la liste 'choix' est vide."));
+            }
+            if brutes_rep.is_empty() {
+                return Err(format!("{contexte} : aucune bonne réponse fournie."));
+            }
+            for r in brutes_rep {
+                match r.as_u64().filter(|&n| (n as usize) < choix.len()) {
+                    Some(n) => reponses.push(n as usize),
+                    None => {
+                        return Err(format!(
+                            "{contexte} : indice de réponse {r} hors limites (0 à {}).",
+                            choix.len() - 1
+                        ));
+                    }
+                }
+            }
+            if type_q == TypeQuestion::Qcm && reponses.len() != 1 {
+                return Err(format!(
+                    "{contexte} : un QCM doit avoir exactement 1 réponse."
+                ));
+            }
+            reponses.sort_unstable();
+            reponses.dedup();
+        }
+        TypeQuestion::Trou => {
+            let brutes_txt = q.get("reponses_texte").ok_or_else(|| {
+                format!(
+                    "{contexte} : clé 'reponses_texte' manquante (liste des réponses acceptées)."
+                )
+            })?;
+            reponses_texte = liste(brutes_txt, contexte, "reponses_texte")?
+                .iter()
+                .map(en_texte)
+                .collect();
+            if !reponses_texte.iter().any(|r| !r.trim().is_empty()) {
+                return Err(format!(
+                    "{contexte} : 'reponses_texte' doit contenir au moins une réponse non vide."
+                ));
+            }
+        }
+        TypeQuestion::Flashcard => {
+            verso =
+                en_texte(q.get("verso").ok_or_else(|| {
+                    format!("{contexte} : clé 'verso' manquante (dos de la carte).")
+                })?);
+            if verso.trim().is_empty() {
+                return Err(format!("{contexte} : 'verso' ne doit pas être vide."));
+            }
+        }
+    }
+
+    let reponses_normalisees = reponses_texte.iter().map(|r| normaliser_texte(r)).collect();
+    Ok(Question {
+        id: q.get("id").map(en_texte).unwrap_or_else(|| format!("q{i}")),
+        type_q,
+        enonce: en_texte(enonce),
+        choix,
+        reponses,
+        reponses_texte,
+        reponses_normalisees,
+        verso,
+        explication: q.get("explication").map(en_texte).unwrap_or_default(),
+    })
+}
+
+/// Valide un set de questions déjà lu.
+pub fn set_depuis_json(f: FichierJson) -> Result<QuestionSet, String> {
+    let FichierJson {
+        nom,
+        stem,
+        categorie,
+        chemin,
+        data,
+    } = f;
     let brutes = data
         .get("questions")
         .and_then(Value::as_array)
         .ok_or_else(|| format!("{nom} : clé 'questions' (liste) manquante."))?;
 
-    let mut questions = Vec::with_capacity(brutes.len());
-    for (i, q) in brutes.iter().enumerate() {
-        let i = i + 1;
-        let contexte = format!("{nom} » question #{i}");
-        let q = q
-            .as_object()
-            .ok_or_else(|| format!("{contexte} : la question doit être un objet JSON."))?;
-        let enonce = q
-            .get("question")
-            .ok_or_else(|| format!("{contexte} : clé 'question' manquante."))?;
-
-        let type_txt = q
-            .get("type")
-            .map(en_texte)
-            .unwrap_or_else(|| "QCM".to_string())
-            .to_uppercase();
-        let type_q = TypeQuestion::depuis_str(&type_txt).ok_or_else(|| {
-            format!("{contexte} : type '{type_txt}' inconnu (QCM, QCR, TROU ou FLASHCARD).")
-        })?;
-
-        let mut choix = Vec::new();
-        let mut reponses = Vec::new();
-        let mut reponses_texte = Vec::new();
-        let mut verso = String::new();
-
-        match type_q {
-            TypeQuestion::Qcm | TypeQuestion::Qcr => {
-                for clef in ["choix", "reponses"] {
-                    if !q.contains_key(clef) {
-                        return Err(format!("{contexte} : clé '{clef}' manquante."));
-                    }
-                }
-                choix = liste(&q["choix"], &contexte, "choix")?
-                    .iter()
-                    .map(en_texte)
-                    .collect();
-                let brutes_rep = liste(&q["reponses"], &contexte, "reponses")?;
-                if choix.is_empty() {
-                    return Err(format!("{contexte} : la liste 'choix' est vide."));
-                }
-                if brutes_rep.is_empty() {
-                    return Err(format!("{contexte} : aucune bonne réponse fournie."));
-                }
-                for r in brutes_rep {
-                    match r.as_u64().filter(|&n| (n as usize) < choix.len()) {
-                        Some(n) => reponses.push(n as usize),
-                        None => {
-                            return Err(format!(
-                                "{contexte} : indice de réponse {r} hors limites (0 à {}).",
-                                choix.len() - 1
-                            ));
-                        }
-                    }
-                }
-                if type_q == TypeQuestion::Qcm && reponses.len() != 1 {
-                    return Err(format!(
-                        "{contexte} : un QCM doit avoir exactement 1 réponse."
-                    ));
-                }
-                reponses.sort_unstable();
-                reponses.dedup();
-            }
-            TypeQuestion::Trou => {
-                let brutes_txt = q.get("reponses_texte").ok_or_else(|| {
-                    format!(
-                        "{contexte} : clé 'reponses_texte' manquante (liste des réponses acceptées)."
-                    )
-                })?;
-                reponses_texte = liste(brutes_txt, &contexte, "reponses_texte")?
-                    .iter()
-                    .map(en_texte)
-                    .collect();
-                if !reponses_texte.iter().any(|r| !r.trim().is_empty()) {
-                    return Err(format!(
-                        "{contexte} : 'reponses_texte' doit contenir au moins une réponse non vide."
-                    ));
-                }
-            }
-            TypeQuestion::Flashcard => {
-                verso = en_texte(q.get("verso").ok_or_else(|| {
-                    format!("{contexte} : clé 'verso' manquante (dos de la carte).")
-                })?);
-                if verso.trim().is_empty() {
-                    return Err(format!("{contexte} : 'verso' ne doit pas être vide."));
-                }
-            }
-        }
-
-        let reponses_normalisees = reponses_texte.iter().map(|r| normaliser_texte(r)).collect();
-        questions.push(Question {
-            id: q.get("id").map(en_texte).unwrap_or_else(|| format!("q{i}")),
-            type_q,
-            enonce: en_texte(enonce),
-            choix,
-            reponses,
-            reponses_texte,
-            reponses_normalisees,
-            verso,
-            explication: q.get("explication").map(en_texte).unwrap_or_default(),
-        });
-    }
+    let questions = brutes
+        .iter()
+        .enumerate()
+        .map(|(i, q)| question_depuis_json(q, i + 1, &format!("{nom} » question #{}", i + 1)))
+        .collect::<Result<Vec<_>, _>>()?;
 
     Ok(QuestionSet {
         id: stem.clone(),
         titre: data.get("titre").map(en_texte).unwrap_or(stem),
         description: data.get("description").map(en_texte).unwrap_or_default(),
         questions,
-        chemin: chemin.to_path_buf(),
+        chemin,
         categorie,
     })
 }
@@ -328,44 +360,29 @@ pub fn lister_sets(dossier: &Path) -> Vec<PathBuf> {
     fichiers
 }
 
-/// Charge tous les sets de `dossier` en parallèle (un thread par lot de fichiers).
-///
-/// Renvoie les sets valides (dans l'ordre de `lister_sets`) et les messages
-/// d'erreur des fichiers ignorés.
-pub fn charger_tous_les_sets(dossier: &Path) -> (Vec<Arc<QuestionSet>>, Vec<String>) {
+/// Applique `traiter` à chaque fichier .json de `dossier`, en parallèle (un lot de
+/// fichiers par cœur). Les résultats sont renvoyés dans l'ordre de `lister_sets`.
+pub fn traiter_en_parallele<T: Send>(
+    dossier: &Path,
+    traiter: impl Fn(&Path) -> T + Sync,
+) -> Vec<T> {
     let chemins = lister_sets(dossier);
     let threads = std::thread::available_parallelism()
         .map(|n| n.get())
         .unwrap_or(1)
         .min(chemins.len().max(1));
     let taille_lot = chemins.len().div_ceil(threads).max(1);
-
-    let resultats: Vec<Result<QuestionSet, String>> = std::thread::scope(|s| {
+    let traiter = &traiter;
+    std::thread::scope(|s| {
         let handles: Vec<_> = chemins
             .chunks(taille_lot)
-            .map(|lot| {
-                s.spawn(move || {
-                    lot.iter()
-                        .map(|c| charger_set(c, Some(dossier)))
-                        .collect::<Vec<_>>()
-                })
-            })
+            .map(|lot| s.spawn(move || lot.iter().map(|c| traiter(c)).collect::<Vec<_>>()))
             .collect();
         handles
             .into_iter()
             .flat_map(|h| h.join().expect("thread de chargement"))
             .collect()
-    });
-
-    let mut sets = Vec::with_capacity(resultats.len());
-    let mut erreurs = Vec::new();
-    for r in resultats {
-        match r {
-            Ok(s) => sets.push(Arc::new(s)),
-            Err(e) => erreurs.push(e),
-        }
-    }
-    (sets, erreurs)
+    })
 }
 
 /// Catégories distinctes, triées.
@@ -409,6 +426,37 @@ pub struct StatsQuestion {
     pub derniere_revision: Option<NaiveDateTime>,
     #[serde(default)]
     pub derniere_correcte: Option<bool>,
+
+    // --- Planification FSRS (module Langues uniquement ; absents sinon) ---
+    /// Stabilité de la mémoire, en jours (intervalle pour 90 % de rappel).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub stabilite: Option<f64>,
+    /// Difficulté intrinsèque de l'élément, de 1 à 10.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub difficulte: Option<f64>,
+    /// Date de la prochaine révision.
+    #[serde(
+        default,
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "ser_date",
+        deserialize_with = "de_date"
+    )]
+    pub echeance: Option<NaiveDateTime>,
+    /// Date de première révision (quota de nouveaux éléments par jour).
+    #[serde(
+        default,
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "ser_date",
+        deserialize_with = "de_date"
+    )]
+    pub decouverte: Option<NaiveDateTime>,
+    /// Nombre d'oublis (échec sur un élément déjà appris).
+    #[serde(default, skip_serializing_if = "est_zero")]
+    pub oublis: u32,
+}
+
+fn est_zero(n: &u32) -> bool {
+    *n == 0
 }
 
 /// Clé de tri pour la révision intelligente (voir [`Progression::priorite`]).
@@ -578,7 +626,7 @@ impl Progression {
     }
 }
 
-fn maintenant() -> NaiveDateTime {
+pub fn maintenant() -> NaiveDateTime {
     let now = Local::now().naive_local();
     // Précision à la seconde, comme isoformat(timespec="seconds").
     now.with_nanosecond(0).unwrap_or(now)
@@ -637,14 +685,5 @@ mod tests {
         let ecrit = serde_json::to_string(&data).unwrap();
         assert!(ecrit.contains(r#""derniere_revision":"2026-06-17T10:00:00""#));
         assert!(ecrit.contains(r#""derniere_revision":null"#));
-    }
-
-    #[test]
-    fn tous_les_sets_du_depot_se_chargent() {
-        let dossier = Path::new(env!("CARGO_MANIFEST_DIR")).join("questions");
-        let (sets, erreurs) = charger_tous_les_sets(&dossier);
-        assert!(erreurs.is_empty(), "{erreurs:?}");
-        assert!(!sets.is_empty());
-        assert!(sets.iter().any(|s| s.categorie == "maths"));
     }
 }
